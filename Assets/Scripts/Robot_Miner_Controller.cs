@@ -4,7 +4,7 @@ using System.Linq;
 using UnityEngine;
 
 [RequireComponent(typeof(CharacterController), typeof(Animator))]
-public class Test_Controller : MonoBehaviour
+public class Robot_Miner_Controller : MonoBehaviour
 {
 
     private CharacterController characterController;
@@ -14,7 +14,10 @@ public class Test_Controller : MonoBehaviour
     private LineRenderer attackingLaserRight;
 
     [SerializeField]
-    private float movementSpeed, rotationSpeed, jumpSpeed, gravity;
+    public GameObject miningEffectPrefab;
+
+    [SerializeField]
+    public GameObject attackingEffectPrefab;
 
     private Vector3 movementDirection = Vector3.zero;
     private bool playerGrounded;
@@ -23,58 +26,51 @@ public class Test_Controller : MonoBehaviour
     private bool isAttacking;
 
     [SerializeField]
-    public GameObject miningEffectPrefab;
-
-    [SerializeField]
-    public GameObject attackingEffectPrefab;
+    private float movementSpeed, rotationSpeed, jumpSpeed, gravity;
 
     // Start is called before the first frame update
     void Start()
     {
+        // Get controller and animator
         characterController = GetComponent<CharacterController>();
         animator = GetComponent<Animator>();
-        //var temp = GetComponent<LineRenderer>();
 
+        // Find attachment location for laser effects
         var centralBone = transform.Find("Robot_Miner_Armature").Find("Central_Bone");
         var leftLaser = centralBone.Find("Left_Arm_Bone1").Find("Left_Arm_Bone2").Find("Left_Arm_Bone3");
         var rightLaser = centralBone.Find("Right_Arm_Bone1").Find("Right_Arm_Bone2").Find("Right_Arm_Bone3");
 
+        // Get laser effect
         var tempLaser = attackingEffectPrefab.GetComponent<LineRenderer>();
         tempLaser.enabled = false;
 
+        // Set left arm laser effect/position
         if (leftLaser != null)
         {
-            var rot = transform.rotation.eulerAngles;
+            var rotL = transform.rotation.eulerAngles;
+            rotL.x += 12;
+            rotL.y += 25;
 
-            rot.x += 12;
-            rot.y += 25;
-
-            attackingLaserLeft = Instantiate(tempLaser, leftLaser.position, Quaternion.Euler(rot), leftLaser);
+            attackingLaserLeft = Instantiate(tempLaser, leftLaser.position, Quaternion.Euler(rotL), leftLaser);
         }
 
+        // Set right arm laser effect/position
         if (rightLaser != null)
         {
-            var rot = transform.rotation.eulerAngles;
+            var rotR = transform.rotation.eulerAngles;
+            rotR.x -= 12;
+            rotR.y -= 25;
 
-            rot.x -= 12;
-            rot.y -= 25;
-
-            attackingLaserRight = Instantiate(tempLaser, rightLaser.position, Quaternion.Euler(rot), rightLaser);
+            attackingLaserRight = Instantiate(tempLaser, rightLaser.position, Quaternion.Euler(rotR), rightLaser);
         }
 
-        //particleSystem = GetComponent<ParticleSystem>();
-
-        //var main = particleSystem.main;
-        //var gameObject = particleSystemsList.Where(x => x.name.Equals("Robot_Mining_Sparks")).FirstOrDefault();
-        //var ps = gameObject.GetComponent<ParticleSystem>();
-
-        //particleSystem = Instantiate(ps, transform.position, transform.rotation);
-
+        // Set mining sparks effects
         miningParticleSystem = Instantiate(miningEffectPrefab.GetComponent<ParticleSystem>(), transform.position, transform.rotation, transform);
 
         isMining = false;
         isAttacking = false;
 
+        // Set default speeds iff not set
         movementSpeed = movementSpeed == 0 ? 12 : movementSpeed;
         rotationSpeed = rotationSpeed == 0 ? 4 : rotationSpeed;
         jumpSpeed = jumpSpeed == 0 ? 3 : jumpSpeed;
@@ -84,17 +80,24 @@ public class Test_Controller : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // Change these to modify animation inputs
+        float forwardMovementInput = Input.GetAxisRaw("Vertical");
+        float rotationalMovementInput = Input.GetAxisRaw("Horizontal");
+        bool jumpInput = Input.GetButton("Jump");
+        bool miningInput = Input.GetKeyDown(KeyCode.J);
+        bool attackingInput = Input.GetKeyDown(KeyCode.K);
+
         playerGrounded = characterController.isGrounded;
- 
-        //movement
-        Vector3 inputMovement = transform.forward * movementSpeed * Input.GetAxisRaw("Vertical");
+
+        // Do movement here
+        Vector3 inputMovement = transform.forward * movementSpeed * forwardMovementInput;
         characterController.Move(inputMovement * Time.deltaTime);
 
-        transform.Rotate(Vector3.up * Input.GetAxisRaw("Horizontal") * rotationSpeed);
+        transform.Rotate(Vector3.up * rotationalMovementInput * rotationSpeed);
 
 
-        //jumping
-        if (Input.GetButton("Jump") && playerGrounded)
+        // Jumping
+        if (jumpInput && playerGrounded)
         {
             movementDirection.y = jumpSpeed;
         }
@@ -102,20 +105,14 @@ public class Test_Controller : MonoBehaviour
 
         characterController.Move(movementDirection * Time.deltaTime);
 
-        //animations
+        // Animations
         SetWalkingAnimation();
 
-        if (Input.GetKeyDown(KeyCode.J))
+        if (miningInput)
             ToggleMiningAnimation();
 
-        if (Input.GetKeyDown(KeyCode.K))
+        if (attackingInput)
             ToggleAttackingAnimation();
-
-        //animator.SetBool("IsMining", isMining);
-        //animator.SetBool("IsAttacking", isAttacking);
-
-        //animator.SetBool("is")
-        //animator.SetBool("isJumping", !characterController.isGrounded);
     }
 
     void SetWalkingAnimation()
@@ -194,21 +191,4 @@ public class Test_Controller : MonoBehaviour
 
         animator.SetBool("IsAttacking", isAttacking);
     }
-
-    //public static Transform GetChild(Transform parent, string childName)
-    //{
-    //    var child = parent.Find(childName);
-    //
-    //    foreach (var vall in parent.)
-    //    if (child != null)
-    //    {
-    //        return child;
-    //    }
-    //    else
-    //    {
-    //        return GetChild(child, childName);
-    //    }
-    //
-    //    return null;
-    //}
 }
