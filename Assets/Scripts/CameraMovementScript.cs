@@ -11,8 +11,11 @@ public class CameraMovementScript : MonoBehaviour
     float maxHeight = 32f;
     float minHeight = 12f;
 
+
     Vector2 pos1;
     Vector2 pos2;
+
+    public GameObject selectedGameObject;
 
     // Start is called before the first frame update
     void Start()
@@ -71,6 +74,43 @@ public class CameraMovementScript : MonoBehaviour
         transform.position += move;
 
         GetCameraRotation();
+
+        if(Input.GetMouseButtonDown(0))
+        {
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hit;
+            if(Physics.Raycast(ray, out hit, 100))
+            {
+                Debug.Log(hit.collider.gameObject.name);
+                selectedGameObject = hit.collider.gameObject;
+            }
+        }
+
+        if (Input.GetMouseButtonDown(1))
+        {
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hit;
+            if (Physics.Raycast(ray, out hit, 100))
+            {
+                if (selectedGameObject.tag == "Selectable")
+                {
+                    if (hit.collider.gameObject.GetComponent<ResourceType>())
+                    {
+
+                        selectedGameObject.gameObject.GetComponent<Robot_Miner_Controller_Mouse>().target = hit.transform;
+                        selectedGameObject.gameObject.GetComponent<Robot_Miner_Controller_Mouse>().IsMiningMove();
+                        selectedGameObject.gameObject.GetComponent<TaskManager>().setTarget(hit.collider.gameObject);
+                    }
+                    else
+                    {
+                        Debug.Log(hit.collider.gameObject.name);
+                        selectedGameObject.gameObject.GetComponent<Robot_Miner_Controller_Mouse>().IsSelected();
+                        selectedGameObject.gameObject.GetComponent<Robot_Miner_Controller_Mouse>().Movement(ray);
+                    }
+                }
+            }
+        }
+
     }
 
     void GetCameraRotation()

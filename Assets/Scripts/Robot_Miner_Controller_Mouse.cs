@@ -13,6 +13,8 @@ public class Robot_Miner_Controller_Mouse : MonoBehaviour
     private NavMeshAgent navMeshAgent;
     private LineRenderer attackingLaserLeft;
     private LineRenderer attackingLaserRight;
+    private bool isSelected = false;
+    private Ray ray;
 
     [SerializeField]
     public GameObject miningEffectPrefab;
@@ -26,6 +28,10 @@ public class Robot_Miner_Controller_Mouse : MonoBehaviour
     private bool isMining;
     private bool isAttacking;
     private bool isWalking;
+
+    public Transform target;
+    private bool isMiningMove = false;
+    private bool isMiningAnimate = false;
 
     [SerializeField]
     private float movementSpeed, rotationSpeed, jumpSpeed, gravity;
@@ -85,10 +91,15 @@ public class Robot_Miner_Controller_Mouse : MonoBehaviour
         bool miningInput = Input.GetKeyDown(KeyCode.J);
         bool attackingInput = Input.GetKeyDown(KeyCode.K);
 
-        if (Input.GetMouseButtonDown(0))
+        if (isMiningMove)
+        {
+            navMeshAgent.destination = target.position;
+            isMiningMove = false;
+        }
+
+        if (isSelected)
         {
             RaycastHit hit;
-            Ray ray = _camera.ScreenPointToRay(Input.mousePosition);
             if (Physics.Raycast(ray, out hit))
             {
                 navMeshAgent.destination = hit.point;
@@ -98,7 +109,7 @@ public class Robot_Miner_Controller_Mouse : MonoBehaviour
         // Animations
         SetWalkingAnimation();
 
-        if (miningInput)
+        if (isMiningAnimate)
             ToggleMiningAnimation();
 
         if (attackingInput)
@@ -198,5 +209,31 @@ public class Robot_Miner_Controller_Mouse : MonoBehaviour
         }
 
         animator.SetBool("IsAttacking", isAttacking);
+    }
+
+    public void IsSelected()
+    {
+        isSelected = true;
+    }
+
+    public void Movement(Ray ray2)
+    {
+        ray = ray2;
+    }
+
+    public void IsMiningMove()
+    {
+        isMiningMove = true;
+        isSelected = false;
+    }
+
+    public void IsMining()
+    {
+        isMiningAnimate = true;
+    }
+
+    public void IsNotMining()
+    {
+        isMiningAnimate = false;
     }
 }

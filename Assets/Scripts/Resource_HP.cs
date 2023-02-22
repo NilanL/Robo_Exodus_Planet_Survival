@@ -10,9 +10,11 @@ public class Resource_HP : MonoBehaviour
 
     public int currentHealth = 0;
     public int maxHealth = 100;
+    GameObject gm;
 
     void Start()
     {
+        gm = GameObject.Find("GameManager");
         currentHealth = maxHealth;
         healthbar.UpdateHealthBar(maxHealth, currentHealth);
     }
