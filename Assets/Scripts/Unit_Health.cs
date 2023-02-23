@@ -1,20 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
-public class Resource_HP : MonoBehaviour
+public class Unit_Health : MonoBehaviour
 {
-    // Start is called before the first frame update
     [SerializeField] private Healthbar healthbar;
 
     public int currentHealth = 0;
-    public int maxHealth = 100;
+    public int maxHealth = 0;
     GameObject gm;
 
+    // Start is called before the first frame update
     void Start()
     {
         gm = GameObject.Find("GameManager");
+        maxHealth = GetUnitStats();
         currentHealth = maxHealth;
         healthbar.UpdateHealthBar(maxHealth, currentHealth);
     }
@@ -22,7 +22,7 @@ public class Resource_HP : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(currentHealth <= 0)
+        if (currentHealth <= 0)
         {
             Destroy(gameObject);
         }
@@ -34,4 +34,18 @@ public class Resource_HP : MonoBehaviour
         currentHealth -= damage;
         healthbar.UpdateHealthBar(maxHealth, currentHealth);
     }
+
+    int GetUnitStats()
+    {
+        int health;
+        if(this.gameObject.name.ToString().ToLower().Equals("robot_miner_mouse"))
+        {
+            health = gm.GetComponent<MinerStats>().getMaxHealth();
+            return health;
+        };
+
+        return 10;
+
+    }
+
 }

@@ -40,11 +40,16 @@ public class TaskManager : MonoBehaviour
     {
         if(Vector3.Distance(target.transform.position, transform.position) < 5)
         {
+            
             if(canMine)
             {
                 StartCoroutine(Mine());
                 movement.IsMining();
             }
+        }
+        else
+        {
+            movement.IsNotMining();
         }
     }
 

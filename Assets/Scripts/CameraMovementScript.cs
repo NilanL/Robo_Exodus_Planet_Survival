@@ -83,6 +83,18 @@ public class CameraMovementScript : MonoBehaviour
             {
                 Debug.Log(hit.collider.gameObject.name);
                 selectedGameObject = hit.collider.gameObject;
+                var hb = selectedGameObject.transform.Find("Healthbar Canvas");
+                if(hb)
+                    hb.gameObject.SetActive(true);
+                else
+                {
+                    var gol = GameObject.FindGameObjectsWithTag("Health_Bar");
+                    foreach(var go in gol)
+                    {
+                        if (go)
+                            go.gameObject.SetActive(false);
+                    }
+                }
             }
         }
 
@@ -96,7 +108,9 @@ public class CameraMovementScript : MonoBehaviour
                 {
                     if (hit.collider.gameObject.GetComponent<ResourceType>())
                     {
-
+                        var hb = hit.collider.gameObject.transform.Find("Healthbar Canvas");
+                        if (hb)
+                            hb.gameObject.SetActive(true);
                         selectedGameObject.gameObject.GetComponent<Robot_Miner_Controller_Mouse>().target = hit.transform;
                         selectedGameObject.gameObject.GetComponent<Robot_Miner_Controller_Mouse>().IsMiningMove();
                         selectedGameObject.gameObject.GetComponent<TaskManager>().setTarget(hit.collider.gameObject);
