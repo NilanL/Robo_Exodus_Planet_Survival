@@ -10,9 +10,11 @@ public class Resource_HP : MonoBehaviour
 
     public int currentHealth = 0;
     public int maxHealth = 100;
+    GameObject gm;
 
     void Start()
     {
+        gm = GameObject.Find("GameManager");
         currentHealth = maxHealth;
         healthbar.UpdateHealthBar(maxHealth, currentHealth);
     }
@@ -25,14 +27,9 @@ public class Resource_HP : MonoBehaviour
             Destroy(gameObject);
         }
 
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            dmgResource(10);
-            //add to counter
-        }
     }
 
-    public void dmgResource(int damage)
+    public void dmgResource(int damage, GameObject tar)
     {
         currentHealth -= damage;
         healthbar.UpdateHealthBar(maxHealth, currentHealth);
