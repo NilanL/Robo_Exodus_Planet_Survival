@@ -29,7 +29,7 @@ public class Resource_HP : MonoBehaviour
 
     }
 
-    public void dmgResource(int damage)
+    public void dmgResource(int damage, GameObject tar)
     {
         currentHealth -= damage;
         healthbar.UpdateHealthBar(maxHealth, currentHealth);

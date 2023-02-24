@@ -12,11 +12,16 @@ public class TaskManager : MonoBehaviour
     public GameObject target;
     GameObject gamemaster;
     public float timeToMine = 2;
+    bool attacking = false;
+    bool canAttack = false;
+    bool startAttack = false;
+    MinerStats stats;
     // Start is called before the first frame update
     void Start()
     {
         gamemaster = GameObject.Find("GameManager");
         movement = GetComponent<Robot_Miner_Controller_Mouse>();
+        stats = GetComponent<MinerStats>();
     }
 
     // Update is called once per frame
@@ -24,7 +29,7 @@ public class TaskManager : MonoBehaviour
     {
         if(mining)
         {
-            if(!target)
+            if(!target || !target.GetComponent<ResourceType>())
             {
                 targetDies(null);
                 movement.IsNotMining();
@@ -34,11 +39,63 @@ public class TaskManager : MonoBehaviour
             else
                 Mining();
         }
+
+        if (attacking)
+        {
+            if (!target || !target.GetComponent<Unit_Name>())
+            {
+                targetDies(null);
+                movement.IsNotAttacking();
+            }
+            else
+                Attacking();
+        };
+    }
+
+    void Attacking()
+    {
+        if (Vector3.Distance(target.transform.position, transform.position) < 10)
+        {
+
+            if (canAttack || startAttack)
+            {
+                StartCoroutine(Attack());
+                movement.IsAttacking();
+            }
+
+        }
+        else
+        {
+        }
+    }
+
+    IEnumerator Attack()
+    {
+        canAttack = false;
+        yield return new WaitForSeconds(stats.GetAtkSpeed());
+        if (!(target == null))
+        {
+            var damage = stats.GetAtk() - getDefence();
+            target.GetComponent<Unit_Health>().dmgResource(damage, this.gameObject);
+            canAttack = true;
+        }
+    }
+
+    int getDefence()
+    {
+        if (target.GetComponent<Wolf_Stats>())
+        {
+            var stats = target.GetComponent<Wolf_Stats>();
+            var def = stats.GetDef();
+            return def;
+        }
+        else
+            return 0;
     }
 
     void Mining()
     {
-        if(Vector3.Distance(target.transform.position, transform.position) < 5)
+        if(Vector3.Distance(target.transform.position, transform.position) < 10)
         {
             
             if(canMine)
@@ -59,7 +116,7 @@ public class TaskManager : MonoBehaviour
         yield return new WaitForSeconds(timeToMine);
         if (!(target == null))
         {
-            target.GetComponent<Resource_HP>().dmgResource(10);
+            target.GetComponent<Resource_HP>().dmgResource(10, this.gameObject);
             gamemaster.GetComponent<GameManager>().Ironite += 10;
             canMine = true;
         }
@@ -73,6 +130,11 @@ public class TaskManager : MonoBehaviour
             mining = true;
             canMine = true;
         }
+        else if(tar.tag == "Enemy")
+        {
+            attacking = true;
+            canAttack = true;
+        }
     }
 
     public void targetDies(GameObject tar)
@@ -80,5 +142,14 @@ public class TaskManager : MonoBehaviour
         target = tar;
         mining = false;
         canMine = false;
+        attacking = false;
+        canAttack = false;
+    }
+
+    public void gettingAttacked(GameObject tar)
+    {
+        target = tar;
+        attacking = true;
+        canAttack = true;
     }
 }

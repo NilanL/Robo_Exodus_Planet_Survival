@@ -32,6 +32,7 @@ public class Robot_Miner_Controller_Mouse : MonoBehaviour
     public Transform target;
     private bool isMiningMove = false;
     private bool isMiningAnimate = false;
+    private bool isAttackingAnimate = false;
 
     [SerializeField]
     private float movementSpeed, rotationSpeed, jumpSpeed, gravity;
@@ -112,8 +113,15 @@ public class Robot_Miner_Controller_Mouse : MonoBehaviour
         if (isMiningAnimate)
             ToggleMiningAnimation();
 
-        if (attackingInput)
+        if (isAttackingAnimate)
+        {
             ToggleAttackingAnimation();
+            if(target)
+            {
+                navMeshAgent.destination = target.position;
+            }
+        }
+            
     }
 
     void SetWalkingAnimation()
@@ -235,5 +243,15 @@ public class Robot_Miner_Controller_Mouse : MonoBehaviour
     public void IsNotMining()
     {
         isMiningAnimate = false;
+    }
+
+    public void IsAttacking()
+    {
+        isAttackingAnimate = true;
+    }
+
+    public void IsNotAttacking()
+    {
+        isAttackingAnimate = false;
     }
 }

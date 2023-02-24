@@ -11,7 +11,6 @@ public class CameraMovementScript : MonoBehaviour
     float maxHeight = 32f;
     float minHeight = 12f;
 
-
     Vector2 pos1;
     Vector2 pos2;
 
@@ -84,8 +83,17 @@ public class CameraMovementScript : MonoBehaviour
                 Debug.Log(hit.collider.gameObject.name);
                 selectedGameObject = hit.collider.gameObject;
                 var hb = selectedGameObject.transform.Find("Healthbar Canvas");
-                if(hb)
+                var gold = GameObject.FindGameObjectsWithTag("Health_Bar");
+
+                foreach (var go in gold)
+                {
+                    if (go)
+                        go.gameObject.SetActive(false);
+                }
+
+                if (hb)
                     hb.gameObject.SetActive(true);
+
                 else
                 {
                     var gol = GameObject.FindGameObjectsWithTag("Health_Bar");
@@ -107,6 +115,15 @@ public class CameraMovementScript : MonoBehaviour
                 if (selectedGameObject.tag == "Selectable")
                 {
                     if (hit.collider.gameObject.GetComponent<ResourceType>())
+                    {
+                        var hb = hit.collider.gameObject.transform.Find("Healthbar Canvas");
+                        if (hb)
+                            hb.gameObject.SetActive(true);
+                        selectedGameObject.gameObject.GetComponent<Robot_Miner_Controller_Mouse>().target = hit.transform;
+                        selectedGameObject.gameObject.GetComponent<Robot_Miner_Controller_Mouse>().IsMiningMove();
+                        selectedGameObject.gameObject.GetComponent<TaskManager>().setTarget(hit.collider.gameObject);
+                    }
+                    else if (hit.collider.gameObject.GetComponent<Unit_Name>())
                     {
                         var hb = hit.collider.gameObject.transform.Find("Healthbar Canvas");
                         if (hb)
