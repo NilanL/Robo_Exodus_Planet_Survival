@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Resource_HP : MonoBehaviour
+public class ResourceHPBloodstone : MonoBehaviour
 {
     // Start is called before the first frame update
     [SerializeField] private Healthbar healthbar;
+    [SerializeField] private BloodstoneAdd counter;
 
     public int currentHealth = 0;
     public int maxHealth = 100;
@@ -20,14 +21,15 @@ public class Resource_HP : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(currentHealth <= 0)
+        if (currentHealth <= 0)
         {
             Destroy(gameObject);
         }
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            dmgResource(10);
+            dmgResource(1);
+            counter.ChangeText();
             //add to counter
         }
     }
