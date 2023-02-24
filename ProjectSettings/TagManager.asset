@@ -9,6 +9,7 @@ TagManager:
   - Resource
   - Health_Bar
   - Unit_Button
+  - Enemy
   layers:
   - Default
   - TransparentFX
