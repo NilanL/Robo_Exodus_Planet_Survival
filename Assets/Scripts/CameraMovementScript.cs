@@ -23,6 +23,7 @@ public class CameraMovementScript : MonoBehaviour
     void Start()
     {
         selectedGameObjects = new List<GameObject>();
+        selectedGameObject = GameObject.FindGameObjectWithTag("Ground");
     }
 
     // Update is called once per frame
@@ -125,12 +126,28 @@ public class CameraMovementScript : MonoBehaviour
                 }
                 else if(hit.collider.gameObject.tag == "Ground")
                 {
+                    selectedGameObjects.Clear();
+                    selectedGameObject = hit.collider.gameObject;
+                    var hb = selectedGameObject.transform.Find("Healthbar Canvas");
                     var gold = GameObject.FindGameObjectsWithTag("Health_Bar");
 
                     foreach (var go in gold)
                     {
                         if (go)
                             go.gameObject.SetActive(false);
+                    }
+
+                    if (hb)
+                        hb.gameObject.SetActive(true);
+
+                    else
+                    {
+                        var gol = GameObject.FindGameObjectsWithTag("Health_Bar");
+                        foreach (var go in gol)
+                        {
+                            if (go)
+                                go.gameObject.SetActive(false);
+                        }
                     }
                 }
                 else
