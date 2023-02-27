@@ -36,9 +36,13 @@ public class AddTroopTesting : MonoBehaviour
 
     public void Spawn_miner()
     {
-        objectToSpawn = GameObject.Find("robot_miner_mouse");
-        var objectToSpawnAt = GameObject.Find("Spawn_Location");
-        Instantiate(objectToSpawn, objectToSpawnAt.transform.position, objectToSpawnAt.transform.rotation);
+        if (gm.GetComponent<GameManager>().Ironite >= 100)
+        {
+            objectToSpawn = GameObject.Find("robot_miner_mouse");
+            var objectToSpawnAt = GameObject.Find("Spawn_Location");
+            Instantiate(objectToSpawn, objectToSpawnAt.transform.position, objectToSpawnAt.transform.rotation);
+            gm.GetComponent<GameManager>().Ironite -= 100;
+        }
     }
 
 
