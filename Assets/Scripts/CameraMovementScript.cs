@@ -92,28 +92,75 @@ public class CameraMovementScript : MonoBehaviour
             RaycastHit hit;
             if(Physics.Raycast(ray, out hit, 100))
             {
-                Debug.Log(hit.collider.gameObject.name);
-                selectedGameObjects.Clear();
-                selectedGameObject = hit.collider.gameObject;
-                var hb = selectedGameObject.transform.Find("Healthbar Canvas");
-                var gold = GameObject.FindGameObjectsWithTag("Health_Bar");
-
-                foreach (var go in gold)
+                if (hit.collider.gameObject.tag == "Building")
                 {
-                    if (go)
-                        go.gameObject.SetActive(false);
-                }
+                    Debug.Log(hit.collider.gameObject.tag);
+                    var UI = GameObject.Find("UI");
+                    var mm = UI.transform.Find("Make Miner");
+                    if (mm)
+                        mm.gameObject.SetActive(true);
+                    selectedGameObjects.Clear();
+                    selectedGameObject = hit.collider.gameObject;
+                    var hb = selectedGameObject.transform.Find("Healthbar Canvas");
+                    var gold = GameObject.FindGameObjectsWithTag("Health_Bar");
 
-                if (hb)
-                    hb.gameObject.SetActive(true);
-
-                else
-                {
-                    var gol = GameObject.FindGameObjectsWithTag("Health_Bar");
-                    foreach(var go in gol)
+                    foreach (var go in gold)
                     {
                         if (go)
                             go.gameObject.SetActive(false);
+                    }
+
+                    if (hb)
+                        hb.gameObject.SetActive(true);
+
+                    else
+                    {
+                        var gol = GameObject.FindGameObjectsWithTag("Health_Bar");
+                        foreach (var go in gol)
+                        {
+                            if (go)
+                                go.gameObject.SetActive(false);
+                        }
+                    }
+                }
+                else if(hit.collider.gameObject.tag == "Ground")
+                {
+                    var gold = GameObject.FindGameObjectsWithTag("Health_Bar");
+
+                    foreach (var go in gold)
+                    {
+                        if (go)
+                            go.gameObject.SetActive(false);
+                    }
+                }
+                else
+                {
+                    //Debug.Log(hit.collider.gameObject.name);
+                    selectedGameObjects.Clear();
+                    selectedGameObject = hit.collider.gameObject;
+                    var UI = GameObject.Find("Make Miner");
+                    if(UI)
+                        UI.SetActive(false);
+                    var hb = selectedGameObject.transform.Find("Healthbar Canvas");
+                    var gold = GameObject.FindGameObjectsWithTag("Health_Bar");
+
+                    foreach (var go in gold)
+                    {
+                        if (go)
+                            go.gameObject.SetActive(false);
+                    }
+
+                    if (hb)
+                        hb.gameObject.SetActive(true);
+
+                    else
+                    {
+                        var gol = GameObject.FindGameObjectsWithTag("Health_Bar");
+                        foreach (var go in gol)
+                        {
+                            if (go)
+                                go.gameObject.SetActive(false);
+                        }
                     }
                 }
             }
