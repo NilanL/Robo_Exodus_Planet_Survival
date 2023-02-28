@@ -10,6 +10,9 @@ TagManager:
   - Health_Bar
   - Unit_Button
   - Enemy
+  - Building
+  - Make Miner
+  - Ground
   layers:
   - Default
   - TransparentFX
@@ -21,7 +24,7 @@ TagManager:
   - 
   - Character
   - Ground
-  - 
+  - Invisiable
   - 
   - 
   - 
