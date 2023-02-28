@@ -29,7 +29,7 @@ public class TaskManager : MonoBehaviour
     {
         if(mining)
         {
-            if(!target || !target.GetComponent<ResourceType>())
+w            if(!target || !target.GetComponent<ResourceType>())
             {
                 targetDies(null);
                 movement.IsNotMining();

@@ -21,11 +21,15 @@ public class WallBuild : MonoBehaviour
     {
         var wall1 = gm.GetComponent<Wall_Stats>();
 
-        // Add wall
-        Instantiate(wall1.getLevel1WallObject(), wallSpawn.position, wallSpawn.rotation);
+        if(gm.GetComponent<GameManager>().Ironite >= 500)
+        {
+            // Add wall
+            Instantiate(wall1.getLevel1WallObject(), wallSpawn.position, wallSpawn.rotation);
+            gm.GetComponent<GameManager>().Ironite -= 500;
+            // Remove trees
+            if (foliage != null)
+                Destroy(foliage);
+        }
 
-        // Remove trees
-        if (foliage != null)
-            Destroy(foliage);
     }
 }
