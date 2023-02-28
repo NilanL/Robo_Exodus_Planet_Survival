@@ -2,12 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameManager : MonoBehaviour
+public class NewBehaviourScript : MonoBehaviour
 {
-
-    public int Ironite;
-    public int BloodStone;
-    public int Unit_count;
+    public Object objectToSpawn;
 
     // Start is called before the first frame update
     void Start()
@@ -21,8 +18,8 @@ public class GameManager : MonoBehaviour
         
     }
 
-    public void GetMinerStats()
+    public void Spawn()
     {
-
+        Instantiate(objectToSpawn, transform.position, transform.rotation);
     }
 }
