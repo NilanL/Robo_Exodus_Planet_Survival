@@ -19,7 +19,7 @@ public class DiplomacyUpdateNeg : MonoBehaviour
 
         tempPos = Marker.transform.position;
 
-        tempPos.x += -2f;
+        tempPos.x += -6f;
 
         Marker.transform.position = tempPos;
     }
