@@ -97,7 +97,7 @@ public class CameraMovementScript : MonoBehaviour
                 {
                     Debug.Log(hit.collider.gameObject.tag);
                     var UI = GameObject.Find("UI");
-                    var mm = UI.transform.Find("Make Miner");
+                    var mm = UI.transform.Find("Troop Creation Window");
                     if (mm)
                         mm.gameObject.SetActive(true);
                     selectedGameObjects.Clear();

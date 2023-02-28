@@ -14,8 +14,8 @@ public class AddTroopTesting : MonoBehaviour
     void Start()
     {
         textField = GameObject.Find("Troops").GetComponent<Text>();
-        gm = GameObject.Find("GameManager");
-        gm.GetComponent<GameManager>().Unit_count += 2;
+        gm = GameObject.Find("GameManager");        
+
     }
 
     void Update()
@@ -42,6 +42,7 @@ public class AddTroopTesting : MonoBehaviour
             var objectToSpawnAt = GameObject.Find("Spawn_Location");
             Instantiate(objectToSpawn, objectToSpawnAt.transform.position, objectToSpawnAt.transform.rotation);
             gm.GetComponent<GameManager>().Ironite -= 100;
+            gm.GetComponent<GameManager>().Unit_count += 1;
         }
     }
 

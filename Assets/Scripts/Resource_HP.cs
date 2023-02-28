@@ -9,7 +9,7 @@ public class Resource_HP : MonoBehaviour
     [SerializeField] private Healthbar healthbar;
 
     public int currentHealth = 0;
-    public int maxHealth = 100;
+    public int maxHealth = 1000;
     GameObject gm;
 
     void Start()
