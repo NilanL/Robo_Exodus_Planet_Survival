@@ -5,6 +5,14 @@ TagManager:
   serializedVersion: 2
   tags:
   - CinemachineTarget
+  - Selectable
+  - Resource
+  - Health_Bar
+  - Unit_Button
+  - Enemy
+  - Building
+  - Make Miner
+  - Ground
   layers:
   - Default
   - TransparentFX
@@ -16,7 +24,7 @@ TagManager:
   - 
   - Character
   - Ground
-  - 
+  - Invisiable
   - 
   - 
   - 
