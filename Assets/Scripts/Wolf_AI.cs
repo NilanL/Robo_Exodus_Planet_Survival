@@ -7,18 +7,20 @@ public class Wolf_AI : MonoBehaviour
 {
     private NavMeshAgent navMeshAgent;
     GameObject target;
-    bool gettingAttaced = false;
+    bool isGettingAttacked = false;
+    Animator animator;
 
     // Start is called before the first frame update
     void Start()
     {
         navMeshAgent = GetComponent<NavMeshAgent>();
+        animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (!gettingAttaced)
+        if (!isGettingAttacked)
         {
             var tars = GameObject.FindGameObjectsWithTag("Selectable");
             foreach (var tar in tars)
@@ -29,12 +31,20 @@ public class Wolf_AI : MonoBehaviour
                 }
             }
         }
+
         if (target)
         {
+            animator.SetBool("IsRunning", true);
+
             navMeshAgent.destination = target.transform.position;
             GetComponent<Enemy_Attacking>().SetTarget(target);
         }
-            
+        else
+        {
+            animator.SetBool("IsRunning", false);
+            animator.SetBool("IsAttacking", false);
+        }
+
     }
 
     public void gettingAttacked(GameObject tar)
