@@ -49,9 +49,9 @@ public class Robot_Miner_Controller_Mouse : MonoBehaviour
         navMeshAgent.angularSpeed = 300;
 
         // Find attachment location for laser effects
-        var centralBone = transform.Find("Robot_Miner_Armature").Find("Central_Bone");
-        var leftLaser = centralBone.Find("Left_Arm_Bone1").Find("Left_Arm_Bone2").Find("Left_Arm_Bone3");
-        var rightLaser = centralBone.Find("Right_Arm_Bone1").Find("Right_Arm_Bone2").Find("Right_Arm_Bone3");
+        var centralBone = transform.Find("Robot_Miner_Armature/Central_Bone");
+        var leftLaser = centralBone.Find("Left_Arm_Bone1/Left_Arm_Bone2/Left_Arm_Bone3");
+        var rightLaser = centralBone.Find("Right_Arm_Bone1/Right_Arm_Bone2/Right_Arm_Bone3");
 
         // Get laser effect
         var tempLaser = attackingEffectPrefab.GetComponent<LineRenderer>();
@@ -111,17 +111,28 @@ public class Robot_Miner_Controller_Mouse : MonoBehaviour
         SetWalkingAnimation();
 
         if (isMiningAnimate)
-            ToggleMiningAnimation();
+        {
+            SetMiningAnimation(true);
+        }
+        else
+        {
+            SetMiningAnimation(false);
+        }
 
         if (isAttackingAnimate)
         {
-            ToggleAttackingAnimation();
-            if(target)
+            SetAttackingAnimation(true);
+
+            if (target)
             {
                 navMeshAgent.destination = target.position;
             }
         }
-            
+        else
+        {
+            SetAttackingAnimation(false);
+        }
+
     }
 
     void SetWalkingAnimation()
@@ -137,83 +148,25 @@ public class Robot_Miner_Controller_Mouse : MonoBehaviour
         animator.SetBool("IsWalking", isWalking);
     }
 
-    void ToggleMiningAnimation()
+    void SetMiningAnimation(bool val)
     {
-        isMining = !isMining;
+        isMining = val;
 
         if (isMining)
         {
             SetAttackingAnimation(false);
         }
 
-        if (isMining == true)
-        {
-            attackingLaserRight.enabled = true;
-            miningParticleSystem.Play();
-        }
-        else
-        {
-            attackingLaserRight.enabled = false;
-            miningParticleSystem.Stop();
-        }
-
         animator.SetBool("IsMining", isMining);
-    }
-
-    void SetMiningAnimation(bool val)
-    {
-        isMining = val;
-
-        if (isMining == true)
-        {
-            attackingLaserRight.enabled = true;
-            miningParticleSystem.Play();
-        }
-        else
-        {
-            attackingLaserRight.enabled = false;
-            miningParticleSystem.Stop();
-        }
-
-        animator.SetBool("IsMining", isMining);
-    }
-
-    void ToggleAttackingAnimation()
-    {
-        isAttacking = !isAttacking;
-
-        if (isAttacking)
-        {
-            SetMiningAnimation(false);
-        }
-
-        if (isAttacking == true)
-        {
-            attackingLaserLeft.enabled = true;
-            attackingLaserRight.enabled = true;
-        }
-        else
-        {
-            attackingLaserLeft.enabled = false;
-            attackingLaserRight.enabled = false;
-        }
-
-        animator.SetBool("IsAttacking", isAttacking);
     }
 
     void SetAttackingAnimation(bool val)
     {
         isAttacking = val;
 
-        if (isAttacking == true)
+        if (isAttacking)
         {
-            attackingLaserLeft.enabled = true;
-            attackingLaserRight.enabled = true;
-        }
-        else
-        {
-            attackingLaserLeft.enabled = false;
-            attackingLaserRight.enabled = false;
+            SetMiningAnimation(false);
         }
 
         animator.SetBool("IsAttacking", isAttacking);
@@ -238,20 +191,34 @@ public class Robot_Miner_Controller_Mouse : MonoBehaviour
     public void IsMining()
     {
         isMiningAnimate = true;
+
+        attackingLaserLeft.enabled = false;
+        attackingLaserRight.enabled = true;
+        miningParticleSystem.Play();
     }
 
     public void IsNotMining()
     {
         isMiningAnimate = false;
+
+        attackingLaserLeft.enabled = false;
+        attackingLaserRight.enabled = false;
+        miningParticleSystem.Stop();
     }
 
     public void IsAttacking()
     {
         isAttackingAnimate = true;
+
+        attackingLaserLeft.enabled = true;
+        attackingLaserRight.enabled = true;
     }
 
     public void IsNotAttacking()
     {
         isAttackingAnimate = false;
+
+        attackingLaserLeft.enabled = false;
+        attackingLaserRight.enabled = false;
     }
 }
