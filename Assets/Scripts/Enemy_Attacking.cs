@@ -9,10 +9,13 @@ public class Enemy_Attacking : MonoBehaviour
     bool attacking = false;
     bool canAttack = false;
     bool startAttack = false;
+    Animator animator;
+
     // Start is called before the first frame update
     void Start()
     {
         stats_wolf = GetComponent<Wolf_Stats>();
+        animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -33,16 +36,18 @@ public class Enemy_Attacking : MonoBehaviour
     {
         if (Vector3.Distance(target.transform.position, transform.position) < stats_wolf.GetRange())
         {
-
             if (canAttack || startAttack)
             {
+                animator.SetBool("IsRunning", false);
+                animator.SetBool("IsAttacking", true);
                 StartCoroutine(Attack());
-                
             }
 
         }
         else
         {
+            animator.SetBool("IsRunning", true);
+            animator.SetBool("IsAttacking", false);
         }
     }
 
