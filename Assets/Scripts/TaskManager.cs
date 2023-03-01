@@ -117,7 +117,7 @@ public class TaskManager : MonoBehaviour
         if (!(target == null))
         {
             target.GetComponent<Resource_HP>().dmgResource(10, this.gameObject);
-            gamemaster.GetComponent<GameManager>().Ironite += 10;
+            //gamemaster.GetComponent<GameManager>().Ironite += 10;
             canMine = true;
         }
     }

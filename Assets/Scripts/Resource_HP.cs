@@ -33,5 +33,26 @@ public class Resource_HP : MonoBehaviour
     {
         currentHealth -= damage;
         healthbar.UpdateHealthBar(maxHealth, currentHealth);
+        GetType_addResource(damage);
+    }
+
+    private void GetType_addResource(int damage)
+    {
+        var type = this.gameObject.GetComponent<ResourceType>().resource;
+        switch(type)
+        {
+            case ResourceTypes.Ironite:
+                gm.GetComponent<GameManager>().Ironite += damage;
+                break;
+            case ResourceTypes.Bloodstone:
+                gm.GetComponent<GameManager>().BloodStone += damage;
+                break;
+            case ResourceTypes.Aurarium:
+                gm.GetComponent<GameManager>().Aurarium += damage;
+                break;
+            case ResourceTypes.Zorium:
+                gm.GetComponent<GameManager>().Zorium += damage;
+                break;
+        }
     }
 }

@@ -15,6 +15,9 @@ public class MinerStats : MonoBehaviour
     private float atkSpd { get; set; } = 1.5f;
     private float miningSpd { get; set; } = 1.3f;
 
+    [SerializeField]
+    public GameObject robotMinerPrefab = null;
+
     public int getMaxHealth()
     {
         return maxHealth;
@@ -33,6 +36,11 @@ public class MinerStats : MonoBehaviour
     public float GetAtkSpeed()
     {
         return atkSpd;
+    }
+
+    public GameObject GetRobotMinerObject()
+    {
+        return robotMinerPrefab;
     }
 
 }

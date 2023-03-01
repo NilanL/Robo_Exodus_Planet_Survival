@@ -36,9 +36,9 @@ public class Robot_Miner_Controller : MonoBehaviour
         animator = GetComponent<Animator>();
 
         // Find attachment location for laser effects
-        var centralBone = transform.Find("Robot_Miner_Armature").Find("Central_Bone");
-        var leftLaser = centralBone.Find("Left_Arm_Bone1").Find("Left_Arm_Bone2").Find("Left_Arm_Bone3");
-        var rightLaser = centralBone.Find("Right_Arm_Bone1").Find("Right_Arm_Bone2").Find("Right_Arm_Bone3");
+        var centralBone = transform.Find("Robot_Miner_Armature/Central_Bone");
+        var leftLaser = centralBone.Find("Left_Arm_Bone1/Left_Arm_Bone2/Left_Arm_Bone3");
+        var rightLaser = centralBone.Find("Right_Arm_Bone1/Right_Arm_Bone2/Right_Arm_Bone3");
 
         // Get laser effect
         var tempLaser = attackingEffectPrefab.GetComponent<LineRenderer>();
