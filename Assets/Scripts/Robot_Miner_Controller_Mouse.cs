@@ -143,6 +143,14 @@ public class Robot_Miner_Controller_Mouse : MonoBehaviour
         {
             SetMiningAnimation(false);
             SetAttackingAnimation(false);
+
+            miningParticleSystem.Stop();
+
+            if (!isAttackingAnimate && !isMiningAnimate)
+            {
+                attackingLaserLeft.enabled = false;
+                attackingLaserRight.enabled = false;
+            }
         }
 
         animator.SetBool("IsWalking", isWalking);

@@ -26,9 +26,24 @@ public class Unit_Health : MonoBehaviour
     {
         if (currentHealth <= 0)
         {
-            Destroy(gameObject);
+            StartCoroutine(Defeated());
         }
 
+    }
+
+    IEnumerator Defeated()
+    {
+        switch (GetType())
+        {
+            case Unit_Names.Miner:
+                break;
+            case Unit_Names.Wolf:
+                this.gameObject.GetComponent<Animator>().SetBool("IsDefeated", true);
+                yield return new WaitForSeconds(2);
+                break;
+        }
+
+        Destroy(gameObject);
     }
 
     public void dmgResource(int damage, GameObject tar)
