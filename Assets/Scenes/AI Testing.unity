@@ -122,7 +122,7 @@ NavMeshSettings:
     preserveTilesOutsideBounds: 0
     debug:
       m_Flags: 0
-  m_NavMeshData: {fileID: 0}
+  m_NavMeshData: {fileID: 23800000, guid: 0bbe39a868ad5aa468391ea07b22a868, type: 2}
 --- !u!1 &501368
 GameObject:
   m_ObjectHideFlags: 0
@@ -14291,7 +14291,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 533622982}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -3.53, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 347176497}
@@ -35998,7 +35998,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c85ab608e0cefc44902991e5bc05903, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Ironite: 200
+  Ironite: 1000
   BloodStone: 0
   Aurarium: 0
   Zorium: 0

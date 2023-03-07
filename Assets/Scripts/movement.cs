@@ -13,6 +13,6 @@ public class movement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position = new Vector3(transform.position.x, Terrain.activeTerrains[1].SampleHeight(transform.position), transform.position.z);
+        transform.position = new Vector3(transform.position.x, Terrain.activeTerrains[0].SampleHeight(transform.position), transform.position.z);
     }
 }
