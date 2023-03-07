@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class NewBehaviourScript : MonoBehaviour
 {
+    public Object objectToSpawn;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -14,5 +16,10 @@ public class NewBehaviourScript : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void Spawn()
+    {
+        Instantiate(objectToSpawn, transform.position, transform.rotation);
     }
 }
