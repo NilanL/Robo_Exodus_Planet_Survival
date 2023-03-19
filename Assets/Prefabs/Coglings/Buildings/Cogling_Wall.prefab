@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7216051340454974347}
-  - component: {fileID: 8462652319728074355}
+  - component: {fileID: 8862480235203640146}
   m_Layer: 0
   m_Name: Cogling_Wall
   m_TagString: Untagged
@@ -38,7 +38,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!208 &8462652319728074355
+--- !u!208 &8862480235203640146
 NavMeshObstacle:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
