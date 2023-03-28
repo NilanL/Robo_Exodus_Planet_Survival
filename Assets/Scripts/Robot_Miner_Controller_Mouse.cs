@@ -37,6 +37,9 @@ public class Robot_Miner_Controller_Mouse : MonoBehaviour
     [SerializeField]
     private float movementSpeed, rotationSpeed, jumpSpeed, gravity;
 
+    public AudioSource attackSound;
+    public AudioSource mineSound;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -203,6 +206,11 @@ public class Robot_Miner_Controller_Mouse : MonoBehaviour
         attackingLaserLeft.enabled = false;
         attackingLaserRight.enabled = true;
         miningParticleSystem.Play();
+
+        if(mineSound.isPlaying != true)
+        {
+            mineSound.Play();
+        }
     }
 
     public void IsNotMining()
@@ -212,6 +220,8 @@ public class Robot_Miner_Controller_Mouse : MonoBehaviour
         attackingLaserLeft.enabled = false;
         attackingLaserRight.enabled = false;
         miningParticleSystem.Stop();
+
+        mineSound.Stop();
     }
 
     public void IsAttacking()
@@ -220,6 +230,11 @@ public class Robot_Miner_Controller_Mouse : MonoBehaviour
 
         attackingLaserLeft.enabled = true;
         attackingLaserRight.enabled = true;
+
+        if(attackSound.isPlaying != true)
+        {
+            attackSound.Play();
+        }
     }
 
     public void IsNotAttacking()
@@ -228,5 +243,7 @@ public class Robot_Miner_Controller_Mouse : MonoBehaviour
 
         attackingLaserLeft.enabled = false;
         attackingLaserRight.enabled = false;
+
+        attackSound.Stop();
     }
 }
