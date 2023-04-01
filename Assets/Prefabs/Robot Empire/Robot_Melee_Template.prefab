@@ -393,6 +393,7 @@ GameObject:
   - component: {fileID: 1558602633655485802}
   - component: {fileID: 6729210900093359025}
   - component: {fileID: -767830730364413683}
+  - component: {fileID: 7777644750886897650}
   m_Layer: 0
   m_Name: Robot_Melee_Template
   m_TagString: Selectable
@@ -428,7 +429,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 3, y: 4, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!195 &-767830730364413683
 NavMeshAgent:
@@ -449,6 +450,19 @@ NavMeshAgent:
   m_AutoBraking: 1
   m_AutoRepath: 1
   m_Height: 2
-  m_BaseOffset: 0
+  m_BaseOffset: 2
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &7777644750886897650
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7724062560761657019}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c729c8d31df773c4f9fd771b19f09e78, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  robotMeleePrefab: {fileID: 7724062560761657019}

@@ -52,5 +52,22 @@ public class AddTroopTesting : MonoBehaviour
         }
     }
 
+    public void Spawn_melee()
+    {
+        if (gm.GetComponent<GameManager>().Ironite >= 100)
+        {
+            var minerStats = gm.GetComponent<Melle_UnitStats>();
+            objectToSpawn = minerStats.GetRobotMinerObject();//GameObject.Find("robot_miner_mouse");
+            //var camera = GameObject.Find("ParentCamera").;
+            //objectToSpawn.GetComponent<Robot_Miner_Controller_Mouse>()._camera = camera;
+
+            var objectToSpawnAt = GameObject.Find("Spawn_Location");
+
+            var spawnedMiner = Instantiate(objectToSpawn, objectToSpawnAt.transform.position, objectToSpawnAt.transform.rotation);
+
+            gm.GetComponent<GameManager>().Ironite -= 100;
+            gm.GetComponent<GameManager>().Unit_count += 1;
+        }
+    }
 
 }

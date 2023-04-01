@@ -1,18 +1,13 @@
-using System.Collections;
+﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using UnityEngine;
 
-public class CameraMovementScript : MonoBehaviour
+
+public class CameraSelectScript : MonoBehaviour
 {
-    float speed = .03f;
-    float zoomSpeed = 10f;
-    float rotateSpeed = .1f;
-
-    float maxHeight = 32f;
-    float minHeight = 12f;
-
-    bool keydown = false;
-
     [SerializeField]
     public RectTransform boxvisual;
 
@@ -26,10 +21,12 @@ public class CameraMovementScript : MonoBehaviour
 
     Camera myCam;
 
+
     public GameObject selectedGameObject;
     public List<GameObject> selectedGameObjects;
 
-    // Start is called before the first frame update
+    bool keydown = false;
+
     void Start()
     {
         myCam = Camera.main;
@@ -40,70 +37,9 @@ public class CameraMovementScript : MonoBehaviour
         DrawVisual();
     }
 
-    // Update is called once per frame
     void Update()
     {
-        //Adds a go faster key
-        if (Input.GetKey(KeyCode.LeftShift))
-        {
-            speed = 0.1f;
-            zoomSpeed = 15f;
-        }
-        else
-        {
-            speed = .03f;
-            zoomSpeed = 10f;
-        }
-        //minHeight = 12f;
-        //maxHeight = 32f;
-        float hsp = transform.position.y * speed * Input.GetAxis("Horizontal");
-        float vsp = transform.position.y * speed * Input.GetAxis("Vertical");
-        var heightcube = GameObject.Find("Height_Check");
-        float scrollSP = Mathf.Log(transform.position.y) * -zoomSpeed * Input.GetAxis("Mouse ScrollWheel");
-        var floor = GameObject.Find("Terrain_0_0_6c7ab805-d6b8-439a-8805-7f652d662845");
-        if (Vector3.Distance(heightcube.transform.position, transform.position) < 10)
-        {
-            maxHeight += 1;
-            minHeight += 1;
-        }
-        if (Vector3.Distance(heightcube.transform.position, transform.position) > 33)
-        {
-            maxHeight -= 1;
-            minHeight -= 1;
-        }
 
-        //Limits the height for the camera we can hard code this
-        if ((scrollSP > 0) && (transform.position.y >= maxHeight))
-        {
-            scrollSP = 0;
-        }
-        else if ((scrollSP < 0) && (transform.position.y <= minHeight))
-        {
-            scrollSP = 0;
-        }
-        if ((transform.position.y + scrollSP) > maxHeight)
-        {
-            scrollSP = maxHeight - transform.position.y;
-        }
-        else if ((transform.position.y + scrollSP) < minHeight)
-        {
-            scrollSP = minHeight - transform.position.y;
-        }
-
-        //Calculates the speed for the camera
-        Vector3 moveVertical = new Vector3(0, scrollSP, 0);
-        Vector3 moveLateral = hsp * transform.right;
-        Vector3 moveFoward = transform.forward;
-        moveFoward.y = 0;
-        moveFoward.Normalize();
-        moveFoward *= vsp;
-
-        //Moves the Camera
-        Vector3 move = moveVertical + moveLateral + moveFoward;
-
-        transform.position += move;
-
-        GetCameraRotation();
         if (Input.GetKeyDown("left shift"))
         {
             keydown = true;
@@ -113,7 +49,6 @@ public class CameraMovementScript : MonoBehaviour
             keydown = false;
         }
 
-
         if (Input.GetMouseButtonDown(0) && !keydown)
         {
             startP = Input.mousePosition;
@@ -122,92 +57,20 @@ public class CameraMovementScript : MonoBehaviour
             RaycastHit hit;
             if (Physics.Raycast(ray, out hit, 100))
             {
-                if (hit.collider.gameObject.tag == "Building")
+                var hitag = hit.collider.gameObject.tag;
+
+                switch(hitag)
                 {
-                    Debug.Log(hit.collider.gameObject.tag);
-                    var UI = GameObject.Find("UI");
-                    var mm = UI.transform.Find("Troop Creation Window");
-                    if (mm)
-                        mm.gameObject.SetActive(true);
-                    selectedGameObjects.Clear();
-                    selectedGameObject = hit.collider.gameObject;
-                    var hb = selectedGameObject.transform.Find("Healthbar Canvas");
-                    var gold = GameObject.FindGameObjectsWithTag("Health_Bar");
+                    case "Building":
+                        BuildingSelect(hit);
+                        break;
+                    case "Ground":
+                        GroundSelect(hit);
+                        break;
+                    case "Selectable":
+                        UnitSelect(hit);
+                        break;
 
-                    foreach (var go in gold)
-                    {
-                        if (go)
-                            go.gameObject.SetActive(false);
-                    }
-
-                    if (hb)
-                        hb.gameObject.SetActive(true);
-
-                    else
-                    {
-                        var gol = GameObject.FindGameObjectsWithTag("Health_Bar");
-                        foreach (var go in gol)
-                        {
-                            if (go)
-                                go.gameObject.SetActive(false);
-                        }
-                    }
-                }
-                else if (hit.collider.gameObject.tag == "Ground")
-                {
-                    selectedGameObjects.Clear();
-                    selectedGameObject = hit.collider.gameObject;
-                    var hb = selectedGameObject.transform.Find("Healthbar Canvas");
-                    var gold = GameObject.FindGameObjectsWithTag("Health_Bar");
-
-                    foreach (var go in gold)
-                    {
-                        if (go)
-                            go.gameObject.SetActive(false);
-                    }
-
-                    if (hb)
-                        hb.gameObject.SetActive(true);
-
-                    else
-                    {
-                        var gol = GameObject.FindGameObjectsWithTag("Health_Bar");
-                        foreach (var go in gol)
-                        {
-                            if (go)
-                                go.gameObject.SetActive(false);
-                        }
-                    }
-                }
-                else
-                {
-                    //Debug.Log(hit.collider.gameObject.name);
-                    selectedGameObjects.Clear();
-                    selectedGameObject = hit.collider.gameObject;
-                    var UI = GameObject.Find("Make Miner");
-                    if (UI)
-                        UI.SetActive(false);
-                    var hb = selectedGameObject.transform.Find("Healthbar Canvas");
-                    var gold = GameObject.FindGameObjectsWithTag("Health_Bar");
-
-                    foreach (var go in gold)
-                    {
-                        if (go)
-                            go.gameObject.SetActive(false);
-                    }
-
-                    if (hb)
-                        hb.gameObject.SetActive(true);
-
-                    else
-                    {
-                        var gol = GameObject.FindGameObjectsWithTag("Health_Bar");
-                        foreach (var go in gol)
-                        {
-                            if (go)
-                                go.gameObject.SetActive(false);
-                        }
-                    }
                 }
             }
         }
@@ -227,7 +90,7 @@ public class CameraMovementScript : MonoBehaviour
             DrawVisual();
         }
 
-        if (Input.GetMouseButtonDown(0) && keydown)
+        /*if (Input.GetMouseButtonDown(0) && keydown)
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
@@ -253,7 +116,7 @@ public class CameraMovementScript : MonoBehaviour
 
                 selectedGameObject = null;
             }
-        }
+        }*/
 
         if (Input.GetMouseButtonDown(1))
         {
@@ -263,31 +126,55 @@ public class CameraMovementScript : MonoBehaviour
             {
                 if (!(selectedGameObject is null))
                 {
+                    var unit = selectedGameObject.gameObject.GetComponent<Unit_Name>().unit_Name;
                     if (selectedGameObject.tag == "Selectable")
                     {
                         if (hit.collider.gameObject.GetComponent<ResourceType>())
                         {
+                            
                             var hb = hit.collider.gameObject.transform.Find("Healthbar Canvas");
                             if (hb)
                                 hb.gameObject.SetActive(true);
-                            selectedGameObject.gameObject.GetComponent<Robot_Miner_Controller_Mouse>().target = hit.transform;
-                            selectedGameObject.gameObject.GetComponent<Robot_Miner_Controller_Mouse>().IsMiningMove();
-                            selectedGameObject.gameObject.GetComponent<TaskManager>().setTarget(hit.collider.gameObject);
+                            if (unit == Unit_Names.Miner)
+                            {
+                                selectedGameObject.gameObject.GetComponent<Robot_Miner_Controller_Mouse>().target = hit.transform;
+                                selectedGameObject.gameObject.GetComponent<Robot_Miner_Controller_Mouse>().IsMiningMove();
+                                selectedGameObject.gameObject.GetComponent<TaskManager>().setTarget(hit.collider.gameObject);
+                            }
+                            else
+                            {
+
+                            }
                         }
                         else if (hit.collider.gameObject.GetComponent<Unit_Name>())
                         {
                             var hb = hit.collider.gameObject.transform.Find("Healthbar Canvas");
                             if (hb)
                                 hb.gameObject.SetActive(true);
-                            selectedGameObject.gameObject.GetComponent<Robot_Miner_Controller_Mouse>().target = hit.transform;
-                            selectedGameObject.gameObject.GetComponent<Robot_Miner_Controller_Mouse>().IsMiningMove();
-                            selectedGameObject.gameObject.GetComponent<TaskManager>().setTarget(hit.collider.gameObject);
+                            switch(unit)
+                            {
+                                case Unit_Names.Miner:
+                                    selectedGameObject.gameObject.GetComponent<Robot_Miner_Controller_Mouse>().target = hit.transform;
+                                    selectedGameObject.gameObject.GetComponent<Robot_Miner_Controller_Mouse>().IsMiningMove();
+                                    selectedGameObject.gameObject.GetComponent<TaskManager>().setTarget(hit.collider.gameObject);
+                                    break;
+                                case Unit_Names.Robot_Melee:
+                                    break;
+                            }
                         }
                         else
                         {
+                            switch(unit)
+                            {
+                                case Unit_Names.Miner:
+                                    selectedGameObject.gameObject.GetComponent<Robot_Miner_Controller_Mouse>().IsSelected();
+                                    selectedGameObject.gameObject.GetComponent<Robot_Miner_Controller_Mouse>().Movement(ray);
+                                    break;
+                                case Unit_Names.Robot_Melee:
+                                    break;
+                            }
                             Debug.Log(hit.collider.gameObject.name);
-                            selectedGameObject.gameObject.GetComponent<Robot_Miner_Controller_Mouse>().IsSelected();
-                            selectedGameObject.gameObject.GetComponent<Robot_Miner_Controller_Mouse>().Movement(ray);
+
                         }
                     }
                 }
@@ -331,27 +218,9 @@ public class CameraMovementScript : MonoBehaviour
                 }
             }
         }
-
     }
 
-    void GetCameraRotation()
-    {
-        if (Input.GetMouseButtonDown(2))
-        {
-            pos1 = Input.mousePosition;
-        }
 
-        if (Input.GetMouseButton(2))
-        {
-            pos2 = Input.mousePosition;
-
-            float dx = (pos2 - pos1).x * rotateSpeed;
-
-            transform.rotation *= Quaternion.Euler(new Vector3(0, dx, 0));
-
-            pos1 = pos2;
-        }
-    }
 
     void DrawVisual()
     {
@@ -415,4 +284,95 @@ public class CameraMovementScript : MonoBehaviour
 
         }
     }
+
+    void BuildingSelect(RaycastHit hit)
+    {
+        Debug.Log(hit.collider.gameObject.tag);
+        var UI = GameObject.Find("UI");
+        var mm = UI.transform.Find("Troop Creation Window");
+        if (mm)
+            mm.gameObject.SetActive(true);
+        selectedGameObjects.Clear();
+        selectedGameObject = hit.collider.gameObject;
+        var hb = selectedGameObject.transform.Find("Healthbar Canvas");
+        var gold = GameObject.FindGameObjectsWithTag("Health_Bar");
+
+        foreach (var go in gold)
+        {
+            if (go)
+                go.gameObject.SetActive(false);
+        }
+
+        if (hb)
+            hb.gameObject.SetActive(true);
+
+        else
+        {
+            var gol = GameObject.FindGameObjectsWithTag("Health_Bar");
+            foreach (var go in gol)
+            {
+                if (go)
+                    go.gameObject.SetActive(false);
+            }
+        }
+    }
+
+    void GroundSelect(RaycastHit hit)
+    {
+        selectedGameObjects.Clear();
+        selectedGameObject = hit.collider.gameObject;
+        var hb = selectedGameObject.transform.Find("Healthbar Canvas");
+        var gold = GameObject.FindGameObjectsWithTag("Health_Bar");
+
+        foreach (var go in gold)
+        {
+            if (go)
+                go.gameObject.SetActive(false);
+        }
+
+        if (hb)
+            hb.gameObject.SetActive(true);
+
+        else
+        {
+            var gol = GameObject.FindGameObjectsWithTag("Health_Bar");
+            foreach (var go in gol)
+            {
+                if (go)
+                    go.gameObject.SetActive(false);
+            }
+        }
+    }
+
+    void UnitSelect(RaycastHit hit)
+    {
+        selectedGameObjects.Clear();
+        selectedGameObject = hit.collider.gameObject;
+        var UI = GameObject.Find("Make Miner");
+        if (UI)
+            UI.SetActive(false);
+        var hb = selectedGameObject.transform.Find("Healthbar Canvas");
+        var gold = GameObject.FindGameObjectsWithTag("Health_Bar");
+
+        foreach (var go in gold)
+        {
+            if (go)
+                go.gameObject.SetActive(false);
+        }
+
+        if (hb)
+            hb.gameObject.SetActive(true);
+
+        else
+        {
+            var gol = GameObject.FindGameObjectsWithTag("Health_Bar");
+            foreach (var go in gol)
+            {
+                if (go)
+                    go.gameObject.SetActive(false);
+            }
+        }
+    }
 }
+
+
