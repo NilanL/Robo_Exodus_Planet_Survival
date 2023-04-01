@@ -13,6 +13,7 @@ TagManager:
   - Building
   - Make Miner
   - Ground
+  - EnemyBuilding
   layers:
   - Default
   - TransparentFX
