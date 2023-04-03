@@ -2,12 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Melle_UnitStats : MonoBehaviour
+public class Robot_Range_Stats : MonoBehaviour
 {
     [SerializeField]
-    private int maxHealth { get; set; } = 200;
+    private int maxHealth { get; set; } = 120;
     [SerializeField]
-    private int unitAtk { get; set; } = 8;
+    private int unitAtk { get; set; } = 7;
     [SerializeField]
     private int vehicleAtk { get; set; } = 0;
     [SerializeField]
@@ -23,7 +23,7 @@ public class Melle_UnitStats : MonoBehaviour
     [SerializeField]
     private float miningSpd { get; set; } = 1.3f;
     [SerializeField]
-    private int range { get; set; } = 10;
+    private int range { get; set; } = 45;
 
     [SerializeField]
     public GameObject robotMeleePrefab = null;

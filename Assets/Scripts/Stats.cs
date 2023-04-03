@@ -19,7 +19,7 @@ public class Stats : MonoBehaviour
     [SerializeField]
     private int baseDef { get; set; } = 0;
     [SerializeField]
-    private float atkSpd { get; set; } = 1.5f;
+    public float atkSpd { get; set; } = 1.5f;
     [SerializeField]
     private float miningSpd { get; set; } = 1.3f;
     [SerializeField]
@@ -35,6 +35,7 @@ public class Stats : MonoBehaviour
     {
         gm = GameObject.Find("GameManager");
         name = GetComponent<Unit_Name>();
+        initializestats();
     }
 
     public int getRange()
@@ -111,8 +112,19 @@ public class Stats : MonoBehaviour
                 initializeMiner();
                 break;
             case Unit_Names.Robot_Melee:
+                Initializemeleeunit();
                 break;
             case Unit_Names.Robot_Ranged:
+                InitializeRangeUnit();
+                break;
+            case Unit_Names.Wolf:
+                InitializeWolf();
+                break;
+            case Unit_Names.Cogling_Melee:
+                InitializeCoglingMeleeUnit();
+                break;
+            case Unit_Names.Cogling_Range:
+                InitializeCoglingRangeUnit();
                 break;
         }
     }
@@ -120,6 +132,61 @@ public class Stats : MonoBehaviour
     private void initializeMiner()
     {
         var minerstats = gm.GetComponent<MinerStats>();
+        maxHealth = minerstats.getMaxHealth();
+        unitAtk = minerstats.GetAtk();
+        unitDef = minerstats.GetDef();
+        atkSpd = minerstats.GetAtkSpeed();
+        range = minerstats.getRange();
         
+    }
+
+    private void InitializeWolf()
+    {
+        var minerstats = gm.GetComponent<Wolf_Stats>();
+        maxHealth = minerstats.getMaxHealth();
+        unitAtk = minerstats.GetAtk();
+        unitDef = minerstats.GetDef();
+        atkSpd = minerstats.GetAtkSpeed();
+        range = minerstats.GetRange();
+    }
+
+    private void Initializemeleeunit()
+    {
+        var minerstats = gm.GetComponent<Melle_UnitStats>();
+        maxHealth = minerstats.getMaxHealth();
+        unitAtk = minerstats.GetAtk();
+        unitDef = minerstats.GetDef();
+        atkSpd = minerstats.GetAtkSpeed();
+        range = minerstats.getRange();
+    }
+
+    private void InitializeRangeUnit()
+    {
+        var minerstats = gm.GetComponent<Robot_Range_Stats>();
+        maxHealth = minerstats.getMaxHealth();
+        unitAtk = minerstats.GetAtk();
+        unitDef = minerstats.GetDef();
+        atkSpd = minerstats.GetAtkSpeed();
+        range = minerstats.getRange();
+    }
+
+    private void InitializeCoglingMeleeUnit()
+    {
+        var minerstats = gm.GetComponent<Coglings_Melee_Stat>();
+        maxHealth = minerstats.getMaxHealth();
+        unitAtk = minerstats.GetAtk();
+        unitDef = minerstats.GetDef();
+        atkSpd = minerstats.GetAtkSpeed();
+        range = minerstats.GetRange();
+    }
+
+    private void InitializeCoglingRangeUnit()
+    {
+        var minerstats = gm.GetComponent<Coglings_Range_Stat>();
+        maxHealth = minerstats.getMaxHealth();
+        unitAtk = minerstats.GetAtk();
+        unitDef = minerstats.GetDef();
+        atkSpd = minerstats.GetAtkSpeed();
+        range = minerstats.GetRange();
     }
 }

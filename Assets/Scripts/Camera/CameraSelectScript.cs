@@ -159,6 +159,14 @@ public class CameraSelectScript : MonoBehaviour
                                     selectedGameObject.gameObject.GetComponent<TaskManager>().setTarget(hit.collider.gameObject);
                                     break;
                                 case Unit_Names.Robot_Melee:
+                                    selectedGameObject.gameObject.GetComponent<MovementScript>().target = hit.transform;
+                                    selectedGameObject.gameObject.GetComponent<MovementScript>().IsMiningMove();
+                                    selectedGameObject.gameObject.GetComponent<TaskManager>().setTarget(hit.collider.gameObject);
+                                    break;
+                                case Unit_Names.Robot_Ranged:
+                                    selectedGameObject.gameObject.GetComponent<MovementScript>().target = hit.transform;
+                                    selectedGameObject.gameObject.GetComponent<MovementScript>().IsMiningMove();
+                                    selectedGameObject.gameObject.GetComponent<TaskManager>().setTarget(hit.collider.gameObject);
                                     break;
                             }
                         }
@@ -171,6 +179,12 @@ public class CameraSelectScript : MonoBehaviour
                                     selectedGameObject.gameObject.GetComponent<Robot_Miner_Controller_Mouse>().Movement(ray);
                                     break;
                                 case Unit_Names.Robot_Melee:
+                                    selectedGameObject.gameObject.GetComponent<MovementScript>().IsSelected();
+                                    selectedGameObject.gameObject.GetComponent<MovementScript>().Movement(ray);
+                                    break;
+                                case Unit_Names.Robot_Ranged:
+                                    selectedGameObject.gameObject.GetComponent<MovementScript>().IsSelected();
+                                    selectedGameObject.gameObject.GetComponent<MovementScript>().Movement(ray);
                                     break;
                             }
                             Debug.Log(hit.collider.gameObject.name);
@@ -180,6 +194,7 @@ public class CameraSelectScript : MonoBehaviour
                 }
                 else
                 {
+                    
                     if (hit.collider.gameObject.GetComponent<ResourceType>())
                     {
                         var hb = hit.collider.gameObject.transform.Find("Healthbar Canvas");
@@ -187,9 +202,13 @@ public class CameraSelectScript : MonoBehaviour
                             hb.gameObject.SetActive(true);
                         foreach (var sgo in selectedGameObjects)
                         {
-                            sgo.gameObject.GetComponent<Robot_Miner_Controller_Mouse>().target = hit.transform;
-                            sgo.gameObject.GetComponent<Robot_Miner_Controller_Mouse>().IsMiningMove();
-                            sgo.gameObject.GetComponent<TaskManager>().setTarget(hit.collider.gameObject);
+                            var unit = sgo.gameObject.GetComponent<Unit_Name>().unit_Name;
+                            if (unit == Unit_Names.Miner)
+                            {
+                                sgo.gameObject.GetComponent<Robot_Miner_Controller_Mouse>().target = hit.transform;
+                                sgo.gameObject.GetComponent<Robot_Miner_Controller_Mouse>().IsMiningMove();
+                                sgo.gameObject.GetComponent<TaskManager>().setTarget(hit.collider.gameObject);
+                            }
                         }
 
                     }
@@ -200,9 +219,26 @@ public class CameraSelectScript : MonoBehaviour
                             hb.gameObject.SetActive(true);
                         foreach (var sgo in selectedGameObjects)
                         {
-                            sgo.gameObject.GetComponent<Robot_Miner_Controller_Mouse>().target = hit.transform;
-                            sgo.gameObject.GetComponent<Robot_Miner_Controller_Mouse>().IsMiningMove();
-                            sgo.gameObject.GetComponent<TaskManager>().setTarget(hit.collider.gameObject);
+                            var unit = sgo.gameObject.GetComponent<Unit_Name>().unit_Name;
+                            switch (unit)
+                            {
+                                case Unit_Names.Miner:
+                                    sgo.gameObject.GetComponent<Robot_Miner_Controller_Mouse>().target = hit.transform;
+                                    sgo.gameObject.GetComponent<Robot_Miner_Controller_Mouse>().IsMiningMove();
+                                    sgo.gameObject.GetComponent<TaskManager>().setTarget(hit.collider.gameObject);
+                                    break;
+                                case Unit_Names.Robot_Melee:
+                                    sgo.gameObject.GetComponent<MovementScript>().target = hit.transform;
+                                    sgo.gameObject.GetComponent<MovementScript>().IsMiningMove();
+                                    sgo.gameObject.GetComponent<TaskManager>().setTarget(hit.collider.gameObject);
+                                    break;
+                                case Unit_Names.Robot_Ranged:
+                                    sgo.gameObject.GetComponent<MovementScript>().target = hit.transform;
+                                    sgo.gameObject.GetComponent<MovementScript>().IsMiningMove();
+                                    sgo.gameObject.GetComponent<TaskManager>().setTarget(hit.collider.gameObject);
+                                    break;
+
+                            }
                         }
 
                     }
@@ -211,8 +247,22 @@ public class CameraSelectScript : MonoBehaviour
                         Debug.Log(hit.collider.gameObject.name);
                         foreach (var sgo in selectedGameObjects)
                         {
-                            sgo.gameObject.GetComponent<Robot_Miner_Controller_Mouse>().IsSelected();
-                            sgo.gameObject.GetComponent<Robot_Miner_Controller_Mouse>().Movement(ray);
+                            var unit = sgo.gameObject.GetComponent<Unit_Name>().unit_Name;
+                            switch (unit)
+                            {
+                                case Unit_Names.Miner:
+                                    sgo.gameObject.GetComponent<Robot_Miner_Controller_Mouse>().IsSelected();
+                                    sgo.gameObject.GetComponent<Robot_Miner_Controller_Mouse>().Movement(ray);
+                                    break;
+                                case Unit_Names.Robot_Melee:
+                                    sgo.gameObject.GetComponent<MovementScript>().IsSelected();
+                                    sgo.gameObject.GetComponent<MovementScript>().Movement(ray);
+                                    break;
+                                case Unit_Names.Robot_Ranged:
+                                    sgo.gameObject.GetComponent<MovementScript>().IsSelected();
+                                    sgo.gameObject.GetComponent<MovementScript>().Movement(ray);
+                                    break;
+                            }
                         }
                     }
                 }

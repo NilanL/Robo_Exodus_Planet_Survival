@@ -11,6 +11,7 @@ public class Unit_Health : MonoBehaviour
     public int maxHealth = 0;
     GameObject gm;
     Unit_Names name;
+    bool start = true;
 
     // Start is called before the first frame update
     void Start()
@@ -24,6 +25,12 @@ public class Unit_Health : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(start)
+        {
+            maxHealth = GetUnitStats();
+            currentHealth = maxHealth;
+            start = false;
+        }
         if (currentHealth <= 0)
         {
             StartCoroutine(Defeated());
@@ -58,6 +65,9 @@ public class Unit_Health : MonoBehaviour
             case Unit_Names.Wolf:
                 GetComponent<Wolf_AI>().gettingAttacked(tar);
                 break;
+            case Unit_Names.Robot_Melee:
+                GetComponent<TaskManager>().gettingAttacked(tar);
+                break;
         }
 
     }
@@ -65,9 +75,9 @@ public class Unit_Health : MonoBehaviour
     int GetUnitStats()
     {
         int health;
-        if(this.gameObject.GetComponent<MinerStats>())
+        if(this.gameObject.GetComponent<Stats>())
         {
-            health = gm.GetComponent<MinerStats>().getMaxHealth();
+            health = this.gameObject.GetComponent<Stats>().getMaxHealth();
             return health;
         }
         else if(this.gameObject.GetComponent<Wolf_Stats>())
