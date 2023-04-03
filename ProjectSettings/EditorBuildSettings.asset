@@ -9,6 +9,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Playground.unity
     guid: e9017d5f96b9f09489b4b37e1d6eb914
   - enabled: 1
+    path: Assets/Scenes/LoadingTest.unity
+    guid: c4a3603c0bfa90745a5589385633a3c0
+  - enabled: 1
     path: Assets/Scenes/test.unity
     guid: f13dc63fe0de52e4aa0cdcec140fea24
   m_configObjects:
