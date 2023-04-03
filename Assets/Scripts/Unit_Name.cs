@@ -11,7 +11,8 @@ public enum Unit_Names
     Robot_Seige,
     Robot_Special,
     Cogling_Melee,
-    Cogling_Range
+    Cogling_Range,
+    Main_Base
 }
 
 public class Unit_Name : MonoBehaviour

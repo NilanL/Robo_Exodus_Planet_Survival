@@ -7,7 +7,7 @@ public class Robot_Range_Stats : MonoBehaviour
     [SerializeField]
     private int maxHealth { get; set; } = 120;
     [SerializeField]
-    private int unitAtk { get; set; } = 7;
+    private int unitAtk { get; set; } = 12;
     [SerializeField]
     private int vehicleAtk { get; set; } = 0;
     [SerializeField]

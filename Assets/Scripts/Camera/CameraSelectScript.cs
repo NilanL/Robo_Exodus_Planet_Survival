@@ -423,6 +423,18 @@ public class CameraSelectScript : MonoBehaviour
             }
         }
     }
+
+    public void Removeselected(GameObject obj)
+    {
+        if(!(selectedGameObject is null))
+        {
+            selectedGameObject = null;
+        }
+        else
+        {
+            selectedGameObjects.Remove(obj);
+        }
+    }
 }
 
 

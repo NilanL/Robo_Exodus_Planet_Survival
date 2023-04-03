@@ -30,6 +30,15 @@ public class Coglings_Movement_AI : MonoBehaviour
                     target = tar;
                 }
             }
+            tars = GameObject.FindGameObjectsWithTag("Building");
+            foreach (var tar in tars)
+            {
+                if (Vector3.Distance((tar.transform.position), this.gameObject.transform.position) < 50)
+                {
+                    if(target == null)
+                        target = tar;
+                }
+            }
         }
 
         if (target)

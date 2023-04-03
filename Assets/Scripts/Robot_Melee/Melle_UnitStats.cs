@@ -7,7 +7,7 @@ public class Melle_UnitStats : MonoBehaviour
     [SerializeField]
     private int maxHealth { get; set; } = 200;
     [SerializeField]
-    private int unitAtk { get; set; } = 8;
+    private int unitAtk { get; set; } = 15;
     [SerializeField]
     private int vehicleAtk { get; set; } = 0;
     [SerializeField]

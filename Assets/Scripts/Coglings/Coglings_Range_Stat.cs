@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Coglings_Range_Stat : MonoBehaviour
 {
-    private int maxHealth { get; set; } = 400;
+    private int maxHealth { get; set; } = 300;
     private int unitAtk { get; set; } = 12;
     private int vehicleAtk { get; set; } = 0;
     private int baseAtk { get; set; } = 0;
@@ -14,6 +14,8 @@ public class Coglings_Range_Stat : MonoBehaviour
     private float atkSpd { get; set; } = 1.25f;
     private float miningSpd { get; set; } = 1.3f;
     private int range { get; set; } = 45;
+
+    public GameObject robotMinerPrefab = null;
 
     public int getMaxHealth()
     {
@@ -38,5 +40,10 @@ public class Coglings_Range_Stat : MonoBehaviour
     public int GetRange()
     {
         return range;
+    }
+
+    public GameObject GetRobotMinerObject()
+    {
+        return robotMinerPrefab;
     }
 }

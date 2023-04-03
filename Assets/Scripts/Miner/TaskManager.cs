@@ -45,12 +45,34 @@ public class TaskManager : MonoBehaviour
             if (!target || !target.GetComponent<Unit_Name>())
             {
                 targetDies(null);
+                checkforotherUnits();
                 movement.IsNotAttacking();
             }
             else
                 Attacking();
         };
     }
+
+    void checkforotherUnits()
+    {
+        var tars = GameObject.FindGameObjectsWithTag("Cogling");
+        foreach (var tar in tars)
+        {
+            if (Vector3.Distance((tar.transform.position), this.gameObject.transform.position) < 40)
+            {
+                target = tar;
+            }
+        }
+        tars = GameObject.FindGameObjectsWithTag("Enemy");
+        foreach (var tar in tars)
+        {
+            if (Vector3.Distance((tar.transform.position), this.gameObject.transform.position) < 40)
+            {
+                target = tar;
+            }
+        }
+    }
+
 
     void Attacking()
     {
@@ -133,6 +155,11 @@ public class TaskManager : MonoBehaviour
             canMine = true;
         }
         else if(tar.tag == "Enemy")
+        {
+            attacking = true;
+            canAttack = true;
+        }
+        else if(tar.tag == "Cogling")
         {
             attacking = true;
             canAttack = true;

@@ -34,6 +34,7 @@ public class Coglings_Attack_AI : MonoBehaviour
 
     void Attacking()
     {
+
         if (Vector3.Distance(target.transform.position, transform.position) < stats_wolf.getRange())
         {
             coglings_attack.InRange();
@@ -54,6 +55,11 @@ public class Coglings_Attack_AI : MonoBehaviour
     {
         canAttack = false;
         yield return new WaitForSeconds(stats_wolf.GetAtkSpeed());
+        Debug.Log(stats_wolf.GetAtkSpeed(), this.gameObject);
+        if (!target)
+        {
+            targetDies(null);
+        }
         if (!(target == null))
         {
             var damage = stats_wolf.GetAtk() - getDefence();

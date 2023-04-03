@@ -126,6 +126,9 @@ public class Stats : MonoBehaviour
             case Unit_Names.Cogling_Range:
                 InitializeCoglingRangeUnit();
                 break;
+            case Unit_Names.Main_Base:
+                InitializeMainBaseBuilding();
+                break;
         }
     }
 
@@ -188,5 +191,14 @@ public class Stats : MonoBehaviour
         unitDef = minerstats.GetDef();
         atkSpd = minerstats.GetAtkSpeed();
         range = minerstats.GetRange();
+    }
+
+    private void InitializeMainBaseBuilding()
+    {
+        var minerstats = gm.GetComponent<Main_Base_Stats>();
+        maxHealth = minerstats.getMaxHealth();
+        unitAtk = minerstats.GetAtk();
+        unitDef = minerstats.GetDef();
+        atkSpd = minerstats.GetAtkSpeed();
     }
 }

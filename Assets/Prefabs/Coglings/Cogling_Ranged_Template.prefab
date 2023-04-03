@@ -304,7 +304,7 @@ GameObject:
   - component: {fileID: 2866589980072818524}
   m_Layer: 0
   m_Name: Cogling_Ranged_Template
-  m_TagString: Enemy
+  m_TagString: Cogling
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -483,6 +483,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 258394c1496f149488d2316b0c99c4a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  robotMinerPrefab: {fileID: 0}
 --- !u!114 &2727558605839191670
 MonoBehaviour:
   m_ObjectHideFlags: 0

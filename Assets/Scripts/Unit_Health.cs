@@ -9,6 +9,7 @@ public class Unit_Health : MonoBehaviour
 
     public int currentHealth = 0;
     public int maxHealth = 0;
+    GameObject pm;
     GameObject gm;
     Unit_Names name;
     bool start = true;
@@ -16,6 +17,7 @@ public class Unit_Health : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        pm = GameObject.Find("ParentCamera");
         gm = GameObject.Find("GameManager");
         maxHealth = GetUnitStats();
         currentHealth = maxHealth;
@@ -43,13 +45,16 @@ public class Unit_Health : MonoBehaviour
         switch (GetType())
         {
             case Unit_Names.Miner:
+                yield return new WaitForSeconds(2);
                 break;
             case Unit_Names.Wolf:
                 this.gameObject.GetComponent<Animator>().SetBool("IsDefeated", true);
                 yield return new WaitForSeconds(2);
                 break;
         }
-
+        var css = pm.GetComponent<CameraSelectScript>();
+        css.Removeselected(this.gameObject);
+        gm.GetComponent<GameManager>().Unit_count -= 1;
         Destroy(gameObject);
     }
 
@@ -80,14 +85,8 @@ public class Unit_Health : MonoBehaviour
             health = this.gameObject.GetComponent<Stats>().getMaxHealth();
             return health;
         }
-        else if(this.gameObject.GetComponent<Wolf_Stats>())
-        {
-            health = gm.GetComponent<Wolf_Stats>().getMaxHealth();
-            name = this.gameObject.GetComponent<Unit_Name>().unit_Name;
-            return health;
-        }
 
-        return 10;
+        return 20000;
 
     }
 
