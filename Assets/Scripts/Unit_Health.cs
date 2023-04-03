@@ -54,7 +54,8 @@ public class Unit_Health : MonoBehaviour
         }
         var css = pm.GetComponent<CameraSelectScript>();
         css.Removeselected(this.gameObject);
-        gm.GetComponent<GameManager>().Unit_count -= 1;
+        if(this.gameObject.tag == "Selectable")
+            gm.GetComponent<GameManager>().Unit_count -= 1;
         Destroy(gameObject);
     }
 
