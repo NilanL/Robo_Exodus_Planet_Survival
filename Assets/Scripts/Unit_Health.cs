@@ -9,12 +9,15 @@ public class Unit_Health : MonoBehaviour
 
     public int currentHealth = 0;
     public int maxHealth = 0;
+    GameObject pm;
     GameObject gm;
     Unit_Names name;
+    bool start = true;
 
     // Start is called before the first frame update
     void Start()
     {
+        pm = GameObject.Find("ParentCamera");
         gm = GameObject.Find("GameManager");
         maxHealth = GetUnitStats();
         currentHealth = maxHealth;
@@ -24,6 +27,12 @@ public class Unit_Health : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(start)
+        {
+            maxHealth = GetUnitStats();
+            currentHealth = maxHealth;
+            start = false;
+        }
         if (currentHealth <= 0)
         {
             StartCoroutine(Defeated());
@@ -36,13 +45,17 @@ public class Unit_Health : MonoBehaviour
         switch (GetType())
         {
             case Unit_Names.Miner:
+                yield return new WaitForSeconds(2);
                 break;
             case Unit_Names.Wolf:
                 this.gameObject.GetComponent<Animator>().SetBool("IsDefeated", true);
                 yield return new WaitForSeconds(2);
                 break;
         }
-
+        var css = pm.GetComponent<CameraSelectScript>();
+        css.Removeselected(this.gameObject);
+        if(this.gameObject.tag == "Selectable")
+            gm.GetComponent<GameManager>().Unit_count -= 1;
         Destroy(gameObject);
     }
 
@@ -58,6 +71,9 @@ public class Unit_Health : MonoBehaviour
             case Unit_Names.Wolf:
                 GetComponent<Wolf_AI>().gettingAttacked(tar);
                 break;
+            case Unit_Names.Robot_Melee:
+                GetComponent<TaskManager>().gettingAttacked(tar);
+                break;
         }
 
     }
@@ -65,19 +81,13 @@ public class Unit_Health : MonoBehaviour
     int GetUnitStats()
     {
         int health;
-        if(this.gameObject.GetComponent<MinerStats>())
+        if(this.gameObject.GetComponent<Stats>())
         {
-            health = gm.GetComponent<MinerStats>().getMaxHealth();
-            return health;
-        }
-        else if(this.gameObject.GetComponent<Wolf_Stats>())
-        {
-            health = gm.GetComponent<Wolf_Stats>().getMaxHealth();
-            name = this.gameObject.GetComponent<Unit_Name>().unit_Name;
+            health = this.gameObject.GetComponent<Stats>().getMaxHealth();
             return health;
         }
 
-        return 10;
+        return 20000;
 
     }
 

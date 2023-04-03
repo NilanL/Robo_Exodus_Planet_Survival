@@ -7,7 +7,7 @@ public class TaskManager : MonoBehaviour
 
     bool mining = false;
     bool canMine = false;
-    Robot_Miner_Controller_Mouse movement;
+    AnimationController movement;
     GameObject UI;
     public GameObject target;
     GameObject gamemaster;
@@ -15,13 +15,13 @@ public class TaskManager : MonoBehaviour
     bool attacking = false;
     bool canAttack = false;
     bool startAttack = false;
-    MinerStats stats;
+    Stats stats;
     // Start is called before the first frame update
     void Start()
     {
         gamemaster = GameObject.Find("GameManager");
-        movement = GetComponent<Robot_Miner_Controller_Mouse>();
-        stats = GetComponent<MinerStats>();
+        movement = GetComponent<AnimationController>();
+        stats = GetComponent<Stats>();
     }
 
     // Update is called once per frame
@@ -45,6 +45,7 @@ public class TaskManager : MonoBehaviour
             if (!target || !target.GetComponent<Unit_Name>())
             {
                 targetDies(null);
+                checkforotherUnits();
                 movement.IsNotAttacking();
             }
             else
@@ -52,17 +53,38 @@ public class TaskManager : MonoBehaviour
         };
     }
 
+    void checkforotherUnits()
+    {
+        var tars = GameObject.FindGameObjectsWithTag("Cogling");
+        foreach (var tar in tars)
+        {
+            if (Vector3.Distance((tar.transform.position), this.gameObject.transform.position) < 40)
+            {
+                target = tar;
+            }
+        }
+        tars = GameObject.FindGameObjectsWithTag("Enemy");
+        foreach (var tar in tars)
+        {
+            if (Vector3.Distance((tar.transform.position), this.gameObject.transform.position) < 40)
+            {
+                target = tar;
+            }
+        }
+    }
+
+
     void Attacking()
     {
-        if (Vector3.Distance(target.transform.position, transform.position) < 10)
+        if (Vector3.Distance(target.transform.position, transform.position) < stats.getRange())
         {
 
-            if (canAttack || startAttack)
+            if (canAttack)
             {
                 StartCoroutine(Attack());
                 movement.IsAttacking();
             }
-
+            movement.InRange();
         }
         else
         {
@@ -72,10 +94,12 @@ public class TaskManager : MonoBehaviour
     IEnumerator Attack()
     {
         canAttack = false;
-        yield return new WaitForSeconds(stats.GetAtkSpeed());
+        float atkspd = stats.GetAtkSpeed();
+        yield return new WaitForSeconds(atkspd);
         if (!(target == null))
         {
             var damage = stats.GetAtk() - getDefence();
+            Debug.Log(damage);
             target.GetComponent<Unit_Health>().dmgResource(damage, this.gameObject);
             canAttack = true;
         }
@@ -83,9 +107,9 @@ public class TaskManager : MonoBehaviour
 
     int getDefence()
     {
-        if (target.GetComponent<Wolf_Stats>())
+        if (target.GetComponent<Stats>())
         {
-            var stats = target.GetComponent<Wolf_Stats>();
+            var stats = target.GetComponent<Stats>();
             var def = stats.GetDef();
             return def;
         }
@@ -131,6 +155,11 @@ public class TaskManager : MonoBehaviour
             canMine = true;
         }
         else if(tar.tag == "Enemy")
+        {
+            attacking = true;
+            canAttack = true;
+        }
+        else if(tar.tag == "Cogling")
         {
             attacking = true;
             canAttack = true;

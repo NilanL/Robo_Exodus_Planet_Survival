@@ -2,26 +2,26 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy_Attacking : MonoBehaviour
+public class Coglings_Attack_AI : MonoBehaviour
 {
     private GameObject target;
     Stats stats_wolf;
+    Coglings_Movement_AI coglings_attack;
     bool attacking = false;
     bool canAttack = false;
     bool startAttack = false;
-    Animator animator;
 
     // Start is called before the first frame update
     void Start()
     {
         stats_wolf = GetComponent<Stats>();
-        animator = GetComponent<Animator>();
+        coglings_attack = GetComponent<Coglings_Movement_AI>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(attacking)
+        if (attacking)
         {
             if (!target)
             {
@@ -34,27 +34,32 @@ public class Enemy_Attacking : MonoBehaviour
 
     void Attacking()
     {
+
         if (Vector3.Distance(target.transform.position, transform.position) < stats_wolf.getRange())
         {
+            coglings_attack.InRange();
             if (canAttack || startAttack)
             {
-                animator.SetBool("IsRunning", false);
-                animator.SetBool("IsAttacking", true);
                 StartCoroutine(Attack());
             }
 
         }
         else
         {
-            animator.SetBool("IsRunning", true);
-            animator.SetBool("IsAttacking", false);
+            coglings_attack.OutofRange();
         }
+
     }
 
     IEnumerator Attack()
     {
         canAttack = false;
         yield return new WaitForSeconds(stats_wolf.GetAtkSpeed());
+        Debug.Log(stats_wolf.GetAtkSpeed(), this.gameObject);
+        if (!target)
+        {
+            targetDies(null);
+        }
         if (!(target == null))
         {
             var damage = stats_wolf.GetAtk() - getDefence();
@@ -71,7 +76,7 @@ public class Enemy_Attacking : MonoBehaviour
         }
         target = tar;
         attacking = true;
-        
+
     }
 
     public void targetDies(GameObject tar)
@@ -89,7 +94,7 @@ public class Enemy_Attacking : MonoBehaviour
             var def = stats.GetDef();
             return def;
         }
-        else 
+        else
             return 0;
     }
 }

@@ -5,7 +5,14 @@ using UnityEngine;
 public enum Unit_Names
 {
     Miner,
-    Wolf
+    Wolf,
+    Robot_Melee,
+    Robot_Ranged,
+    Robot_Seige,
+    Robot_Special,
+    Cogling_Melee,
+    Cogling_Range,
+    Main_Base
 }
 
 public class Unit_Name : MonoBehaviour
