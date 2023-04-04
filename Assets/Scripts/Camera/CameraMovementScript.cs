@@ -11,8 +11,11 @@ public class CameraMovementScript : MonoBehaviour
     float maxHeight = 32f;
     float minHeight = 12f;
 
-    
+    float maxlenght = 500f;
+    float minlenght = -500f;
 
+    float maxwidth = 500f;
+    float minwidth = -500f;
 
 
     [SerializeField]
@@ -91,6 +94,39 @@ public class CameraMovementScript : MonoBehaviour
         {
             scrollSP = minHeight - transform.position.y;
         }
+        if ((hsp > 0) && (transform.position.x >= maxlenght))
+        {
+            hsp = 0;
+        }
+        else if ((hsp < 0) && (transform.position.x <= minlenght))
+        {
+            hsp = 0;
+        }
+        if ((transform.position.x + scrollSP) > maxlenght)
+        {
+            hsp = maxlenght - transform.position.x;
+        }
+        else if ((transform.position.x + scrollSP) < minlenght)
+        {
+            hsp = minlenght - transform.position.x;
+        }
+        if ((hsp > 0) && (transform.position.z >= maxwidth))
+        {
+            vsp = 0;
+        }
+        else if ((hsp < 0) && (transform.position.z <= minwidth))
+        {
+            vsp = 0;
+        }
+        if ((transform.position.z + scrollSP) > maxwidth)
+        {
+            vsp = maxlenght - transform.position.z;
+        }
+        else if ((transform.position.z + scrollSP) < minwidth)
+        {
+            vsp = minlenght - transform.position.z;
+        }
+
 
         //Calculates the speed for the camera
         Vector3 moveVertical = new Vector3(0, scrollSP, 0);
@@ -102,6 +138,8 @@ public class CameraMovementScript : MonoBehaviour
 
         //Moves the Camera
         Vector3 move = moveVertical + moveLateral + moveFoward;
+
+        hsp = transform.position.y * -speed * Input.GetAxis("Horizontal");
 
         transform.position += move;
 
