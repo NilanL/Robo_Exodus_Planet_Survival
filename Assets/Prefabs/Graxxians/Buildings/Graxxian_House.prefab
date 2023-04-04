@@ -200,8 +200,8 @@ GameObject:
   m_Component:
   - component: {fileID: 857861630657148697}
   - component: {fileID: 1024673932325785468}
-  - component: {fileID: 689890394784439145}
   - component: {fileID: 6621353052968863107}
+  - component: {fileID: 3027916033893768809}
   m_Layer: 0
   m_Name: Graxxian_House
   m_TagString: EnemyBuilding
@@ -270,21 +270,6 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: -10.01767, y: 0, z: 2.399567}
   m_TimeToStationary: 0.5
---- !u!114 &689890394784439145
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3570326620244428714}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 82676d964f82f974481ba68b42618783, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  healthbar: {fileID: 5301502733302480193}
-  currentHealth: 0
-  maxHealth: 500
 --- !u!136 &6621353052968863107
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -299,6 +284,21 @@ CapsuleCollider:
   m_Height: 27.66089
   m_Direction: 1
   m_Center: {x: -10.01767, y: 0, z: 2.399567}
+--- !u!114 &3027916033893768809
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3570326620244428714}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c5edf43666820245a10cfc241b0707e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthbar: {fileID: 5301502733302480193}
+  currentHealth: 0
+  maxHealth: 500
 --- !u!1 &7061513270263491555
 GameObject:
   m_ObjectHideFlags: 0

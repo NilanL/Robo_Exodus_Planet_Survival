@@ -297,7 +297,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4477807023332532627}
   - component: {fileID: -5974618585579986154}
-  - component: {fileID: -1822192796242002511}
+  - component: {fileID: 3008651519042365280}
   m_Layer: 0
   m_Name: Troop_Cap_Building_Template
   m_TagString: Untagged
@@ -338,7 +338,7 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: -0.0112915, y: -9.140841, z: 0.06506348}
   m_TimeToStationary: 0.5
---- !u!114 &-1822192796242002511
+--- !u!114 &3008651519042365280
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -347,7 +347,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 5067692701915907592}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 82676d964f82f974481ba68b42618783, type: 3}
+  m_Script: {fileID: 11500000, guid: 9c5edf43666820245a10cfc241b0707e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   healthbar: {fileID: 6208785234820759101}

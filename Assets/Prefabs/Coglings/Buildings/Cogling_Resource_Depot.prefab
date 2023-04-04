@@ -181,7 +181,7 @@ GameObject:
   - component: {fileID: 5574934238111007333}
   - component: {fileID: 8440552994888088031}
   - component: {fileID: 6130455730939591851}
-  - component: {fileID: 9157619466386839896}
+  - component: {fileID: 153134493302275331}
   m_Layer: 0
   m_Name: Cogling_Resource_Depot
   m_TagString: EnemyBuilding
@@ -271,7 +271,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 20.93222, y: 10.35302, z: 12.21936}
   m_Center: {x: -8.441574, y: -0.573369, z: 3.006958}
---- !u!114 &9157619466386839896
+--- !u!114 &153134493302275331
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -280,7 +280,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7362237247213061779}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 82676d964f82f974481ba68b42618783, type: 3}
+  m_Script: {fileID: 11500000, guid: 9c5edf43666820245a10cfc241b0707e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   healthbar: {fileID: 6788983062589977070}
