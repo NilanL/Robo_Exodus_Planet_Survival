@@ -51,19 +51,34 @@ public class Trade : MonoBehaviour
     }
     public void ZoriumforAurarium()
     {
-        Zornum += 1;
-        Aurnum -= 1;
+        
+        if(gm.GetComponent<GameManager>().Aurarium-1 >= 0)
+        {
+            gm.GetComponent<GameManager>().Zorium += 1;
+            gm.GetComponent<GameManager>().Aurarium -= 1;
+        }
+        else
+        {
+            return;
+        }
 
-        textField.text = "" + Zornum;
-        textField2.text = "" + Aurnum;
+        textField.text = "" + gm.GetComponent<GameManager>().Zorium;
+        textField2.text = "" + gm.GetComponent<GameManager>().Aurarium;
     }
     public void ZoriumforAurarium10()
     {
-        Zornum += 10;
-        Aurnum -= 10;
+        if (gm.GetComponent<GameManager>().Aurarium - 10 >= 0)
+        {
+            gm.GetComponent<GameManager>().Zorium += 10;
+            gm.GetComponent<GameManager>().Aurarium -= 10;
+        }
+        else
+        {
+            return;
+        }
 
-        textField.text = "" + Zornum;
-        textField2.text = "" + Aurnum;
+        textField.text = "" + gm.GetComponent<GameManager>().Zorium;
+        textField2.text = "" + gm.GetComponent<GameManager>().Aurarium;
     }
     public void ZoriumforAurariumCustom(string number)
     {
@@ -71,18 +86,33 @@ public class Trade : MonoBehaviour
 
         if(int.TryParse(customNumber, out custnum))
         {
-            Zornum = Zornum + custnum;
-            Aurnum = Aurnum - custnum;
+            if (gm.GetComponent<GameManager>().Aurarium - custnum >= 0)
+            {
+                gm.GetComponent<GameManager>().Zorium = gm.GetComponent<GameManager>().Zorium + custnum;
+                gm.GetComponent<GameManager>().Aurarium = gm.GetComponent<GameManager>().Aurarium - custnum;
+            }
+            else
+            {
+                return;
+            }
+            
         }
 
-        textField.text = "" + Zornum;
-        textField2.text = "" + Aurnum;
+        textField.text = "" + gm.GetComponent<GameManager>().Zorium;
+        textField2.text = "" + gm.GetComponent<GameManager>().Aurarium;
         erase.text = "";
     }
     public void DonateAurariumToCoglings()
     {
-        Aurnum -= 1;
-        textField2.text = "" + Aurnum;
+        if (gm.GetComponent<GameManager>().Aurarium - 1 >= 0)
+        {
+            gm.GetComponent<GameManager>().Aurarium -= 1;
+        }
+        else
+        {
+            return;
+        }
+        textField2.text = "" + gm.GetComponent<GameManager>().Aurarium;
         Marker = GameObject.Find("Marker");
         tempPos = Marker.transform.position;
         tempPos.x += 1f;
@@ -90,8 +120,15 @@ public class Trade : MonoBehaviour
     }
     public void DonateAurariumToCoglings10()
     {
-        Aurnum -= 10;
-        textField2.text = "" + Aurnum;
+        if (gm.GetComponent<GameManager>().Aurarium - 10 >= 0)
+        {
+            gm.GetComponent<GameManager>().Aurarium -= 10;
+        }
+        else
+        {
+            return;
+        }
+        textField2.text = "" + gm.GetComponent<GameManager>().Aurarium;
         Marker = GameObject.Find("Marker");
         tempPos = Marker.transform.position;
         tempPos.x += 10f;
@@ -103,10 +140,18 @@ public class Trade : MonoBehaviour
 
         if (int.TryParse(customNumber, out custnum))
         {
-            Aurnum = Aurnum - custnum;
+            
+            if (gm.GetComponent<GameManager>().Aurarium - custnum >= 0)
+            {
+                gm.GetComponent<GameManager>().Aurarium = gm.GetComponent<GameManager>().Aurarium - custnum;
+            }
+            else
+            {
+                return;
+            }
         }
 
-        textField2.text = "" + Aurnum;
+        textField2.text = "" + gm.GetComponent<GameManager>().Aurarium;
         erase.text = "";
 
         Marker = GameObject.Find("Marker");
@@ -116,19 +161,34 @@ public class Trade : MonoBehaviour
     }
     public void ZoriumforBloodstone()
     {
-        Zornum += 1;
-        Blonum -= 1;
+        if (gm.GetComponent<GameManager>().BloodStone - 1 >= 0)
+        {
+            gm.GetComponent<GameManager>().Zorium += 1;
+            gm.GetComponent<GameManager>().BloodStone -= 1;
+        }
+        else
+        {
+            return;
+        }
 
-        textField.text = "" + Zornum;
-        textField3.text = "" + Blonum;
+
+        textField.text = "" + gm.GetComponent<GameManager>().Zorium;
+        textField3.text = "" + gm.GetComponent<GameManager>().BloodStone;
     }
     public void ZoriumforBloodstone10()
     {
-        Zornum += 10;
-        Blonum -= 10;
+        if (gm.GetComponent<GameManager>().BloodStone - 10 >= 0)
+        {
+            gm.GetComponent<GameManager>().Zorium += 10;
+            gm.GetComponent<GameManager>().BloodStone -= 10;
+        }
+        else
+        {
+            return;
+        }
 
-        textField.text = "" + Zornum;
-        textField3.text = "" + Blonum;
+        textField.text = "" + gm.GetComponent<GameManager>().Zorium;
+        textField3.text = "" + gm.GetComponent<GameManager>().BloodStone;
     }
     public void ZoriumforBloodstoneCustom(string number)
     {
@@ -136,18 +196,34 @@ public class Trade : MonoBehaviour
 
         if (int.TryParse(customNumber, out custnum))
         {
-            Zornum = Zornum + custnum;
-            Blonum = Blonum - custnum;
+            if (gm.GetComponent<GameManager>().BloodStone - custnum >= 0)
+            {
+                gm.GetComponent<GameManager>().Zorium = gm.GetComponent<GameManager>().Zorium + custnum;
+                gm.GetComponent<GameManager>().BloodStone = gm.GetComponent<GameManager>().BloodStone - custnum;
+            }
+            else
+            {
+                return;
+            }
+            
         }
 
-        textField.text = "" + Zornum;
-        textField3.text = "" + Blonum;
+        textField.text = "" + gm.GetComponent<GameManager>().Zorium;
+        textField3.text = "" + gm.GetComponent<GameManager>().BloodStone;
         erase.text = "";
     }
     public void DonateBloodstoneToCoglings()
     {
-        Blonum -= 1;
-        textField3.text = "" + Blonum;
+        if (gm.GetComponent<GameManager>().BloodStone - 1 >= 0)
+        {
+            gm.GetComponent<GameManager>().BloodStone -= 1;
+        }
+        else
+        {
+            return;
+        }
+        
+        textField3.text = "" + gm.GetComponent<GameManager>().BloodStone;
         Marker = GameObject.Find("Marker");
         tempPos = Marker.transform.position;
         tempPos.x += 1f;
@@ -155,8 +231,15 @@ public class Trade : MonoBehaviour
     }
     public void DonateBloodstoneToCoglings10()
     {
-        Blonum -= 10;
-        textField3.text = "" + Blonum;
+        if (gm.GetComponent<GameManager>().BloodStone - 10 >= 0)
+        {
+            gm.GetComponent<GameManager>().BloodStone -= 10;
+        }
+        else
+        {
+            return;
+        }
+        textField3.text = "" + gm.GetComponent<GameManager>().BloodStone;
         Marker = GameObject.Find("Marker");
         tempPos = Marker.transform.position;
         tempPos.x += 10f;
@@ -168,10 +251,18 @@ public class Trade : MonoBehaviour
 
         if (int.TryParse(customNumber, out custnum))
         {
-            Blonum = Blonum - custnum;
+            if (gm.GetComponent<GameManager>().BloodStone - custnum >= 0)
+            {
+                gm.GetComponent<GameManager>().BloodStone = gm.GetComponent<GameManager>().BloodStone - custnum;
+            }
+            else
+            {
+                return;
+            }
+            
         }
 
-        textField3.text = "" + Blonum;
+        textField3.text = "" + gm.GetComponent<GameManager>().BloodStone;
         erase.text = "";
 
         Marker = GameObject.Find("Marker");
@@ -181,19 +272,33 @@ public class Trade : MonoBehaviour
     }
     public void AurariumforZorium()
     {
-        Aurnum += 1;
-        Zornum -= 1;
-
-        textField2.text = "" + Aurnum;
-        textField.text = "" + Zornum;
+        if (gm.GetComponent<GameManager>().Zorium - 1 >= 0)
+        {
+            gm.GetComponent<GameManager>().Aurarium += 1;
+            gm.GetComponent<GameManager>().Zorium -= 1;
+        }
+        else
+        {
+            return;
+        }
+        
+        textField2.text = "" + gm.GetComponent<GameManager>().Aurarium;
+        textField.text = "" + gm.GetComponent<GameManager>().Zorium;
     }
     public void AurariumforZorium10()
     {
-        Aurnum += 10;
-        Zornum -= 10;
+        if (gm.GetComponent<GameManager>().Zorium - 10 >= 0)
+        {
+            gm.GetComponent<GameManager>().Aurarium += 10;
+            gm.GetComponent<GameManager>().Zorium -= 10;
+        }
+        else
+        {
+            return;
+        }
 
-        textField2.text = "" + Aurnum;
-        textField.text = "" + Zornum;
+        textField2.text = "" + gm.GetComponent<GameManager>().Aurarium;
+        textField.text = "" + gm.GetComponent<GameManager>().Zorium;
     }
     public void AurariumforZoriumCustom(string number)
     {
@@ -201,18 +306,34 @@ public class Trade : MonoBehaviour
 
         if (int.TryParse(customNumber, out custnum))
         {
-            Aurnum = Aurnum + custnum;
-            Zornum = Zornum - custnum;
+            if (gm.GetComponent<GameManager>().Zorium - custnum >= 0)
+            {
+                gm.GetComponent<GameManager>().Aurarium = gm.GetComponent<GameManager>().Aurarium + custnum;
+                gm.GetComponent<GameManager>().Zorium = gm.GetComponent<GameManager>().Zorium - custnum;
+            }
+            else
+            {
+                return;
+            }
+            
         }
 
-        textField2.text = "" + Aurnum;
-        textField.text = "" + Zornum;
+        textField2.text = "" + gm.GetComponent<GameManager>().Aurarium;
+        textField.text = "" + gm.GetComponent<GameManager>().Zorium;
         erase.text = "";
     }
     public void DonateZoriumToSleemasi()
     {
-        Zornum -= 1;
-        textField.text = "" + Zornum;
+        if (gm.GetComponent<GameManager>().Zorium - 1 >= 0)
+        {
+            gm.GetComponent<GameManager>().Zorium -= 1;
+        }
+        else
+        {
+            return;
+        }
+        
+        textField.text = "" + gm.GetComponent<GameManager>().Zorium;
         Marker = GameObject.Find("Marker");
         tempPos = Marker.transform.position;
         tempPos.x += 1f;
@@ -220,8 +341,15 @@ public class Trade : MonoBehaviour
     }
     public void DonateZoriumToSleemasi10()
     {
-        Zornum -= 10;
-        textField.text = "" + Zornum;
+        if (gm.GetComponent<GameManager>().Zorium - 10 >= 0)
+        {
+            gm.GetComponent<GameManager>().Zorium -= 10;
+        }
+        else
+        {
+            return;
+        }
+        textField.text = "" + gm.GetComponent<GameManager>().Zorium;
         Marker = GameObject.Find("Marker");
         tempPos = Marker.transform.position;
         tempPos.x += 10f;
@@ -233,10 +361,18 @@ public class Trade : MonoBehaviour
 
         if (int.TryParse(customNumber, out custnum))
         {
-            Zornum = Zornum - custnum;
+            if (gm.GetComponent<GameManager>().Zorium - custnum >= 0)
+            {
+                gm.GetComponent<GameManager>().Zorium = gm.GetComponent<GameManager>().Zorium - custnum;
+            }
+            else
+            {
+                return;
+            }
+            
         }
 
-        textField.text = "" + Zornum;
+        textField.text = "" + gm.GetComponent<GameManager>().Zorium;
         erase.text = "";
 
         Marker = GameObject.Find("Marker");
@@ -246,19 +382,33 @@ public class Trade : MonoBehaviour
     }
     public void AurariumforBloodstone()
     {
-        Aurnum += 1;
-        Blonum -= 1;
-
-        textField2.text = "" + Aurnum;
-        textField3.text = "" + Blonum;
+        if (gm.GetComponent<GameManager>().BloodStone - 1 >= 0)
+        {
+            gm.GetComponent<GameManager>().Aurarium += 1;
+            gm.GetComponent<GameManager>().BloodStone -= 1;
+        }
+        else
+        {
+            return;
+        }
+        
+        textField2.text = "" + gm.GetComponent<GameManager>().Aurarium;
+        textField3.text = "" + gm.GetComponent<GameManager>().BloodStone;
     }
     public void AurariumforBloodstone10()
     {
-        Aurnum += 10;
-        Blonum -= 10;
+        if (gm.GetComponent<GameManager>().BloodStone - 10 >= 0)
+        {
+            gm.GetComponent<GameManager>().Aurarium += 10;
+            gm.GetComponent<GameManager>().BloodStone -= 10;
+        }
+        else
+        {
+            return;
+        }
 
-        textField2.text = "" + Aurnum;
-        textField3.text = "" + Blonum;
+        textField2.text = "" + gm.GetComponent<GameManager>().Aurarium;
+        textField3.text = "" + gm.GetComponent<GameManager>().BloodStone;
     }
     public void AurariumforBloodstoneCustom(string number)
     {
@@ -266,18 +416,34 @@ public class Trade : MonoBehaviour
 
         if (int.TryParse(customNumber, out custnum))
         {
-            Aurnum = Aurnum + custnum;
-            Blonum = Blonum - custnum;
+            if (gm.GetComponent<GameManager>().BloodStone - custnum >= 0)
+            {
+                gm.GetComponent<GameManager>().Aurarium = gm.GetComponent<GameManager>().Aurarium + custnum;
+                gm.GetComponent<GameManager>().BloodStone = gm.GetComponent<GameManager>().BloodStone - custnum;
+            }
+            else
+            {
+                return;
+            }
+            
         }
 
-        textField2.text = "" + Aurnum;
-        textField3.text = "" + Blonum;
+        textField2.text = "" + gm.GetComponent<GameManager>().Aurarium;
+        textField3.text = "" + gm.GetComponent<GameManager>().BloodStone;
         erase.text = "";
     }
     public void DonateBloodstoneToSleemasi()
     {
-        Blonum -= 1;
-        textField3.text = "" + Blonum;
+        if (gm.GetComponent<GameManager>().BloodStone - 1 >= 0)
+        {
+            gm.GetComponent<GameManager>().BloodStone -= 1;
+        }
+        else
+        {
+            return;
+        }
+        gm.GetComponent<GameManager>().BloodStone -= 1;
+        textField3.text = "" + gm.GetComponent<GameManager>().BloodStone;
         Marker = GameObject.Find("Marker");
         tempPos = Marker.transform.position;
         tempPos.x += 1f;
@@ -285,8 +451,15 @@ public class Trade : MonoBehaviour
     }
     public void DonateBloodstoneToSleemasi10()
     {
-        Blonum -= 10;
-        textField3.text = "" + Blonum;
+        if (gm.GetComponent<GameManager>().BloodStone - 10 >= 0)
+        {
+            gm.GetComponent<GameManager>().BloodStone -= 10;
+        }
+        else
+        {
+            return;
+        }
+        textField3.text = "" + gm.GetComponent<GameManager>().BloodStone;
         Marker = GameObject.Find("Marker");
         tempPos = Marker.transform.position;
         tempPos.x += 10f;
@@ -298,10 +471,18 @@ public class Trade : MonoBehaviour
 
         if (int.TryParse(customNumber, out custnum))
         {
-            Blonum = Blonum - custnum;
+            if (gm.GetComponent<GameManager>().BloodStone - custnum >= 0)
+            {
+                gm.GetComponent<GameManager>().BloodStone = gm.GetComponent<GameManager>().BloodStone - custnum;
+            }
+            else
+            {
+                return;
+            }
+            
         }
 
-        textField3.text = "" + Blonum;
+        textField3.text = "" + gm.GetComponent<GameManager>().BloodStone;
         erase.text = "";
 
         Marker = GameObject.Find("Marker");
@@ -311,19 +492,33 @@ public class Trade : MonoBehaviour
     }
     public void BloodstoneforZorium()
     {
-        Blonum += 1;
-        Zornum -= 1;
-
-        textField3.text = "" + Blonum;
-        textField.text = "" + Zornum;
+        if (gm.GetComponent<GameManager>().Zorium - 1 >= 0)
+        {
+            gm.GetComponent<GameManager>().BloodStone += 1;
+            gm.GetComponent<GameManager>().Zorium -= 1;
+        }
+        else
+        {
+            return;
+        }
+        
+        textField3.text = "" + gm.GetComponent<GameManager>().BloodStone;
+        textField.text = "" + gm.GetComponent<GameManager>().Zorium;
     }
     public void BloodstoneforZorium10()
     {
-        Blonum += 10;
-        Zornum -= 10;
+        if (gm.GetComponent<GameManager>().Zorium - 10 >= 0)
+        {
+            gm.GetComponent<GameManager>().BloodStone += 10;
+            gm.GetComponent<GameManager>().Zorium -= 10;
+        }
+        else
+        {
+            return;
+        }
 
-        textField3.text = "" + Blonum;
-        textField.text = "" + Zornum;
+        textField3.text = "" + gm.GetComponent<GameManager>().BloodStone;
+        textField.text = "" + gm.GetComponent<GameManager>().Zorium;
     }
     public void BloodstoneforZoriumCustom(string number)
     {
@@ -331,18 +526,34 @@ public class Trade : MonoBehaviour
 
         if (int.TryParse(customNumber, out custnum))
         {
-            Blonum = Blonum + custnum;
-            Zornum = Zornum - custnum;
+            if (gm.GetComponent<GameManager>().Zorium - custnum >= 0)
+            {
+                gm.GetComponent<GameManager>().BloodStone = gm.GetComponent<GameManager>().BloodStone + custnum;
+                gm.GetComponent<GameManager>().Zorium = gm.GetComponent<GameManager>().Zorium - custnum;
+            }
+            else
+            {
+                return;
+            }
+            
         }
 
-        textField3.text = "" + Blonum;
-        textField.text = "" + Zornum;
+        textField3.text = "" + gm.GetComponent<GameManager>().BloodStone;
+        textField.text = "" + gm.GetComponent<GameManager>().Zorium;
         erase.text = "";
     }
     public void DonateZoriumToGraxxians()
     {
-        Zornum -= 1;
-        textField.text = "" + Zornum;
+        if (gm.GetComponent<GameManager>().Zorium - 1 >= 0)
+        {
+            gm.GetComponent<GameManager>().Zorium -= 1;
+        }
+        else
+        {
+            return;
+        }
+        
+        textField.text = "" + gm.GetComponent<GameManager>().Zorium;
         Marker = GameObject.Find("Marker");
         tempPos = Marker.transform.position;
         tempPos.x += 1f;
@@ -350,8 +561,16 @@ public class Trade : MonoBehaviour
     }
     public void DonateZoriumToGraxxians10()
     {
-        Zornum -= 10;
-        textField.text = "" + Zornum;
+        if (gm.GetComponent<GameManager>().Zorium - 10 >= 0)
+        {
+            gm.GetComponent<GameManager>().Zorium -= 10;
+        }
+        else
+        {
+            return;
+        }
+
+        textField.text = "" + gm.GetComponent<GameManager>().Zorium;
         Marker = GameObject.Find("Marker");
         tempPos = Marker.transform.position;
         tempPos.x += 10f;
@@ -363,10 +582,18 @@ public class Trade : MonoBehaviour
 
         if (int.TryParse(customNumber, out custnum))
         {
-            Zornum = Zornum - custnum;
+            if (gm.GetComponent<GameManager>().Zorium - custnum >= 0)
+            {
+                gm.GetComponent<GameManager>().Zorium = gm.GetComponent<GameManager>().Zorium - custnum;
+            }
+            else
+            {
+                return;
+            }
+            
         }
 
-        textField.text = "" + Zornum;
+        textField.text = "" + gm.GetComponent<GameManager>().Zorium;
         erase.text = "";
 
         Marker = GameObject.Find("Marker");
@@ -376,19 +603,34 @@ public class Trade : MonoBehaviour
     }
     public void BloodstoneforAurarium()
     {
-        Blonum += 1;
-        Aurnum -= 1;
+        if (gm.GetComponent<GameManager>().Aurarium - 1 >= 0)
+        {
+            gm.GetComponent<GameManager>().BloodStone += 1;
+            gm.GetComponent<GameManager>().Aurarium -= 1;
+        }
+        else
+        {
+            return;
+        }
+        
 
-        textField3.text = "" + Blonum;
-        textField2.text = "" + Aurnum;
+        textField3.text = "" + gm.GetComponent<GameManager>().BloodStone;
+        textField2.text = "" + gm.GetComponent<GameManager>().Aurarium;
     }
     public void BloodstoneforAurarium10()
     {
-        Blonum += 10;
-        Aurnum -= 10;
+        if (gm.GetComponent<GameManager>().Aurarium - 10 >= 0)
+        {
+            gm.GetComponent<GameManager>().BloodStone += 10;
+            gm.GetComponent<GameManager>().Aurarium -= 10;
+        }
+        else
+        {
+            return;
+        }
 
-        textField3.text = "" + Blonum;
-        textField2.text = "" + Aurnum;
+        textField3.text = "" + gm.GetComponent<GameManager>().BloodStone;
+        textField2.text = "" + gm.GetComponent<GameManager>().Aurarium;
     }
     public void BloodstoneforAurariumCustom(string number)
     {
@@ -396,18 +638,34 @@ public class Trade : MonoBehaviour
 
         if (int.TryParse(customNumber, out custnum))
         {
-            Blonum = Blonum + custnum;
-            Aurnum = Aurnum - custnum;
+            if (gm.GetComponent<GameManager>().Aurarium - custnum >= 0)
+            {
+                gm.GetComponent<GameManager>().BloodStone = gm.GetComponent<GameManager>().BloodStone + custnum;
+                gm.GetComponent<GameManager>().Aurarium = gm.GetComponent<GameManager>().Aurarium - custnum;
+            }
+            else
+            {
+                return;
+            }
+            
         }
 
-        textField3.text = "" + Blonum;
-        textField2.text = "" + Aurnum;
+        textField3.text = "" + gm.GetComponent<GameManager>().BloodStone;
+        textField2.text = "" + gm.GetComponent<GameManager>().Aurarium;
         erase.text = "";
     }
     public void DonateAurariumToGraxxians()
     {
-        Aurnum -= 1;
-        textField2.text = "" + Aurnum;
+        if (gm.GetComponent<GameManager>().Aurarium - 1 >= 0)
+        {
+            gm.GetComponent<GameManager>().Aurarium -= 1;
+        }
+        else
+        {
+            return;
+        }
+        
+        textField2.text = "" + gm.GetComponent<GameManager>().Aurarium;
         Marker = GameObject.Find("Marker");
         tempPos = Marker.transform.position;
         tempPos.x += 1f;
@@ -415,8 +673,16 @@ public class Trade : MonoBehaviour
     }
     public void DonateAurariumToGraxxians10()
     {
-        Aurnum -= 10;
-        textField2.text = "" + Aurnum;
+        if (gm.GetComponent<GameManager>().Aurarium - 10 >= 0)
+        {
+            gm.GetComponent<GameManager>().Aurarium -= 10;
+        }
+        else
+        {
+            return;
+        }
+
+        textField2.text = "" + gm.GetComponent<GameManager>().Aurarium;
         Marker = GameObject.Find("Marker");
         tempPos = Marker.transform.position;
         tempPos.x += 10f;
@@ -428,10 +694,18 @@ public class Trade : MonoBehaviour
 
         if (int.TryParse(customNumber, out custnum))
         {
-            Aurnum = Aurnum - custnum;
+            if (gm.GetComponent<GameManager>().Aurarium - custnum >= 0)
+            {
+                gm.GetComponent<GameManager>().Aurarium = gm.GetComponent<GameManager>().Aurarium - custnum;
+            }
+            else
+            {
+                return;
+            }
+            
         }
 
-        textField2.text = "" + Aurnum;
+        textField2.text = "" + gm.GetComponent<GameManager>().Aurarium;
         erase.text = "";
 
         Marker = GameObject.Find("Marker");
