@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7840208213649801271}
   - component: {fileID: 1466432658344948982}
   - component: {fileID: 6315394591933485129}
-  - component: {fileID: 1850071240312021167}
+  - component: {fileID: 184252387293389671}
   m_Layer: 0
   m_Name: Base_Defenses_Building_Template
   m_TagString: Untagged
@@ -65,7 +65,7 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: -0.0112915, y: -9.140841, z: 0.06506348}
   m_TimeToStationary: 0.5
---- !u!114 &1850071240312021167
+--- !u!114 &184252387293389671
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -74,7 +74,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1987490933575897882}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 82676d964f82f974481ba68b42618783, type: 3}
+  m_Script: {fileID: 11500000, guid: 9c5edf43666820245a10cfc241b0707e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   healthbar: {fileID: 2718181009849247439}

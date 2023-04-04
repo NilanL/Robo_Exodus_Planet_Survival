@@ -742,7 +742,7 @@ GameObject:
   - component: {fileID: 78809170135114687}
   - component: {fileID: 5957536318416629450}
   - component: {fileID: 1534940599697223844}
-  - component: {fileID: 859424817536581226}
+  - component: {fileID: 5920074685392764735}
   m_Layer: 0
   m_Name: Cogling_Town_Center
   m_TagString: EnemyBuilding
@@ -816,7 +816,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 30.58459, y: 17.62227, z: 23.67096}
   m_Center: {x: -4.62915, y: -2.306616, z: -2.778778}
---- !u!114 &859424817536581226
+--- !u!114 &5920074685392764735
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -825,7 +825,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 78809170135114686}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 82676d964f82f974481ba68b42618783, type: 3}
+  m_Script: {fileID: 11500000, guid: 9c5edf43666820245a10cfc241b0707e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   healthbar: {fileID: 614439471125923004}

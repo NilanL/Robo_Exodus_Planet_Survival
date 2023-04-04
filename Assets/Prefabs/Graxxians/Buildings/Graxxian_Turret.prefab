@@ -276,8 +276,8 @@ GameObject:
   - component: {fileID: 2348226953340742465}
   - component: {fileID: 2537560009302161171}
   - component: {fileID: 583577351569532340}
-  - component: {fileID: 5508432580179898604}
   - component: {fileID: 1998733858291898568}
+  - component: {fileID: 2760291718028986192}
   m_Layer: 0
   m_Name: Graxxian_Turret
   m_TagString: EnemyBuilding
@@ -337,21 +337,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 7.065735, y: 15.53165, z: 6.885193}
   m_Center: {x: -3.035065, y: -6.090012, z: -2.615448}
---- !u!114 &5508432580179898604
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7169235274547114825}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 82676d964f82f974481ba68b42618783, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  healthbar: {fileID: 1631884404061882304}
-  currentHealth: 0
-  maxHealth: 1250
 --- !u!82 &1998733858291898568
 AudioSource:
   m_ObjectHideFlags: 0
@@ -448,6 +433,21 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &2760291718028986192
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7169235274547114825}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c5edf43666820245a10cfc241b0707e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthbar: {fileID: 1631884404061882304}
+  currentHealth: 0
+  maxHealth: 1250
 --- !u!1001 &1306120059908871207
 PrefabInstance:
   m_ObjectHideFlags: 0

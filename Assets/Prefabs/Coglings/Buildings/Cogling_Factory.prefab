@@ -14022,7 +14022,7 @@ GameObject:
   - component: {fileID: 2131684863979403268}
   - component: {fileID: 4017483005015789067}
   - component: {fileID: 7632079854054101614}
-  - component: {fileID: 7562896313700766663}
+  - component: {fileID: 2107360202650689202}
   m_Layer: 0
   m_Name: Cogling_Factory
   m_TagString: EnemyBuilding
@@ -14148,7 +14148,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 26.97903, y: 12.2057, z: 18.80475}
   m_Center: {x: 2.883926, y: -3.526882, z: 2.419647}
---- !u!114 &7562896313700766663
+--- !u!114 &2107360202650689202
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -14157,7 +14157,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 8521378897717913543}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 82676d964f82f974481ba68b42618783, type: 3}
+  m_Script: {fileID: 11500000, guid: 9c5edf43666820245a10cfc241b0707e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   healthbar: {fileID: 567724019619006809}

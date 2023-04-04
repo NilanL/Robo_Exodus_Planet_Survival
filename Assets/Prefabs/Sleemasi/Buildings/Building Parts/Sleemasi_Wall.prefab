@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8979888423061404158}
   - component: {fileID: 5918334636125100728}
   - component: {fileID: 7350685825568788550}
-  - component: {fileID: 5431715713459650285}
+  - component: {fileID: 6640459710909466622}
   m_Layer: 0
   m_Name: Sleemasi_Wall
   m_TagString: EnemyBuilding
@@ -65,7 +65,7 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: -0.4712677, y: 2.993746, z: 0.005371094}
   m_TimeToStationary: 0.5
---- !u!114 &5431715713459650285
+--- !u!114 &6640459710909466622
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -74,7 +74,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1363302006465784908}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 82676d964f82f974481ba68b42618783, type: 3}
+  m_Script: {fileID: 11500000, guid: 9c5edf43666820245a10cfc241b0707e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   healthbar: {fileID: 4161990635377430384}

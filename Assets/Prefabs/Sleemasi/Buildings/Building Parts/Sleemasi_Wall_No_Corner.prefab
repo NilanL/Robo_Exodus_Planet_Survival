@@ -86,7 +86,7 @@ GameObject:
   - component: {fileID: 1354863007815086210}
   - component: {fileID: 7523835118532942311}
   - component: {fileID: 7162548314340996398}
-  - component: {fileID: 3797779241514839584}
+  - component: {fileID: 328409946981275334}
   m_Layer: 0
   m_Name: Sleemasi_Wall_No_Corner
   m_TagString: EnemyBuilding
@@ -139,7 +139,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 8.816467, y: 6.987492, z: 1.622589}
   m_Center: {x: -0.4712677, y: 2.993746, z: 0.005371094}
---- !u!114 &3797779241514839584
+--- !u!114 &328409946981275334
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -148,7 +148,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3658491172958650253}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 82676d964f82f974481ba68b42618783, type: 3}
+  m_Script: {fileID: 11500000, guid: 9c5edf43666820245a10cfc241b0707e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   healthbar: {fileID: 4442439873701893593}
