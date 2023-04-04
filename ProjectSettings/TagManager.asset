@@ -13,6 +13,8 @@ TagManager:
   - Building
   - Make Miner
   - Ground
+  - EnemyBuilding
+  - Cogling
   layers:
   - Default
   - TransparentFX

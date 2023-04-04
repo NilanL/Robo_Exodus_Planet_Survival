@@ -1,0 +1,223 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.AI;
+
+public class RobotMeleeMovement : MonoBehaviour
+{
+    private Animator animator;
+    private ParticleSystem miningParticleSystem;
+    private NavMeshAgent navMeshAgent;
+    private LineRenderer attackingLaserLeft;
+    private LineRenderer attackingLaserRight;
+    private bool isSelected = false;
+    private Ray ray;
+
+    [SerializeField]
+    public GameObject miningEffectPrefab;
+
+    [SerializeField]
+    public GameObject attackingEffectPrefab;
+
+    [SerializeField]
+    public Camera _camera;
+
+    private bool isMining;
+    private bool isAttacking;
+    private bool isWalking;
+
+    public Transform target;
+    private bool isMiningMove = false;
+    private bool isMiningAnimate = false;
+    private bool isAttackingAnimate = false;
+
+    [SerializeField]
+    private float movementSpeed, rotationSpeed, jumpSpeed, gravity;
+
+    public AudioSource attackSound;
+    public AudioSource mineSound;
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        // Get controller and animator
+        //animator = GetComponent<Animator>();
+        navMeshAgent = GetComponent<NavMeshAgent>();
+
+        navMeshAgent.speed = 12;
+        navMeshAgent.acceleration = 25;
+        navMeshAgent.angularSpeed = 300;
+
+        // Find attachment location for laser effects
+
+
+        // Get laser effect
+        
+
+        // Set left arm laser effect/position
+
+        // Set mining sparks effects
+        //miningParticleSystem = Instantiate(miningEffectPrefab.GetComponent<ParticleSystem>(), transform.position, transform.rotation, transform);
+
+        isMining = false;
+        isAttacking = false;
+        isWalking = false;
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        // Change these to modify animation inputs
+
+        if (isMiningMove)
+        {
+            navMeshAgent.destination = target.position;
+            isMiningMove = false;
+        }
+
+        if (isSelected)
+        {
+            RaycastHit hit;
+            if (Physics.Raycast(ray, out hit))
+            {
+                navMeshAgent.destination = hit.point;
+            }
+        }
+
+        // Animations
+        SetWalkingAnimation();
+
+        if (isMiningAnimate)
+        {
+            SetMiningAnimation(true);
+        }
+        else
+        {
+            SetMiningAnimation(false);
+        }
+
+        if (isAttackingAnimate)
+        {
+            SetAttackingAnimation(true);
+
+            if (target)
+            {
+                navMeshAgent.destination = target.position;
+            }
+        }
+        else
+        {
+            SetAttackingAnimation(false);
+        }
+
+    }
+
+    void SetWalkingAnimation()
+    {
+        isWalking = navMeshAgent.remainingDistance > navMeshAgent.stoppingDistance;
+
+        if (isWalking)
+        {
+            SetMiningAnimation(false);
+            SetAttackingAnimation(false);
+
+            //miningParticleSystem.Stop();
+
+            //if (!isAttackingAnimate && !isMiningAnimate)
+            //{
+             //   attackingLaserLeft.enabled = false;
+            //    attackingLaserRight.enabled = false;
+            //}
+        }
+
+        //animator.SetBool("IsWalking", isWalking);
+    }
+
+    void SetMiningAnimation(bool val)
+    {
+        isMining = val;
+
+        if (isMining)
+        {
+            SetAttackingAnimation(false);
+        }
+
+        //animator.SetBool("IsMining", isMining);
+    }
+
+    void SetAttackingAnimation(bool val)
+    {
+        isAttacking = val;
+
+        if (isAttacking)
+        {
+            SetMiningAnimation(false);
+        }
+
+        //animator.SetBool("IsAttacking", isAttacking);
+    }
+
+    public void IsSelected()
+    {
+        isSelected = true;
+    }
+
+    public void Movement(Ray ray2)
+    {
+        ray = ray2;
+    }
+
+    public void IsMiningMove()
+    {
+        isMiningMove = true;
+        isSelected = false;
+    }
+
+    public void IsMining()
+    {
+        isMiningAnimate = true;
+
+        //attackingLaserLeft.enabled = false;
+        //attackingLaserRight.enabled = true;
+        //miningParticleSystem.Play();
+
+        //if (mineSound.isPlaying != true)
+        //{
+            //mineSound.Play();
+        //}
+    }
+
+    public void IsNotMining()
+    {
+        isMiningAnimate = false;
+
+        //attackingLaserLeft.enabled = false;
+        //attackingLaserRight.enabled = false;
+        //miningParticleSystem.Stop();
+
+        //mineSound.Stop();
+    }
+
+    public void IsAttacking()
+    {
+        isAttackingAnimate = true;
+
+        //attackingLaserLeft.enabled = true;
+        //attackingLaserRight.enabled = true;
+
+        //if (attackSound.isPlaying != true)
+        //{
+        //    attackSound.Play();
+        //}
+    }
+
+    public void IsNotAttacking()
+    {
+        isAttackingAnimate = false;
+
+        //attackingLaserLeft.enabled = false;
+        //attackingLaserRight.enabled = false;
+
+        //attackSound.Stop();
+    }
+}
