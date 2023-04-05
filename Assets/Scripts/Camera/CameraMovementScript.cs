@@ -94,6 +94,7 @@ public class CameraMovementScript : MonoBehaviour
         {
             scrollSP = minHeight - transform.position.y;
         }
+        /*
         if ((hsp > 0) && (transform.position.x >= maxlenght))
         {
             hsp = 0;
@@ -126,7 +127,7 @@ public class CameraMovementScript : MonoBehaviour
         {
             vsp = minlenght - transform.position.z;
         }
-
+        */
 
         //Calculates the speed for the camera
         Vector3 moveVertical = new Vector3(0, scrollSP, 0);
@@ -136,12 +137,32 @@ public class CameraMovementScript : MonoBehaviour
         moveFoward.Normalize();
         moveFoward *= vsp;
 
+        Debug.Log(moveFoward + " " + moveLateral + " " +  moveVertical);
+
         //Moves the Camera
         Vector3 move = moveVertical + moveLateral + moveFoward;
 
-        hsp = transform.position.y * -speed * Input.GetAxis("Horizontal");
+
 
         transform.position += move;
+
+        if ((transform.position.x) > maxlenght)
+        {
+            transform.position = new Vector3(maxlenght, transform.position.y, transform.position.z);
+        }
+        if ((transform.position.x) < minlenght)
+        {
+            transform.position = new Vector3(minlenght, transform.position.y, transform.position.z);
+        }
+        if ((transform.position.z) > maxwidth)
+        {
+            transform.position = new Vector3(transform.position.x, transform.position.y, maxwidth);
+        }
+        if ((transform.position.z) < minwidth)
+        {
+            transform.position = new Vector3(transform.position.x, transform.position.y, minwidth);
+        }
+
 
         GetCameraRotation();
 
