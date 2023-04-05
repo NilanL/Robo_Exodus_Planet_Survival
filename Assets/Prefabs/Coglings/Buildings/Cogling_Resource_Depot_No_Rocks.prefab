@@ -372,6 +372,9 @@ GameObject:
   - component: {fileID: -1884858646394528936}
   - component: {fileID: 1561805008902633476}
   - component: {fileID: 3090513333427003678}
+  - component: {fileID: 3319304082656400123}
+  - component: {fileID: 6568051083179873693}
+  - component: {fileID: 4101087544190646370}
   m_Layer: 0
   m_Name: Cogling_Resource_Depot_No_Rocks
   m_TagString: EnemyBuilding
@@ -468,7 +471,46 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthbar: {fileID: 1310541587075460057}
   currentHealth: 0
-  maxHealth: 500
+  maxHealth: 0
+--- !u!114 &3319304082656400123
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9092773300393221757}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2907ce02e59e5f0439b22e2497fa465e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Prefab: {fileID: 0}
+--- !u!114 &6568051083179873693
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9092773300393221757}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88ec9ecfb8a556d4684d045ebea34837, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unit_Name: 0
+--- !u!114 &4101087544190646370
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9092773300393221757}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88ec9ecfb8a556d4684d045ebea34837, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unit_Name: 10
 --- !u!1001 &15836044422284792
 PrefabInstance:
   m_ObjectHideFlags: 0

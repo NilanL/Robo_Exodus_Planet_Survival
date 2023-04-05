@@ -278,6 +278,8 @@ GameObject:
   - component: {fileID: 583577351569532340}
   - component: {fileID: 1998733858291898568}
   - component: {fileID: 2760291718028986192}
+  - component: {fileID: 1770455179701753496}
+  - component: {fileID: 5750898573246209879}
   m_Layer: 0
   m_Name: Graxxian_Turret
   m_TagString: EnemyBuilding
@@ -447,7 +449,33 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthbar: {fileID: 1631884404061882304}
   currentHealth: 0
-  maxHealth: 1250
+  maxHealth: 0
+--- !u!114 &1770455179701753496
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7169235274547114825}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2907ce02e59e5f0439b22e2497fa465e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Prefab: {fileID: 0}
+--- !u!114 &5750898573246209879
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7169235274547114825}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88ec9ecfb8a556d4684d045ebea34837, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unit_Name: 9
 --- !u!1001 &1306120059908871207
 PrefabInstance:
   m_ObjectHideFlags: 0

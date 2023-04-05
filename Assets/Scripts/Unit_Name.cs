@@ -12,7 +12,10 @@ public enum Unit_Names
     Robot_Special,
     Cogling_Melee,
     Cogling_Range,
-    Main_Base
+    Main_Base,
+    Turret,
+    House,
+    WallGate
 }
 
 public class Unit_Name : MonoBehaviour

@@ -569,6 +569,8 @@ GameObject:
   - component: {fileID: 6096328773457536208}
   - component: {fileID: 2495852332337354399}
   - component: {fileID: 6549958694623277282}
+  - component: {fileID: 4357960249707731723}
+  - component: {fileID: 2270536437672246759}
   m_Layer: 0
   m_Name: Sleemasi_House_1
   m_TagString: EnemyBuilding
@@ -645,7 +647,33 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthbar: {fileID: 671349798091161744}
   currentHealth: 0
-  maxHealth: 500
+  maxHealth: 0
+--- !u!114 &4357960249707731723
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7693795421962689745}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2907ce02e59e5f0439b22e2497fa465e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Prefab: {fileID: 0}
+--- !u!114 &2270536437672246759
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7693795421962689745}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88ec9ecfb8a556d4684d045ebea34837, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unit_Name: 10
 --- !u!1001 &1740693271476464614
 PrefabInstance:
   m_ObjectHideFlags: 0

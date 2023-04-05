@@ -14023,6 +14023,8 @@ GameObject:
   - component: {fileID: 4017483005015789067}
   - component: {fileID: 7632079854054101614}
   - component: {fileID: 2107360202650689202}
+  - component: {fileID: 2304304184937314640}
+  - component: {fileID: 1490377530277077535}
   m_Layer: 0
   m_Name: Cogling_Factory
   m_TagString: EnemyBuilding
@@ -14162,7 +14164,33 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthbar: {fileID: 567724019619006809}
   currentHealth: 0
-  maxHealth: 800
+  maxHealth: 0
+--- !u!114 &2304304184937314640
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8521378897717913543}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88ec9ecfb8a556d4684d045ebea34837, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unit_Name: 10
+--- !u!114 &1490377530277077535
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8521378897717913543}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2907ce02e59e5f0439b22e2497fa465e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Prefab: {fileID: 0}
 --- !u!1001 &116265414325722466
 PrefabInstance:
   m_ObjectHideFlags: 0

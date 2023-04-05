@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 8862480235203640146}
   - component: {fileID: 8732178581868498613}
   - component: {fileID: 4847371461632886370}
+  - component: {fileID: 7356638606671610621}
+  - component: {fileID: 4150020655141568466}
   m_Layer: 0
   m_Name: Cogling_Wall
   m_TagString: EnemyBuilding
@@ -84,7 +86,33 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthbar: {fileID: 908065197828505652}
   currentHealth: 0
-  maxHealth: 1500
+  maxHealth: 0
+--- !u!114 &7356638606671610621
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 520668927584109619}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2907ce02e59e5f0439b22e2497fa465e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Prefab: {fileID: 0}
+--- !u!114 &4150020655141568466
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 520668927584109619}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88ec9ecfb8a556d4684d045ebea34837, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unit_Name: 11
 --- !u!1 &1199554678746532895
 GameObject:
   m_ObjectHideFlags: 0
