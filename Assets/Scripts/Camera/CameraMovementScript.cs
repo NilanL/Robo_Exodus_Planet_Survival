@@ -8,8 +8,8 @@ public class CameraMovementScript : MonoBehaviour
     float zoomSpeed = 10f;
     float rotateSpeed = .1f;
 
-    float maxHeight = 32f;
-    float minHeight = 12f;
+    float maxHeight = 55f;
+    float minHeight = 20f;
 
     float maxlenght = 500f;
     float minlenght = -500f;
@@ -66,12 +66,12 @@ public class CameraMovementScript : MonoBehaviour
         var heightcube = GameObject.Find("Height_Check");
         float scrollSP = Mathf.Log(transform.position.y) * -zoomSpeed * Input.GetAxis("Mouse ScrollWheel");
         var floor = GameObject.Find("Terrain_0_0_6c7ab805-d6b8-439a-8805-7f652d662845");
-        if (Vector3.Distance(heightcube.transform.position, transform.position) < 10)
+        if (Vector3.Distance(heightcube.transform.position, transform.position) < 20)
         {
             maxHeight += 1;
             minHeight += 1;
         }
-        if (Vector3.Distance(heightcube.transform.position, transform.position) > 33)
+        if (Vector3.Distance(heightcube.transform.position, transform.position) > 55)
         {
             maxHeight -= 1;
             minHeight -= 1;
@@ -94,6 +94,7 @@ public class CameraMovementScript : MonoBehaviour
         {
             scrollSP = minHeight - transform.position.y;
         }
+        /*
         if ((hsp > 0) && (transform.position.x >= maxlenght))
         {
             hsp = 0;
@@ -126,7 +127,7 @@ public class CameraMovementScript : MonoBehaviour
         {
             vsp = minlenght - transform.position.z;
         }
-
+        */
 
         //Calculates the speed for the camera
         Vector3 moveVertical = new Vector3(0, scrollSP, 0);
@@ -136,12 +137,32 @@ public class CameraMovementScript : MonoBehaviour
         moveFoward.Normalize();
         moveFoward *= vsp;
 
+        Debug.Log(moveFoward + " " + moveLateral + " " +  moveVertical);
+
         //Moves the Camera
         Vector3 move = moveVertical + moveLateral + moveFoward;
 
-        hsp = transform.position.y * -speed * Input.GetAxis("Horizontal");
+
 
         transform.position += move;
+
+        if ((transform.position.x) > maxlenght)
+        {
+            transform.position = new Vector3(maxlenght, transform.position.y, transform.position.z);
+        }
+        if ((transform.position.x) < minlenght)
+        {
+            transform.position = new Vector3(minlenght, transform.position.y, transform.position.z);
+        }
+        if ((transform.position.z) > maxwidth)
+        {
+            transform.position = new Vector3(transform.position.x, transform.position.y, maxwidth);
+        }
+        if ((transform.position.z) < minwidth)
+        {
+            transform.position = new Vector3(transform.position.x, transform.position.y, minwidth);
+        }
+
 
         GetCameraRotation();
 
