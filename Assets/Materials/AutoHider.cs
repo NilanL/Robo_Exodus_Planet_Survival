@@ -11,21 +11,89 @@ public class AutoHider : MonoBehaviour
     public bool doShow = true;
     public bool doScale = false;
 
+    public bool isPrinted = false;
+    private int fogOfWarLayerID;
+    private Collider[] lastColliders;
+    private bool isStaticObject;
+    private bool isStaticFogSet;
+    private int numOfUpdates;
+
     void Start()
     {
         mapObj = GameObject.Find("TerrainGroup_0/Clouds");
+        fogOfWarLayerID = 11;
+        lastColliders = null;
+        isStaticObject = !gameObject.tag.Equals("Selectable");
+        numOfUpdates = 0;
     }
 
     // Update is called once per frame
     void Update()
     {
-        dissapearCheck();
+        //if (!isStaticObject || (isStaticObject && !isStaticFogSet))
+            dissapearCheck();
     }
 
     private void dissapearCheck()
     {
-        foreach (Transform child in mapObj.transform)
+        /*
+        if (!isPrinted)
         {
+            var colliders = Physics.OverlapSphere(transform.position, 35f);
+            foreach (var collider in colliders)
+            {
+                Debug.Log($"{collider.gameObject.transform.name} is nearby");
+            }
+            isPrinted = true;
+        }*/
+
+        var colliders = Physics.OverlapSphere(transform.position, 35f, 1 << fogOfWarLayerID);
+        //Debug.Log(colliders.Length);
+
+
+        /*
+        if (isStaticObject)
+        {
+            if (lastColliders == null)
+            {
+                lastColliders = new Collider[1];
+            }
+
+            if (colliders.Length == lastColliders.Length)
+            {
+                bool isStandingStill = true;
+                for (int i = 0; i < colliders.Length; i++)
+                {
+                    if ()
+                    {
+                        isStandingStill = false;
+                        break;
+                    }
+                }   
+
+                if (isStandingStill)
+                {
+                    return;
+                }
+            }
+
+            lastColliders = new Collider[colliders.Length];
+            System.Array.Copy(colliders, lastColliders, colliders.Length);
+        }*/
+
+        foreach (Collider collider in colliders)
+        {
+            /*
+            if (isStaticObject)
+            {
+                var scaler = collider.gameObject.GetComponent<Scaler>();
+                scaler.StaticBuildingInRange();
+
+                if (scaler.IsFogCleared())
+                    return;
+            }*/
+
+            var child = collider.transform;
             float distance = Vector3.Distance(child.position, transform.position);
 
             if (distance < desiredDistance)
@@ -82,5 +150,11 @@ public class AutoHider : MonoBehaviour
                 }*/
             }
         }
+
+        if (numOfUpdates < 3)
+            numOfUpdates++;
+
+        if (isStaticObject && numOfUpdates >= 3)
+            isStaticFogSet = true;
     }
 }

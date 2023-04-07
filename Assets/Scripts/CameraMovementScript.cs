@@ -29,6 +29,8 @@ public class CameraMovementScript : MonoBehaviour
     public GameObject selectedGameObject;
     public List<GameObject> selectedGameObjects;
 
+    private int ignoreLayer;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -37,6 +39,7 @@ public class CameraMovementScript : MonoBehaviour
         selectedGameObject = GameObject.FindGameObjectWithTag("Ground");
         startP = Vector2.zero;
         endP = Vector2.zero;
+        ignoreLayer = 11; // Fog Of War Index
         DrawVisual();
     }
 
@@ -120,7 +123,7 @@ public class CameraMovementScript : MonoBehaviour
             selectionBox = new Rect();
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
-            if (Physics.Raycast(ray, out hit, 100))
+            if (Physics.Raycast(ray, out hit, 100, ~(1 << ignoreLayer)))
             {
                 if (hit.collider.gameObject.tag == "Building")
                 {
@@ -231,7 +234,7 @@ public class CameraMovementScript : MonoBehaviour
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
-            if (Physics.Raycast(ray, out hit, 100))
+            if (Physics.Raycast(ray, out hit, 100, ~(1 << ignoreLayer)))
             {
                 Debug.Log(hit.collider.gameObject.name);
                 selectedGameObject = hit.collider.gameObject;
@@ -259,7 +262,7 @@ public class CameraMovementScript : MonoBehaviour
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
-            if (Physics.Raycast(ray, out hit, 100))
+            if (Physics.Raycast(ray, out hit, 100, ~(1 << ignoreLayer)))
             {
                 if (!(selectedGameObject is null))
                 {
@@ -321,7 +324,7 @@ public class CameraMovementScript : MonoBehaviour
                     }
                     else
                     {
-                        Debug.Log(hit.collider.gameObject.name);
+                        Debug.Log(hit.collider.gameObject.name + " " + hit.collider.gameObject.layer);
                         foreach (var sgo in selectedGameObjects)
                         {
                             sgo.gameObject.GetComponent<Robot_Miner_Controller_Mouse>().IsSelected();
