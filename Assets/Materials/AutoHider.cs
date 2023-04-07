@@ -47,7 +47,7 @@ public class AutoHider : MonoBehaviour
             isPrinted = true;
         }*/
 
-        var colliders = Physics.OverlapSphere(transform.position, 35f, 1 << fogOfWarLayerID);
+        var colliders = Physics.OverlapSphere(transform.position, desiredDistance, 1 << fogOfWarLayerID);
         //Debug.Log(colliders.Length);
 
 

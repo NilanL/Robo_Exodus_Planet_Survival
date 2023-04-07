@@ -81,20 +81,7 @@ public class Scaler : MonoBehaviour
         Color lastColor = new Color(red, green, blue, aValue);
         material.color = lastColor;
 
-        //yield return new WaitForSeconds(0.5f);
-
-        //shadowObj.SetActive(active);
-
         coroutineIsrunning = false;
-    }
-
-    private Material ChangeAlpha(Material mat, float alphaVal)
-    {
-        Color oldColor = mat.color;
-        Color newColor = new Color(oldColor.r, oldColor.g, oldColor.b, alphaVal);
-        mat.SetColor("_Color", newColor);
-
-        return mat;
     }
 
     public void ToggleScale(bool setType)
