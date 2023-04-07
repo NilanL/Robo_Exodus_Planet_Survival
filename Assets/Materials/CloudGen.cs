@@ -30,7 +30,6 @@ public class CloudGen : MonoBehaviour
                 // Create cloud object
                 GameObject go = Instantiate(cloud, new Vector3(transform.position.x + x * cloudSize, transform.position.y, transform.position.z + y * cloudSize), Quaternion.identity);
 
-                //cloudObj = go.transform.GetChild(0).gameObject;
                 //shadowObj = go.transform.GetChild(1).gameObject;
 
                 // Rescale height to align with terrain
@@ -47,7 +46,9 @@ public class CloudGen : MonoBehaviour
 
                 go.name = "Cloud_" + x + "_" + y;
                 go.transform.localScale = new Vector3(initialSize, initialSize, initialSize);
-                //cloudObj.transform.localScale = new Vector3(initialSize, initialSize, initialSize);
+                cloudObj = go.transform.GetChild(0).gameObject;
+                cloudObj.transform.localRotation = Quaternion.Euler(new Vector3(Random.Range(-10f, 10f), Random.Range(-360f, 360f), Random.Range(-10f, 10f)));
+                cloudObj.transform.localPosition = new Vector3(cloudObj.transform.localPosition.x, Random.Range(cloudObj.transform.localPosition.y, cloudObj.transform.localPosition.y + 0.4f), cloudObj.transform.localPosition.z);
                 go.transform.SetParent(transform);
             }
         }
