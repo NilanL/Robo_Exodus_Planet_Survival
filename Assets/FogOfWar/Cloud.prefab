@@ -46,9 +46,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a921c5db58d0904dbc908b11dafab0d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scaleSpeed: 1
+  scaleSpeed: 2.5
   maxSize: 5
   initialSize: 10
+  shadowFadeIncrements: 0.75
 --- !u!65 &5426834229562700061
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -262,7 +263,7 @@ PrefabInstance:
     - target: {fileID: 5213807215458816256, guid: 52362658db7997741aaa439c0721925f,
         type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 52362658db7997741aaa439c0721925f, type: 3}

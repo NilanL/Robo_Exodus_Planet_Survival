@@ -2,12 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Scaler : MonoBehaviour
+public class CloudScaler : MonoBehaviour
 {
 
     public float scaleSpeed = 5;
     public float maxSize = 5;
     public float initialSize = 10;
+    public float shadowFadeIncrements = 0.5f;
     private bool inBuildingRange = false;
     private bool desiredState;
     private bool doScaling = false;
@@ -42,7 +43,7 @@ public class Scaler : MonoBehaviour
                 if (cloudObj.transform.localScale.x <= 0.1)
                 {
                     cloudObj.SetActive(false);
-                    StartCoroutine(FadeTo(0.0f, 0.9f, false));
+                    StartCoroutine(FadeTo(0.0f, shadowFadeIncrements, false));
                     doScaling = false;
                 }
             }
@@ -96,7 +97,7 @@ public class Scaler : MonoBehaviour
         if (!inBuildingRange)
         {
             var shadowMaterial = shadowObj.GetComponent<Renderer>().material;
-            StartCoroutine(FadeTo(0.65f, 0.9f, true));
+            StartCoroutine(FadeTo(0.5f, shadowFadeIncrements, true));
         }
     }
 
