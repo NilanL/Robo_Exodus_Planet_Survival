@@ -129,6 +129,15 @@ public class Stats : MonoBehaviour
             case Unit_Names.Main_Base:
                 InitializeMainBaseBuilding();
                 break;
+            case Unit_Names.House:
+                InitializeHouseBuilding();
+                break;
+            case Unit_Names.Turret:
+                InitializeTurretBuilding();
+                break;
+            case Unit_Names.WallGate:
+                InitializeWallGateBuilding();
+                break;
         }
     }
 
@@ -196,6 +205,33 @@ public class Stats : MonoBehaviour
     private void InitializeMainBaseBuilding()
     {
         var minerstats = gm.GetComponent<Main_Base_Stats>();
+        maxHealth = minerstats.getMaxHealth();
+        unitAtk = minerstats.GetAtk();
+        unitDef = minerstats.GetDef();
+        atkSpd = minerstats.GetAtkSpeed();
+    }
+
+    private void InitializeHouseBuilding()
+    {
+        var minerstats = gm.GetComponent<House_Stats>();
+        maxHealth = minerstats.getMaxHealth();
+        unitAtk = minerstats.GetAtk();
+        unitDef = minerstats.GetDef();
+        atkSpd = minerstats.GetAtkSpeed();
+    }
+
+    private void InitializeTurretBuilding()
+    {
+        var minerstats = gm.GetComponent<Turret_Stats>();
+        maxHealth = minerstats.getMaxHealth();
+        unitAtk = minerstats.GetAtk();
+        unitDef = minerstats.GetDef();
+        atkSpd = minerstats.GetAtkSpeed();
+    }
+
+    private void InitializeWallGateBuilding()
+    {
+        var minerstats = gm.GetComponent<WallGate_Stats>();
         maxHealth = minerstats.getMaxHealth();
         unitAtk = minerstats.GetAtk();
         unitDef = minerstats.GetDef();
