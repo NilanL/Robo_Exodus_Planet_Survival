@@ -12,70 +12,68 @@ public class FogOfWarDetectionController : MonoBehaviour
     public bool doScale = false;
 
     public bool isPrinted = false;
-    private int fogOfWarLayerID;
+    private int fogOfWarLayer;
+    /*
+    private LayerMask enemyLayerMask;
     private Collider[] lastColliders;
     private bool isStaticObject;
     private bool isStaticFogSet;
     private int numOfUpdates;
+    */
 
     void Start()
     {
         mapObj = GameObject.Find("TerrainGroup_0/Clouds");
-        fogOfWarLayerID = 11;
+        fogOfWarLayer = LayerMask.GetMask("FogOfWar");
+        /*
+        enemyLayerMask = LayerMask.GetMask("EnemyUnit");
         lastColliders = null;
         isStaticObject = !gameObject.tag.Equals("Selectable");
         numOfUpdates = 0;
+        */
     }
 
     // Update is called once per frame
     void Update()
     {
-        dissapearCheck();
+        FogOfWarCheck();
     }
 
-    private void dissapearCheck()
+    private void FogOfWarCheck()
     {
-        var colliders = Physics.OverlapSphere(transform.position, desiredDistance, 1 << fogOfWarLayerID);
+        var colliders = Physics.OverlapSphere(transform.position, desiredDistance + 1f, fogOfWarLayer);
 
         foreach (Collider collider in colliders)
         {
-
-            var child = collider.transform;
+            Transform child = collider.transform;
+            FogScaler scaler = child.GetComponent<FogScaler>();
             float distance = Vector3.Distance(child.position, transform.position);
 
             if (distance < desiredDistance)
             {
-                if (!doShow)//Are we showing or hiding the object at this desired distance, if false we are showing objects
+                if (!doShow) //Are we showing or hiding the object at this desired distance, if false we are showing objects
                 {
-                    if (!child.gameObject.activeInHierarchy)//Childs not active, activate it
+                    if (!child.gameObject.activeInHierarchy) //Childs not active, activate it
                     {
                         child.gameObject.SetActive(true);
                     }
                 }
-                else//Childs is within desired distance but we want to hide it
+                else //Childs is within desired distance but we want to hide it
                 {
-                    if (child.gameObject.activeInHierarchy && !doScale)//Childs active and we are not scaling, let's hide it
+                    if (child.gameObject.activeInHierarchy && !doScale) //Childs active and we are not scaling, let's hide it
                     {
                         child.gameObject.SetActive(false);
                     }
-                    else if (child.gameObject.activeInHierarchy && doScale)//Childs active and we are scaling, lets hide it
+                    else if (child.gameObject.activeInHierarchy && doScale) //Childs active and we are scaling, lets hide it
                     {
-                        child.GetComponent<CloudScaler>().ToggleScale(false);
+                        scaler.SetActive(false, child.gameObject.GetInstanceID());
                     }
                 }
             }
             else
             {
-                child.GetComponent<CloudScaler>().AllowShadow();
+                scaler.SetInactive(child.gameObject.GetInstanceID());
             }
         }
-
-        /*
-        if (numOfUpdates < 3)
-            numOfUpdates++;
-
-        if (isStaticObject && numOfUpdates >= 3)
-            isStaticFogSet = true;
-        */
     }
 }
