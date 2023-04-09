@@ -568,7 +568,9 @@ GameObject:
   - component: {fileID: 3872795293762214904}
   - component: {fileID: 6096328773457536208}
   - component: {fileID: 2495852332337354399}
-  - component: {fileID: 6870540882467260841}
+  - component: {fileID: 6549958694623277282}
+  - component: {fileID: 4357960249707731723}
+  - component: {fileID: 2270536437672246759}
   m_Layer: 0
   m_Name: Sleemasi_House_1
   m_TagString: EnemyBuilding
@@ -631,7 +633,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 6.41933, y: 6.4199996, z: 7.0305667}
   m_Center: {x: 0.08308716, y: 1.6400002, z: -3.2619386}
---- !u!114 &6870540882467260841
+--- !u!114 &6549958694623277282
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -640,12 +642,38 @@ MonoBehaviour:
   m_GameObject: {fileID: 7693795421962689745}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 82676d964f82f974481ba68b42618783, type: 3}
+  m_Script: {fileID: 11500000, guid: 9c5edf43666820245a10cfc241b0707e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   healthbar: {fileID: 671349798091161744}
   currentHealth: 0
-  maxHealth: 500
+  maxHealth: 0
+--- !u!114 &4357960249707731723
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7693795421962689745}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2907ce02e59e5f0439b22e2497fa465e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Prefab: {fileID: 0}
+--- !u!114 &2270536437672246759
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7693795421962689745}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88ec9ecfb8a556d4684d045ebea34837, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unit_Name: 10
 --- !u!1001 &1740693271476464614
 PrefabInstance:
   m_ObjectHideFlags: 0

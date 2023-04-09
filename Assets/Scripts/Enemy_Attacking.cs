@@ -5,7 +5,7 @@ using UnityEngine;
 public class Enemy_Attacking : MonoBehaviour
 {
     private GameObject target;
-    Wolf_Stats stats_wolf;
+    Stats stats_wolf;
     bool attacking = false;
     bool canAttack = false;
     bool startAttack = false;
@@ -14,7 +14,7 @@ public class Enemy_Attacking : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        stats_wolf = GetComponent<Wolf_Stats>();
+        stats_wolf = GetComponent<Stats>();
         animator = GetComponent<Animator>();
     }
 
@@ -34,7 +34,7 @@ public class Enemy_Attacking : MonoBehaviour
 
     void Attacking()
     {
-        if (Vector3.Distance(target.transform.position, transform.position) < stats_wolf.GetRange())
+        if (Vector3.Distance(target.transform.position, transform.position) < stats_wolf.getRange())
         {
             if (canAttack || startAttack)
             {
@@ -83,9 +83,9 @@ public class Enemy_Attacking : MonoBehaviour
 
     int getDefence()
     {
-        if (target.GetComponent<MinerStats>())
+        if (target.GetComponent<Stats>())
         {
-            var stats = target.GetComponent<MinerStats>();
+            var stats = target.GetComponent<Stats>();
             var def = stats.GetDef();
             return def;
         }

@@ -556,13 +556,13 @@ GameObject:
   - component: {fileID: 7587671779473618569}
   - component: {fileID: 7587671779473618574}
   - component: {fileID: 6831896435131087568}
+  - component: {fileID: 4560695272908428969}
   - component: {fileID: 6831896435131087569}
   - component: {fileID: 6831896435131087570}
-  - component: {fileID: 6831896435131087571}
   - component: {fileID: 6831896435131087580}
   - component: {fileID: 7629920138651680553}
   - component: {fileID: -7756932545122791483}
-  - component: {fileID: -480836463646613451}
+  - component: {fileID: 1944052082005572624}
   m_Layer: 0
   m_Name: robot_miner
   m_TagString: Selectable
@@ -665,6 +665,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 3, y: 3, z: 3}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &4560695272908428969
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7587671779473618568}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2907ce02e59e5f0439b22e2497fa465e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Prefab: {fileID: 0}
 --- !u!114 &6831896435131087569
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -694,19 +707,6 @@ MonoBehaviour:
   healthbar: {fileID: 8880567100467710827}
   currentHealth: 0
   maxHealth: 0
---- !u!114 &6831896435131087571
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7587671779473618568}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9d8d454e6a21e754ea5d82c399d92854, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  robotMinerPrefab: {fileID: 0}
 --- !u!114 &6831896435131087580
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -912,7 +912,7 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &-480836463646613451
+--- !u!114 &1944052082005572624
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -921,14 +921,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 7587671779473618568}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e4dad76f290c9f048a6f3db1070466cf, type: 3}
+  m_Script: {fileID: 11500000, guid: ed55841de857a4d46a5cf4fe382333f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mapObj: {fileID: 4505542595030087559, guid: b14634f2de9bf3544bb0fc9d63c52902, type: 3}
-  desiredDistance: 35
-  maxDistance: 100
-  doShow: 1
-  doScale: 1
 --- !u!1 &8033972813397347374
 GameObject:
   m_ObjectHideFlags: 0

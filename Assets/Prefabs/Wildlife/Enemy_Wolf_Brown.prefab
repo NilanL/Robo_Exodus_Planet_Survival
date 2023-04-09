@@ -300,11 +300,11 @@ GameObject:
   - component: {fileID: 1994663102604416446}
   - component: {fileID: 1994663102604416433}
   - component: {fileID: 1994663102604416432}
-  - component: {fileID: 1994663102604416435}
   - component: {fileID: 1994663102604416434}
-  - component: {fileID: 1994663102604416437}
   - component: {fileID: 1994663102604416436}
   - component: {fileID: 1994663102604416439}
+  - component: {fileID: 4888292730659352216}
+  - component: {fileID: 1662500192300920149}
   m_Layer: 0
   m_Name: Enemy_Wolf_Brown
   m_TagString: Enemy
@@ -383,18 +383,6 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &1994663102604416435
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1994663102604416438}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9abe4f1b3ff721b4a9f83e9574aa7d36, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1994663102604416434
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -405,18 +393,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 882202fd2a5f28e47954a1ef1ac4d1f2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1994663102604416437
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1994663102604416438}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 909edd2edfbf38747a37e34c66b01a70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &1994663102604416436
@@ -447,6 +423,31 @@ MonoBehaviour:
   healthbar: {fileID: 1994663103804356055}
   currentHealth: 0
   maxHealth: 0
+--- !u!114 &4888292730659352216
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1994663102604416438}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48a1d561c97c1134285f93d2a5e2bef7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1662500192300920149
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1994663102604416438}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2907ce02e59e5f0439b22e2497fa465e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Prefab: {fileID: 0}
 --- !u!1 &1994663102667058699
 GameObject:
   m_ObjectHideFlags: 0

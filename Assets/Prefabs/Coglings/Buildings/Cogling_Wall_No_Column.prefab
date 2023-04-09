@@ -11,7 +11,9 @@ GameObject:
   - component: {fileID: 7216051340454974347}
   - component: {fileID: 8462652319728074355}
   - component: {fileID: 789307896517772038}
-  - component: {fileID: 183354416829593765}
+  - component: {fileID: 4609213276799584311}
+  - component: {fileID: 4935132064023739305}
+  - component: {fileID: 6093382977574822805}
   m_Layer: 0
   m_Name: Cogling_Wall_No_Column
   m_TagString: EnemyBuilding
@@ -69,7 +71,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 14.1, y: 11, z: 3}
   m_Center: {x: -1.2, y: 3.5, z: 0}
---- !u!114 &183354416829593765
+--- !u!114 &4609213276799584311
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -78,12 +80,38 @@ MonoBehaviour:
   m_GameObject: {fileID: 520668927584109619}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 82676d964f82f974481ba68b42618783, type: 3}
+  m_Script: {fileID: 11500000, guid: 9c5edf43666820245a10cfc241b0707e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   healthbar: {fileID: 1352282471178123724}
   currentHealth: 0
-  maxHealth: 1500
+  maxHealth: 0
+--- !u!114 &4935132064023739305
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 520668927584109619}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2907ce02e59e5f0439b22e2497fa465e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Prefab: {fileID: 0}
+--- !u!114 &6093382977574822805
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 520668927584109619}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88ec9ecfb8a556d4684d045ebea34837, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unit_Name: 11
 --- !u!1 &691644960548480496
 GameObject:
   m_ObjectHideFlags: 0

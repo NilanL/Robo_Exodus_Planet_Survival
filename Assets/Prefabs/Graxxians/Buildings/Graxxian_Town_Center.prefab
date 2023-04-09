@@ -86,8 +86,10 @@ GameObject:
   m_Component:
   - component: {fileID: 5819755127507026663}
   - component: {fileID: 1270687912524081399}
-  - component: {fileID: 4845872933551418939}
   - component: {fileID: 1779982777774924143}
+  - component: {fileID: 2271694338263703881}
+  - component: {fileID: 3546897745087666047}
+  - component: {fileID: 3084854443406393346}
   m_Layer: 0
   m_Name: Graxxian_Town_Center
   m_TagString: EnemyBuilding
@@ -188,21 +190,6 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: 5.432426, y: -10.76574, z: 9.815887}
   m_TimeToStationary: 0.5
---- !u!114 &4845872933551418939
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1242445957797069291}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 82676d964f82f974481ba68b42618783, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  healthbar: {fileID: 9219663220941733264}
-  currentHealth: 0
-  maxHealth: 2000
 --- !u!136 &1779982777774924143
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -217,6 +204,47 @@ CapsuleCollider:
   m_Height: 33.45966
   m_Direction: 1
   m_Center: {x: 5.432426, y: -10.76574, z: 9.815887}
+--- !u!114 &2271694338263703881
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1242445957797069291}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c5edf43666820245a10cfc241b0707e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthbar: {fileID: 9219663220941733264}
+  currentHealth: 0
+  maxHealth: 0
+--- !u!114 &3546897745087666047
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1242445957797069291}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2907ce02e59e5f0439b22e2497fa465e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Prefab: {fileID: 0}
+--- !u!114 &3084854443406393346
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1242445957797069291}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88ec9ecfb8a556d4684d045ebea34837, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unit_Name: 8
 --- !u!1 &2945723126538545598
 GameObject:
   m_ObjectHideFlags: 0

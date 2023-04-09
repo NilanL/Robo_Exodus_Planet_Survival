@@ -4668,7 +4668,9 @@ GameObject:
   - component: {fileID: 8132349541290874934}
   - component: {fileID: 8411656157473492728}
   - component: {fileID: 5670007089494075935}
-  - component: {fileID: 4271772108135434235}
+  - component: {fileID: 1850607732582464769}
+  - component: {fileID: 3541655678656809498}
+  - component: {fileID: 583252692135844577}
   m_Layer: 0
   m_Name: Cogling_House_1
   m_TagString: EnemyBuilding
@@ -4743,7 +4745,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 8.721222, y: 10.79324, z: 8.847412}
   m_Center: {x: 2.087082, y: -2.797672, z: 2.042725}
---- !u!114 &4271772108135434235
+--- !u!114 &1850607732582464769
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -4752,12 +4754,38 @@ MonoBehaviour:
   m_GameObject: {fileID: 1942300920393013544}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 82676d964f82f974481ba68b42618783, type: 3}
+  m_Script: {fileID: 11500000, guid: 9c5edf43666820245a10cfc241b0707e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   healthbar: {fileID: 1673920813656395620}
   currentHealth: 0
-  maxHealth: 500
+  maxHealth: 0
+--- !u!114 &3541655678656809498
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1942300920393013544}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2907ce02e59e5f0439b22e2497fa465e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Prefab: {fileID: 0}
+--- !u!114 &583252692135844577
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1942300920393013544}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88ec9ecfb8a556d4684d045ebea34837, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unit_Name: 10
 --- !u!1 &4483718374873311356
 GameObject:
   m_ObjectHideFlags: 0

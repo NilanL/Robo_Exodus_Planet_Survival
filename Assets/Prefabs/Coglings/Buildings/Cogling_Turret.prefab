@@ -125,8 +125,10 @@ GameObject:
   - component: {fileID: 7736200932180571652}
   - component: {fileID: 5507356481994302338}
   - component: {fileID: 9095541579322100400}
-  - component: {fileID: 2078787998824805029}
   - component: {fileID: -4154737224156779289}
+  - component: {fileID: 8512623536623160088}
+  - component: {fileID: 8207504967601163145}
+  - component: {fileID: 1738222199221806736}
   m_Layer: 0
   m_Name: Cogling_Turret
   m_TagString: EnemyBuilding
@@ -185,21 +187,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 6.092186, y: 15.19318, z: 5.281006}
   m_Center: {x: -0.02648163, y: 7.096589, z: -0.6694336}
---- !u!114 &2078787998824805029
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5435008719165858219}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 82676d964f82f974481ba68b42618783, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  healthbar: {fileID: 2607847247691465312}
-  currentHealth: 0
-  maxHealth: 1250
 --- !u!82 &-4154737224156779289
 AudioSource:
   m_ObjectHideFlags: 0
@@ -296,6 +283,47 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &8512623536623160088
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5435008719165858219}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c5edf43666820245a10cfc241b0707e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthbar: {fileID: 2607847247691465312}
+  currentHealth: 0
+  maxHealth: 0
+--- !u!114 &8207504967601163145
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5435008719165858219}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2907ce02e59e5f0439b22e2497fa465e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Prefab: {fileID: 0}
+--- !u!114 &1738222199221806736
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5435008719165858219}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88ec9ecfb8a556d4684d045ebea34837, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unit_Name: 9
 --- !u!1 &5826023423774703136
 GameObject:
   m_ObjectHideFlags: 0

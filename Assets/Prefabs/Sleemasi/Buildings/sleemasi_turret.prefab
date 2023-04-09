@@ -180,8 +180,10 @@ GameObject:
   - component: {fileID: 2560515660262623281}
   - component: {fileID: 9151333008282122703}
   - component: {fileID: 7994315598192679485}
-  - component: {fileID: 130049024203208477}
   - component: {fileID: -6835098724184767142}
+  - component: {fileID: 4849170518120719512}
+  - component: {fileID: 3920952309511562758}
+  - component: {fileID: 2940689782901007275}
   m_Layer: 0
   m_Name: sleemasi_turret
   m_TagString: EnemyBuilding
@@ -255,21 +257,6 @@ CapsuleCollider:
   m_Height: 15.93
   m_Direction: 1
   m_Center: {x: 0, y: 6.09, z: 0}
---- !u!114 &130049024203208477
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3407446719780975775}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 82676d964f82f974481ba68b42618783, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  healthbar: {fileID: 6524798561653927208}
-  currentHealth: 0
-  maxHealth: 1250
 --- !u!82 &-6835098724184767142
 AudioSource:
   m_ObjectHideFlags: 0
@@ -366,6 +353,47 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &4849170518120719512
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3407446719780975775}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c5edf43666820245a10cfc241b0707e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthbar: {fileID: 6524798561653927208}
+  currentHealth: 0
+  maxHealth: 0
+--- !u!114 &3920952309511562758
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3407446719780975775}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2907ce02e59e5f0439b22e2497fa465e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Prefab: {fileID: 0}
+--- !u!114 &2940689782901007275
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3407446719780975775}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88ec9ecfb8a556d4684d045ebea34837, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unit_Name: 9
 --- !u!1 &3728675082817132538
 GameObject:
   m_ObjectHideFlags: 0

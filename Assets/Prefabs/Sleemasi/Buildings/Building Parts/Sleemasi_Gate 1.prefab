@@ -276,7 +276,9 @@ GameObject:
   - component: {fileID: 7293445542133881205}
   - component: {fileID: 6019033396527152019}
   - component: {fileID: 4588705862934780307}
-  - component: {fileID: 5979119401706328832}
+  - component: {fileID: 4932750637001678274}
+  - component: {fileID: 6076264185283422830}
+  - component: {fileID: 7015249275312142628}
   m_Layer: 0
   m_Name: Sleemasi_Gate 1
   m_TagString: EnemyBuilding
@@ -330,7 +332,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2.04, y: 11.6, z: 12.7}
   m_Center: {x: 0, y: 0, z: 1.7}
---- !u!114 &5979119401706328832
+--- !u!114 &4932750637001678274
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -339,12 +341,38 @@ MonoBehaviour:
   m_GameObject: {fileID: 4950138395138154230}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 82676d964f82f974481ba68b42618783, type: 3}
+  m_Script: {fileID: 11500000, guid: 9c5edf43666820245a10cfc241b0707e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   healthbar: {fileID: 8740341265567070694}
   currentHealth: 0
-  maxHealth: 1500
+  maxHealth: 0
+--- !u!114 &6076264185283422830
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4950138395138154230}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2907ce02e59e5f0439b22e2497fa465e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Prefab: {fileID: 0}
+--- !u!114 &7015249275312142628
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4950138395138154230}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88ec9ecfb8a556d4684d045ebea34837, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unit_Name: 11
 --- !u!1001 &5992369222995228939
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -568,7 +568,9 @@ GameObject:
   - component: {fileID: 2219508403191645794}
   - component: {fileID: 6187093977356685114}
   - component: {fileID: 2948322418976148876}
-  - component: {fileID: 6794299765340377532}
+  - component: {fileID: 2972791966511756905}
+  - component: {fileID: 7354611743561229380}
+  - component: {fileID: 60160061878878617}
   m_Layer: 0
   m_Name: Sleemasi_House_2
   m_TagString: EnemyBuilding
@@ -632,7 +634,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 6.41933, y: 6.4199996, z: 7.0305667}
   m_Center: {x: 0.08308716, y: 1.6400002, z: -3.2619386}
---- !u!114 &6794299765340377532
+--- !u!114 &2972791966511756905
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -641,12 +643,38 @@ MonoBehaviour:
   m_GameObject: {fileID: 8614761448660986862}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 82676d964f82f974481ba68b42618783, type: 3}
+  m_Script: {fileID: 11500000, guid: 9c5edf43666820245a10cfc241b0707e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   healthbar: {fileID: 4446315346934373244}
   currentHealth: 0
-  maxHealth: 500
+  maxHealth: 0
+--- !u!114 &7354611743561229380
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8614761448660986862}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2907ce02e59e5f0439b22e2497fa465e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Prefab: {fileID: 0}
+--- !u!114 &60160061878878617
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8614761448660986862}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88ec9ecfb8a556d4684d045ebea34837, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unit_Name: 10
 --- !u!1001 &2070792509516045317
 PrefabInstance:
   m_ObjectHideFlags: 0

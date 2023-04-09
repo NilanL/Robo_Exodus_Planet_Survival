@@ -276,7 +276,9 @@ GameObject:
   - component: {fileID: 2498768365308216298}
   - component: {fileID: 608161117025183903}
   - component: {fileID: 91106407302400049}
-  - component: {fileID: 2595875873215540342}
+  - component: {fileID: 5509598486139411614}
+  - component: {fileID: -6360228486546567885}
+  - component: {fileID: 398286691706160549}
   m_Layer: 0
   m_Name: Graxxian_Gate
   m_TagString: EnemyBuilding
@@ -336,7 +338,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 12.09342, y: 11.76095, z: 2.20462}
   m_Center: {x: 27.01157, y: 2.395852, z: 69.47128}
---- !u!114 &2595875873215540342
+--- !u!114 &5509598486139411614
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -345,12 +347,38 @@ MonoBehaviour:
   m_GameObject: {fileID: 6368717123862675723}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 82676d964f82f974481ba68b42618783, type: 3}
+  m_Script: {fileID: 11500000, guid: 9c5edf43666820245a10cfc241b0707e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   healthbar: {fileID: 7359004103499966921}
   currentHealth: 0
-  maxHealth: 1500
+  maxHealth: 0
+--- !u!114 &-6360228486546567885
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6368717123862675723}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2907ce02e59e5f0439b22e2497fa465e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Prefab: {fileID: 0}
+--- !u!114 &398286691706160549
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6368717123862675723}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88ec9ecfb8a556d4684d045ebea34837, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unit_Name: 11
 --- !u!1001 &1550247668399302866
 PrefabInstance:
   m_ObjectHideFlags: 0
