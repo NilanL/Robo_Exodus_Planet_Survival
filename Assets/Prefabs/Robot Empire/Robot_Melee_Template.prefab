@@ -589,6 +589,7 @@ GameObject:
   - component: {fileID: 2851683202378026166}
   - component: {fileID: 3739286850730616940}
   - component: {fileID: 8287502577798518412}
+  - component: {fileID: -4468483350744843492}
   m_Layer: 0
   m_Name: Robot_Melee_Template
   m_TagString: Selectable
@@ -734,6 +735,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed55841de857a4d46a5cf4fe382333f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-4468483350744843492
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7724062560761657019}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4dad76f290c9f048a6f3db1070466cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mapObj: {fileID: 0}
+  desiredDistance: 50
+  maxDistance: 100
+  doShow: 1
+  doScale: 1
+  isPrinted: 0
 --- !u!1 &8398779462181078360
 GameObject:
   m_ObjectHideFlags: 0

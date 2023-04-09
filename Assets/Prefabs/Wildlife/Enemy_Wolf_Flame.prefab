@@ -1835,6 +1835,7 @@ GameObject:
   - component: {fileID: 2067591350690275344}
   - component: {fileID: 2067591350690275347}
   - component: {fileID: 6544553847609391546}
+  - component: {fileID: 7296410044650807267}
   m_Layer: 0
   m_Name: Enemy_Wolf_Flame
   m_TagString: Enemy
@@ -1976,5 +1977,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 48a1d561c97c1134285f93d2a5e2bef7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &7296410044650807267
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2067591350690275346}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69ac351c1b82a384f8e58839bbd75456, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

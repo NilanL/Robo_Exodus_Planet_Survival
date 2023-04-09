@@ -1442,6 +1442,7 @@ GameObject:
   - component: {fileID: 602964325799524619}
   - component: {fileID: 8946371071514809004}
   - component: {fileID: 8543723363581629729}
+  - component: {fileID: 6302742855187659608}
   m_Layer: 0
   m_Name: Enemy_Wolf_Aura
   m_TagString: Enemy
@@ -1585,6 +1586,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Prefab: {fileID: 0}
+--- !u!114 &6302742855187659608
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 443298954681948534}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69ac351c1b82a384f8e58839bbd75456, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &443298954681948536
 GameObject:
   m_ObjectHideFlags: 0

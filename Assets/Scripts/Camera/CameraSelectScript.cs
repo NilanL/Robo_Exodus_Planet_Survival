@@ -25,6 +25,8 @@ public class CameraSelectScript : MonoBehaviour
     public GameObject selectedGameObject;
     public List<GameObject> selectedGameObjects;
 
+    private LayerMask fogOfWarLayer;
+
     bool keydown = false;
 
     void Start()
@@ -32,6 +34,7 @@ public class CameraSelectScript : MonoBehaviour
         myCam = Camera.main;
         selectedGameObjects = new List<GameObject>();
         selectedGameObject = GameObject.FindGameObjectWithTag("Ground");
+        fogOfWarLayer = LayerMask.GetMask("FogOfWar");
         startP = Vector2.zero;
         endP = Vector2.zero;
         DrawVisual();
@@ -55,7 +58,7 @@ public class CameraSelectScript : MonoBehaviour
             selectionBox = new Rect();
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
-            if (Physics.Raycast(ray, out hit, 100))
+            if (Physics.Raycast(ray, out hit, 100, ~fogOfWarLayer))
             {
                 var hitag = hit.collider.gameObject.tag;
 
@@ -94,7 +97,7 @@ public class CameraSelectScript : MonoBehaviour
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
-            if (Physics.Raycast(ray, out hit, 100))
+            if (Physics.Raycast(ray, out hit, 100, ~fogOfWarLayer))
             {
                 Debug.Log(hit.collider.gameObject.name);
                 selectedGameObject = hit.collider.gameObject;
@@ -122,7 +125,7 @@ public class CameraSelectScript : MonoBehaviour
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
-            if (Physics.Raycast(ray, out hit, 100))
+            if (Physics.Raycast(ray, out hit, 100, ~fogOfWarLayer))
             {
                 if (!(selectedGameObject is null))
                 {

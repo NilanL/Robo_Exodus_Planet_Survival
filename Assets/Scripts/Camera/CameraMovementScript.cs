@@ -11,11 +11,11 @@ public class CameraMovementScript : MonoBehaviour
     float maxHeight = 55f;
     float minHeight = 20f;
 
-    float maxlenght = 500f;
-    float minlenght = -500f;
+    public float maxlenght = 500f;
+    public float minlenght = -500f;
 
-    float maxwidth = 500f;
-    float minwidth = -500f;
+    public float maxwidth = 500f;
+    public float minwidth = -500f;
 
 
     [SerializeField]
@@ -137,7 +137,7 @@ public class CameraMovementScript : MonoBehaviour
         moveFoward.Normalize();
         moveFoward *= vsp;
 
-        Debug.Log(moveFoward + " " + moveLateral + " " +  moveVertical);
+        //Debug.Log(moveFoward + " " + moveLateral + " " +  moveVertical);
 
         //Moves the Camera
         Vector3 move = moveVertical + moveLateral + moveFoward;

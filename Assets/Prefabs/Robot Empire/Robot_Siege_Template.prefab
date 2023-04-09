@@ -301,6 +301,7 @@ GameObject:
   - component: {fileID: 4897649328958553787}
   - component: {fileID: 5966297438437892580}
   - component: {fileID: -8441812421584896282}
+  - component: {fileID: -8470193183397557190}
   m_Layer: 0
   m_Name: Robot_Siege_Template
   m_TagString: Selectable
@@ -456,6 +457,24 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &-8470193183397557190
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5785140790295871378}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4dad76f290c9f048a6f3db1070466cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mapObj: {fileID: 0}
+  desiredDistance: 50
+  maxDistance: 100
+  doShow: 1
+  doScale: 1
+  isPrinted: 0
 --- !u!1 &6692501951946264928
 GameObject:
   m_ObjectHideFlags: 0
