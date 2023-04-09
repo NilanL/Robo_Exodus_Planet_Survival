@@ -99,7 +99,7 @@ public class TaskManager : MonoBehaviour
         if (!(target == null))
         {
             var damage = stats.GetAtk() - getDefence();
-            Debug.Log(damage);
+            //Debug.Log(damage);
             target.GetComponent<Unit_Health>().dmgResource(damage, this.gameObject);
             canAttack = true;
         }
