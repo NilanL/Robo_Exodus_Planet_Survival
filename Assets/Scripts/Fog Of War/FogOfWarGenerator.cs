@@ -48,7 +48,7 @@ public class FogOfWarGenerator : MonoBehaviour
                     RaycastHit hit;
                     if (Physics.Raycast(ray, out hit, maxDistance, layerMask))
                     {
-                        if (hit.collider.gameObject == terrain.gameObject)
+                        if (hit.collider.gameObject == terrain.gameObject || hit.collider.gameObject.tag == "MainBaseBounds")
                         {
                             go.transform.position = new Vector3(fogGen_x + x * cloudSize, (overallCloudHeight + (overallCloudHeight - hit.distance)) - 90, fogGen_z + z * cloudSize);
                         }
