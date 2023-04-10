@@ -9,20 +9,26 @@ public class AddTroopTesting : MonoBehaviour
     GameObject gm;
     int num;
     public GameObject objectToSpawn;
+    GameManager gameManger;
 
     // Start is called before the first frame update
     void Start()
     {
         textField = GameObject.Find("Troops").GetComponent<Text>();
-        gm = GameObject.Find("GameManager");        
+        gm = GameObject.Find("GameManager");
+        gameManger = gm.GetComponent<GameManager>();
 
     }
 
     void Update()
     {
-        textField.text = "Troops " + gm.GetComponent<GameManager>().Unit_count + "/20";
+        UpdateTroopCount();
     }
 
+    public void UpdateTroopCount()
+    {
+        textField.text = "Troops " + gameManger.Unit_count + "/" + gameManger.MaxUnitCount;
+    }
 
     public void Spawn_miner()
     {
@@ -39,7 +45,6 @@ public class AddTroopTesting : MonoBehaviour
             var spawnedMiner = Instantiate(objectToSpawn, objectToSpawnAt.transform.position, objectToSpawnAt.transform.rotation);
 
             gm.GetComponent<GameManager>().Ironite -= 100;
-
         }
     }
 
@@ -58,7 +63,6 @@ public class AddTroopTesting : MonoBehaviour
             var spawnedMiner = Instantiate(objectToSpawn, objectToSpawnAt.transform.position, objectToSpawnAt.transform.rotation);
 
             gm.GetComponent<GameManager>().Ironite -= 100;
-
         }
     }
 
@@ -77,7 +81,6 @@ public class AddTroopTesting : MonoBehaviour
             var spawnedMiner = Instantiate(objectToSpawn, objectToSpawnAt.transform.position, objectToSpawnAt.transform.rotation);
 
             gm.GetComponent<GameManager>().Ironite -= 100;
-
         }
     }
 

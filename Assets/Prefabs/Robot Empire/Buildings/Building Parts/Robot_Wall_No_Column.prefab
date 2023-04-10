@@ -11,9 +11,10 @@ GameObject:
   - component: {fileID: 7007722779030135461}
   - component: {fileID: 3885568485946440965}
   - component: {fileID: 4313098630842613879}
+  - component: {fileID: -67007846975126329}
   m_Layer: 0
   m_Name: Robot_Wall_No_Column
-  m_TagString: Untagged
+  m_TagString: Building
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -68,6 +69,19 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: -3.110901, y: 4.439046, z: -0.04214478}
   m_TimeToStationary: 0.5
+--- !u!114 &-67007846975126329
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1159942643001462419}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43d99cc5a002ef649afae5746ecc3fb6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buildingName: 4
 --- !u!1001 &1903353390169575648
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -15,6 +15,7 @@ TagManager:
   - Ground
   - EnemyBuilding
   - Cogling
+  - MainBaseBounds
   layers:
   - Default
   - TransparentFX

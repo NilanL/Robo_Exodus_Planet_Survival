@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 
 public class CameraSelectScript : MonoBehaviour
@@ -42,7 +43,6 @@ public class CameraSelectScript : MonoBehaviour
 
     void Update()
     {
-
         if (Input.GetKeyDown("left shift"))
         {
             keydown = true;
@@ -54,6 +54,10 @@ public class CameraSelectScript : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0) && !keydown)
         {
+            // Stops raycast from passing through UI
+            if (EventSystem.current.IsPointerOverGameObject())
+                return;
+
             startP = Input.mousePosition;
             selectionBox = new Rect();
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -62,7 +66,7 @@ public class CameraSelectScript : MonoBehaviour
             {
                 var hitag = hit.collider.gameObject.tag;
 
-                switch(hitag)
+                switch (hitag)
                 {
                     case "Building":
                         BuildingSelect(hit);
@@ -123,6 +127,10 @@ public class CameraSelectScript : MonoBehaviour
 
         if (Input.GetMouseButtonDown(1))
         {
+            // Stops raycast from passing through UI
+            if (EventSystem.current.IsPointerOverGameObject())
+                return;
+
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
             if (Physics.Raycast(ray, out hit, 100, ~fogOfWarLayer))
@@ -134,7 +142,7 @@ public class CameraSelectScript : MonoBehaviour
                     {
                         if (hit.collider.gameObject.GetComponent<ResourceType>())
                         {
-                            
+
                             var hb = hit.collider.gameObject.transform.Find("Healthbar Canvas");
                             if (hb)
                                 hb.gameObject.SetActive(true);
@@ -154,7 +162,7 @@ public class CameraSelectScript : MonoBehaviour
                             var hb = hit.collider.gameObject.transform.Find("Healthbar Canvas");
                             if (hb)
                                 hb.gameObject.SetActive(true);
-                            switch(unit)
+                            switch (unit)
                             {
                                 case Unit_Names.Miner:
                                     selectedGameObject.gameObject.GetComponent<Robot_Miner_Controller_Mouse>().target = hit.transform;
@@ -175,7 +183,7 @@ public class CameraSelectScript : MonoBehaviour
                         }
                         else
                         {
-                            switch(unit)
+                            switch (unit)
                             {
                                 case Unit_Names.Miner:
                                     selectedGameObject.gameObject.GetComponent<Robot_Miner_Controller_Mouse>().IsSelected();
@@ -197,7 +205,7 @@ public class CameraSelectScript : MonoBehaviour
                 }
                 else
                 {
-                    
+
                     if (hit.collider.gameObject.GetComponent<ResourceType>())
                     {
                         var hb = hit.collider.gameObject.transform.Find("Healthbar Canvas");
@@ -340,11 +348,35 @@ public class CameraSelectScript : MonoBehaviour
 
     void BuildingSelect(RaycastHit hit)
     {
-        Debug.Log(hit.collider.gameObject.tag);
+        string windowLocation = null;
+        switch (hit.collider.gameObject.GetComponent<Building_Name>().buildingName)
+        {
+            case BuildingName.Spaceship:
+                windowLocation = "Troop Creation Window";
+                break;
+            case BuildingName.TroopCap:
+                windowLocation = "Building Windows/Troop Cap Window";
+                break;
+            case BuildingName.TroopProd:
+                windowLocation = "Building Windows/Troop Prod Window";
+                break;
+            case BuildingName.BaseDefense:
+                windowLocation = "Building Windows/Defenses Window";
+                break;
+            case BuildingName.Turret:
+                windowLocation = "Building Windows/Turret Window";
+                break;
+            case BuildingName.Wall:
+                windowLocation = "Building Windows/Wall Window";
+                break;
+        }
+
         var UI = GameObject.Find("UI");
-        var mm = UI.transform.Find("Troop Creation Window");
+        var mm = UI.transform.Find(windowLocation).gameObject;
         if (mm)
-            mm.gameObject.SetActive(true);
+            mm.SetActive(true);
+
+        //Debug.Log(hit.collider.gameObject.tag);
         selectedGameObjects.Clear();
         selectedGameObject = hit.collider.gameObject;
         var hb = selectedGameObject.transform.Find("Healthbar Canvas");
