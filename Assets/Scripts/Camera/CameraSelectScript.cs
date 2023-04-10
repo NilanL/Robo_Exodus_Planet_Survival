@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 
 public class CameraSelectScript : MonoBehaviour
@@ -42,7 +43,6 @@ public class CameraSelectScript : MonoBehaviour
 
     void Update()
     {
-
         if (Input.GetKeyDown("left shift"))
         {
             keydown = true;
@@ -54,6 +54,10 @@ public class CameraSelectScript : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0) && !keydown)
         {
+            // Stops raycast from passing through UI
+            if (EventSystem.current.IsPointerOverGameObject())
+                return;
+
             startP = Input.mousePosition;
             selectionBox = new Rect();
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -123,6 +127,10 @@ public class CameraSelectScript : MonoBehaviour
 
         if (Input.GetMouseButtonDown(1))
         {
+            // Stops raycast from passing through UI
+            if (EventSystem.current.IsPointerOverGameObject())
+                return;
+
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
             if (Physics.Raycast(ray, out hit, 100, ~fogOfWarLayer))
