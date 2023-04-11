@@ -95,6 +95,9 @@ public class GameManager : MonoBehaviour
         TroopCapBuildingCount += 1;
         MaxUnitCount += 20;
 
+        var troopCapCount = UI.transform.Find("Building Creation Window/Troop Cap Count").gameObject;
+        troopCapCount.GetComponent<Text>().text = "Current: " + TroopCapBuildingCount;
+
         if (TroopCapBuildingCount == 4)
         {
             var troopCapBuildingButton = UI.transform.Find("Building Creation Window/Build Troop Coordinator").gameObject;
@@ -118,6 +121,9 @@ public class GameManager : MonoBehaviour
     public void IncrementTurretCount()
     {
         TurretCount += 1;
+
+        var turretCountText = UI.transform.Find("Building Windows/Defenses Window/Total Turret Count").gameObject;
+        turretCountText.GetComponent<Text>().text = "Active Turrets " + TurretCount + "/" + TurretCount;
 
         SetBuildingWarningMessage(false);
         SetBuildingMessage(false);
