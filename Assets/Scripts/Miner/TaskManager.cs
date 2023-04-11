@@ -5,7 +5,7 @@ using UnityEngine;
 public class TaskManager : MonoBehaviour
 {
 
-    bool mining = false;
+    public bool mining = false;
     bool canMine = false;
     AnimationController movement;
     GameObject UI;

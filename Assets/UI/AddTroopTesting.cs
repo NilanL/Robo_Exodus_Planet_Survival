@@ -26,7 +26,8 @@ public class AddTroopTesting : MonoBehaviour
 
     public void Spawn_miner()
     {
-        if (gm.GetComponent<GameManager>().Ironite >= 100 && !(gm.GetComponent<GameManager>().Unit_count > 19))
+        if (gm.GetComponent<GameManager>().Ironite >= 100 && !(gm.GetComponent<GameManager>().Unit_count >
+            gm.GetComponent<GameManager>().Max_Unit_Count - 1))
         {
             gm.GetComponent<GameManager>().Unit_count += 1;
             var minerStats = gm.GetComponent<MinerStats>();
@@ -45,7 +46,8 @@ public class AddTroopTesting : MonoBehaviour
 
     public void Spawn_melee()
     {
-        if (gm.GetComponent<GameManager>().Ironite >= 100 && !(gm.GetComponent<GameManager>().Unit_count > 19))
+        if (gm.GetComponent<GameManager>().Ironite >= 100 && !(gm.GetComponent<GameManager>().Unit_count > 
+            gm.GetComponent<GameManager>().Max_Unit_Count - 1))
         {
             gm.GetComponent<GameManager>().Unit_count += 1;
             var minerStats = gm.GetComponent<Melle_UnitStats>();
@@ -64,7 +66,8 @@ public class AddTroopTesting : MonoBehaviour
 
     public void Spawn_range()
     {
-        if (gm.GetComponent<GameManager>().Ironite >= 100 & !(gm.GetComponent<GameManager>().Unit_count > 19))
+        if (gm.GetComponent<GameManager>().Ironite >= 100 & !(gm.GetComponent<GameManager>().Unit_count >
+            gm.GetComponent<GameManager>().Max_Unit_Count - 1))
         {
             gm.GetComponent<GameManager>().Unit_count += 1;
             var minerStats = gm.GetComponent<Robot_Range_Stats>();

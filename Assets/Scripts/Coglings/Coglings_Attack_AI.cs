@@ -10,6 +10,7 @@ public class Coglings_Attack_AI : MonoBehaviour
     bool attacking = false;
     bool canAttack = false;
     bool startAttack = false;
+    
 
     // Start is called before the first frame update
     void Start()

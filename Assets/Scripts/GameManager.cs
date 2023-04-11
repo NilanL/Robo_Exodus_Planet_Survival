@@ -10,7 +10,13 @@ public class GameManager : MonoBehaviour
     public int Aurarium;
     public int Zorium;
     public int Unit_count;
+    public int Max_Unit_Count = 20;
     FORCombatTest test;
+    public List<GameObject> selectables = new List<GameObject>();
+    public List<GameObject> buildings = new List<GameObject>();
+
+
+
 
     //This is just for the test
     private bool spawn = true;
@@ -20,6 +26,9 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         test = GetComponent<FORCombatTest>();
+        selectables = new List<GameObject>(GameObject.FindGameObjectsWithTag("Selectable"));
+        buildings = new List<GameObject>(GameObject.FindGameObjectsWithTag("Building"));
+        StartCoroutine(UpdateTargetPosition());
 
     }
 
@@ -44,8 +53,20 @@ public class GameManager : MonoBehaviour
         spawn = true;
     }
 
-    public void GetMinerStats()
+    public void UnitDied(GameObject unit)
     {
-
+        selectables.Remove(unit);
     }
+
+    IEnumerator UpdateTargetPosition()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(3);
+            selectables = new List<GameObject>(GameObject.FindGameObjectsWithTag("Selectable"));
+            buildings = new List<GameObject>(GameObject.FindGameObjectsWithTag("Building"));
+        }
+    }
+
+
 }

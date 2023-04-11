@@ -12,6 +12,7 @@ public enum Unit_Names
     Robot_Special,
     Cogling_Melee,
     Cogling_Range,
+    Cogling_Miner,
     Main_Base,
     Turret,
     House,

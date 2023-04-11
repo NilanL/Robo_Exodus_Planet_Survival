@@ -57,6 +57,7 @@ public class Unit_Health : MonoBehaviour
         if (this.gameObject.tag == "Selectable")
         {
             gm.GetComponent<GameManager>().Unit_count -= 1;
+            gm.GetComponent<GameManager>().UnitDied(this.gameObject);
             this.gameObject.GetComponent<FogOfWarDetectionController>().UnitDefeated();
         }
         Destroy(gameObject);

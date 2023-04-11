@@ -21,7 +21,7 @@ public class CameraSelectScript : MonoBehaviour
 
     Camera myCam;
 
-
+    GameObject selectedArea;
     public GameObject selectedGameObject;
     public List<GameObject> selectedGameObjects;
 
@@ -34,6 +34,7 @@ public class CameraSelectScript : MonoBehaviour
         myCam = Camera.main;
         selectedGameObjects = new List<GameObject>();
         selectedGameObject = GameObject.FindGameObjectWithTag("Ground");
+        selectedArea = GameObject.FindGameObjectWithTag("Area_Selected");
         fogOfWarLayer = LayerMask.GetMask("FogOfWar");
         startP = Vector2.zero;
         endP = Vector2.zero;
@@ -180,6 +181,7 @@ public class CameraSelectScript : MonoBehaviour
                                 case Unit_Names.Miner:
                                     selectedGameObject.gameObject.GetComponent<Robot_Miner_Controller_Mouse>().IsSelected();
                                     selectedGameObject.gameObject.GetComponent<Robot_Miner_Controller_Mouse>().Movement(ray);
+                                    selectedArea.transform.position = hit.point;
                                     break;
                                 case Unit_Names.Robot_Melee:
                                     selectedGameObject.gameObject.GetComponent<MovementScript>().IsSelected();
@@ -190,7 +192,7 @@ public class CameraSelectScript : MonoBehaviour
                                     selectedGameObject.gameObject.GetComponent<MovementScript>().Movement(ray);
                                     break;
                             }
-                            Debug.Log(hit.collider.gameObject.name);
+                            Debug.Log(hit.collider.transform.position);
 
                         }
                     }

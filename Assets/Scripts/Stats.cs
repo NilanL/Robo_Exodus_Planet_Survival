@@ -126,6 +126,9 @@ public class Stats : MonoBehaviour
             case Unit_Names.Cogling_Range:
                 InitializeCoglingRangeUnit();
                 break;
+            case Unit_Names.Cogling_Miner:
+                InitializeCoglingMinerUnit();
+                break;
             case Unit_Names.Main_Base:
                 InitializeMainBaseBuilding();
                 break;
@@ -185,6 +188,16 @@ public class Stats : MonoBehaviour
     private void InitializeCoglingMeleeUnit()
     {
         var minerstats = gm.GetComponent<Coglings_Melee_Stat>();
+        maxHealth = minerstats.getMaxHealth();
+        unitAtk = minerstats.GetAtk();
+        unitDef = minerstats.GetDef();
+        atkSpd = minerstats.GetAtkSpeed();
+        range = minerstats.GetRange();
+    }
+
+    private void InitializeCoglingMinerUnit()
+    {
+        var minerstats = gm.GetComponent<Cogling_Miner>();
         maxHealth = minerstats.getMaxHealth();
         unitAtk = minerstats.GetAtk();
         unitDef = minerstats.GetDef();

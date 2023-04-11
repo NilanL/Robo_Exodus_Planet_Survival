@@ -14,6 +14,7 @@ public class FogOfWarDetectionController : MonoBehaviour
     public bool isPrinted = false;
     private bool isDefeated = false;
     private int fogOfWarLayer;
+    bool started = true;
     /*
     private LayerMask enemyLayerMask;
     private Collider[] lastColliders;
@@ -38,11 +39,20 @@ public class FogOfWarDetectionController : MonoBehaviour
     void Update()
     {
         if (!isDefeated)
-            FogOfWarCheck();
+            if (started)
+            {
+                started = false;
+                StartCoroutine(FogOfWarCheck());
+                started = true;
+            }
     }
 
-    private void FogOfWarCheck()
+
+
+
+    IEnumerator FogOfWarCheck()
     {
+        yield return new WaitForSeconds(1f);
         var colliders = Physics.OverlapSphere(transform.position, desiredDistance + 1f, fogOfWarLayer);
 
         foreach (Collider collider in colliders)
