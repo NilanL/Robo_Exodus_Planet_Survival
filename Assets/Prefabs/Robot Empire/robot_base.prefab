@@ -277,6 +277,8 @@ GameObject:
   - component: {fileID: 4629199123222512755}
   - component: {fileID: 7483521718903550137}
   - component: {fileID: 30458148190141269}
+  - component: {fileID: 3509983301672977020}
+  - component: {fileID: 7108183861904545120}
   m_Layer: 0
   m_Name: robot_base
   m_TagString: Untagged
@@ -363,3 +365,33 @@ MonoBehaviour:
   healthbar: {fileID: 2431872511601866885}
   currentHealth: 0
   maxHealth: 2000
+--- !u!114 &3509983301672977020
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8996559463968477548}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4dad76f290c9f048a6f3db1070466cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mapObj: {fileID: 0}
+  desiredDistance: 100
+  maxDistance: 100
+  doShow: 1
+  doScale: 1
+  isPrinted: 0
+--- !u!114 &7108183861904545120
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8996559463968477548}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43d99cc5a002ef649afae5746ecc3fb6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

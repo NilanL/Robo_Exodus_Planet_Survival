@@ -298,6 +298,7 @@ GameObject:
   - component: {fileID: 2100233531779711600}
   - component: {fileID: 5387479874741416717}
   - component: {fileID: 5594488755314400356}
+  - component: {fileID: -8737267436614876626}
   m_Layer: 0
   m_Name: Cogling_Melee_Template
   m_TagString: Cogling
@@ -520,6 +521,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   unit_Name: 6
+--- !u!114 &-8737267436614876626
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5179970132330131913}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69ac351c1b82a384f8e58839bbd75456, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6285206479733227023
 GameObject:
   m_ObjectHideFlags: 0

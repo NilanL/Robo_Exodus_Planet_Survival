@@ -302,6 +302,7 @@ GameObject:
   - component: {fileID: 5691194698645393732}
   - component: {fileID: 7617088583383645781}
   - component: {fileID: 2866589980072818524}
+  - component: {fileID: -5033482786922803162}
   m_Layer: 0
   m_Name: Cogling_Ranged_Template
   m_TagString: Cogling
@@ -537,6 +538,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   unit_Name: 7
+--- !u!114 &-5033482786922803162
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2377796122106740664}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69ac351c1b82a384f8e58839bbd75456, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4277907994676904587
 GameObject:
   m_ObjectHideFlags: 0

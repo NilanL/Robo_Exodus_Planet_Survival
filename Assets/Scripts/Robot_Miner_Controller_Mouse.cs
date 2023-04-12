@@ -40,6 +40,8 @@ public class Robot_Miner_Controller_Mouse : MonoBehaviour
     public AudioSource attackSound;
     public AudioSource mineSound;
 
+    private LayerMask fogOfWarLayer;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -86,6 +88,8 @@ public class Robot_Miner_Controller_Mouse : MonoBehaviour
         isMining = false;
         isAttacking = false;
         isWalking = false;
+
+        fogOfWarLayer = LayerMask.GetMask("FogOfWar"); // Fog Of War Index
     }
 
     // Update is called once per frame
@@ -104,7 +108,7 @@ public class Robot_Miner_Controller_Mouse : MonoBehaviour
         if (isSelected)
         {
             RaycastHit hit;
-            if (Physics.Raycast(ray, out hit))
+            if (Physics.Raycast(ray, out hit, 9999, ~fogOfWarLayer))
             {
                 navMeshAgent.destination = hit.point;
             }

@@ -15,6 +15,7 @@ TagManager:
   - Ground
   - EnemyBuilding
   - Cogling
+  - MainBaseBounds
   layers:
   - Default
   - TransparentFX
@@ -27,8 +28,8 @@ TagManager:
   - Character
   - Ground
   - Invisiable
-  - 
-  - 
+  - FogOfWar
+  - TransparentSingleLayer
   - 
   - 
   - 

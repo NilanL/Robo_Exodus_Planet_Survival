@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 798592271224479001}
   - component: {fileID: 3238611746250156499}
   - component: {fileID: 2648651877300341065}
+  - component: {fileID: 6181363867068037900}
   m_Layer: 0
   m_Name: robot_wall_level1
   m_TagString: Untagged
@@ -98,3 +99,21 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: 0.0050000004, y: -0.007, z: 0.012}
   m_TimeToStationary: 0.5
+--- !u!114 &6181363867068037900
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4031038640888629254}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4dad76f290c9f048a6f3db1070466cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mapObj: {fileID: 0}
+  desiredDistance: 100
+  maxDistance: 100
+  doShow: 1
+  doScale: 1
+  isPrinted: 0
