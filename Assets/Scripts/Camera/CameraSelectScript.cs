@@ -348,7 +348,7 @@ public class CameraSelectScript : MonoBehaviour
         switch (hit.collider.gameObject.GetComponent<Building_Name>().buildingName)
         {
             case BuildingName.Spaceship:
-                windowLocation = "Troop Creation Window";
+                windowLocation = "Building Windows/Main Base Window";
                 break;
             case BuildingName.TroopCap:
                 windowLocation = "Building Windows/Troop Cap Window";

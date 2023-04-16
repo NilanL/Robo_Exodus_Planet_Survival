@@ -28,6 +28,14 @@ public class Main_Base_Stats : MonoBehaviour
     [SerializeField]
     public GameObject robotMinerPrefab = null;
 
+    [SerializeField]
+    public GameObject Level2ShipPrefab = null;
+
+    public GameObject getLevel2ShipPrefab()
+    {
+        return Level2ShipPrefab;
+    }
+
     public int getRange()
     {
         return range;

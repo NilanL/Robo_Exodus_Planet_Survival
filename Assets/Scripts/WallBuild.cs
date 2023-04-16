@@ -35,5 +35,7 @@ public class WallBuild : MonoBehaviour
 
             gameManger.SetIsWallBuilt();
         }
+
+
     }
 }
