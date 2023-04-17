@@ -16,6 +16,9 @@ TagManager:
   - EnemyBuilding
   - Cogling
   - MainBaseBounds
+  - Area_Selected
+  - Cogling Patrol
+  - UI
   layers:
   - Default
   - TransparentFX

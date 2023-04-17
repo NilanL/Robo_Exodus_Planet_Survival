@@ -23,6 +23,8 @@ public class MovementScript : MonoBehaviour
     private bool isMiningAnimate = false;
     private bool isAttackingAnimate = false;
 
+    private LayerMask fogOfWarLayer;
+
     [SerializeField]
     private float movementSpeed, rotationSpeed, jumpSpeed, gravity;
 
@@ -38,6 +40,8 @@ public class MovementScript : MonoBehaviour
         isMining = false;
         isAttacking = false;
         isWalking = false;
+
+        fogOfWarLayer = LayerMask.GetMask("FogOfWar");
     }
 
     // Update is called once per frame
@@ -52,7 +56,7 @@ public class MovementScript : MonoBehaviour
         if (isSelected)
         {
             RaycastHit hit;
-            if (Physics.Raycast(ray, out hit))
+            if (Physics.Raycast(ray, out hit, ~fogOfWarLayer))
             {
                 navMeshAgent.destination = hit.point;
             }
