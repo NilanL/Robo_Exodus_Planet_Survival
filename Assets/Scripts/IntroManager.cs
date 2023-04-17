@@ -7,10 +7,14 @@ public class IntroManager : MonoBehaviour
 {
 
     private Queue<string> sentences;
+    private Queue<string> sentences2;
     string to = "";
+    string dou = "";
     GameObject go;
     public GameObject Panel;
+    public GameObject textPanel;
     public Text dialaugeText;
+    public Text dialaugeText2;
 
     // Start is called before the first frame update
     void Start()
@@ -18,6 +22,7 @@ public class IntroManager : MonoBehaviour
         go = GameObject.Find("UI");
         go.SetActive(false);
         sentences = new Queue<string>();
+        sentences2 = new Queue<string>();
     }
 
     public void StartIntro(Intro intro)
@@ -30,7 +35,10 @@ public class IntroManager : MonoBehaviour
         {
             sentences.Enqueue(sentence);
         }
-
+        foreach (var sentence in intro.sentences2)
+        {
+            sentences2.Enqueue(sentence);
+        }
 
         ShowSentence();
 
@@ -49,6 +57,22 @@ public class IntroManager : MonoBehaviour
         dialaugeText.text = to;
     }
 
+    public void ShowSentence2()
+    {
+        if (sentences2.Count == 0)
+        {
+            EndDialog2();
+            return;
+        }
+        
+        string sentence = sentences2.Dequeue();
+        dou = dou + sentence;
+        dialaugeText2.text = dou;
+        if (sentences2.Count % 2 == 0)
+            dou = "";
+    }
+
+
     IEnumerator QueSentencies()
     {
         
@@ -64,6 +88,19 @@ public class IntroManager : MonoBehaviour
         Debug.Log("End");
         go.SetActive(true);
         Panel.SetActive(false);
+        textPanel.SetActive(true);
+        ShowSentence2();
+    }
+
+    public void EndDialog2()
+    {
+        Debug.Log("End");
+        textPanel.SetActive(false);
+        GameObject.Find("Intro").SetActive(false);
+
+        //Change after I get Nilans SHIT!!!!!!
+        Time.timeScale = 1;
+
     }
 
 }
