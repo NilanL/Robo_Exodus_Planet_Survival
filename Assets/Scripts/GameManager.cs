@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour
     FORCombatTest test;
 
     private GameObject UI;
+    private GameObject levelLoader;
 
     public bool IsWallBuilt { get; private set; } = false;
     public bool IsDefensesBuildingCreated { get; private set; } = false;
@@ -40,6 +41,7 @@ public class GameManager : MonoBehaviour
     {
         test = GetComponent<FORCombatTest>();
         UI = GameObject.Find("UI");
+        levelLoader = GameObject.Find("LevelLoader");
     }
 
     // Update is called once per frame
@@ -66,6 +68,16 @@ public class GameManager : MonoBehaviour
     public void GetMinerStats()
     {
 
+    }
+
+    public void LoseGame()
+    {
+        levelLoader.GetComponent<LevelLoader>().LoadLoseGame(3);
+    }
+
+    public void WinGame()
+    {
+        levelLoader.GetComponent<LevelLoader>().LoadWinGame(2);
     }
 
     public void SetIsWallBuilt()
