@@ -15,14 +15,22 @@ public class GameManager : MonoBehaviour
     FORCombatTest test;
 
     private GameObject UI;
+    private GameObject levelLoader;
 
     public bool IsWallBuilt { get; private set; } = false;
     public bool IsDefensesBuildingCreated { get; private set; } = false;
+
+    public bool IsReactorRepaired {get; private set;} = false;
+    public bool IsComputerRepaired { get; private set; } = false;
+    public bool IsPlatesRepaired { get; private set; } = false;
+
     public int ShipUpgradeLevel { get; private set; } = 0;
     public int TroopCapBuildingCount { get; private set; } = 0;
     public int TroopProdBuildingCount { get; private set; } = 0;
     public int TurretCount { get; private set; } = 0;
     public int MaxUnitCount { get; private set; } = 20;
+
+    public int ModulesRepairedCount { get; private set; } = 0;
 
     //This is just for the test
     private bool spawn = true;
@@ -33,6 +41,7 @@ public class GameManager : MonoBehaviour
     {
         test = GetComponent<FORCombatTest>();
         UI = GameObject.Find("UI");
+        levelLoader = GameObject.Find("LevelLoader");
     }
 
     // Update is called once per frame
@@ -40,7 +49,7 @@ public class GameManager : MonoBehaviour
     {
 
         //This is just for the Test for getting balance for the first enemies
-        if(spawn)
+        if (spawn)
             StartCoroutine(Spawn());
 
 
@@ -61,15 +70,97 @@ public class GameManager : MonoBehaviour
 
     }
 
+    public void LoseGame()
+    {
+        levelLoader.GetComponent<LevelLoader>().LoadLoseGame(3);
+    }
+
+    public void WinGame()
+    {
+        levelLoader.GetComponent<LevelLoader>().LoadWinGame(2);
+    }
+
     public void SetIsWallBuilt()
     {
         IsWallBuilt = true;
 
-        var buildingButton = UI.transform.Find("HUD/Top Bar/Building Button").gameObject;
-        buildingButton.GetComponent<Button>().interactable = true;
+        var button0 = UI.transform.Find("Building Creation Window/Build Wall Button").gameObject;
+        button0.GetComponent<Button>().interactable = false;
 
+        var button1 = UI.transform.Find("Building Creation Window/Build Troop Coordinator").gameObject;
+        button1.GetComponent<Button>().interactable = true;
+
+        var button2 = UI.transform.Find("Building Creation Window/Build Defenses Computer").gameObject;
+        button2.GetComponent<Button>().interactable = true;
+
+        var button3 = UI.transform.Find("Building Creation Window/Build Production Center").gameObject;
+        button3.GetComponent<Button>().interactable = true;
+        /*
+        var buildingButton = UI.transform.Find("HUD/Top Bar/Building Button").gameObject;
+        buildingButton.GetComponent<Button>().interactable = true;*/
+
+        /*
         var wallBuildButton = UI.transform.Find("Troop Creation Window/Build Defenses").gameObject;
-        wallBuildButton.GetComponent<Button>().interactable = false;
+        wallBuildButton.GetComponent<Button>().interactable = false;*/
+    }
+
+    public void SetIsReactorRepaired()
+    {
+        var button = UI.transform.Find("Module Repair Window/Repair Reactor Button").gameObject;
+        button.GetComponent<Button>().interactable = false;
+
+        IsReactorRepaired = true;
+        SetModuleRepairedCount();
+    }
+
+    public void SetIsComputerRepaired()
+    {
+        var button = UI.transform.Find("Module Repair Window/Repair Computer Button").gameObject;
+        button.GetComponent<Button>().interactable = false;
+
+        IsComputerRepaired = true;
+        SetModuleRepairedCount();
+    }
+
+    public void SetIsPlatesRepaired()
+    {
+        var button = UI.transform.Find("Module Repair Window/Repair Plates Button").gameObject;
+        button.GetComponent<Button>().interactable = false;
+
+        IsPlatesRepaired = true;
+        SetModuleRepairedCount();
+    }
+
+    private void SetModuleRepairedCount()
+    {
+        ModulesRepairedCount += 1;
+
+        if (ModulesRepairedCount == 1)
+        {
+            GameObject ship1 = GameObject.Find("Robot_Base_Level1");
+            ship1.SetActive(false);
+
+            GameObject ship2 = GameObject.Find("Robot_Bases").transform.Find("Robot_Base_Level2").gameObject;
+            ship2.SetActive(true);
+
+            /*
+            GameObject spawnLocation = GameObject.Find("Robot_Base_Spawn_Location");
+            GameObject ship2 = gameObject.GetComponent<Main_Base_Stats>().getLevel2ShipPrefab();
+            Instantiate(ship2, spawnLocation.transform.position, spawnLocation.transform.rotation);
+
+            Destroy(ship1);*/
+        }
+        else if (ModulesRepairedCount >= 3)
+        {
+            var alertScreen = UI.transform.Find("Module Repair Window/Alert Screen").gameObject;
+            alertScreen.SetActive(false);
+
+            var fixedScreen = UI.transform.Find("Module Repair Window/Modules Fixed Screen").gameObject;
+            fixedScreen.SetActive(true);
+
+            var launchButton = UI.transform.Find("Building Windows/Main Base Window/Launch Button").gameObject;
+            launchButton.SetActive(true);
+        }
     }
 
     public void SetIsDefensesBuildingBuilt()

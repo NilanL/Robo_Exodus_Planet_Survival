@@ -51,6 +51,10 @@ public class Unit_Health : MonoBehaviour
                 this.gameObject.GetComponent<Animator>().SetBool("IsDefeated", true);
                 yield return new WaitForSeconds(2);
                 break;
+            case Unit_Names.Main_Base:
+                gm.GetComponent<GameManager>().LoseGame();
+                yield return new WaitForSeconds(2);
+                break;
         }
         var css = pm.GetComponent<CameraSelectScript>();
         css.Removeselected(this.gameObject);
