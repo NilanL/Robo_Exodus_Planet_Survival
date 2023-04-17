@@ -27,7 +27,7 @@ public class AddTroopTesting : MonoBehaviour
 
     public void UpdateTroopCount()
     {
-        textField.text = "Troops " + gameManger.Unit_count + "/" + gameManger.MaxUnitCount;
+        textField.text = "Troops " + gameManger.Unit_count + "/" + gameManger.Max_Unit_Count;
     }
 
     public void Spawn_miner()
