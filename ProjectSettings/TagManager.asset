@@ -16,6 +16,7 @@ TagManager:
   - EnemyBuilding
   - Cogling
   - MainBaseBounds
+  - Fog_Of_War_Clouds
   layers:
   - Default
   - TransparentFX

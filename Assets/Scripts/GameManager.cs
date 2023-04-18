@@ -17,6 +17,7 @@ public class GameManager : MonoBehaviour
     private GameObject UI;
     private GameObject levelLoader;
 
+    public bool IsFoliageCleared { get; private set; } = false;
     public bool IsWallBuilt { get; private set; } = false;
     public bool IsDefensesBuildingCreated { get; private set; } = false;
 
@@ -80,6 +81,30 @@ public class GameManager : MonoBehaviour
         levelLoader.GetComponent<LevelLoader>().LoadWinGame(2);
     }
 
+    public void SetIsFoliageCleared()
+    {
+        IsFoliageCleared = true;
+
+        var button0 = UI.transform.Find("Building Creation Window/Clear Zone Button").gameObject;
+        button0.GetComponent<Button>().interactable = false;
+
+        var button1 = UI.transform.Find("Building Creation Window/Build Wall Button").gameObject;
+        button1.GetComponent<Button>().interactable = true;
+
+        var button2 = UI.transform.Find("Building Creation Window/Build Troop Coordinator").gameObject;
+        button2.GetComponent<Button>().interactable = true;
+
+        var button3 = UI.transform.Find("Building Creation Window/Build Defenses Computer").gameObject;
+        button3.GetComponent<Button>().interactable = true;
+
+        var button4 = UI.transform.Find("Building Creation Window/Build Production Center").gameObject;
+        button4.GetComponent<Button>().interactable = true;
+
+        var debrisText = UI.transform.Find("Building Creation Window/Alert Screen/Debris Alert").gameObject;
+        debrisText.GetComponent<Text>().text = "Debris Cleared. Zone ready for construction.";
+        debrisText.GetComponent<Text>().color = new Color(0f, 0f, 0f);
+    }
+
     public void SetIsWallBuilt()
     {
         IsWallBuilt = true;
@@ -87,14 +112,9 @@ public class GameManager : MonoBehaviour
         var button0 = UI.transform.Find("Building Creation Window/Build Wall Button").gameObject;
         button0.GetComponent<Button>().interactable = false;
 
-        var button1 = UI.transform.Find("Building Creation Window/Build Troop Coordinator").gameObject;
-        button1.GetComponent<Button>().interactable = true;
-
-        var button2 = UI.transform.Find("Building Creation Window/Build Defenses Computer").gameObject;
-        button2.GetComponent<Button>().interactable = true;
-
-        var button3 = UI.transform.Find("Building Creation Window/Build Production Center").gameObject;
-        button3.GetComponent<Button>().interactable = true;
+        var wallText = UI.transform.Find("Building Creation Window/Alert Screen/Defenses Alert").gameObject;
+        wallText.GetComponent<Text>().text = "Defenses Constructed. Zone now defensible.";
+        wallText.GetComponent<Text>().color = new Color(0f, 0f, 0f);
         /*
         var buildingButton = UI.transform.Find("HUD/Top Bar/Building Button").gameObject;
         buildingButton.GetComponent<Button>().interactable = true;*/
@@ -169,6 +189,9 @@ public class GameManager : MonoBehaviour
 
         var defensesBuildButton = UI.transform.Find("Building Creation Window/Build Defenses Computer").gameObject;
         defensesBuildButton.GetComponent<Button>().interactable = false;
+
+        var defensesCount = UI.transform.Find("Building Creation Window/Defenses Count").gameObject;
+        defensesCount.GetComponent<Text>().text = "Current: 1";
 
         SetBuildingWarningMessage(false);
         SetBuildingMessage(false);
