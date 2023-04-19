@@ -12,6 +12,9 @@ public class GameManager : MonoBehaviour
     public int Aurarium;
     public int Zorium;
     public int Unit_count;
+    public int CoglingRep;
+    public int SleemasiRep;
+    public int GraxxianRep;
     FORCombatTest test;
 
     private GameObject UI;

@@ -18,14 +18,14 @@ public class BloodstoneAdd : MonoBehaviour
 
     void Update()
     {
-        textField.text = "(Bloodstone Here) " + gm.GetComponent<GameManager>().BloodStone;
+        textField.text = "" + gm.GetComponent<GameManager>().BloodStone;
     }
 
     public void ChangeText()
     {
         num += 1;
 
-        textField.text = "(Bloodstone Here) " + num;
+        textField.text = "" + num;
     }
 
 }

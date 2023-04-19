@@ -18,14 +18,14 @@ public class IroniteAdd : MonoBehaviour
 
     void Update()
     {
-        textField.text = "(Ironite Here) " + gm.GetComponent<GameManager>().Ironite;
+        textField.text = "" + gm.GetComponent<GameManager>().Ironite;
     }
 
     public void ChangeText()
     {
         num += 1;
 
-        textField.text = "(Ironite Here) " + num;
+        textField.text = "" + num;
     }
 
 }

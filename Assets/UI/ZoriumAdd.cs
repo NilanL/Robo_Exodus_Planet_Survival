@@ -18,14 +18,14 @@ public class ZoriumAdd : MonoBehaviour
     }
     void Update()
     {
-        textField.text = "(Zorium Here) " + gm.GetComponent<GameManager>().Zorium;
+        textField.text = "" + gm.GetComponent<GameManager>().Zorium;
 
     }
     public void ChangeText()
     {
         num += 1;
 
-        textField.text = "(Zorium Here) " + num;
+        textField.text = "" + num;
     }
 
 }

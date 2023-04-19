@@ -17,7 +17,7 @@ public class DiplomacyUpdatePos : MonoBehaviour
         diplomacyUpdate = GameObject.Find("UI").GetComponent<DiplomacyUpdateScript>();
     }
 
-    public void ChangeDiplomacyStatusPositive()
+    public void ChangeDiplomacyStatusPositiveCogling()
     {
         //Marker = GameObject.Find("Marker");
         //
