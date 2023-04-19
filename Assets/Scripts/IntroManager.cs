@@ -10,7 +10,8 @@ public class IntroManager : MonoBehaviour
     private Queue<string> sentences2;
     string to = "";
     string dou = "";
-    GameObject go;
+    public Canvas go;
+    public GameObject mini;
     public GameObject Panel;
     public GameObject textPanel;
     public Text dialaugeText;
@@ -19,8 +20,7 @@ public class IntroManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        go = GameObject.Find("UI");
-        go.SetActive(false);
+        go.enabled = false;
         //sentences = new Queue<string>();
         //sentences2 = new Queue<string>();
     }
@@ -89,7 +89,7 @@ public class IntroManager : MonoBehaviour
     public void EndDialog()
     {
         Debug.Log("End");
-        go.SetActive(true);
+        go.enabled = true;
         Panel.SetActive(false);
         textPanel.SetActive(true);
         ShowSentence2();

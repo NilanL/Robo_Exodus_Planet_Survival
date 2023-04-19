@@ -19,6 +19,7 @@ TagManager:
   - Area_Selected
   - Cogling Patrol
   - UI
+  - Fog_Of_War_Clouds
   layers:
   - Default
   - TransparentFX

@@ -36,7 +36,7 @@ public class Patrol_Behavior : MonoBehaviour
         gm = GameObject.Find("GameManager").GetComponent<GameManager>();
         foreach(var patrol in gm.CoglingMiner)
         {
-            if(Vector3.Distance(patrol.transform.position, this.gameObject.transform.position) < 10)
+            if(Vector3.Distance(patrol.transform.position, this.gameObject.transform.position) < 15)
             {
                 patrolLeaderObject = patrol;
             }
@@ -202,6 +202,7 @@ public class Patrol_Behavior : MonoBehaviour
         Mining();
         yield return new WaitWhile(() => resource < 100);
         patroling = true;
+        gm.cogling_Minerals += 1000;
         resource = 0;
         targ = null;
         targMin = true;

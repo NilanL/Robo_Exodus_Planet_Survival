@@ -17,9 +17,10 @@ GameObject:
   - component: {fileID: 3358202475053093405}
   - component: {fileID: 4058793849314670043}
   - component: {fileID: 4906760339984607886}
+  - component: {fileID: 1634500977944168061}
   m_Layer: 0
   m_Name: Cogling_Miner_Template
-  m_TagString: Enemy
+  m_TagString: Cogling
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -282,7 +283,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68025e717e790b648a723566e8dc6ba9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 0}
+  target: {x: 0, y: 0, z: 0}
+  targ: {fileID: 0}
 --- !u!114 &3358202475053093405
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -321,6 +323,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Prefab: {fileID: 0}
+--- !u!114 &1634500977944168061
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 258074750537252460}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2adb7a3139012994987a5e9eacd85aae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  waypoint: []
+  targ: {fileID: 0}
+  patrolLeaderObject: {fileID: 0}
+  goinghome: 0
+  AtDest: 1
 --- !u!1 &395302372901166580
 GameObject:
   m_ObjectHideFlags: 0
