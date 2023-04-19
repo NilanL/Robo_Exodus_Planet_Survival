@@ -7,22 +7,24 @@ public class DiplomacyUpdateNeg : MonoBehaviour
 {
     Vector3 tempPos;
     GameObject Marker;
-    GameManager gm;
+    GameObject gm;
+    DiplomacyUpdateScript diplomacyUpdate;
+
     // Start is called before the first frame update
     void Start()
     {
-        gm = GameObject.Find("GameManager").GetComponent<GameManager>();
-
+        gm = GameObject.Find("GameManager");
+        diplomacyUpdate = GameObject.Find("UI").GetComponent<DiplomacyUpdateScript>();
     }
 
     public void ChangeDiplomacyStatusNegative()
     {
-        Marker = GameObject.Find("Marker");
-        int num = Screen.width;
-        tempPos = Marker.transform.position;
-
-        tempPos.x -= (num/99);
-
-        Marker.transform.position = tempPos;
+        //Marker = GameObject.Find("Marker");
+        //
+        //tempPos = Marker.transform.position;
+        //
+        //tempPos.x += -6f;
+        //
+        //Marker.transform.position = tempPos;
     }
 }

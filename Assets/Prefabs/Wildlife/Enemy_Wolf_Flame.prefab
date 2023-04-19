@@ -1329,6 +1329,7 @@ GameObject:
   - component: {fileID: 2067591350408437536}
   - component: {fileID: 2067591350408437539}
   - component: {fileID: 2067591350408437541}
+  - component: {fileID: 6838634848134669556}
   m_Layer: 0
   m_Name: Healthbar Canvas
   m_TagString: Health_Bar
@@ -1430,6 +1431,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthbarSprite: {fileID: 2067591349540060115}
+--- !u!114 &6838634848134669556
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2067591350408437540}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e444f1e0d3a9f54e8cd33eb21531d0c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2067591350424016125
 GameObject:
   m_ObjectHideFlags: 0
