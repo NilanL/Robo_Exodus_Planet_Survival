@@ -8,8 +8,11 @@ public class BuildingConstructionPreview : MonoBehaviour
 {
     private Camera _camera;
     public GameObject buildingPrefab = null;
-    public Material allowed;
-    public Material denied;
+    public Material allowedMat;
+    public Material deniedMat;
+
+
+    private bool materialSet = false;
     private bool canBuild = false;
     private LayerMask fogOfWarLayer;
     private LayerMask groundLayer;
@@ -27,6 +30,7 @@ public class BuildingConstructionPreview : MonoBehaviour
         objRenderer = gameObject.transform.GetChild(0).GetComponent<Renderer>();
         gm = GameObject.Find("GameManager");
         gameManger = gm.GetComponent<GameManager>();
+        setChildMaterial(deniedMat);
     }
 
     // Update is called once per frame
@@ -47,7 +51,7 @@ public class BuildingConstructionPreview : MonoBehaviour
                 if (canBuild)
                 {
                     canBuild = false;
-                    objRenderer.material = denied;
+                    setChildMaterial(deniedMat);
                 }
             }
             else
@@ -55,7 +59,7 @@ public class BuildingConstructionPreview : MonoBehaviour
                 if (!canBuild)
                 {
                     canBuild = true;
-                    objRenderer.material = allowed;
+                    setChildMaterial(allowedMat);
                 }
             }
         }
@@ -155,6 +159,39 @@ public class BuildingConstructionPreview : MonoBehaviour
         }
     }
 
+
+    private void setChildMaterial(Material material)
+    {
+        var obj = gameObject.transform.GetChild(0).gameObject;
+        for (int i = 0; i < obj.transform.childCount; i++)
+        {
+            GameObject child1 = obj.transform.GetChild(i).gameObject;
+
+            assignMaterialToRenderer(child1, material);
+
+            for (int j = 0; j < child1.transform.childCount; j++)
+            {
+                GameObject child2 = child1.transform.GetChild(j).gameObject;
+
+                assignMaterialToRenderer(child2, material);
+            }
+        }
+    }
+
+    private void assignMaterialToRenderer(GameObject obj, Material material)
+    {
+        var renderer = obj.GetComponent<Renderer>();
+
+        if (renderer)
+        {
+            Material[] matArray = renderer.materials;
+            for (int i = 0; i < renderer.materials.Length; i++)
+                matArray[i] = material;
+
+            renderer.materials = matArray;
+        }
+    }
+
     public bool verifyRequirement(int neededIronite, int neededZorium, int neededAurarium, int neededBloodstone)
     {
         if (gameManger.Ironite < neededIronite)
@@ -175,7 +212,7 @@ public class BuildingConstructionPreview : MonoBehaviour
     public void ShowWarning()
     {
         canBuild = false;
-        objRenderer.material = denied;
+        objRenderer.material = deniedMat;
         StartCoroutine(ShowWarningMessage());
     }
 

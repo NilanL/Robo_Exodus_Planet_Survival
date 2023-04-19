@@ -301,8 +301,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 8.089125, y: 8.808808, z: 8.208873}
-  m_Center: {x: 0.025749922, y: 3.904405, z: 0.21372795}
+  m_Size: {x: 10.904497, y: 8.808808, z: 12.035419}
+  m_Center: {x: -0.16840553, y: 3.904405, z: 2.5789976}
 --- !u!208 &2367912232560805644
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -313,11 +313,11 @@ NavMeshObstacle:
   m_Enabled: 1
   serializedVersion: 3
   m_Shape: 1
-  m_Extents: {x: 4.0445623, y: 4.404404, z: 4.1044364}
+  m_Extents: {x: 5.45225, y: 4.404404, z: 6.01771}
   m_MoveThreshold: 0.1
   m_Carve: 1
   m_CarveOnlyStationary: 1
-  m_Center: {x: 0.02574992, y: 3.904405, z: 0.213728}
+  m_Center: {x: -0.1684055, y: 3.904405, z: 2.578998}
   m_TimeToStationary: 0.5
 --- !u!114 &4991531160258112648
 MonoBehaviour:
@@ -452,7 +452,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Troop Production Building
+  m_Text: Automated Production Center
 --- !u!114 &6187068616803898892
 MonoBehaviour:
   m_ObjectHideFlags: 0
