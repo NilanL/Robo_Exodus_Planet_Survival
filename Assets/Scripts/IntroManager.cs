@@ -21,15 +21,18 @@ public class IntroManager : MonoBehaviour
     {
         go = GameObject.Find("UI");
         go.SetActive(false);
-        sentences = new Queue<string>();
-        sentences2 = new Queue<string>();
+        //sentences = new Queue<string>();
+        //sentences2 = new Queue<string>();
     }
 
     public void StartIntro(Intro intro)
     {
         //Debug.Log("Starting Intro");
+        sentences = new Queue<string>();
+        sentences2 = new Queue<string>();
 
-        sentences.Clear();
+
+        //sentences.Clear();
 
         foreach(var sentence in intro.sentences)
         {

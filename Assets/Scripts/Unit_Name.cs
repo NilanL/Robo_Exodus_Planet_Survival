@@ -16,7 +16,10 @@ public enum Unit_Names
     Main_Base,
     Turret,
     House,
-    WallGate
+    WallGate,
+    orc_Miner,
+    Orc_Melee,
+    Orc_Range
 }
 
 public class Unit_Name : MonoBehaviour
