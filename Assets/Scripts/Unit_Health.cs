@@ -51,6 +51,8 @@ public class Unit_Health : MonoBehaviour
                 this.gameObject.GetComponent<Animator>().SetBool("IsDefeated", true);
                 yield return new WaitForSeconds(2);
                 break;
+            case Unit_Names.Turret:
+
             case Unit_Names.Main_Base:
                 gm.GetComponent<GameManager>().LoseGame();
                 yield return new WaitForSeconds(2);
@@ -64,6 +66,11 @@ public class Unit_Health : MonoBehaviour
             this.gameObject.GetComponent<FogOfWarDetectionController>().UnitDefeated();
         }
         Destroy(gameObject);
+
+        if (this.gameObject.tag == "Building" || this.gameObject.tag == "EnemyBuilding")
+        {
+
+        }
     }
 
     public void dmgResource(int damage, GameObject tar)

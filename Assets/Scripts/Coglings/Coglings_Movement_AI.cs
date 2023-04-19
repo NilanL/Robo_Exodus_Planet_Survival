@@ -10,11 +10,13 @@ public class Coglings_Movement_AI : MonoBehaviour
     GameObject target;
     bool isGettingAttacked = false;
     bool inRange = false;
+    AnimationController animController;
 
     // Start is called before the first frame update
     void Start()
     {
         navMeshAgent = GetComponent<NavMeshAgent>();
+        animController = GetComponent<AnimationController>();
     }
 
     // Update is called once per frame
@@ -43,9 +45,14 @@ public class Coglings_Movement_AI : MonoBehaviour
 
         if (target)
         {
-            if(!inRange)
+            animController.IsMoving();
+            if (!inRange)
                 navMeshAgent.destination = target.transform.position;
             GetComponent<Coglings_Attack_AI>().SetTarget(target);
+        }
+        else
+        {
+            animController.IsNotMoving();
         }
 
     }

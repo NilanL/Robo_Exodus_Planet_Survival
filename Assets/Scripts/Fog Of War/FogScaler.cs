@@ -32,20 +32,8 @@ public class FogScaler : MonoBehaviour
     {
         if (doHiding)
         {
-            if (cloudObj.transform.localScale.x > 0.1)
-            {
-                Vector3 desiredSize = new Vector3(cloudObj.transform.localScale.x - Time.deltaTime * scaleSpeed, cloudObj.transform.localScale.y - Time.deltaTime * scaleSpeed, cloudObj.transform.localScale.z - Time.deltaTime * scaleSpeed);
-                cloudObj.transform.localScale = desiredSize;
-            }
-
-            if (cloudObj.transform.localScale.x <= 0.1)
-            {
-                if (cloudObj.activeInHierarchy)
-                    cloudObj.SetActive(false);
-
-                doHiding = false;
-                StartCoroutine(FadeTo(0.0f, shadowFadeIncrements));
-            }
+            doHiding = false;
+            StartCoroutine(FadeFog(shadowFadeIncrements));
         }
         else if (doShowing)
         {
@@ -71,6 +59,34 @@ public class FogScaler : MonoBehaviour
         Color lastColor = new Color(red, green, blue, aValue);
 
         material.color = lastColor;
+    }
+
+    IEnumerator FadeFog(float aTime)
+    {
+        if (!cloudObj || cloudObj.transform.localScale.x <= 0.1)
+        {
+            StartCoroutine(FadeTo(0.0f, shadowFadeIncrements));
+        }
+        else
+        {
+            for (float t = 0.0f; t < 1.0f; t += Time.deltaTime / aTime)
+            {
+                StartCoroutine(FadeTo(0.0f, shadowFadeIncrements));
+
+                if (cloudObj.transform.localScale.x > 0.1)
+                {
+                    Vector3 desiredSize = new Vector3(cloudObj.transform.localScale.x - Time.deltaTime * scaleSpeed, cloudObj.transform.localScale.y - Time.deltaTime * scaleSpeed, cloudObj.transform.localScale.z - Time.deltaTime * scaleSpeed);
+                    cloudObj.transform.localScale = desiredSize;
+                }
+
+                if (cloudObj.transform.localScale.x <= 0.1)
+                {
+                    if (cloudObj.activeInHierarchy)
+                        cloudObj.SetActive(false);
+                }
+                yield return new WaitForEndOfFrame();
+            }
+        }
     }
 
     public void HideFog(int objectID)

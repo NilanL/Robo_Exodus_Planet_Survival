@@ -79,7 +79,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Troop Cap Building
+  m_Text: Troop Coordinator
 --- !u!114 &655038957891374566
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -128,7 +128,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 4.48}
+  m_AnchoredPosition: {x: 0, y: 3}
   m_SizeDelta: {x: 1920, y: 1080}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &1067995641877018012
@@ -242,8 +242,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 8.149628, y: 9.1008415, z: 9.161621}
-  m_Center: {x: 0.01512146, y: 3.615511, z: 0.06506348}
+  m_Size: {x: 19.343521, y: 8.950325, z: 10.6721325}
+  m_Center: {x: -0.9549961, y: 2.266985, z: -0.1360197}
 --- !u!208 &-5974618585579986154
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -254,11 +254,11 @@ NavMeshObstacle:
   m_Enabled: 1
   serializedVersion: 3
   m_Shape: 1
-  m_Extents: {x: 4.074814, y: 4.550421, z: 4.5808105}
+  m_Extents: {x: 9.67176, y: 4.4751625, z: 5.336065}
   m_MoveThreshold: 0.1
   m_Carve: 1
   m_CarveOnlyStationary: 1
-  m_Center: {x: 0.01512146, y: 3.615511, z: 0.06506348}
+  m_Center: {x: -0.9549961, y: 2.266985, z: -0.1360197}
   m_TimeToStationary: 0.5
 --- !u!114 &3008651519042365280
 MonoBehaviour:

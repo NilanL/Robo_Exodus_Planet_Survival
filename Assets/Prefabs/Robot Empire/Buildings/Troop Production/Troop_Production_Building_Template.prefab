@@ -287,6 +287,7 @@ Transform:
   - {fileID: 6187068616687675349}
   - {fileID: 6187068615227067019}
   - {fileID: 1683959182027825463}
+  - {fileID: 7353363849721121148}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -301,8 +302,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 8.089125, y: 8.808808, z: 8.208873}
-  m_Center: {x: 0.025749922, y: 3.904405, z: 0.21372795}
+  m_Size: {x: 10.904497, y: 8.808808, z: 12.035419}
+  m_Center: {x: -0.16840553, y: 3.904405, z: 2.5789976}
 --- !u!208 &2367912232560805644
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -313,11 +314,11 @@ NavMeshObstacle:
   m_Enabled: 1
   serializedVersion: 3
   m_Shape: 1
-  m_Extents: {x: 4.0445623, y: 4.404404, z: 4.1044364}
+  m_Extents: {x: 5.45225, y: 4.404404, z: 6.01771}
   m_MoveThreshold: 0.1
   m_Carve: 1
   m_CarveOnlyStationary: 1
-  m_Center: {x: 0.02574992, y: 3.904405, z: 0.213728}
+  m_Center: {x: -0.1684055, y: 3.904405, z: 2.578998}
   m_TimeToStationary: 0.5
 --- !u!114 &4991531160258112648
 MonoBehaviour:
@@ -452,7 +453,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Troop Production Building
+  m_Text: Automated Production Center
 --- !u!114 &6187068616803898892
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -579,6 +580,36 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthbarSprite: {fileID: 5711964341185274128}
+--- !u!1 &9112613462004176384
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7353363849721121148}
+  m_Layer: 0
+  m_Name: Troop_Prod_Spawn_Location
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7353363849721121148
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9112613462004176384}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.57, z: -6.63}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 6187068616382062810}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &7079865085062137026
 PrefabInstance:
   m_ObjectHideFlags: 0

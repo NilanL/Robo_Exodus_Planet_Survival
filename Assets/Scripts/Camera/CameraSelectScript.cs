@@ -22,7 +22,7 @@ public class CameraSelectScript : MonoBehaviour
 
     Camera myCam;
 
-
+    private GameObject gm;
     public GameObject selectedGameObject;
     public List<GameObject> selectedGameObjects;
 
@@ -38,6 +38,7 @@ public class CameraSelectScript : MonoBehaviour
         fogOfWarLayer = LayerMask.GetMask("FogOfWar");
         startP = Vector2.zero;
         endP = Vector2.zero;
+        gm = GameObject.Find("GameManager");
         DrawVisual();
     }
 
@@ -354,16 +355,23 @@ public class CameraSelectScript : MonoBehaviour
                 windowLocation = "Building Windows/Troop Cap Window";
                 break;
             case BuildingName.TroopProd:
+                gm.GetComponent<GameManager>().SetActiveTroopProdWindow(hit.collider.gameObject);
                 windowLocation = "Building Windows/Troop Prod Window";
                 break;
             case BuildingName.BaseDefense:
                 windowLocation = "Building Windows/Defenses Window";
                 break;
             case BuildingName.Turret:
+                gm.GetComponent<GameManager>().SetActiveTurretWindow(hit.collider.gameObject);
                 windowLocation = "Building Windows/Turret Window";
                 break;
             case BuildingName.Wall:
+                gm.GetComponent<GameManager>().SetActiveWallWindow(hit.collider.gameObject);
                 windowLocation = "Building Windows/Wall Window";
+                break;
+            case BuildingName.Gate:
+                gm.GetComponent<GameManager>().SetActiveGateWindow(hit.collider.gameObject);
+                windowLocation = "Building Windows/Gate Window";
                 break;
         }
 

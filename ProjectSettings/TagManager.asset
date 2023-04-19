@@ -17,6 +17,7 @@ TagManager:
   - Cogling
   - MainBaseBounds
   - Fog_Of_War_Clouds
+  - RobotGate
   layers:
   - Default
   - TransparentFX
