@@ -5,11 +5,11 @@ using UnityEngine.AI;
 
 public class MovementScript : MonoBehaviour
 {
-
+    private AnimationController animController;
     private NavMeshAgent navMeshAgent;
-
     private bool isSelected = false;
     private Ray ray;
+
 
     [SerializeField]
     public Camera _camera;
@@ -23,10 +23,10 @@ public class MovementScript : MonoBehaviour
     private bool isMiningAnimate = false;
     private bool isAttackingAnimate = false;
 
-    private LayerMask fogOfWarLayer;
-
     [SerializeField]
     private float movementSpeed, rotationSpeed, jumpSpeed, gravity;
+
+    private LayerMask fogOfWarLayer;
 
     // Start is called before the first frame update
     void Start()
@@ -41,12 +41,25 @@ public class MovementScript : MonoBehaviour
         isAttacking = false;
         isWalking = false;
 
-        fogOfWarLayer = LayerMask.GetMask("FogOfWar");
+        fogOfWarLayer = LayerMask.GetMask("FogOfWar"); // Fog Of War Index
+        animController = GetComponent<AnimationController>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (navMeshAgent != null)
+        {
+            if (navMeshAgent.remainingDistance > navMeshAgent.stoppingDistance)
+            {
+                animController.IsMoving();
+            }
+            else
+            {
+                animController.IsNotMoving();
+            }
+        }
+
         if (isMiningMove)
         {
             if(target)
@@ -56,7 +69,7 @@ public class MovementScript : MonoBehaviour
         if (isSelected)
         {
             RaycastHit hit;
-            if (Physics.Raycast(ray, out hit, ~fogOfWarLayer))
+            if (Physics.Raycast(ray, out hit, 9999, ~fogOfWarLayer))
             {
                 navMeshAgent.destination = hit.point;
             }

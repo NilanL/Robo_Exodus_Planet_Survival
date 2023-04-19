@@ -13,14 +13,11 @@ GameObject:
   - component: {fileID: 6700400776196708479}
   - component: {fileID: -3402106414892062442}
   - component: {fileID: -1950083868800179723}
-  - component: {fileID: 3804398453622708285}
-  - component: {fileID: 3358202475053093405}
-  - component: {fileID: 4058793849314670043}
-  - component: {fileID: 4906760339984607886}
-  - component: {fileID: 1634500977944168061}
+  - component: {fileID: 5137947130004021163}
+  - component: {fileID: 7242638363960297843}
   m_Layer: 0
   m_Name: Cogling_Miner_Template
-  m_TagString: Cogling
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -271,7 +268,26 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &3804398453622708285
+--- !u!95 &5137947130004021163
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 258074750537252460}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &7242638363960297843
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -280,66 +296,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 258074750537252460}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 68025e717e790b648a723566e8dc6ba9, type: 3}
+  m_Script: {fileID: 11500000, guid: ed55841de857a4d46a5cf4fe382333f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {x: 0, y: 0, z: 0}
-  targ: {fileID: 0}
---- !u!114 &3358202475053093405
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 258074750537252460}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4dfad81c066b19a43a2ffe39322ccfdb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &4058793849314670043
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 258074750537252460}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 88ec9ecfb8a556d4684d045ebea34837, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  unit_Name: 0
---- !u!114 &4906760339984607886
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 258074750537252460}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2907ce02e59e5f0439b22e2497fa465e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Prefab: {fileID: 0}
---- !u!114 &1634500977944168061
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 258074750537252460}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2adb7a3139012994987a5e9eacd85aae, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  waypoint: []
-  targ: {fileID: 0}
-  patrolLeaderObject: {fileID: 0}
-  goinghome: 0
-  AtDest: 1
+  shootingEffectPrefab: {fileID: 0}
+  attackingEffectPrefab: {fileID: 0}
+  miningEffectPrefab: {fileID: 0}
+  attackSound: {fileID: 0}
+  mineSound: {fileID: 0}
 --- !u!1 &395302372901166580
 GameObject:
   m_ObjectHideFlags: 0

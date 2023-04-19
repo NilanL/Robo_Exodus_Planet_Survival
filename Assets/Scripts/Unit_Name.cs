@@ -10,16 +10,19 @@ public enum Unit_Names
     Robot_Ranged,
     Robot_Seige,
     Robot_Special,
+    Cogling_Miner,
     Cogling_Melee,
     Cogling_Range,
-    Cogling_Miner,
+    Sleemasi_Miner,
+    Sleemasi_Melee,
+    Sleemasi_Ranged,
+    Graxxian_Miner,
+    Graxxian_Melee,
+    Graxxian_Ranged,
     Main_Base,
     Turret,
     House,
-    WallGate,
-    orc_Miner,
-    Orc_Melee,
-    Orc_Range
+    WallGate
 }
 
 public class Unit_Name : MonoBehaviour

@@ -22,7 +22,7 @@ public class CameraSelectScript : MonoBehaviour
 
     Camera myCam;
 
-    GameObject selectedArea;
+    private GameObject gm;
     public GameObject selectedGameObject;
     public List<GameObject> selectedGameObjects;
 
@@ -35,10 +35,10 @@ public class CameraSelectScript : MonoBehaviour
         myCam = Camera.main;
         selectedGameObjects = new List<GameObject>();
         selectedGameObject = GameObject.FindGameObjectWithTag("Ground");
-        selectedArea = GameObject.FindGameObjectWithTag("Area_Selected");
         fogOfWarLayer = LayerMask.GetMask("FogOfWar");
         startP = Vector2.zero;
         endP = Vector2.zero;
+        gm = GameObject.Find("GameManager");
         DrawVisual();
     }
 
@@ -185,7 +185,6 @@ public class CameraSelectScript : MonoBehaviour
                                 case Unit_Names.Miner:
                                     selectedGameObject.gameObject.GetComponent<Robot_Miner_Controller_Mouse>().IsSelected();
                                     selectedGameObject.gameObject.GetComponent<Robot_Miner_Controller_Mouse>().Movement(ray);
-                                    selectedArea.transform.position = hit.point;
                                     break;
                                 case Unit_Names.Robot_Melee:
                                     selectedGameObject.gameObject.GetComponent<MovementScript>().IsSelected();
@@ -196,7 +195,7 @@ public class CameraSelectScript : MonoBehaviour
                                     selectedGameObject.gameObject.GetComponent<MovementScript>().Movement(ray);
                                     break;
                             }
-                            Debug.Log(hit.collider.transform.position);
+                            Debug.Log(hit.collider.gameObject.name);
 
                         }
                     }
@@ -356,16 +355,23 @@ public class CameraSelectScript : MonoBehaviour
                 windowLocation = "Building Windows/Troop Cap Window";
                 break;
             case BuildingName.TroopProd:
+                gm.GetComponent<GameManager>().SetActiveTroopProdWindow(hit.collider.gameObject);
                 windowLocation = "Building Windows/Troop Prod Window";
                 break;
             case BuildingName.BaseDefense:
                 windowLocation = "Building Windows/Defenses Window";
                 break;
             case BuildingName.Turret:
+                gm.GetComponent<GameManager>().SetActiveTurretWindow(hit.collider.gameObject);
                 windowLocation = "Building Windows/Turret Window";
                 break;
             case BuildingName.Wall:
+                gm.GetComponent<GameManager>().SetActiveWallWindow(hit.collider.gameObject);
                 windowLocation = "Building Windows/Wall Window";
+                break;
+            case BuildingName.Gate:
+                gm.GetComponent<GameManager>().SetActiveGateWindow(hit.collider.gameObject);
+                windowLocation = "Building Windows/Gate Window";
                 break;
         }
 

@@ -7,18 +7,16 @@ public class Coglings_Movement_AI : MonoBehaviour
 {
     private NavMeshAgent navMeshAgent;
     [SerializeField]
-    public Vector3 target;
-    public GameObject targ;
+    GameObject target;
     bool isGettingAttacked = false;
     bool inRange = false;
-    GameManager gm;
-    bool inWar = false;
+    AnimationController animController;
 
     // Start is called before the first frame update
     void Start()
     {
         navMeshAgent = GetComponent<NavMeshAgent>();
-        gm = GameObject.Find("GameManager").GetComponent<GameManager>();
+        animController = GetComponent<AnimationController>();
     }
 
     // Update is called once per frame
@@ -26,44 +24,42 @@ public class Coglings_Movement_AI : MonoBehaviour
     {
         if (!isGettingAttacked)
         {
-            foreach (var tar in gm.selectables)
+            var tars = GameObject.FindGameObjectsWithTag("Selectable");
+            foreach (var tar in tars)
             {
                 if (Vector3.Distance((tar.transform.position), this.gameObject.transform.position) < 50)
                 {
-                    if (inWar)
-                        target = tar.transform.position;
-                    else if (tar.GetComponent<TaskManager>().mining)
-                        target = tar.transform.position;
+                    target = tar;
                 }
             }
-            foreach (var tar in gm.buildings)
+            tars = GameObject.FindGameObjectsWithTag("Building");
+            foreach (var tar in tars)
             {
                 if (Vector3.Distance((tar.transform.position), this.gameObject.transform.position) < 50)
                 {
-                    if(targ == null && inWar)
-                        target = tar.transform.position;
+                    if(target == null)
+                        target = tar;
                 }
             }
         }
 
-        if (targ)
+        if (target)
         {
-            if(!inRange)
-                navMeshAgent.SetDestination(targ.transform.position);
-            GetComponent<Coglings_Attack_AI>().SetTarget(targ);
+            animController.IsMoving();
+            if (!inRange)
+                navMeshAgent.destination = target.transform.position;
+            GetComponent<Coglings_Attack_AI>().SetTarget(target);
         }
-
-        else if(target != null)
+        else
         {
-            navMeshAgent.SetDestination(target);
+            animController.IsNotMoving();
         }
 
     }
 
     public void gettingAttacked(GameObject tar)
     {
-        targ = tar;
-        target = tar.transform.position;
+        target = tar;
     }
 
     public void InRange()

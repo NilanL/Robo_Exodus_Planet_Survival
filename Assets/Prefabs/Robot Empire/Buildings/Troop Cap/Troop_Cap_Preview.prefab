@@ -46,8 +46,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buildingPrefab: {fileID: 5067692701915907592, guid: ab3d58f21cdf3c643ab9386436080fa8,
     type: 3}
-  allowed: {fileID: 2100000, guid: efcd7f6f8eb876f4e85235b09cdf7b23, type: 2}
-  denied: {fileID: 2100000, guid: a2a46c986fd34c64ba50d56961df6e15, type: 2}
+  allowedMat: {fileID: 2100000, guid: efcd7f6f8eb876f4e85235b09cdf7b23, type: 2}
+  deniedMat: {fileID: 2100000, guid: a2a46c986fd34c64ba50d56961df6e15, type: 2}
 --- !u!1001 &3166535457386377151
 PrefabInstance:
   m_ObjectHideFlags: 0

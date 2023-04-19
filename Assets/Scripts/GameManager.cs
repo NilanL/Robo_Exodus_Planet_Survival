@@ -12,6 +12,9 @@ public class GameManager : MonoBehaviour
     public int Aurarium;
     public int Zorium;
     public int Unit_count;
+    public int CoglingRep;
+    public int SleemasiRep;
+    public int GraxxianRep;
     FORCombatTest test;
 
     private GameObject UI;
@@ -33,6 +36,11 @@ public class GameManager : MonoBehaviour
 
 
     public int ModulesRepairedCount { get; private set; } = 0;
+
+    public GameObject ActiveTurret { get; private set; } = null;
+    public GameObject ActiveWall { get; private set; } = null;
+    public GameObject ActiveGate { get; private set; } = null;
+    public GameObject ActiveTroopProd { get; private set; } = null;
 
     //This is just for the test
     private bool spawn = true;
@@ -93,6 +101,41 @@ public class GameManager : MonoBehaviour
         count += 5;
         test.SetTarget();
         spawn = true;
+    }
+
+    public void SetActiveTurretWindow(GameObject turret)
+    {
+        ActiveTurret = turret;
+
+        var window = UI.transform.Find("Building Windows/Turret Window").gameObject;
+        var health = window.transform.Find("Turret Health").gameObject;
+
+        health.GetComponent<Text>().text = "Health: (" + turret.GetComponent<Unit_Health>().currentHealth + "/" + turret.GetComponent<Unit_Health>().maxHealth + ")";
+    }
+
+    public void SetActiveWallWindow(GameObject wall)
+    {
+        ActiveWall = wall;
+
+        var window = UI.transform.Find("Building Windows/Wall Window").gameObject;
+        var health = window.transform.Find("Wall Health").gameObject;
+
+        health.GetComponent<Text>().text = "Health: (" + wall.GetComponent<Unit_Health>().currentHealth + "/" + wall.GetComponent<Unit_Health>().maxHealth + ")";
+    }
+
+    public void SetActiveGateWindow(GameObject gate)
+    {
+        ActiveGate = gate;
+
+        var window = UI.transform.Find("Building Windows/Gate Window").gameObject;
+        var health = window.transform.Find("Gate Health").gameObject;
+
+        health.GetComponent<Text>().text = "Health: (" + gate.GetComponent<Unit_Health>().currentHealth + "/" + gate.GetComponent<Unit_Health>().maxHealth + ")";
+    }
+
+    public void SetActiveTroopProdWindow(GameObject troopProd)
+    {
+        ActiveTroopProd = troopProd;
     }
 
     public void GetMinerStats()
