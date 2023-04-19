@@ -39,7 +39,8 @@ public class BuildingConstructionPreview : MonoBehaviour
             transform.position = hit.point;
 
             // Collision to avoid building overlap
-            var colliders = Physics.OverlapSphere(transform.position, 9f, ~(fogOfWarLayer & groundLayer)).Where(x => x.tag.Equals("Building") || x.tag.Equals("Selectable"));
+            var colliders = Physics.OverlapSphere(transform.position, 9f, ~(fogOfWarLayer & groundLayer))
+                                    .Where(x => x.tag.Equals("Building") || x.tag.Equals("Selectable") || x.tag.Equals("Fog_Of_War_Clouds"));
 
             if (hit.collider.gameObject.tag != "MainBaseBounds" || colliders.Count() != 0)
             {

@@ -10,6 +10,8 @@ public class AddTroopTesting : MonoBehaviour
     int num;
     public GameObject objectToSpawn;
     GameManager gameManger;
+    private GameObject UI;
+
 
     // Start is called before the first frame update
     void Start()
@@ -17,7 +19,7 @@ public class AddTroopTesting : MonoBehaviour
         textField = GameObject.Find("Troops").GetComponent<Text>();
         gm = GameObject.Find("GameManager");
         gameManger = gm.GetComponent<GameManager>();
-
+        UI = GameObject.Find("UI");
     }
 
     void Update()
@@ -40,7 +42,14 @@ public class AddTroopTesting : MonoBehaviour
             //var camera = GameObject.Find("ParentCamera").;
             //objectToSpawn.GetComponent<Robot_Miner_Controller_Mouse>()._camera = camera;
 
-            var objectToSpawnAt = GameObject.Find("Spawn_Location");
+            var baseObj = GameObject.Find("Robot_Base_Level1");
+            if (baseObj == null)
+            {
+                baseObj = GameObject.Find("Robot_Base_Level2");
+            }
+
+            var objectToSpawnAt = baseObj.transform.Find("Spawn_Location").gameObject;
+            //var objectToSpawnAt = GameObject.Find("Spawn_Location");
 
             var spawnedMiner = Instantiate(objectToSpawn, objectToSpawnAt.transform.position, objectToSpawnAt.transform.rotation);
 

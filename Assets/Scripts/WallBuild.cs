@@ -23,17 +23,29 @@ public class WallBuild : MonoBehaviour
 
         var gameManger = gm.GetComponent<GameManager>();
 
-        if (gameManger.Ironite >= 500)
+        if (gameManger.Ironite >= 1000)
         {
             // Add wall
             Instantiate(wall1.getLevel1WallObject(), wallSpawn.position, wallSpawn.rotation);
-            gameManger.Ironite -= 500;
+            gameManger.Ironite -= 1000;
+
+            gameManger.SetIsWallBuilt();
+        }
+    }
+
+    public void removeFoliage()
+    {
+        var gameManger = gm.GetComponent<GameManager>();
+
+        if (gameManger.Ironite >= 250)
+        {
+            gameManger.Ironite -= 250;
 
             // Remove trees
             if (foliage != null)
                 Destroy(foliage);
 
-            gameManger.SetIsWallBuilt();
+            gameManger.SetIsFoliageCleared();
         }
     }
 }

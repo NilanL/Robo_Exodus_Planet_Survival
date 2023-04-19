@@ -296,6 +296,8 @@ SkinnedMeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 3
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -397,6 +399,8 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -421,6 +425,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &5984265452827169656
 GameObject:
   m_ObjectHideFlags: 0
@@ -462,7 +467,7 @@ GameObject:
   - component: {fileID: 5984265452826677082}
   - component: {fileID: 5984265452836528300}
   m_Layer: 0
-  m_Name: Orc_Catapult
+  m_Name: ORC_Catapult
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -494,7 +499,7 @@ Animator:
   m_GameObject: {fileID: 5984265452827169658}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 12478272612479b49a67011040825455, type: 3}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 49da802ba197a53439327c3d52d68d2a, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

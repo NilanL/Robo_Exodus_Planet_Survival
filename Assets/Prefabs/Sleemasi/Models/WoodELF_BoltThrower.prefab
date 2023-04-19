@@ -165,7 +165,7 @@ Animator:
   m_GameObject: {fileID: 132368}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: e6fe95228c173374989de6b8863f5406, type: 3}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: e2bb4d9849595cf4881b090e58f61ffb, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -219,6 +219,8 @@ SkinnedMeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 3
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
