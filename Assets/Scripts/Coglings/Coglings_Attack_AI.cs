@@ -10,12 +10,14 @@ public class Coglings_Attack_AI : MonoBehaviour
     bool attacking = false;
     bool canAttack = false;
     bool startAttack = false;
+    AnimationController animController;
 
     // Start is called before the first frame update
     void Start()
     {
         stats_wolf = GetComponent<Stats>();
         coglings_attack = GetComponent<Coglings_Movement_AI>();
+        animController = GetComponent<AnimationController>();
     }
 
     // Update is called once per frame
@@ -25,6 +27,8 @@ public class Coglings_Attack_AI : MonoBehaviour
         {
             if (!target)
             {
+                animController.IsNotAttacking();
+                animController.IsNotMoving();
                 targetDies(null);
             }
             else
@@ -40,12 +44,14 @@ public class Coglings_Attack_AI : MonoBehaviour
             coglings_attack.InRange();
             if (canAttack || startAttack)
             {
+                animController.IsAttacking();
                 StartCoroutine(Attack());
             }
 
         }
         else
         {
+            animController.IsNotAttacking();
             coglings_attack.OutofRange();
         }
 

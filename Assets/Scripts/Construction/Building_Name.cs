@@ -9,7 +9,8 @@ public enum BuildingName
     TroopProd,
     BaseDefense,
     Wall,
-    Turret
+    Turret,
+    Gate
 }
 
 public class Building_Name : MonoBehaviour

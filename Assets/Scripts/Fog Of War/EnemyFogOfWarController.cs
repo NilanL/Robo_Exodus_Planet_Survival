@@ -56,23 +56,41 @@ public class EnemyFogOfWarController : MonoBehaviour
 
     private void ShowEnemyUnit()
     {
-        if (gameObject.layer != defaultLayerID)
-        {
-            for (int i = 0; i < gameObject.transform.childCount; i++)
-                gameObject.transform.GetChild(i).gameObject.layer = defaultLayerID;
-
-            gameObject.layer = defaultLayerID;
-        }
+        SetGameLayerRecursive(gameObject, defaultLayerID);
+        //if (gameObject.layer != defaultLayerID)
+        //{
+        //    for (int i = 0; i < gameObject.transform.childCount; i++)
+        //        gameObject.transform.GetChild(i).gameObject.layer = defaultLayerID;
+        //
+        //    gameObject.layer = defaultLayerID;
+        //}
     }
 
     private void HideEnemyUnit()
     {
-        if (gameObject.layer != invisibleLayerID)
-        {
-            for (int i = 0; i < gameObject.transform.childCount; i++)
-                gameObject.transform.GetChild(i).gameObject.layer = invisibleLayerID;
+        SetGameLayerRecursive(gameObject, invisibleLayerID);
 
-            gameObject.layer = invisibleLayerID;
+        //if (gameObject.layer != invisibleLayerID)
+        //{
+        //    for (int i = 0; i < gameObject.transform.childCount; i++)
+        //        gameObject.transform.GetChild(i).gameObject.layer = invisibleLayerID;
+        //
+        //    gameObject.layer = invisibleLayerID;
+        //}
+    }
+
+    private void SetGameLayerRecursive(GameObject _go, int _layer)
+    {
+        _go.layer = _layer;
+        foreach (Transform child in _go.transform)
+        {
+            child.gameObject.layer = _layer;
+
+            Transform _HasChildren = child.GetComponentInChildren<Transform>();
+            if (_HasChildren != null)
+                SetGameLayerRecursive(child.gameObject, _layer);
+
         }
     }
+
 }
