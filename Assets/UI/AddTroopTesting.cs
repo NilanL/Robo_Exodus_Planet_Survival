@@ -59,6 +59,7 @@ public class AddTroopTesting : MonoBehaviour
             //objectToSpawn.GetComponent<Robot_Miner_Controller_Mouse>()._camera = camera;
 
             var objectToSpawnAt = GameObject.Find("Spawn_Location");
+            //var objectToSpawnAt = spawnlocation;
 
             var spawnedMiner = Instantiate(objectToSpawn, objectToSpawnAt.transform.position, objectToSpawnAt.transform.rotation);
 
@@ -82,6 +83,11 @@ public class AddTroopTesting : MonoBehaviour
 
             gm.GetComponent<GameManager>().Ironite -= 100;
         }
+    }
+
+    public void Get_Spawn_Point()
+    {
+
     }
 
 }

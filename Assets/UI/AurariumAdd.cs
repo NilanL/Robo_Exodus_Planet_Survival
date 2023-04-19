@@ -19,7 +19,7 @@ public class AurariumAdd : MonoBehaviour
 
     void Update()
     {
-        textField.text = "(Aurarium Here) " + gm.GetComponent<GameManager>().Aurarium;
+        textField.text = "" + gm.GetComponent<GameManager>().Aurarium;
 
     }
 
@@ -27,7 +27,7 @@ public class AurariumAdd : MonoBehaviour
     {
         num += 1;
 
-        textField.text = "(Aurarium Here) " + num;
+        textField.text = "" + num;
     }
 
 }
