@@ -124,6 +124,7 @@ public class Patrol_Behavior : MonoBehaviour
             {
                 if (AtDest)
                 {
+                    movement.isMoving = false;
                     AtDest = false;
                     StartCoroutine(AtDestination());
                 }
@@ -155,6 +156,7 @@ public class Patrol_Behavior : MonoBehaviour
         }
         else
         {
+            movement.isMoving = true;
             target = waypoint[waypointIndex].position;
             movement.target = target;
         }

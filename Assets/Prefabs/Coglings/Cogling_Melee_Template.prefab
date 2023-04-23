@@ -498,6 +498,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   waypoint: []
+  targ: {fileID: 0}
+  patrolLeaderObject: {fileID: 0}
+  goinghome: 0
+  AtDest: 1
 --- !u!114 &1484141457671074372
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -539,6 +543,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {x: 0, y: 0, z: 0}
   targ: {fileID: 0}
+  isMoving: 0
 --- !u!114 &5594488755314400356
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -559,7 +564,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5179970132330131913}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 69ac351c1b82a384f8e58839bbd75456, type: 3}
   m_Name: 

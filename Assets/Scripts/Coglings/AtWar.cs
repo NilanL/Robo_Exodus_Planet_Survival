@@ -5,7 +5,7 @@ using UnityEngine;
 public class AtWar : MonoBehaviour
 {
 
-    bool atWar = false;
+    public bool atWar = false;
     GameManager gm;
     Coglings_Melee_Stat cogM;
     Coglings_Range_Stat cogR;
@@ -44,6 +44,17 @@ public class AtWar : MonoBehaviour
             if (gm.cogling_Minerals > 200)
             {
                 SpawnWar();
+            }
+            if(gm.Coglings.Count > 5)
+            {
+                foreach(var cogs in gm.Coglings)
+                {
+                   if(cogs.GetComponent<Coglings_Movement_AI>().targ == null)
+                    {
+                        var target = GameObject.FindGameObjectWithTag("Building");
+                        cogs.GetComponent<Coglings_Movement_AI>().targ = target;
+                    }
+                }
             }
         }
         else

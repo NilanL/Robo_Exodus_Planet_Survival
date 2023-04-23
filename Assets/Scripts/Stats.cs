@@ -158,13 +158,13 @@ public class Stats : MonoBehaviour
             case Unit_Names.WallGate:
                 InitializeWallGateBuilding();
                 break;
-            case Unit_Names.orc_Miner:
+            case Unit_Names.Graxxian_Miner:
                 InitializeOrcMiner();
                 break;
-            case Unit_Names.Orc_Melee:
+            case Unit_Names.Graxxian_Melee:
                 InitializeOrcMelee();
                 break;
-            case Unit_Names.Orc_Range:
+            case Unit_Names.Graxxian_Ranged:
                 InitializeOrcRange();
                 break;
         }

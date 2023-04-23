@@ -7,6 +7,7 @@ public class FORCombatTest : MonoBehaviour
     GameObject spawn;
     Coglings_Melee_Stat cogM;
     Coglings_Range_Stat cogR;
+    GameManager gm;
     //Remove after testing
     // Start is called before the first frame update
     void Start()
@@ -14,6 +15,7 @@ public class FORCombatTest : MonoBehaviour
         spawn = GameObject.Find("CubeCoglings_Spawn");
         cogM = GetComponent<Coglings_Melee_Stat>();
         cogR = GetComponent<Coglings_Range_Stat>();
+        gm = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
 
     // Update is called once per frame
@@ -33,6 +35,7 @@ public class FORCombatTest : MonoBehaviour
                     {
                     var objectToSpawn = cogM.GetRobotMinerObject();
                     var spawnedMiner = Instantiate(objectToSpawn, spawn.transform.position, spawn.transform.rotation);
+                    gm.Coglings.Add(spawnedMiner);
                 }
                 break;
             case 1:
@@ -40,11 +43,13 @@ public class FORCombatTest : MonoBehaviour
                 {
                     var objectToSpawn = cogM.GetRobotMinerObject();
                     var spawnedMiner = Instantiate(objectToSpawn, spawn.transform.position, spawn.transform.rotation);
+                    gm.Coglings.Add(spawnedMiner);
                 }
                 for (int i = 0; i < Mathf.FloorToInt(count * .1f); i++)
                 {
                     var objectToSpawn = cogR.GetRobotMinerObject();
                     var spawnedMiner = Instantiate(objectToSpawn, spawn.transform.position, spawn.transform.rotation);
+                    gm.Coglings.Add(spawnedMiner);
                 }
                 break;
             case 2:
@@ -52,11 +57,13 @@ public class FORCombatTest : MonoBehaviour
                 {
                     var objectToSpawn = cogM.GetRobotMinerObject();
                     var spawnedMiner = Instantiate(objectToSpawn, spawn.transform.position, spawn.transform.rotation);
+                    gm.Coglings.Add(spawnedMiner);
                 }
                 for (int i = 0; i < Mathf.FloorToInt(count * .2f); i++)
                 {
                     var objectToSpawn = cogR.GetRobotMinerObject();
                     var spawnedMiner = Instantiate(objectToSpawn, spawn.transform.position, spawn.transform.rotation);
+                    gm.Coglings.Add(spawnedMiner);
                 }
                 break;
             case 3:
@@ -64,11 +71,13 @@ public class FORCombatTest : MonoBehaviour
                 {
                     var objectToSpawn = cogM.GetRobotMinerObject();
                     var spawnedMiner = Instantiate(objectToSpawn, spawn.transform.position, spawn.transform.rotation);
+                    gm.Coglings.Add(spawnedMiner);
                 }
                 for (int i = 0; i < Mathf.FloorToInt(count * .3f); i++)
                 {
                     var objectToSpawn = cogR.GetRobotMinerObject();
                     var spawnedMiner = Instantiate(objectToSpawn, spawn.transform.position, spawn.transform.rotation);
+                    gm.Coglings.Add(spawnedMiner);
                 }
                 break;
             case 4:
@@ -76,11 +85,13 @@ public class FORCombatTest : MonoBehaviour
                 {
                     var objectToSpawn = cogM.GetRobotMinerObject();
                     var spawnedMiner = Instantiate(objectToSpawn, spawn.transform.position, spawn.transform.rotation);
+                    gm.Coglings.Add(spawnedMiner);
                 }
                 for (int i = 0; i < Mathf.FloorToInt(count * .4f); i++)
                 {
                     var objectToSpawn = cogR.GetRobotMinerObject();
                     var spawnedMiner = Instantiate(objectToSpawn, spawn.transform.position, spawn.transform.rotation);
+                    gm.Coglings.Add(spawnedMiner);
                 }
                 break;
             case 5:
@@ -88,11 +99,13 @@ public class FORCombatTest : MonoBehaviour
                 {
                     var objectToSpawn = cogM.GetRobotMinerObject();
                     var spawnedMiner = Instantiate(objectToSpawn, spawn.transform.position, spawn.transform.rotation);
+                    gm.Coglings.Add(spawnedMiner);
                 }
                 for (int i = 0; i < Mathf.FloorToInt(count * .5f); i++)
                 {
                     var objectToSpawn = cogR.GetRobotMinerObject();
                     var spawnedMiner = Instantiate(objectToSpawn, spawn.transform.position, spawn.transform.rotation);
+                    gm.Coglings.Add(spawnedMiner);
                 }
                 break;
             case 6:
@@ -100,11 +113,13 @@ public class FORCombatTest : MonoBehaviour
                 {
                     var objectToSpawn = cogM.GetRobotMinerObject();
                     var spawnedMiner = Instantiate(objectToSpawn, spawn.transform.position, spawn.transform.rotation);
+                    gm.Coglings.Add(spawnedMiner);
                 }
                 for (int i = 0; i < Mathf.FloorToInt(count * .6f); i++)
                 {
                     var objectToSpawn = cogR.GetRobotMinerObject();
                     var spawnedMiner = Instantiate(objectToSpawn, spawn.transform.position, spawn.transform.rotation);
+                    gm.Coglings.Add(spawnedMiner);
                 }
                 break;
             case 7:
@@ -112,11 +127,13 @@ public class FORCombatTest : MonoBehaviour
                 {
                     var objectToSpawn = cogM.GetRobotMinerObject();
                     var spawnedMiner = Instantiate(objectToSpawn, spawn.transform.position, spawn.transform.rotation);
+                    gm.Coglings.Add(spawnedMiner);
                 }
                 for (int i = 0; i < Mathf.FloorToInt(count * .7f); i++)
                 {
                     var objectToSpawn = cogR.GetRobotMinerObject();
                     var spawnedMiner = Instantiate(objectToSpawn, spawn.transform.position, spawn.transform.rotation);
+                    gm.Coglings.Add(spawnedMiner);
                 }
                 break;
             case 8:
@@ -124,11 +141,13 @@ public class FORCombatTest : MonoBehaviour
                 {
                     var objectToSpawn = cogM.GetRobotMinerObject();
                     var spawnedMiner = Instantiate(objectToSpawn, spawn.transform.position, spawn.transform.rotation);
+                    gm.Coglings.Add(spawnedMiner);
                 }
                 for (int i = 0; i < Mathf.FloorToInt(count * .8f); i++)
                 {
                     var objectToSpawn = cogR.GetRobotMinerObject();
                     var spawnedMiner = Instantiate(objectToSpawn, spawn.transform.position, spawn.transform.rotation);
+                    gm.Coglings.Add(spawnedMiner);
                 }
                 break;
             case 9:
@@ -136,11 +155,13 @@ public class FORCombatTest : MonoBehaviour
                 {
                     var objectToSpawn = cogM.GetRobotMinerObject();
                     var spawnedMiner = Instantiate(objectToSpawn, spawn.transform.position, spawn.transform.rotation);
+                    gm.Coglings.Add(spawnedMiner);
                 }
                 for (int i = 0; i < Mathf.FloorToInt(count * .9f); i++)
                 {
                     var objectToSpawn = cogR.GetRobotMinerObject();
                     var spawnedMiner = Instantiate(objectToSpawn, spawn.transform.position, spawn.transform.rotation);
+                    gm.Coglings.Add(spawnedMiner);
                 }
                 break;
             case 10:
@@ -148,6 +169,7 @@ public class FORCombatTest : MonoBehaviour
                 {
                     var objectToSpawn = cogR.GetRobotMinerObject();
                     var spawnedMiner = Instantiate(objectToSpawn, spawn.transform.position, spawn.transform.rotation);
+                    gm.Coglings.Add(spawnedMiner);
                 }
                 break;
         }
@@ -158,7 +180,7 @@ public class FORCombatTest : MonoBehaviour
 
     public void SetTarget()
     {
-        var tars = GameObject.FindGameObjectsWithTag("Cogling");
+        var tars = gm.Coglings;
         var target = GameObject.FindGameObjectWithTag("Building");
         foreach (var cog in tars)
         {

@@ -53,6 +53,7 @@ public class GameManager : MonoBehaviour
     public List<GameObject> selectables = new List<GameObject>();
     public List<GameObject> buildings = new List<GameObject>();
     public List<GameObject> CoglingMiner = new List<GameObject>();
+    public List<GameObject> Coglings = new List<GameObject>();
 
 
 
@@ -66,7 +67,10 @@ public class GameManager : MonoBehaviour
         buildings = new List<GameObject>(GameObject.FindGameObjectsWithTag("Building"));
         CoglingMiner = new List<GameObject>(GameObject.FindGameObjectsWithTag("Cogling")
             .Where(x => x.GetComponent<Unit_Name>().unit_Name == Unit_Names.Cogling_Miner));
+        Coglings = new List<GameObject>(GameObject.FindGameObjectsWithTag("Cogling")
+            .Where(x => x.GetComponent<Unit_Name>().unit_Name != Unit_Names.Cogling_Miner));
         StartCoroutine(UpdateTargetPosition());
+        StartCoroutine(Spawn());
     }
 
     // Update is called once per frame
@@ -84,6 +88,8 @@ public class GameManager : MonoBehaviour
             buildings = new List<GameObject>(GameObject.FindGameObjectsWithTag("Building"));
             CoglingMiner = new List<GameObject>(GameObject.FindGameObjectsWithTag("Cogling")
                 .Where(x => x.GetComponent<Unit_Name>().unit_Name == Unit_Names.Cogling_Miner));
+            Coglings = new List<GameObject>(GameObject.FindGameObjectsWithTag("Cogling")
+                .Where(x => x.GetComponent<Unit_Name>().unit_Name != Unit_Names.Cogling_Miner));
         }
     }
 
@@ -96,11 +102,12 @@ public class GameManager : MonoBehaviour
     IEnumerator Spawn()
     {
         spawn = false;
-        yield return new WaitForSeconds(120);
+        yield return new WaitForSeconds(90);
         test.ChooseUnits(count);
         count += 5;
         test.SetTarget();
         spawn = true;
+        this.gameObject.GetComponent<AtWar>().atWar = true;
     }
 
     public void SetActiveTurretWindow(GameObject turret)
