@@ -52,7 +52,7 @@ public class Unit_Health : MonoBehaviour
                 yield return new WaitForSeconds(2);
                 break;
             case Unit_Names.Turret:
-
+                break;
             case Unit_Names.Main_Base:
                 gm.GetComponent<GameManager>().LoseGame();
                 yield return new WaitForSeconds(2);
@@ -63,6 +63,7 @@ public class Unit_Health : MonoBehaviour
         if (this.gameObject.tag == "Selectable")
         {
             gm.GetComponent<GameManager>().Unit_count -= 1;
+            gm.GetComponent<GameManager>().UnitDied(this.gameObject);
             this.gameObject.GetComponent<FogOfWarDetectionController>().UnitDefeated();
         }
         Destroy(gameObject);

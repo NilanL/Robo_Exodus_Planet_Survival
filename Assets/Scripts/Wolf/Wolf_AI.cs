@@ -7,6 +7,7 @@ public class Wolf_AI : MonoBehaviour
 {
     private NavMeshAgent navMeshAgent;
     GameObject target;
+    GameManager gm;
     bool isGettingAttacked = false;
     Animator animator;
 
@@ -15,6 +16,7 @@ public class Wolf_AI : MonoBehaviour
     {
         navMeshAgent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
+        gm = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
 
     // Update is called once per frame
@@ -22,8 +24,8 @@ public class Wolf_AI : MonoBehaviour
     {
         if (!isGettingAttacked)
         {
-            var tars = GameObject.FindGameObjectsWithTag("Selectable");
-            foreach (var tar in tars)
+            //var tars = GameObject.FindGameObjectsWithTag("Selectable");
+            foreach (var tar in gm.selectables)
             {
                 if (Vector3.Distance((tar.transform.position), this.gameObject.transform.position) < 50)
                 {

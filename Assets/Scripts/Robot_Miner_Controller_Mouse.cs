@@ -40,6 +40,7 @@ public class Robot_Miner_Controller_Mouse : MonoBehaviour
     public AudioSource attackSound;
     public AudioSource mineSound;
 
+    FogOfWarDetectionController fog;
     private LayerMask fogOfWarLayer;
 
     // Start is called before the first frame update
@@ -48,7 +49,7 @@ public class Robot_Miner_Controller_Mouse : MonoBehaviour
         // Get controller and animator
         animator = GetComponent<Animator>();
         navMeshAgent = GetComponent<NavMeshAgent>();
-
+        fog = GetComponent<FogOfWarDetectionController>();
         navMeshAgent.speed = 12;
         navMeshAgent.acceleration = 25;
         navMeshAgent.angularSpeed = 300;
@@ -103,6 +104,7 @@ public class Robot_Miner_Controller_Mouse : MonoBehaviour
         {
             navMeshAgent.destination = target.position;
             isMiningMove = false;
+            
         }
 
         if (isSelected)
@@ -148,6 +150,7 @@ public class Robot_Miner_Controller_Mouse : MonoBehaviour
 
         if (isWalking)
         {
+            fog.FogOfWarCheck();
             SetMiningAnimation(false);
             SetAttackingAnimation(false);
 

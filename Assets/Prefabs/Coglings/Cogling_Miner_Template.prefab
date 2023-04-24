@@ -14,7 +14,12 @@ GameObject:
   - component: {fileID: -3402106414892062442}
   - component: {fileID: -1950083868800179723}
   - component: {fileID: 5137947130004021163}
+  - component: {fileID: 19042218162848225}
   - component: {fileID: 7242638363960297843}
+  - component: {fileID: 6210100218072628410}
+  - component: {fileID: 4507659121507415711}
+  - component: {fileID: 8851378106435898325}
+  - component: {fileID: 1680878442349202366}
   m_Layer: 0
   m_Name: Cogling_Miner_Template
   m_TagString: Enemy
@@ -287,6 +292,19 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &19042218162848225
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 258074750537252460}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2907ce02e59e5f0439b22e2497fa465e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Prefab: {fileID: 0}
 --- !u!114 &7242638363960297843
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -304,6 +322,65 @@ MonoBehaviour:
   miningEffectPrefab: {fileID: 0}
   attackSound: {fileID: 0}
   mineSound: {fileID: 0}
+--- !u!114 &6210100218072628410
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 258074750537252460}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88ec9ecfb8a556d4684d045ebea34837, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unit_Name: 6
+--- !u!114 &4507659121507415711
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 258074750537252460}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c5edf43666820245a10cfc241b0707e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthbar: {fileID: 1616106934451848908}
+  currentHealth: 0
+  maxHealth: 0
+--- !u!114 &8851378106435898325
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 258074750537252460}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2adb7a3139012994987a5e9eacd85aae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  waypoint: []
+  targ: {fileID: 0}
+  patrolLeaderObject: {fileID: 0}
+  goinghome: 0
+  AtDest: 1
+--- !u!114 &1680878442349202366
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 258074750537252460}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68025e717e790b648a723566e8dc6ba9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {x: 0, y: 0, z: 0}
+  targ: {fileID: 0}
 --- !u!1 &395302372901166580
 GameObject:
   m_ObjectHideFlags: 0

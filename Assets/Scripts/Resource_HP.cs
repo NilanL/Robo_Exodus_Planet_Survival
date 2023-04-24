@@ -33,7 +33,8 @@ public class Resource_HP : MonoBehaviour
     {
         currentHealth -= damage;
         healthbar.UpdateHealthBar(maxHealth, currentHealth);
-        GetType_addResource(damage);
+        if(tar.GetComponent<Unit_Name>().unit_Name == Unit_Names.Miner)
+            GetType_addResource(damage);
     }
 
     private void GetType_addResource(int damage)

@@ -307,6 +307,7 @@ GameObject:
   - component: {fileID: 1464675255347955633}
   - component: {fileID: -4304547289854532883}
   - component: {fileID: 1465374874136986005}
+  - component: {fileID: 3522063990554015877}
   - component: {fileID: 1484141457671074372}
   - component: {fileID: 2100233531779711600}
   - component: {fileID: 5387479874741416717}
@@ -484,6 +485,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Prefab: {fileID: 0}
+--- !u!114 &3522063990554015877
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5179970132330131913}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2adb7a3139012994987a5e9eacd85aae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  waypoint: []
+  targ: {fileID: 0}
+  patrolLeaderObject: {fileID: 0}
+  goinghome: 0
+  AtDest: 1
 --- !u!114 &1484141457671074372
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -523,7 +541,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68025e717e790b648a723566e8dc6ba9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 0}
+  target: {x: 0, y: 0, z: 0}
+  targ: {fileID: 0}
+  isMoving: 0
 --- !u!114 &5594488755314400356
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -544,7 +564,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5179970132330131913}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 69ac351c1b82a384f8e58839bbd75456, type: 3}
   m_Name: 

@@ -5,7 +5,7 @@ using UnityEngine;
 public class TaskManager : MonoBehaviour
 {
 
-    bool mining = false;
+    public bool mining = false;
     bool canMine = false;
     AnimationController movement;
     GameObject UI;
@@ -13,7 +13,7 @@ public class TaskManager : MonoBehaviour
     GameObject gamemaster;
     public float timeToMine = 2;
     bool attacking = false;
-    bool canAttack = false;
+    bool canAttack = true;
     bool startAttack = false;
     Stats stats;
     // Start is called before the first frame update
@@ -142,8 +142,9 @@ public class TaskManager : MonoBehaviour
         {
             target.GetComponent<Resource_HP>().dmgResource(10, this.gameObject);
             //gamemaster.GetComponent<GameManager>().Ironite += 10;
-            canMine = true;
+            
         }
+        canMine = true;
     }
 
     public void setTarget(GameObject tar)
@@ -157,12 +158,12 @@ public class TaskManager : MonoBehaviour
         else if(tar.tag == "Enemy")
         {
             attacking = true;
-            canAttack = true;
+            
         }
         else if(tar.tag == "Cogling")
         {
             attacking = true;
-            canAttack = true;
+            
         }
     }
 
@@ -172,13 +173,11 @@ public class TaskManager : MonoBehaviour
         mining = false;
         canMine = false;
         attacking = false;
-        canAttack = false;
     }
 
     public void gettingAttacked(GameObject tar)
     {
         target = tar;
         attacking = true;
-        canAttack = true;
     }
 }
