@@ -7,7 +7,7 @@ public class Turret_Stats : MonoBehaviour
     [SerializeField]
     private int maxHealth { get; set; } = 12500;
     [SerializeField]
-    private int unitAtk { get; set; } = 8;
+    private int unitAtk { get; set; } = 12;
     [SerializeField]
     private int vehicleAtk { get; set; } = 0;
     [SerializeField]
@@ -19,11 +19,12 @@ public class Turret_Stats : MonoBehaviour
     [SerializeField]
     private int baseDef { get; set; } = 0;
     [SerializeField]
-    private float atkSpd { get; set; } = 1.5f;
+    private float atkSpd { get; set; } = 2.2f;
     [SerializeField]
     private float miningSpd { get; set; } = 1.3f;
     [SerializeField]
-    private int range { get; set; } = 10;
+    private int range { get; set; } = 75;
+
 
     [SerializeField]
     public GameObject robotMinerPrefab = null;

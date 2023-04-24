@@ -51,8 +51,12 @@ public class Unit_Health : MonoBehaviour
                 this.gameObject.GetComponent<Animator>().SetBool("IsDefeated", true);
                 yield return new WaitForSeconds(2);
                 break;
-            case Unit_Names.Turret:
-
+            case Unit_Names.Robot_Turret:
+            case Unit_Names.Cogling_Turret:
+            case Unit_Names.Sleemasi_Turret:
+            case Unit_Names.Graxxian_Turret:
+                yield return new WaitForSeconds(2);
+                break;
             case Unit_Names.Main_Base:
                 gm.GetComponent<GameManager>().LoseGame();
                 yield return new WaitForSeconds(2);

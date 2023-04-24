@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-[RequireComponent(typeof(Animator), typeof(NavMeshAgent))]
+[RequireComponent(typeof(Animator))]
 public class AnimationController : MonoBehaviour
 {
     private TaskManager taskManager;
     private Animator animator;
-    private NavMeshAgent navMeshAgent;
+    //private NavMeshAgent navMeshAgent;
     private ParticleSystem miningParticleSystem;
     private LineRenderer attackingLaserLeft;
     private LineRenderer attackingLaserRight;
@@ -17,6 +17,9 @@ public class AnimationController : MonoBehaviour
     private const string isMining = "IsMining";
     private const string isWalking = "IsWalking";
     private const string isDefeated = "IsDefeated";
+
+    private GameObject target;
+    private Transform turretShootBone;
 
     [SerializeField]
     public GameObject shootingEffectPrefab;
@@ -36,12 +39,12 @@ public class AnimationController : MonoBehaviour
     void Start()
     {
         currName = GetComponent<Unit_Name>().unit_Name;
-
+        target = null;
         taskManager = GetComponent<TaskManager>();
 
         // Get controller and animator
         animator = this.gameObject.GetComponent<Animator>();
-        navMeshAgent = GetComponent<NavMeshAgent>();
+        //navMeshAgent = GetComponent<NavMeshAgent>();
 
         if (this.gameObject.tag == "Selectable")
         {
@@ -90,6 +93,13 @@ public class AnimationController : MonoBehaviour
                 }
             }
         }
+        else if (this.gameObject.tag == "Building")
+        {
+            if (this.gameObject.GetComponent<Unit_Name>().unit_Name == Unit_Names.Robot_Turret)
+            {
+                turretShootBone = transform.Find("Turret_Building_Model/robot_turret/Robot_Turret_Armature/Robot_Turret_Base_Bone/Robot_Turret_Gun_Bone");
+            }
+        }
     }
 
     // Update is called once per frame
@@ -102,11 +112,11 @@ public class AnimationController : MonoBehaviour
 
     }
 
-    IEnumerator ShootLaser()
+    IEnumerator ShootLaser(Transform _transform)
     {
-        GameObject laser = Instantiate(shootingEffectPrefab, transform.position, transform.rotation);
+        GameObject laser = Instantiate(shootingEffectPrefab, _transform.position, transform.rotation);
 
-        Vector3 startingPos = transform.position;
+        Vector3 startingPos = _transform.position;
         Vector3 finalPos = taskManager.target.transform.position;
         float elapsedTime = 0;
 
@@ -236,6 +246,7 @@ public class AnimationController : MonoBehaviour
 
     public void IsNotAttacking()
     {
+        target = null;
         var unit = this.gameObject.GetComponent<Unit_Name>().unit_Name;
         switch (unit)
         {
@@ -305,7 +316,7 @@ public class AnimationController : MonoBehaviour
                 break;
             case Unit_Names.Robot_Ranged:
                 animator.SetBool(isAttacking, true);
-                StartCoroutine(ShootLaser());
+                StartCoroutine(ShootLaser(transform));
                 break;
             case Unit_Names.Cogling_Melee:
                 animator.SetBool(isAttacking, true);
@@ -332,6 +343,10 @@ public class AnimationController : MonoBehaviour
                 animator.SetBool(isAttacking, true);
                 break;
             case Unit_Names.Wolf:
+                break;
+            case Unit_Names.Robot_Turret:
+                turretShootBone.LookAt(taskManager.target.transform);
+                StartCoroutine(ShootLaser(turretShootBone));
                 break;
         }
     }

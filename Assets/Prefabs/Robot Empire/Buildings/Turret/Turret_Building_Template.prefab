@@ -380,6 +380,8 @@ GameObject:
   - component: {fileID: -6152987677579407083}
   - component: {fileID: -1163168220171164713}
   - component: {fileID: 6154363636567367256}
+  - component: {fileID: -1501691480670221738}
+  - component: {fileID: 1925380793619324527}
   m_Layer: 0
   m_Name: Turret_Building_Template
   m_TagString: Building
@@ -474,7 +476,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88ec9ecfb8a556d4684d045ebea34837, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  unit_Name: 10
+  unit_Name: 16
 --- !u!114 &6154363636567367256
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -488,6 +490,38 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buildingName: 5
+--- !u!114 &-1501691480670221738
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8421837390822842998}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f9bef5de6d43c94888d641112ddfffa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 0}
+  timeToMine: 2
+--- !u!114 &1925380793619324527
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8421837390822842998}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed55841de857a4d46a5cf4fe382333f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shootingEffectPrefab: {fileID: 8638878173556235870, guid: 9315566f980b08e49b7c88fb3e60f1ed,
+    type: 3}
+  attackingEffectPrefab: {fileID: 0}
+  miningEffectPrefab: {fileID: 0}
+  attackSound: {fileID: 0}
+  mineSound: {fileID: 0}
 --- !u!1 &8971011711930718706
 GameObject:
   m_ObjectHideFlags: 0
