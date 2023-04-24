@@ -230,6 +230,7 @@ public class Stats : MonoBehaviour
         unitAtk = minerstats.GetAtk();
         unitDef = minerstats.GetDef();
         atkSpd = minerstats.GetAtkSpeed();
+        range = minerstats.getRange();
     }
 
     private void InitializeWallGateBuilding()

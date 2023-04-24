@@ -19,6 +19,7 @@ public class GameManager : MonoBehaviour
 
     private GameObject UI;
     private GameObject levelLoader;
+    public GameObject[] enemies { get; set; }
 
     public bool IsFoliageCleared { get; private set; } = false;
     public bool IsWallBuilt { get; private set; } = false;
@@ -41,6 +42,9 @@ public class GameManager : MonoBehaviour
     public GameObject ActiveGate { get; private set; } = null;
     public GameObject ActiveTroopProd { get; private set; } = null;
 
+    private float nextActionTime = 0.0f;
+    private float period = 0.5f;
+
     //This is just for the test
     private bool spawn = true;
     int count = 5;
@@ -61,7 +65,13 @@ public class GameManager : MonoBehaviour
         if (spawn)
             StartCoroutine(Spawn());
 
-
+        if (Time.time > nextActionTime)
+        {
+            nextActionTime += period;
+            var coglings = GameObject.FindGameObjectsWithTag("Cogling");
+            var en = GameObject.FindGameObjectsWithTag("Enemy");
+            enemies = en.Union(coglings).ToArray();
+        }
     }
 
     IEnumerator Spawn()

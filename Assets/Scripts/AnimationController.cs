@@ -12,6 +12,7 @@ public class AnimationController : MonoBehaviour
     private ParticleSystem miningParticleSystem;
     private LineRenderer attackingLaserLeft;
     private LineRenderer attackingLaserRight;
+    private ParticleSystem robotTurretFire;
 
     private const string isAttacking = "IsAttacking";
     private const string isMining = "IsMining";
@@ -98,6 +99,12 @@ public class AnimationController : MonoBehaviour
             if (this.gameObject.GetComponent<Unit_Name>().unit_Name == Unit_Names.Robot_Turret)
             {
                 turretShootBone = transform.Find("Turret_Building_Model/robot_turret/Robot_Turret_Armature/Robot_Turret_Base_Bone/Robot_Turret_Gun_Bone");
+                var pos = new Vector3(0f, 0.0636f, 0.0011f);
+                var rot = new Vector3(-90f, 0, 0);
+                robotTurretFire = Instantiate(shootingEffectPrefab.GetComponent<ParticleSystem>(), turretShootBone);
+                robotTurretFire.transform.localPosition = pos;
+                robotTurretFire.transform.localRotation = Quaternion.Euler(rot);
+                //robotTurretFire.transform.localScale = new Vector3(robotTurretFire.transform.localScale.x * 2, robotTurretFire.transform.localScale.y * 2, robotTurretFire.transform.localScale.z * 2);
             }
         }
     }
@@ -291,6 +298,9 @@ public class AnimationController : MonoBehaviour
                 break;
             case Unit_Names.Wolf:
                 break;
+            case Unit_Names.Robot_Turret:
+                robotTurretFire.Stop();
+                break;
         }
     }
 
@@ -346,7 +356,9 @@ public class AnimationController : MonoBehaviour
                 break;
             case Unit_Names.Robot_Turret:
                 turretShootBone.LookAt(taskManager.target.transform);
-                StartCoroutine(ShootLaser(turretShootBone));
+                turretShootBone.Rotate(90, 0, 0, Space.Self);
+                //robotTurretFire.transform.LookAt(taskManager.target.transform);
+                robotTurretFire.Play();
                 break;
         }
     }
