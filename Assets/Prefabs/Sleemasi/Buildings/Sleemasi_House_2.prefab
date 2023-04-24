@@ -456,6 +456,7 @@ GameObject:
   - component: {fileID: 5605953952315363466}
   - component: {fileID: 843521490515945593}
   - component: {fileID: 4446315346934373244}
+  - component: {fileID: 970074135900852207}
   m_Layer: 0
   m_Name: Healthbar Canvas
   m_TagString: Health_Bar
@@ -470,9 +471,9 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6939241847709072291}
-  m_LocalRotation: {x: 0.5, y: -0.5, z: -0.5, w: 0.5}
-  m_LocalPosition: {x: 0, y: 0, z: 0.0196}
-  m_LocalScale: {x: 0.00004, y: 0.00001, z: 0.005228883}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -2.57}
+  m_LocalScale: {x: 0.01, y: 0.002, z: 0.005228883}
   m_Children:
   - {fileID: 6866290692227577967}
   m_Father: {fileID: 2219508403191645794}
@@ -480,7 +481,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 417.79065, y: 30.48243}
+  m_AnchoredPosition: {x: 0.31, y: 7.11}
   m_SizeDelta: {x: 640, y: 480}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &3915866493461951198
@@ -557,6 +558,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthbarSprite: {fileID: 694980749684523398}
+--- !u!114 &970074135900852207
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6939241847709072291}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e444f1e0d3a9f54e8cd33eb21531d0c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8614761448660986862
 GameObject:
   m_ObjectHideFlags: 0
@@ -573,7 +586,7 @@ GameObject:
   - component: {fileID: 60160061878878617}
   m_Layer: 0
   m_Name: Sleemasi_House_2
-  m_TagString: EnemyBuilding
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -674,7 +687,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88ec9ecfb8a556d4684d045ebea34837, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  unit_Name: 10
+  unit_Name: 17
 --- !u!1001 &2070792509516045317
 PrefabInstance:
   m_ObjectHideFlags: 0

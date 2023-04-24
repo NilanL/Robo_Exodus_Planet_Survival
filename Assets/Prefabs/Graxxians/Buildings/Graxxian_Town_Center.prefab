@@ -92,7 +92,7 @@ GameObject:
   - component: {fileID: 3084854443406393346}
   m_Layer: 0
   m_Name: Graxxian_Town_Center
-  m_TagString: EnemyBuilding
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -186,7 +186,7 @@ NavMeshObstacle:
   m_Shape: 0
   m_Extents: {x: 16.72983, y: 16.72983, z: 16.72983}
   m_MoveThreshold: 0.1
-  m_Carve: 1
+  m_Carve: 0
   m_CarveOnlyStationary: 1
   m_Center: {x: 5.432426, y: -10.76574, z: 9.815887}
   m_TimeToStationary: 0.5
@@ -244,7 +244,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88ec9ecfb8a556d4684d045ebea34837, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  unit_Name: 8
+  unit_Name: 15
 --- !u!1 &2945723126538545598
 GameObject:
   m_ObjectHideFlags: 0
@@ -333,6 +333,7 @@ GameObject:
   - component: {fileID: 3505846029074299582}
   - component: {fileID: 1189555793053881418}
   - component: {fileID: 9219663220941733264}
+  - component: {fileID: 626605982672734808}
   m_Layer: 0
   m_Name: Healthbar Canvas
   m_TagString: Health_Bar
@@ -347,9 +348,9 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3817498556848001253}
-  m_LocalRotation: {x: 0.5, y: -0.5, z: -0.5, w: 0.5}
-  m_LocalPosition: {x: 0, y: 0, z: 0.0196}
-  m_LocalScale: {x: 0.00004, y: 0.00001, z: 0.005228883}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 15.1}
+  m_LocalScale: {x: 0.01, y: 0.002, z: 0.005228883}
   m_Children:
   - {fileID: 9045430338186476394}
   m_Father: {fileID: 5819755127507026663}
@@ -357,7 +358,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 417.79065, y: 30.48243}
+  m_AnchoredPosition: {x: 5.91, y: 11.34}
   m_SizeDelta: {x: 640, y: 480}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &86168703921890241
@@ -434,6 +435,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthbarSprite: {fileID: 8322403099784174939}
+--- !u!114 &626605982672734808
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3817498556848001253}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e444f1e0d3a9f54e8cd33eb21531d0c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &12204804149213715
 PrefabInstance:
   m_ObjectHideFlags: 0
