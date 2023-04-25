@@ -80,6 +80,12 @@ public class Orc_Attack_AI : MonoBehaviour
 
     }
 
+    public GameObject getTarget()
+    {
+        return target;
+
+    }
+
     public void targetDies(GameObject tar)
     {
         target = tar;

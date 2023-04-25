@@ -45,9 +45,18 @@ public class Coglings_Movement_AI : MonoBehaviour
             }
         }
 
-        if (targ)
+        if(isMoving)
         {
             animController.IsMoving();
+        }
+        else
+        {
+            animController.IsNotMoving();
+        }
+
+        if (targ)
+        {
+            
             if (!inRange)
                 navMeshAgent.destination = targ.transform.position;
             GetComponent<Coglings_Attack_AI>().SetTarget(targ);
@@ -55,16 +64,9 @@ public class Coglings_Movement_AI : MonoBehaviour
 
         else if(target != null)
         {
-            if(isMoving)
-                animController.IsMoving();
-
             navMeshAgent.destination = target;
         }
 
-        else
-        {
-            animController.IsNotMoving();
-        }
 
     }
 

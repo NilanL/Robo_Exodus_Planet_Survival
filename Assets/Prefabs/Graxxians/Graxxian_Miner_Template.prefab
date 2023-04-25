@@ -578,6 +578,11 @@ GameObject:
   - component: {fileID: -2302879207300527487}
   - component: {fileID: -8739667249176993973}
   - component: {fileID: -8362280310916706897}
+  - component: {fileID: 3331084082337734228}
+  - component: {fileID: 8459770466718286912}
+  - component: {fileID: 7528693622701484551}
+  - component: {fileID: 7991726644838375155}
+  - component: {fileID: 2238497284208655412}
   m_Layer: 0
   m_Name: Graxxian_Miner_Template
   m_TagString: Enemy
@@ -615,8 +620,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1.4708862, y: 5.4155197, z: 1}
+  m_Center: {x: 0.033599854, y: 0.7175808, z: 0}
 --- !u!195 &-2302879207300527487
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -626,7 +631,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 6862131410021291681}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 0.5
+  m_Radius: 1
   m_Speed: 12
   m_Acceleration: 25
   avoidancePriority: 50
@@ -635,8 +640,8 @@ NavMeshAgent:
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
-  m_Height: 2
-  m_BaseOffset: 0
+  m_Height: 4
+  m_BaseOffset: 2
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
 --- !u!82 &-8739667249176993973
@@ -831,6 +836,74 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &3331084082337734228
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6862131410021291681}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2907ce02e59e5f0439b22e2497fa465e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Prefab: {fileID: 0}
+--- !u!114 &8459770466718286912
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6862131410021291681}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c5edf43666820245a10cfc241b0707e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthbar: {fileID: 7233892753154161011}
+  currentHealth: 0
+  maxHealth: 0
+--- !u!114 &7528693622701484551
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6862131410021291681}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88ec9ecfb8a556d4684d045ebea34837, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unit_Name: 12
+--- !u!114 &7991726644838375155
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6862131410021291681}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f5e677c32d5360499b1fa83be325cd3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {x: 0, y: 0, z: 0}
+  targ: {fileID: 0}
+  booltarg: 0
+--- !u!114 &2238497284208655412
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6862131410021291681}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62c95772ca9cffc4fa6fab2fb8f63ec8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8220378917513556681
 GameObject:
   m_ObjectHideFlags: 0
@@ -937,6 +1010,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: ORC_Worker
+      objectReference: {fileID: 0}
+    - target: {fileID: 4113703306187733928, guid: 95e65485271176a4a8a0c5542fd3fccd,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4113703306187733970, guid: 95e65485271176a4a8a0c5542fd3fccd,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4113703306187827146, guid: 95e65485271176a4a8a0c5542fd3fccd,
         type: 3}
