@@ -181,4 +181,9 @@ public class TaskManager : MonoBehaviour
         attacking = true;
         canAttack = true;
     }
+
+    public bool isAttackingFlag()
+    {
+        return attacking;
+    }
 }

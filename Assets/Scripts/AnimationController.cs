@@ -7,12 +7,15 @@ using UnityEngine.AI;
 public class AnimationController : MonoBehaviour
 {
     private TaskManager taskManager;
+    private Coglings_Attack_AI coglingAttackAI;
     private Animator animator;
     //private NavMeshAgent navMeshAgent;
     private ParticleSystem miningParticleSystem;
     private LineRenderer attackingLaserLeft;
     private LineRenderer attackingLaserRight;
     private ParticleSystem robotTurretFire;
+    private ParticleSystem coglingTurretFire;
+    private ParticleSystem explosion;
 
     private const string isAttacking = "IsAttacking";
     private const string isMining = "IsMining";
@@ -20,7 +23,10 @@ public class AnimationController : MonoBehaviour
     private const string isDefeated = "IsDefeated";
 
     private GameObject target;
-    private Transform turretShootBone;
+    private Transform robotTurretShootBone;
+    private Transform coglingTurretShootBone;
+    private Transform coglingTurretRotateBone;
+
 
     [SerializeField]
     public GameObject shootingEffectPrefab;
@@ -42,6 +48,7 @@ public class AnimationController : MonoBehaviour
         currName = GetComponent<Unit_Name>().unit_Name;
         target = null;
         taskManager = GetComponent<TaskManager>();
+        coglingAttackAI = GetComponent<Coglings_Attack_AI>();
 
         // Get controller and animator
         animator = this.gameObject.GetComponent<Animator>();
@@ -98,13 +105,30 @@ public class AnimationController : MonoBehaviour
         {
             if (this.gameObject.GetComponent<Unit_Name>().unit_Name == Unit_Names.Robot_Turret)
             {
-                turretShootBone = transform.Find("Turret_Building_Model/robot_turret/Robot_Turret_Armature/Robot_Turret_Base_Bone/Robot_Turret_Gun_Bone");
-                var pos = new Vector3(0f, 0.0636f, 0.0011f);
+                robotTurretShootBone = transform.Find("Turret_Building_Model/robot_turret/Robot_Turret_Armature/Robot_Turret_Base_Bone/Robot_Turret_Gun_Bone");
+                var pos = new Vector3(0f, 0.0525f, 0.0011f);
                 var rot = new Vector3(-90f, 0, 0);
-                robotTurretFire = Instantiate(shootingEffectPrefab.GetComponent<ParticleSystem>(), turretShootBone);
+                robotTurretFire = Instantiate(shootingEffectPrefab.GetComponent<ParticleSystem>(), robotTurretShootBone);
                 robotTurretFire.transform.localPosition = pos;
                 robotTurretFire.transform.localRotation = Quaternion.Euler(rot);
                 //robotTurretFire.transform.localScale = new Vector3(robotTurretFire.transform.localScale.x * 2, robotTurretFire.transform.localScale.y * 2, robotTurretFire.transform.localScale.z * 2);
+            }
+        }
+        else if (this.gameObject.tag == "EnemyBuilding")
+        {
+            if (this.gameObject.GetComponent<Unit_Name>().unit_Name == Unit_Names.Cogling_Turret)
+            {
+                coglingTurretRotateBone = transform.Find("cogling_turret/Cogling_Turret_Armature/Base_Bone/Rotate_Bone");
+                coglingTurretShootBone = transform.Find("cogling_turret/Cogling_Turret_Armature/Base_Bone/Rotate_Bone/Tilt_Bone");
+
+                var pos = new Vector3(1.765081e-09f, 0.01912951f, 6.053597e-07f);
+                var rot = new Vector3(-90f, 0, 0);
+                var scale = new Vector3(0.01313561f, 0.01313561f, 0.01313561f);
+
+                coglingTurretFire = Instantiate(attackingEffectPrefab.GetComponent<ParticleSystem>(), coglingTurretShootBone);
+                coglingTurretFire.transform.localPosition = pos;
+                coglingTurretFire.transform.localRotation = Quaternion.Euler(rot);
+                coglingTurretFire.transform.localScale = scale;
             }
         }
     }
@@ -301,6 +325,9 @@ public class AnimationController : MonoBehaviour
             case Unit_Names.Robot_Turret:
                 robotTurretFire.Stop();
                 break;
+            case Unit_Names.Cogling_Turret:
+                coglingTurretFire.Stop();
+                break;
         }
     }
 
@@ -355,10 +382,27 @@ public class AnimationController : MonoBehaviour
             case Unit_Names.Wolf:
                 break;
             case Unit_Names.Robot_Turret:
-                turretShootBone.LookAt(taskManager.target.transform);
-                turretShootBone.Rotate(90, 0, 0, Space.Self);
-                //robotTurretFire.transform.LookAt(taskManager.target.transform);
-                robotTurretFire.Play();
+                robotTurretShootBone.LookAt(taskManager.target.transform);
+                robotTurretShootBone.Rotate(90, 0, 0, Space.Self);
+
+                if (!robotTurretFire.isPlaying)
+                {
+                    robotTurretFire.Play();
+                }
+                break;
+            case Unit_Names.Cogling_Turret:
+                Vector3 targetRot = coglingAttackAI.target.transform.position - coglingTurretRotateBone.position;
+                targetRot.y = 0;
+                coglingTurretRotateBone.rotation = Quaternion.LookRotation(targetRot);
+
+                Vector3 targetTilt = coglingAttackAI.target.transform.position - coglingTurretShootBone.position;
+                coglingTurretShootBone.rotation = Quaternion.LookRotation(targetTilt);
+                coglingTurretShootBone.Rotate(90, 0, 0, Space.Self);
+
+                if (!coglingTurretFire.isPlaying)
+                {
+                    coglingTurretFire.Play();
+                }
                 break;
         }
     }

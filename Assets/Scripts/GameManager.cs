@@ -20,6 +20,7 @@ public class GameManager : MonoBehaviour
     private GameObject UI;
     private GameObject levelLoader;
     public GameObject[] enemies { get; set; }
+    public List<GameObject> unitsList { get; set; }
 
     public bool IsFoliageCleared { get; private set; } = false;
     public bool IsWallBuilt { get; private set; } = false;
@@ -34,7 +35,6 @@ public class GameManager : MonoBehaviour
     public int TroopProdBuildingCount { get; private set; } = 0;
     public int TurretCount { get; private set; } = 0;
     public int MaxUnitCount { get; private set; } = 20;
-
     public int ModulesRepairedCount { get; private set; } = 0;
 
     public GameObject ActiveTurret { get; private set; } = null;
@@ -43,7 +43,7 @@ public class GameManager : MonoBehaviour
     public GameObject ActiveTroopProd { get; private set; } = null;
 
     private float nextActionTime = 0.0f;
-    private float period = 0.5f;
+    private float period = 1f;
 
     //This is just for the test
     private bool spawn = true;
@@ -55,6 +55,8 @@ public class GameManager : MonoBehaviour
         test = GetComponent<FORCombatTest>();
         UI = GameObject.Find("UI");
         levelLoader = GameObject.Find("LevelLoader");
+        unitsList = new List<GameObject>();
+        StartCoroutine(AddUnits());
     }
 
     // Update is called once per frame
@@ -72,6 +74,25 @@ public class GameManager : MonoBehaviour
             var en = GameObject.FindGameObjectsWithTag("Enemy");
             enemies = en.Union(coglings).ToArray();
         }
+    }
+
+    IEnumerator AddUnits()
+    {
+        yield return new WaitForSeconds(1);
+
+        foreach (var unit in GameObject.FindGameObjectsWithTag("Selectable"))
+        {
+            switch (unit.GetComponent<Unit_Name>().unit_Name)
+            {
+                case Unit_Names.Robot_Melee:
+                case Unit_Names.Robot_Ranged:
+                case Unit_Names.Miner:
+                    unitsList.Add(unit);
+                    break;
+            }
+        }
+
+        yield return null;
     }
 
     IEnumerator Spawn()

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TurretEnemyDetection : MonoBehaviour
+public class RobotTurretDetection : MonoBehaviour
 {
     GameObject gm;
     GameManager gameManager;
@@ -19,7 +19,6 @@ public class TurretEnemyDetection : MonoBehaviour
         gm = GameObject.Find("GameManager");
         gameManager = gm.GetComponent<GameManager>();
         stats = GetComponent<Stats>();
-        range = stats.getRange();
         taskManager = GetComponent<TaskManager>();
     }
 
@@ -30,15 +29,18 @@ public class TurretEnemyDetection : MonoBehaviour
         {
             nextActionTime += period;
 
-            if (taskManager.target == null && gameManager.enemies != null)
+            if (taskManager.target == null || (taskManager.target != null && !taskManager.isAttackingFlag()))
             {
-                foreach (var enemy in gameManager.enemies)
+                if (gameManager.enemies != null)
                 {
-                    var dist = Vector3.Distance(transform.position, enemy.transform.position);
-                    if (Vector3.Distance(transform.position, enemy.transform.position) < 75)
+                    range = stats.getRange();
+                    foreach (var enemy in gameManager.enemies)
                     {
-                        taskManager.setTarget(enemy);
-                        break;
+                        if (enemy != null && Vector3.Distance(transform.position, enemy.transform.position) < range)
+                        {
+                            taskManager.setTarget(enemy);
+                            break;
+                        }
                     }
                 }
             }

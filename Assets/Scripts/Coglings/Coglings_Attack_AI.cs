@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Coglings_Attack_AI : MonoBehaviour
 {
-    private GameObject target;
+    public GameObject target;
     Stats stats_wolf;
     Coglings_Movement_AI coglings_attack;
     bool attacking = false;
@@ -41,7 +41,9 @@ public class Coglings_Attack_AI : MonoBehaviour
 
         if (Vector3.Distance(target.transform.position, transform.position) < stats_wolf.getRange())
         {
-            coglings_attack.InRange();
+            if (coglings_attack)
+                coglings_attack.InRange();
+
             if (canAttack || startAttack)
             {
                 animController.IsAttacking();
@@ -52,7 +54,9 @@ public class Coglings_Attack_AI : MonoBehaviour
         else
         {
             animController.IsNotAttacking();
-            coglings_attack.OutofRange();
+
+            if (coglings_attack)
+                coglings_attack.OutofRange();
         }
 
     }
@@ -102,5 +106,10 @@ public class Coglings_Attack_AI : MonoBehaviour
         }
         else
             return 0;
+    }
+
+    public bool isAttackingFlag()
+    {
+        return attacking;
     }
 }

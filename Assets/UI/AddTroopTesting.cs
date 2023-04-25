@@ -34,9 +34,9 @@ public class AddTroopTesting : MonoBehaviour
 
     public void Spawn_miner()
     {
-        if (gm.GetComponent<GameManager>().Ironite >= 100 && !(gm.GetComponent<GameManager>().Unit_count > 19))
+        if (gameManger.Ironite >= 100 && !(gameManger.Unit_count > 19))
         {
-            gm.GetComponent<GameManager>().Unit_count += 1;
+            gameManger.Unit_count += 1;
             var minerStats = gm.GetComponent<MinerStats>();
             objectToSpawn = minerStats.GetRobotMinerObject();//GameObject.Find("robot_miner_mouse");
             //var camera = GameObject.Find("ParentCamera").;
@@ -53,15 +53,15 @@ public class AddTroopTesting : MonoBehaviour
 
             var spawnedMiner = Instantiate(objectToSpawn, objectToSpawnAt.transform.position, objectToSpawnAt.transform.rotation);
 
-            gm.GetComponent<GameManager>().Ironite -= 100;
+            gameManger.Ironite -= 100;
         }
     }
 
     public void Spawn_melee()
     {
-        if (gm.GetComponent<GameManager>().Ironite >= 100 && !(gm.GetComponent<GameManager>().Unit_count > 19))
+        if (gameManger.Ironite >= 100 && !(gameManger.Unit_count > 19))
         {
-            gm.GetComponent<GameManager>().Unit_count += 1;
+            gameManger.Unit_count += 1;
             var minerStats = gm.GetComponent<Melle_UnitStats>();
             objectToSpawn = minerStats.GetRobotMinerObject();//GameObject.Find("robot_miner_mouse");
             //var camera = GameObject.Find("ParentCamera").;
@@ -72,15 +72,15 @@ public class AddTroopTesting : MonoBehaviour
 
             var spawnedMiner = Instantiate(objectToSpawn, objectToSpawnAt.transform.position, objectToSpawnAt.transform.rotation);
 
-            gm.GetComponent<GameManager>().Ironite -= 100;
+            gameManger.Ironite -= 100;
         }
     }
 
     public void Spawn_range()
     {
-        if (gm.GetComponent<GameManager>().Ironite >= 100 & !(gm.GetComponent<GameManager>().Unit_count > 19))
+        if (gameManger.Ironite >= 100 & !(gameManger.Unit_count > 19))
         {
-            gm.GetComponent<GameManager>().Unit_count += 1;
+            gameManger.Unit_count += 1;
             var minerStats = gm.GetComponent<Robot_Range_Stats>();
             objectToSpawn = minerStats.GetRobotMinerObject();//GameObject.Find("robot_miner_mouse");
             //var camera = GameObject.Find("ParentCamera").;
@@ -90,7 +90,7 @@ public class AddTroopTesting : MonoBehaviour
 
             var spawnedMiner = Instantiate(objectToSpawn, objectToSpawnAt.transform.position, objectToSpawnAt.transform.rotation);
 
-            gm.GetComponent<GameManager>().Ironite -= 100;
+            gameManger.Ironite -= 100;
         }
     }
 

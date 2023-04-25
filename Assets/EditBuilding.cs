@@ -11,12 +11,16 @@ public class EditBuilding : MonoBehaviour
 
     public GameObject melee;
     public GameObject ranged;
+    public GameObject miner;
 
     private void Start()
     {
         gm = GameObject.Find("GameManager");
         gameManager = gm.GetComponent<GameManager>();
         UI = GameObject.Find("UI");
+        melee = gm.GetComponent<Melle_UnitStats>().robotMeleePrefab;
+        ranged = gm.GetComponent<Robot_Range_Stats>().robotMeleePrefab;
+        miner = gm.GetComponent<MinerStats>().robotMinerPrefab;
     }
 
     public void RepairTurret()
@@ -110,27 +114,60 @@ public class EditBuilding : MonoBehaviour
         phase.SetActive(true);
     }
 
+    public void CreateMinerUnit()
+    {
+        if (gameManager.Ironite >= 100 && gameManager.Unit_count < gameManager.MaxUnitCount)
+        {
+            gameManager.Ironite -= 100;
+
+            var baseObj = GameObject.Find("Robot_Base_Level1");
+            if (baseObj == null)
+            {
+                baseObj = GameObject.Find("Robot_Base_Level2");
+            }
+
+            var spawnLoc = baseObj.transform.Find("Spawn_Location");
+
+            //var prod = gameManager.ActiveTroopProd;
+            //var spawnLoc = prod.transform.GetChild(prod.transform.childCount - 1);
+
+            gameManager.Unit_count += 1;
+
+            var unit = Instantiate(miner, spawnLoc.position, spawnLoc.rotation);
+
+            gameManager.unitsList.Add(unit);
+        }
+    }
+
     public void CreateMeleeUnit()
     {
-        if (gm.GetComponent<GameManager>().Ironite >= 250)
+        if (gameManager.Ironite >= 250 && gameManager.Unit_count < gameManager.MaxUnitCount)
         {
-            gm.GetComponent<GameManager>().Ironite -= 250;
-            var prod = gm.GetComponent<GameManager>().ActiveTroopProd;
+            gameManager.Ironite -= 250;
+            var prod = gameManager.ActiveTroopProd;
             var spawnLoc = prod.transform.GetChild(prod.transform.childCount - 1);
 
-            Instantiate(melee, spawnLoc.position, spawnLoc.rotation);
+            gameManager.Unit_count += 1;
+
+            var unit = Instantiate(melee, spawnLoc.position, spawnLoc.rotation);
+
+            gameManager.unitsList.Add(unit);
         }
     }
 
     public void CreateRangedUnit()
     {
-        if (gm.GetComponent<GameManager>().Ironite >= 250)
+        if (gameManager.Ironite >= 250 && gameManager.Unit_count < gameManager.MaxUnitCount)
         {
-            gm.GetComponent<GameManager>().Ironite -= 250;
-            var prod = gm.GetComponent<GameManager>().ActiveTroopProd;
+            gameManager.Ironite -= 250;
+            var prod = gameManager.ActiveTroopProd;
             var spawnLoc = prod.transform.GetChild(prod.transform.childCount - 1);
 
-            Instantiate(ranged, spawnLoc.position, spawnLoc.rotation);
+            gameManager.Unit_count += 1;
+
+            var unit = Instantiate(ranged, spawnLoc.position, spawnLoc.rotation);
+
+            gameManager.unitsList.Add(unit);
         }
     }
 }
