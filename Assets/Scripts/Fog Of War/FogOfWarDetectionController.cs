@@ -27,7 +27,6 @@ public class FogOfWarDetectionController : MonoBehaviour
     {
         mapObj = GameObject.Find("TerrainGroup_0/Clouds");
         fogOfWarLayer = LayerMask.GetMask("FogOfWar");
-        StartCoroutine(start());
         /*
         enemyLayerMask = LayerMask.GetMask("EnemyUnit");
         lastColliders = null;
@@ -39,7 +38,7 @@ public class FogOfWarDetectionController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        StartCoroutine(start());
     }
 
     IEnumerator start()

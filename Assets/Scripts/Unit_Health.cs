@@ -47,7 +47,7 @@ public class Unit_Health : MonoBehaviour
             case Unit_Names.Miner:
             case Unit_Names.Robot_Melee:
             case Unit_Names.Robot_Ranged:
-                gm.GetComponent<GameManager>().unitsList.Remove(this.gameObject);
+                //gm.GetComponent<GameManager>().unitsList.Remove(this.gameObject);
                 yield return new WaitForSeconds(2);
                 break;
             case Unit_Names.Wolf:

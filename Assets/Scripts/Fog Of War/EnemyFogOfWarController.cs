@@ -86,14 +86,25 @@ public class EnemyFogOfWarController : MonoBehaviour
         _go.layer = _layer;
         foreach (Transform child in _go.transform)
         {
-            if (child.gameObject.layer != uiLayerID)
+            if (_layer == invisibleLayerID)
             {
                 child.gameObject.layer = _layer;
-
-                Transform _HasChildren = child.GetComponentInChildren<Transform>();
-                if (_HasChildren != null)
-                    SetGameLayerRecursive(child.gameObject, _layer);
             }
+            else
+            {
+                if (child.gameObject.tag == "Health_Bar")
+                {
+                    child.gameObject.layer = uiLayerID;
+                }
+                else
+                {
+                    child.gameObject.layer = _layer;
+                }
+            }
+
+            Transform _HasChildren = child.GetComponentInChildren<Transform>();
+            if (_HasChildren != null)
+                SetGameLayerRecursive(child.gameObject, _layer);
         }
     }
 

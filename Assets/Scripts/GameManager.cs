@@ -19,8 +19,7 @@ public class GameManager : MonoBehaviour
 
     private GameObject UI;
     private GameObject levelLoader;
-    public GameObject[] enemies { get; set; }
-    public List<GameObject> unitsList { get; set; }
+    //public List<GameObject> unitsList { get; set; }
 
     public bool IsFoliageCleared { get; private set; } = false;
     public bool IsWallBuilt { get; private set; } = false;
@@ -62,8 +61,8 @@ public class GameManager : MonoBehaviour
     public List<GameObject> Coglings = new List<GameObject>();
     public List<GameObject> GraxianMiner = new List<GameObject>();
     public List<GameObject> Graxian = new List<GameObject>();
-
-
+    public List<GameObject> Sleemasi = new List<GameObject>();
+    public List<GameObject> SleemasiMiner = new List<GameObject>();
 
     // Start is called before the first frame update
     void Start()
@@ -83,20 +82,21 @@ public class GameManager : MonoBehaviour
             .Where(x => x.GetComponent<Unit_Name>().unit_Name != Unit_Names.Graxxian_Miner));
         StartCoroutine(UpdateTargetPosition());
         //StartCoroutine(Spawn());
-        unitsList = new List<GameObject>();
-        StartCoroutine(AddUnits());
+        //unitsList = new List<GameObject>();
+        //StartCoroutine(AddUnits());
     }
 
     // Update is called once per frame
     void Update()
     {
+        /*
         if (Time.time > nextActionTime)
         {
             nextActionTime += period;
             var coglings = GameObject.FindGameObjectsWithTag("Cogling");
             var en = GameObject.FindGameObjectsWithTag("Enemy");
             enemies = en.Union(coglings).ToArray();
-        }
+        }*/
     }
 
     IEnumerator AddUnits()
@@ -110,7 +110,7 @@ public class GameManager : MonoBehaviour
                 case Unit_Names.Robot_Melee:
                 case Unit_Names.Robot_Ranged:
                 case Unit_Names.Miner:
-                    unitsList.Add(unit);
+                    //unitsList.Add(unit);
                     break;
             }
         }
@@ -123,7 +123,7 @@ public class GameManager : MonoBehaviour
         while (true)
         {
             yield return new WaitForSeconds(3);
-            selectables = new List<GameObject>(GameObject.FindGameObjectsWithTag("Selectable"));
+            //selectables = new List<GameObject>(GameObject.FindGameObjectsWithTag("Selectable"));
             buildings = new List<GameObject>(GameObject.FindGameObjectsWithTag("Building"));
             CoglingMiner = new List<GameObject>(GameObject.FindGameObjectsWithTag("Cogling")
                 .Where(x => x.GetComponent<Unit_Name>().unit_Name == Unit_Names.Cogling_Miner));
