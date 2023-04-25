@@ -34,7 +34,9 @@ public class GameManager : MonoBehaviour
     public int TroopCapBuildingCount { get; private set; } = 0;
     public int TroopProdBuildingCount { get; private set; } = 0;
     public int TurretCount { get; private set; } = 0;
-    public int MaxUnitCount { get; private set; } = 20;
+    public int Max_Unit_Count { get; private set; } = 20;
+
+
     public int ModulesRepairedCount { get; private set; } = 0;
 
     public GameObject ActiveTurret { get; private set; } = null;
@@ -49,12 +51,38 @@ public class GameManager : MonoBehaviour
     private bool spawn = true;
     int count = 5;
 
+    public int cogling_Minerals;
+    public int graxian_Minerals;
+
+    public int reputation = 20;
+
+    public List<GameObject> selectables = new List<GameObject>();
+    public List<GameObject> buildings = new List<GameObject>();
+    public List<GameObject> CoglingMiner = new List<GameObject>();
+    public List<GameObject> Coglings = new List<GameObject>();
+    public List<GameObject> GraxianMiner = new List<GameObject>();
+    public List<GameObject> Graxian = new List<GameObject>();
+
+
+
     // Start is called before the first frame update
     void Start()
     {
         test = GetComponent<FORCombatTest>();
         UI = GameObject.Find("UI");
         levelLoader = GameObject.Find("LevelLoader");
+        selectables = new List<GameObject>(GameObject.FindGameObjectsWithTag("Selectable"));
+        buildings = new List<GameObject>(GameObject.FindGameObjectsWithTag("Building"));
+        CoglingMiner = new List<GameObject>(GameObject.FindGameObjectsWithTag("Cogling")
+            .Where(x => x.GetComponent<Unit_Name>().unit_Name == Unit_Names.Cogling_Miner));
+        Coglings = new List<GameObject>(GameObject.FindGameObjectsWithTag("Cogling")
+            .Where(x => x.GetComponent<Unit_Name>().unit_Name != Unit_Names.Cogling_Miner));
+        GraxianMiner = new List<GameObject>(GameObject.FindGameObjectsWithTag("Graxian")
+            .Where(x => x.GetComponent<Unit_Name>().unit_Name == Unit_Names.Graxxian_Miner));
+        Graxian = new List<GameObject>(GameObject.FindGameObjectsWithTag("Graxian")
+            .Where(x => x.GetComponent<Unit_Name>().unit_Name != Unit_Names.Graxxian_Miner));
+        StartCoroutine(UpdateTargetPosition());
+        //StartCoroutine(Spawn());
         unitsList = new List<GameObject>();
         StartCoroutine(AddUnits());
     }
@@ -62,11 +90,6 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-        //This is just for the Test for getting balance for the first enemies
-        if (spawn)
-            StartCoroutine(Spawn());
-
         if (Time.time > nextActionTime)
         {
             nextActionTime += period;
@@ -95,15 +118,40 @@ public class GameManager : MonoBehaviour
         yield return null;
     }
 
-    IEnumerator Spawn()
+    IEnumerator UpdateTargetPosition()
     {
-        spawn = false;
-        yield return new WaitForSeconds(120);
-        test.ChooseUnits(count);
-        count += 5;
-        test.SetTarget();
-        spawn = true;
+        while (true)
+        {
+            yield return new WaitForSeconds(3);
+            selectables = new List<GameObject>(GameObject.FindGameObjectsWithTag("Selectable"));
+            buildings = new List<GameObject>(GameObject.FindGameObjectsWithTag("Building"));
+            CoglingMiner = new List<GameObject>(GameObject.FindGameObjectsWithTag("Cogling")
+                .Where(x => x.GetComponent<Unit_Name>().unit_Name == Unit_Names.Cogling_Miner));
+            Coglings = new List<GameObject>(GameObject.FindGameObjectsWithTag("Cogling")
+                .Where(x => x.GetComponent<Unit_Name>().unit_Name != Unit_Names.Cogling_Miner));
+            GraxianMiner = new List<GameObject>(GameObject.FindGameObjectsWithTag("Graxian")
+                .Where(x => x.GetComponent<Unit_Name>().unit_Name == Unit_Names.Graxxian_Miner));
+            Graxian = new List<GameObject>(GameObject.FindGameObjectsWithTag("Graxian")
+                .Where(x => x.GetComponent<Unit_Name>().unit_Name != Unit_Names.Graxxian_Miner));
+        }
     }
+
+    public void UnitDied(GameObject obj)
+    {
+        selectables.Remove(obj);
+    }
+
+
+    //IEnumerator Spawn()
+    //{
+    //    spawn = false;
+    //    yield return new WaitForSeconds(90);
+    //    test.ChooseUnits(count);
+    //    count += 5;
+    //    test.SetTarget();
+    //    spawn = true;
+    //    this.gameObject.GetComponent<AtWar>().atWar = true;
+    //}
 
     public void SetActiveTurretWindow(GameObject turret)
     {
@@ -281,7 +329,7 @@ public class GameManager : MonoBehaviour
     public void IncrementTroopCapBuildings()
     {
         TroopCapBuildingCount += 1;
-        MaxUnitCount += 20;
+        Max_Unit_Count += 20;
 
         var troopCapCount = UI.transform.Find("Building Creation Window/Troop Cap Count").gameObject;
         troopCapCount.GetComponent<Text>().text = "Current: " + TroopCapBuildingCount;

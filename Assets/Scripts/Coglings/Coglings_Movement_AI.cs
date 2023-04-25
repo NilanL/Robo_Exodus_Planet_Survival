@@ -7,10 +7,12 @@ public class Coglings_Movement_AI : MonoBehaviour
 {
     private NavMeshAgent navMeshAgent;
     [SerializeField]
-    GameObject target;
+    public Vector3 target;
+    public GameObject targ;
     bool isGettingAttacked = false;
     bool inRange = false;
     AnimationController animController;
+    public bool isMoving = false;
 
     // Start is called before the first frame update
     void Start()
@@ -29,7 +31,7 @@ public class Coglings_Movement_AI : MonoBehaviour
             {
                 if (Vector3.Distance((tar.transform.position), this.gameObject.transform.position) < 50)
                 {
-                    target = tar;
+                    targ = tar;
                 }
             }
             tars = GameObject.FindGameObjectsWithTag("Building");
@@ -38,28 +40,39 @@ public class Coglings_Movement_AI : MonoBehaviour
                 if (Vector3.Distance((tar.transform.position), this.gameObject.transform.position) < 50)
                 {
                     if(target == null)
-                        target = tar;
+                        targ = tar;
                 }
             }
         }
 
-        if (target)
+        if(isMoving)
         {
             animController.IsMoving();
-            if (!inRange)
-                navMeshAgent.destination = target.transform.position;
-            GetComponent<Coglings_Attack_AI>().SetTarget(target);
         }
         else
         {
             animController.IsNotMoving();
         }
 
+        if (targ)
+        {
+            
+            if (!inRange)
+                navMeshAgent.destination = targ.transform.position;
+            GetComponent<Coglings_Attack_AI>().SetTarget(targ);
+        }
+
+        else if(target != null)
+        {
+            navMeshAgent.destination = target;
+        }
+
+
     }
 
     public void gettingAttacked(GameObject tar)
     {
-        target = tar;
+        targ = tar;
     }
 
     public void InRange()

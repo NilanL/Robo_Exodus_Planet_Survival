@@ -104,6 +104,23 @@ public class Stats : MonoBehaviour
         return Prefab;
     }
 
+    public void InitializeUpdate()
+    {
+        switch (name.unit_Name)
+        {
+            case Unit_Names.Miner:
+                initializeMiner();
+                break;
+            case Unit_Names.Robot_Melee:
+                Initializemeleeunit();
+                break;
+            case Unit_Names.Robot_Ranged:
+                InitializeRangeUnit();
+                break;
+        }
+    }
+
+
     private void initializestats()
     {
         switch(name.unit_Name)
@@ -126,6 +143,9 @@ public class Stats : MonoBehaviour
             case Unit_Names.Cogling_Range:
                 InitializeCoglingRangeUnit();
                 break;
+            case Unit_Names.Cogling_Miner:
+                InitializeCoglingMinerUnit();
+                break;
             case Unit_Names.Main_Base:
                 InitializeMainBaseBuilding();
                 break;
@@ -140,6 +160,15 @@ public class Stats : MonoBehaviour
                 break;
             case Unit_Names.WallGate:
                 InitializeWallGateBuilding();
+                break;
+            case Unit_Names.Graxxian_Miner:
+                InitializeOrcMiner();
+                break;
+            case Unit_Names.Graxxian_Melee:
+                InitializeOrcMelee();
+                break;
+            case Unit_Names.Graxxian_Ranged:
+                InitializeOrcRange();
                 break;
         }
     }
@@ -195,6 +224,16 @@ public class Stats : MonoBehaviour
         range = minerstats.GetRange();
     }
 
+    private void InitializeCoglingMinerUnit()
+    {
+        var minerstats = gm.GetComponent<Cogling_Miner>();
+        maxHealth = minerstats.getMaxHealth();
+        unitAtk = minerstats.GetAtk();
+        unitDef = minerstats.GetDef();
+        atkSpd = minerstats.GetAtkSpeed();
+        range = minerstats.GetRange();
+    }
+
     private void InitializeCoglingRangeUnit()
     {
         var minerstats = gm.GetComponent<Coglings_Range_Stat>();
@@ -236,6 +275,33 @@ public class Stats : MonoBehaviour
     private void InitializeWallGateBuilding()
     {
         var minerstats = gm.GetComponent<WallGate_Stats>();
+        maxHealth = minerstats.getMaxHealth();
+        unitAtk = minerstats.GetAtk();
+        unitDef = minerstats.GetDef();
+        atkSpd = minerstats.GetAtkSpeed();
+    }
+
+    private void InitializeOrcMiner()
+    {
+        var minerstats = gm.GetComponent<OrcMinerStats>();
+        maxHealth = minerstats.getMaxHealth();
+        unitAtk = minerstats.GetAtk();
+        unitDef = minerstats.GetDef();
+        atkSpd = minerstats.GetAtkSpeed();
+    }
+
+    private void InitializeOrcMelee()
+    {
+        var minerstats = gm.GetComponent<OrcMeleeStats>();
+        maxHealth = minerstats.getMaxHealth();
+        unitAtk = minerstats.GetAtk();
+        unitDef = minerstats.GetDef();
+        atkSpd = minerstats.GetAtkSpeed();
+    }
+
+    private void InitializeOrcRange()
+    {
+        var minerstats = gm.GetComponent<OrcRangeStats>();
         maxHealth = minerstats.getMaxHealth();
         unitAtk = minerstats.GetAtk();
         unitDef = minerstats.GetDef();

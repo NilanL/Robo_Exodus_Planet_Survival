@@ -14,6 +14,7 @@ public class FogOfWarDetectionController : MonoBehaviour
     public bool isPrinted = false;
     private bool isDefeated = false;
     private int fogOfWarLayer;
+    bool started = true;
     /*
     private LayerMask enemyLayerMask;
     private Collider[] lastColliders;
@@ -26,6 +27,7 @@ public class FogOfWarDetectionController : MonoBehaviour
     {
         mapObj = GameObject.Find("TerrainGroup_0/Clouds");
         fogOfWarLayer = LayerMask.GetMask("FogOfWar");
+        StartCoroutine(start());
         /*
         enemyLayerMask = LayerMask.GetMask("EnemyUnit");
         lastColliders = null;
@@ -37,11 +39,16 @@ public class FogOfWarDetectionController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!isDefeated)
-            FogOfWarCheck();
+
     }
 
-    private void FogOfWarCheck()
+    IEnumerator start()
+    {
+        yield return new WaitForSeconds(.1f);
+        FogOfWarCheck();
+    }
+
+    public void FogOfWarCheck()
     {
         var colliders = Physics.OverlapSphere(transform.position, desiredDistance + 1f, fogOfWarLayer);
 
