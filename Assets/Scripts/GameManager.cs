@@ -47,6 +47,7 @@ public class GameManager : MonoBehaviour
     int count = 5;
 
     public int cogling_Minerals;
+    public int graxian_Minerals;
 
     public int reputation = 20;
 
@@ -54,6 +55,8 @@ public class GameManager : MonoBehaviour
     public List<GameObject> buildings = new List<GameObject>();
     public List<GameObject> CoglingMiner = new List<GameObject>();
     public List<GameObject> Coglings = new List<GameObject>();
+    public List<GameObject> GraxianMiner = new List<GameObject>();
+    public List<GameObject> Graxian = new List<GameObject>();
 
 
 
@@ -69,8 +72,12 @@ public class GameManager : MonoBehaviour
             .Where(x => x.GetComponent<Unit_Name>().unit_Name == Unit_Names.Cogling_Miner));
         Coglings = new List<GameObject>(GameObject.FindGameObjectsWithTag("Cogling")
             .Where(x => x.GetComponent<Unit_Name>().unit_Name != Unit_Names.Cogling_Miner));
+        GraxianMiner = new List<GameObject>(GameObject.FindGameObjectsWithTag("Graxian")
+            .Where(x => x.GetComponent<Unit_Name>().unit_Name == Unit_Names.Graxxian_Miner));
+        Graxian = new List<GameObject>(GameObject.FindGameObjectsWithTag("Graxian")
+            .Where(x => x.GetComponent<Unit_Name>().unit_Name != Unit_Names.Graxxian_Miner));
         StartCoroutine(UpdateTargetPosition());
-        StartCoroutine(Spawn());
+        //StartCoroutine(Spawn());
     }
 
     // Update is called once per frame
@@ -90,6 +97,10 @@ public class GameManager : MonoBehaviour
                 .Where(x => x.GetComponent<Unit_Name>().unit_Name == Unit_Names.Cogling_Miner));
             Coglings = new List<GameObject>(GameObject.FindGameObjectsWithTag("Cogling")
                 .Where(x => x.GetComponent<Unit_Name>().unit_Name != Unit_Names.Cogling_Miner));
+            GraxianMiner = new List<GameObject>(GameObject.FindGameObjectsWithTag("Graxian")
+                .Where(x => x.GetComponent<Unit_Name>().unit_Name == Unit_Names.Graxxian_Miner));
+            Graxian = new List<GameObject>(GameObject.FindGameObjectsWithTag("Graxian")
+                .Where(x => x.GetComponent<Unit_Name>().unit_Name != Unit_Names.Graxxian_Miner));
         }
     }
 
@@ -99,16 +110,16 @@ public class GameManager : MonoBehaviour
     }
 
 
-    IEnumerator Spawn()
-    {
-        spawn = false;
-        yield return new WaitForSeconds(90);
-        test.ChooseUnits(count);
-        count += 5;
-        test.SetTarget();
-        spawn = true;
-        this.gameObject.GetComponent<AtWar>().atWar = true;
-    }
+    //IEnumerator Spawn()
+    //{
+    //    spawn = false;
+    //    yield return new WaitForSeconds(90);
+    //    test.ChooseUnits(count);
+    //    count += 5;
+    //    test.SetTarget();
+    //    spawn = true;
+    //    this.gameObject.GetComponent<AtWar>().atWar = true;
+    //}
 
     public void SetActiveTurretWindow(GameObject turret)
     {

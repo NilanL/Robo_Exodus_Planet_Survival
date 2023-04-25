@@ -21,6 +21,11 @@ TagManager:
   - UI
   - Fog_Of_War_Clouds
   - RobotGate
+  - Graxian
+  - Graxian Patrol
+  - Graxian Spawn
+  - Base Location
+  - elf spawn
   layers:
   - Default
   - TransparentFX

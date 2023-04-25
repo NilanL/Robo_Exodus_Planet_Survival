@@ -13,6 +13,7 @@ public class Orc_Movement_AI : MonoBehaviour
     bool inRange = false;
     GameManager gm;
     bool inWar = false;
+    public bool booltarg = false;
 
     // Start is called before the first frame update
     void Start()
@@ -46,18 +47,22 @@ public class Orc_Movement_AI : MonoBehaviour
             }
         }
 
-        if (targ)
+        if (targ && !booltarg)
         {
             if (!inRange)
+            {
+                target = Vector3.zero;
                 navMeshAgent.SetDestination(targ.transform.position);
+            }
             GetComponent<Orc_Attack_AI>().SetTarget(targ);
+            booltarg = true;
         }
-
-        else if (target != null)
+        else if (target != Vector3.zero)
         {
             navMeshAgent.SetDestination(target);
+            targ = null;
+            booltarg = false;
         }
-
     }
 
     public void gettingAttacked(GameObject tar)

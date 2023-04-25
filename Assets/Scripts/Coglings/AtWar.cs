@@ -34,6 +34,7 @@ public class AtWar : MonoBehaviour
             }
         }
         waypoint = lista.ToArray();
+        StartCoroutine(resource());
     }
 
     // Update is called once per frame
@@ -66,18 +67,27 @@ public class AtWar : MonoBehaviour
         }
     }
 
+    IEnumerator resource()
+    {
+        while(true)
+        {
+            yield return new WaitForSeconds(30);
+            gm.cogling_Minerals += 100;
+        }
+    }
+
     IEnumerator Spawn()
     {
         gm.cogling_Minerals -= 500;
         yield return new WaitForSeconds(3);
-        int check = rn.Next(0, 10);
-        if(check >= 9)
+        int check = rn.Next(0, 100);
+        if(check >= 90)
         {
             var objectToSpawn = cogM.GetRobotMinerObject();
             var spawnedMiner = Instantiate(objectToSpawn, spawn.transform.position, spawn.transform.rotation);
             spawnedMiner.GetComponent<Coglings_Movement_AI>().target = waypoint[0].position;
         }
-        if(check <= 1)
+        if(check <= 10)
         {
             var objectToSpawn = cogR.GetRobotMinerObject();
             var spawnedMiner = Instantiate(objectToSpawn, spawn.transform.position, spawn.transform.rotation);

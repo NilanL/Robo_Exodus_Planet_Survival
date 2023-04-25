@@ -19,9 +19,11 @@ public class WallBuild : MonoBehaviour
 
     public void BuildWall_Level1()
     {
-        var wall1 = gm.GetComponent<Wall_Stats>();
+        var foundation = GameObject.Find("Base_Foundation");
+        wallSpawn = foundation.transform.Find("Wall_Spawn_Location");
+        var wall1 = GameObject.Find("GameManager").GetComponent<Wall_Stats>();
 
-        var gameManger = gm.GetComponent<GameManager>();
+        var gameManger = GameObject.Find("GameManager").GetComponent<GameManager>();
 
         if (gameManger.Ironite >= 1000)
         {
@@ -35,7 +37,8 @@ public class WallBuild : MonoBehaviour
 
     public void removeFoliage()
     {
-        var gameManger = gm.GetComponent<GameManager>();
+        foliage = GameObject.Find("Removeable_Foliage");
+        var gameManger = GameObject.Find("GameManager").GetComponent<GameManager>();
 
         if (gameManger.Ironite >= 250)
         {
