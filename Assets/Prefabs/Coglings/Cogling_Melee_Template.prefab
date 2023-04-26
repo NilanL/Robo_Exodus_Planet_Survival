@@ -545,6 +545,7 @@ MonoBehaviour:
   target: {x: 0, y: 0, z: 0}
   targ: {fileID: 0}
   isMoving: 0
+  inWar: 0
 --- !u!114 &5594488755314400356
 MonoBehaviour:
   m_ObjectHideFlags: 0
