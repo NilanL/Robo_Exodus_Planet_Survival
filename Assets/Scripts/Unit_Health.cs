@@ -96,6 +96,9 @@ public class Unit_Health : MonoBehaviour
             case Unit_Names.Robot_Melee:
                 GetComponent<TaskManager>().gettingAttacked(tar);
                 break;
+            case Unit_Names.Graxxian_Ranged:
+                GetComponent<Orc_Movement_AI>().gettingAttacked(tar);
+                break;
         }
 
     }

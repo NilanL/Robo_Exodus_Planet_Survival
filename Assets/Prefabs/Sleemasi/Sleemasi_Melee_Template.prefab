@@ -572,6 +572,7 @@ GameObject:
   - component: {fileID: -184622626680150486}
   - component: {fileID: 7685901662320612706}
   - component: {fileID: -5326522337200406456}
+  - component: {fileID: -7470778463423900570}
   m_Layer: 0
   m_Name: Sleemasi_Melee_Template
   m_TagString: Enemy
@@ -729,6 +730,18 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &-7470778463423900570
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7955543386826049898}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69ac351c1b82a384f8e58839bbd75456, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8213969344577380597
 GameObject:
   m_ObjectHideFlags: 0

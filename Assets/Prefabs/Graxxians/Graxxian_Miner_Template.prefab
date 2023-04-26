@@ -583,6 +583,7 @@ GameObject:
   - component: {fileID: 7528693622701484551}
   - component: {fileID: 7991726644838375155}
   - component: {fileID: 2238497284208655412}
+  - component: {fileID: -5541675857387199228}
   m_Layer: 0
   m_Name: Graxxian_Miner_Template
   m_TagString: Enemy
@@ -902,6 +903,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 62c95772ca9cffc4fa6fab2fb8f63ec8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &-5541675857387199228
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6862131410021291681}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69ac351c1b82a384f8e58839bbd75456, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &8220378917513556681

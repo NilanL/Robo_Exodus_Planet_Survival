@@ -153,10 +153,16 @@ public class Stats : MonoBehaviour
                 InitializeHouseBuilding();
                 break;
             case Unit_Names.Robot_Turret:
+                InitializeRobotTurretBuilding();
+                break;
             case Unit_Names.Cogling_Turret:
+                InitializeCoglingTurretBuilding();
+                break;
             case Unit_Names.Sleemasi_Turret:
+                InitializeSleemasiTurretBuilding();
+                break;
             case Unit_Names.Graxxian_Turret:
-                InitializeTurretBuilding();
+                InitializeGraxxianTurretBuilding();
                 break;
             case Unit_Names.WallGate:
                 InitializeWallGateBuilding();
@@ -262,9 +268,39 @@ public class Stats : MonoBehaviour
         atkSpd = minerstats.GetAtkSpeed();
     }
 
-    private void InitializeTurretBuilding()
+    private void InitializeRobotTurretBuilding()
     {
-        var minerstats = gm.GetComponent<Turret_Stats>();
+        var minerstats = gm.GetComponent<RobotTurretStats>();
+        maxHealth = minerstats.getMaxHealth();
+        unitAtk = minerstats.GetAtk();
+        unitDef = minerstats.GetDef();
+        atkSpd = minerstats.GetAtkSpeed();
+        range = minerstats.getRange();
+    }
+
+    private void InitializeCoglingTurretBuilding()
+    {
+        var minerstats = gm.GetComponent<CoglingTurretStats>();
+        maxHealth = minerstats.getMaxHealth();
+        unitAtk = minerstats.GetAtk();
+        unitDef = minerstats.GetDef();
+        atkSpd = minerstats.GetAtkSpeed();
+        range = minerstats.getRange();
+    }
+
+    private void InitializeGraxxianTurretBuilding()
+    {
+        var minerstats = gm.GetComponent<GraxxianTurretStats>();
+        maxHealth = minerstats.getMaxHealth();
+        unitAtk = minerstats.GetAtk();
+        unitDef = minerstats.GetDef();
+        atkSpd = minerstats.GetAtkSpeed();
+        range = minerstats.getRange();
+    }
+
+    private void InitializeSleemasiTurretBuilding()
+    {
+        var minerstats = gm.GetComponent<SleemasiTurretStats>();
         maxHealth = minerstats.getMaxHealth();
         unitAtk = minerstats.GetAtk();
         unitDef = minerstats.GetDef();
@@ -306,5 +342,6 @@ public class Stats : MonoBehaviour
         unitAtk = minerstats.GetAtk();
         unitDef = minerstats.GetDef();
         atkSpd = minerstats.GetAtkSpeed();
+        range = minerstats.GetRange();
     }
 }
