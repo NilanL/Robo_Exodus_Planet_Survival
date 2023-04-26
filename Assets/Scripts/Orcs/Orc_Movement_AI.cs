@@ -54,7 +54,7 @@ public class Orc_Movement_AI : MonoBehaviour
             {
                 if (Vector3.Distance((tar.transform.position), this.gameObject.transform.position) < 50)
                 {
-                    if (target == null)
+                    if (target == Vector3.zero)
                         targ = tar;
                 }
             }
@@ -63,7 +63,7 @@ public class Orc_Movement_AI : MonoBehaviour
             {
                 if (Vector3.Distance((tar.transform.position), this.gameObject.transform.position) < 50)
                 {
-                    if (target == null)
+                    if (target == Vector3.zero)
                         targ = tar;
                 }
             }
