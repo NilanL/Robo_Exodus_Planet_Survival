@@ -7,7 +7,7 @@ public class CoglingTurretStats : MonoBehaviour
     [SerializeField]
     private int maxHealth { get; set; } = 12500;
     [SerializeField]
-    private int unitAtk { get; set; } = 10;
+    private int unitAtk { get; set; } = 12;
     [SerializeField]
     private int vehicleAtk { get; set; } = 0;
     [SerializeField]
@@ -19,7 +19,7 @@ public class CoglingTurretStats : MonoBehaviour
     [SerializeField]
     private int baseDef { get; set; } = 0;
     [SerializeField]
-    private float atkSpd { get; set; } = 1.2f;
+    private float atkSpd { get; set; } = 5f;
     [SerializeField]
     private float miningSpd { get; set; } = 1.3f;
     [SerializeField]
