@@ -152,7 +152,10 @@ public class Stats : MonoBehaviour
             case Unit_Names.House:
                 InitializeHouseBuilding();
                 break;
-            case Unit_Names.Turret:
+            case Unit_Names.Robot_Turret:
+            case Unit_Names.Cogling_Turret:
+            case Unit_Names.Sleemasi_Turret:
+            case Unit_Names.Graxxian_Turret:
                 InitializeTurretBuilding();
                 break;
             case Unit_Names.WallGate:
@@ -266,6 +269,7 @@ public class Stats : MonoBehaviour
         unitAtk = minerstats.GetAtk();
         unitDef = minerstats.GetDef();
         atkSpd = minerstats.GetAtkSpeed();
+        range = minerstats.getRange();
     }
 
     private void InitializeWallGateBuilding()
