@@ -52,6 +52,7 @@ public class GameManager : MonoBehaviour
 
     public int cogling_Minerals;
     public int graxian_Minerals;
+    public int sleemasi_Minerals;
 
     public int reputation = 20;
 
@@ -80,6 +81,10 @@ public class GameManager : MonoBehaviour
             .Where(x => x.GetComponent<Unit_Name>().unit_Name == Unit_Names.Graxxian_Miner));
         Graxian = new List<GameObject>(GameObject.FindGameObjectsWithTag("Graxian")
             .Where(x => x.GetComponent<Unit_Name>().unit_Name != Unit_Names.Graxxian_Miner));
+        SleemasiMiner = new List<GameObject>(GameObject.FindGameObjectsWithTag("Sleemasi")
+            .Where(x => x.GetComponent<Unit_Name>().unit_Name != Unit_Names.Sleemasi_Miner));
+        Sleemasi = new List<GameObject>(GameObject.FindGameObjectsWithTag("Sleemasi")
+            .Where(x => x.GetComponent<Unit_Name>().unit_Name != Unit_Names.Sleemasi_Miner));
         StartCoroutine(UpdateTargetPosition());
         //StartCoroutine(Spawn());
         //unitsList = new List<GameObject>();
@@ -122,7 +127,7 @@ public class GameManager : MonoBehaviour
     {
         while (true)
         {
-            yield return new WaitForSeconds(3);
+            yield return new WaitForSeconds(2);
             //selectables = new List<GameObject>(GameObject.FindGameObjectsWithTag("Selectable"));
             buildings = new List<GameObject>(GameObject.FindGameObjectsWithTag("Building"));
             CoglingMiner = new List<GameObject>(GameObject.FindGameObjectsWithTag("Cogling")
@@ -133,6 +138,10 @@ public class GameManager : MonoBehaviour
                 .Where(x => x.GetComponent<Unit_Name>().unit_Name == Unit_Names.Graxxian_Miner));
             Graxian = new List<GameObject>(GameObject.FindGameObjectsWithTag("Graxian")
                 .Where(x => x.GetComponent<Unit_Name>().unit_Name != Unit_Names.Graxxian_Miner));
+            SleemasiMiner = new List<GameObject>(GameObject.FindGameObjectsWithTag("Sleemasi")
+                .Where(x => x.GetComponent<Unit_Name>().unit_Name != Unit_Names.Sleemasi_Miner));
+            Sleemasi = new List<GameObject>(GameObject.FindGameObjectsWithTag("Sleemasi")
+                .Where(x => x.GetComponent<Unit_Name>().unit_Name != Unit_Names.Sleemasi_Miner));
         }
     }
 

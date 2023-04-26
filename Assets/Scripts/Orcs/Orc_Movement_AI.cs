@@ -25,24 +25,46 @@ public class Orc_Movement_AI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //if (!isGettingAttacked)
+        //{
+        //    foreach (var tar in gm.selectables)
+        //    {
+        //        if (Vector3.Distance((tar.transform.position), this.gameObject.transform.position) < 50)
+        //        {
+        //            if (inWar)
+        //                target = tar.transform.position;
+        //            else if (tar.GetComponent<TaskManager>().mining)
+        //                target = tar.transform.position;
+        //        }
+        //    }
+        //    foreach (var tar in gm.buildings)
+        //    {
+        //        if (Vector3.Distance((tar.transform.position), this.gameObject.transform.position) < 50)
+        //        {
+        //            if (targ == null && inWar)
+        //                target = tar.transform.position;
+        //        }
+        //    }
+        //}
+
         if (!isGettingAttacked)
         {
+            //var tars = GameObject.FindGameObjectsWithTag("Selectable");
             foreach (var tar in gm.selectables)
             {
                 if (Vector3.Distance((tar.transform.position), this.gameObject.transform.position) < 50)
                 {
-                    if (inWar)
-                        target = tar.transform.position;
-                    else if (tar.GetComponent<TaskManager>().mining)
-                        target = tar.transform.position;
+                    if (target == null)
+                        targ = tar;
                 }
             }
+            //tars = GameObject.FindGameObjectsWithTag("Building");
             foreach (var tar in gm.buildings)
             {
                 if (Vector3.Distance((tar.transform.position), this.gameObject.transform.position) < 50)
                 {
-                    if (targ == null && inWar)
-                        target = tar.transform.position;
+                    if (target == null)
+                        targ = tar;
                 }
             }
         }

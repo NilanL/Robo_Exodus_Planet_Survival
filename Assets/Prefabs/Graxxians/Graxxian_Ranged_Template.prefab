@@ -144,6 +144,8 @@ GameObject:
   - component: {fileID: 4609852238331772444}
   - component: {fileID: 1477148579097717056}
   - component: {fileID: 8612659756395859911}
+  - component: {fileID: 9154560270142223501}
+  - component: {fileID: 8315649377942524582}
   m_Layer: 0
   m_Name: Graxxian_Ranged_Template
   m_TagString: Graxian
@@ -369,6 +371,42 @@ MonoBehaviour:
   target: {x: 0, y: 0, z: 0}
   targ: {fileID: 0}
   booltarg: 0
+--- !u!95 &9154560270142223501
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2421248733417948688}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &8315649377942524582
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2421248733417948688}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed55841de857a4d46a5cf4fe382333f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shootingEffectPrefab: {fileID: 0}
+  attackingEffectPrefab: {fileID: 0}
+  miningEffectPrefab: {fileID: 0}
+  attackSound: {fileID: 0}
+  mineSound: {fileID: 0}
 --- !u!1 &2421248733589375600
 GameObject:
   m_ObjectHideFlags: 0
