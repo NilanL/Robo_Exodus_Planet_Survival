@@ -4,19 +4,21 @@ using UnityEngine;
 
 public class Orc_Attack_AI : MonoBehaviour
 {
-    private GameObject target;
-    Stats stats_wolf;
-    Orc_Movement_AI coglings_attack;
+    public GameObject target;
+    Stats stats_orc;
+    Orc_Movement_AI orcs_attack;
     bool attacking = false;
     bool canAttack = false;
     bool startAttack = false;
-
+    AnimationController animController;
 
     // Start is called before the first frame update
     void Start()
     {
-        stats_wolf = GetComponent<Stats>();
-        coglings_attack = GetComponent<Orc_Movement_AI>();
+        stats_orc = GetComponent<Stats>();
+        orcs_attack = GetComponent<Orc_Movement_AI>();
+        animController = GetComponent<AnimationController>();
+
     }
 
     // Update is called once per frame
@@ -26,6 +28,12 @@ public class Orc_Attack_AI : MonoBehaviour
         {
             if (!target)
             {
+                if (animController)
+                {
+                    animController.IsNotAttacking();
+                    animController.IsNotMoving();
+                }
+
                 targetDies(null);
             }
             else
@@ -36,18 +44,27 @@ public class Orc_Attack_AI : MonoBehaviour
     void Attacking()
     {
 
-        if (Vector3.Distance(target.transform.position, transform.position) < stats_wolf.getRange())
+        if (Vector3.Distance(target.transform.position, transform.position) < stats_orc.getRange())
         {
-            coglings_attack.InRange();
+            if (orcs_attack && orcs_attack.enabled)
+                orcs_attack.InRange();
+
             if (canAttack || startAttack)
             {
+                if (animController)
+                    animController.IsAttacking();
+
                 StartCoroutine(Attack());
             }
 
         }
         else
         {
-            coglings_attack.OutofRange();
+            if (animController)
+                animController.IsNotAttacking();
+
+            if (orcs_attack && orcs_attack.enabled)
+                orcs_attack.OutofRange();
         }
 
     }
@@ -55,15 +72,15 @@ public class Orc_Attack_AI : MonoBehaviour
     IEnumerator Attack()
     {
         canAttack = false;
-        yield return new WaitForSeconds(stats_wolf.GetAtkSpeed());
-        Debug.Log(stats_wolf.GetAtkSpeed(), this.gameObject);
+        yield return new WaitForSeconds(stats_orc.GetAtkSpeed());
+        Debug.Log(stats_orc.GetAtkSpeed(), this.gameObject);
         if (!target)
         {
             targetDies(null);
         }
         if (!(target == null))
         {
-            var damage = stats_wolf.GetAtk() - getDefence();
+            var damage = stats_orc.GetAtk() - getDefence();
             target.GetComponent<Unit_Health>().dmgResource(damage, this.gameObject);
             canAttack = true;
         }
@@ -103,5 +120,10 @@ public class Orc_Attack_AI : MonoBehaviour
         }
         else
             return 0;
+    }
+
+    public bool isAttackingFlag()
+    {
+        return attacking;
     }
 }

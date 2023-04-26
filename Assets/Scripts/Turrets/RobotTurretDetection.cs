@@ -3,6 +3,23 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public class EnemyUnitFoundException : Exception
+{
+    public EnemyUnitFoundException()
+    {
+    }
+
+    public EnemyUnitFoundException(string message)
+        : base(message)
+    {
+    }
+
+    public EnemyUnitFoundException(string message, Exception inner)
+        : base(message, inner)
+    {
+    }
+}
+
 public class RobotTurretDetection : MonoBehaviour
 {
     GameObject gm;
@@ -30,17 +47,22 @@ public class RobotTurretDetection : MonoBehaviour
         {
             nextActionTime += period;
 
-            if (taskManager.target == null || (taskManager.target != null && !taskManager.isAttackingFlag()))
+            try
             {
-                range = stats.getRange();
+                if (taskManager.target == null || (taskManager.target != null && !taskManager.isAttackingFlag()))
+                {
+                    range = stats.getRange();
 
-                checkForEnemies(gameManager.Coglings);
-                checkForEnemies(gameManager.CoglingMiner);
-                checkForEnemies(gameManager.Graxian);
-                checkForEnemies(gameManager.GraxianMiner);
-                checkForEnemies(gameManager.Sleemasi);
-                checkForEnemies(gameManager.SleemasiMiner);
-            }
+                    checkForEnemies(gameManager.otherEnemies);
+                    checkForEnemies(gameManager.Coglings);
+                    checkForEnemies(gameManager.CoglingMiner);
+                    checkForEnemies(gameManager.Graxian);
+                    checkForEnemies(gameManager.GraxianMiner);
+                    checkForEnemies(gameManager.Sleemasi);
+                    checkForEnemies(gameManager.SleemasiMiner);
+                }
+            } 
+            catch (EnemyUnitFoundException) {}
         }
     }
 
@@ -53,7 +75,7 @@ public class RobotTurretDetection : MonoBehaviour
                 if (enemy != null && Vector3.Distance(transform.position, enemy.transform.position) < range)
                 {
                     taskManager.setTarget(enemy);
-                    break;
+                    throw new EnemyUnitFoundException();
                 }
             }
         }

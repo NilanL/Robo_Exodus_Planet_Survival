@@ -158,12 +158,38 @@ public class TaskManager : MonoBehaviour
         else if(tar.tag == "Enemy")
         {
             attacking = true;
-            
+
+            if (target != tar)
+            {
+                canAttack = true;
+            }
         }
         else if(tar.tag == "Cogling")
         {
             attacking = true;
-            
+
+            if (target != tar)
+            {
+                canAttack = true;
+            }
+        }
+        else if (tar.tag == "Graxian")
+        {
+            attacking = true;
+
+            if (target != tar)
+            {
+                canAttack = true;
+            }
+        }
+        else if (tar.tag == "Sleemasi")
+        {
+            attacking = true;
+
+            if (target != tar)
+            {
+                canAttack = true;
+            }
         }
     }
 

@@ -343,6 +343,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62c95772ca9cffc4fa6fab2fb8f63ec8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  target: {fileID: 0}
 --- !u!114 &1477148579097717056
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -402,7 +403,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed55841de857a4d46a5cf4fe382333f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shootingEffectPrefab: {fileID: 0}
+  shootingEffectPrefab: {fileID: 7769708168629903492, guid: ff0168e444acc4841b94646c96c125bb,
+    type: 3}
   attackingEffectPrefab: {fileID: 0}
   miningEffectPrefab: {fileID: 0}
   attackSound: {fileID: 0}
@@ -615,7 +617,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2421248734410873621
 RectTransform:
   m_ObjectHideFlags: 0
