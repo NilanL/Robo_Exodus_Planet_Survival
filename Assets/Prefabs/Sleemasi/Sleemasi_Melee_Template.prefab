@@ -572,9 +572,16 @@ GameObject:
   - component: {fileID: -184622626680150486}
   - component: {fileID: 7685901662320612706}
   - component: {fileID: -5326522337200406456}
+  - component: {fileID: 2305074332008696161}
+  - component: {fileID: 1026410820140336196}
+  - component: {fileID: 4054140057001623510}
+  - component: {fileID: 1240975801255022156}
+  - component: {fileID: 7854378953616354456}
+  - component: {fileID: 2544185690047656437}
+  - component: {fileID: 342073176415120553}
   m_Layer: 0
   m_Name: Sleemasi_Melee_Template
-  m_TagString: Enemy
+  m_TagString: Sleemasi
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -729,6 +736,110 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &2305074332008696161
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7955543386826049898}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e085a4de494c964ebad2dffcd5b90e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1026410820140336196
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7955543386826049898}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7648a3f3de17eac4683b3f3a8971dd86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {x: 0, y: 0, z: 0}
+  targ: {fileID: 0}
+  isMoving: 0
+--- !u!114 &4054140057001623510
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7955543386826049898}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2907ce02e59e5f0439b22e2497fa465e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Prefab: {fileID: 7955543386826049898}
+--- !u!114 &1240975801255022156
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7955543386826049898}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c5edf43666820245a10cfc241b0707e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthbar: {fileID: 2304693305604794202}
+  currentHealth: 0
+  maxHealth: 0
+--- !u!114 &7854378953616354456
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7955543386826049898}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88ec9ecfb8a556d4684d045ebea34837, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unit_Name: 10
+--- !u!114 &2544185690047656437
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7955543386826049898}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed55841de857a4d46a5cf4fe382333f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shootingEffectPrefab: {fileID: 0}
+  attackingEffectPrefab: {fileID: 0}
+  miningEffectPrefab: {fileID: 0}
+  attackSound: {fileID: 0}
+  mineSound: {fileID: 0}
+--- !u!95 &342073176415120553
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7955543386826049898}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &8213969344577380597
 GameObject:
   m_ObjectHideFlags: 0
