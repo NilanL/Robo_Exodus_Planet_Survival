@@ -127,7 +127,7 @@ public class GameManager : MonoBehaviour
     {
         while (true)
         {
-            yield return new WaitForSeconds(3);
+            yield return new WaitForSeconds(2);
             //selectables = new List<GameObject>(GameObject.FindGameObjectsWithTag("Selectable"));
             buildings = new List<GameObject>(GameObject.FindGameObjectsWithTag("Building"));
             CoglingMiner = new List<GameObject>(GameObject.FindGameObjectsWithTag("Cogling")
