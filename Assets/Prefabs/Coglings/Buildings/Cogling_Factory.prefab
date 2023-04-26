@@ -13910,6 +13910,7 @@ GameObject:
   - component: {fileID: 4802350162837161340}
   - component: {fileID: 683909851527255414}
   - component: {fileID: 567724019619006809}
+  - component: {fileID: 2021770265148641997}
   m_Layer: 0
   m_Name: Healthbar Canvas
   m_TagString: Health_Bar
@@ -13924,9 +13925,9 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6730811412151985654}
-  m_LocalRotation: {x: 0.5, y: -0.5, z: -0.5, w: 0.5}
-  m_LocalPosition: {x: 0, y: 0, z: 0.0196}
-  m_LocalScale: {x: 0.00004, y: 0.00001, z: 0.005228883}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 1.51}
+  m_LocalScale: {x: 0.01, y: 0.002, z: 0.005228883}
   m_Children:
   - {fileID: 965404777088912819}
   m_Father: {fileID: 2131684863979403268}
@@ -13934,7 +13935,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 393.66068, y: 16.052423}
+  m_AnchoredPosition: {x: 4.94, y: 8.68}
   m_SizeDelta: {x: 640, y: 480}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &3029444015226599077
@@ -14011,6 +14012,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthbarSprite: {fileID: 5584255434874240820}
+--- !u!114 &2021770265148641997
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6730811412151985654}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e444f1e0d3a9f54e8cd33eb21531d0c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8521378897717913543
 GameObject:
   m_ObjectHideFlags: 0
@@ -14027,7 +14040,7 @@ GameObject:
   - component: {fileID: 1490377530277077535}
   m_Layer: 0
   m_Name: Cogling_Factory
-  m_TagString: EnemyBuilding
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -14133,7 +14146,7 @@ NavMeshObstacle:
   m_Shape: 1
   m_Extents: {x: 13.489515, y: 6.10285, z: 9.402375}
   m_MoveThreshold: 0.1
-  m_Carve: 1
+  m_Carve: 0
   m_CarveOnlyStationary: 1
   m_Center: {x: 2.883926, y: -3.526882, z: 2.419647}
   m_TimeToStationary: 0.5
@@ -14177,7 +14190,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88ec9ecfb8a556d4684d045ebea34837, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  unit_Name: 10
+  unit_Name: 17
 --- !u!114 &1490377530277077535
 MonoBehaviour:
   m_ObjectHideFlags: 0

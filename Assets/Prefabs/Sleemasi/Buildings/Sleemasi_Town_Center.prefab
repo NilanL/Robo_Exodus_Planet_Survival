@@ -2338,6 +2338,7 @@ GameObject:
   - component: {fileID: 6919481811556644658}
   - component: {fileID: 1608766153126591591}
   - component: {fileID: 4330509824106338987}
+  - component: {fileID: 4217258772010998024}
   m_Layer: 0
   m_Name: Healthbar Canvas
   m_TagString: Health_Bar
@@ -2352,17 +2353,17 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2390750452158562113}
-  m_LocalRotation: {x: 0.5, y: -0.5, z: -0.5, w: 0.5}
-  m_LocalPosition: {x: 0, y: 0, z: 0.0196}
-  m_LocalScale: {x: 0.00004, y: 0.00001, z: 0.005228883}
+  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 0, z: -2.57}
+  m_LocalScale: {x: 0.01, y: 0.002, z: 0.005228883}
   m_Children:
   - {fileID: 6998498035778879912}
   m_Father: {fileID: 1151472017961514343}
   m_RootOrder: 95
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 417.79065, y: 30.48243}
+  m_AnchoredPosition: {x: 8.49, y: 10.6}
   m_SizeDelta: {x: 640, y: 480}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &6085973242714270803
@@ -2439,6 +2440,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthbarSprite: {fileID: 747339368894286816}
+--- !u!114 &4217258772010998024
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2390750452158562113}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e444f1e0d3a9f54e8cd33eb21531d0c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2489528444784836382
 GameObject:
   m_ObjectHideFlags: 0
@@ -2746,7 +2759,7 @@ GameObject:
   - component: {fileID: 4956357769855406632}
   m_Layer: 0
   m_Name: Sleemasi_Town_Center
-  m_TagString: EnemyBuilding
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2930,7 +2943,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88ec9ecfb8a556d4684d045ebea34837, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  unit_Name: 8
+  unit_Name: 15
 --- !u!1 &2984978330860748247
 GameObject:
   m_ObjectHideFlags: 0

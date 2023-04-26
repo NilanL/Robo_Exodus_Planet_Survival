@@ -7,6 +7,7 @@ public class EnemyFogOfWarController : MonoBehaviour
     private LayerMask fogOfWarLayer;
     private int defaultLayerID;
     private int invisibleLayerID;
+    private int uiLayerID;
     private Vector3 overlapCheckPosition;
     private int visibleCounter;
 
@@ -14,8 +15,9 @@ public class EnemyFogOfWarController : MonoBehaviour
     void Start()
     {
         fogOfWarLayer = LayerMask.GetMask("FogOfWar");
-        defaultLayerID = LayerMask.NameToLayer("Default");
+        defaultLayerID = LayerMask.NameToLayer("EnemyLayer");
         invisibleLayerID = LayerMask.NameToLayer("Invisiable");
+        uiLayerID = LayerMask.NameToLayer("UI");
         overlapCheckPosition = new Vector3(transform.position.x, transform.position.y + 10, transform.position.z);
         visibleCounter = 0;
     }
@@ -84,12 +86,25 @@ public class EnemyFogOfWarController : MonoBehaviour
         _go.layer = _layer;
         foreach (Transform child in _go.transform)
         {
-            child.gameObject.layer = _layer;
+            if (_layer == invisibleLayerID)
+            {
+                child.gameObject.layer = _layer;
+            }
+            else
+            {
+                if (child.gameObject.tag == "Health_Bar")
+                {
+                    child.gameObject.layer = uiLayerID;
+                }
+                else
+                {
+                    child.gameObject.layer = _layer;
+                }
+            }
 
             Transform _HasChildren = child.GetComponentInChildren<Transform>();
             if (_HasChildren != null)
                 SetGameLayerRecursive(child.gameObject, _layer);
-
         }
     }
 

@@ -19,6 +19,7 @@ public class GameManager : MonoBehaviour
 
     private GameObject UI;
     private GameObject levelLoader;
+    //public List<GameObject> unitsList { get; set; }
 
     public bool IsFoliageCleared { get; private set; } = false;
     public bool IsWallBuilt { get; private set; } = false;
@@ -42,6 +43,9 @@ public class GameManager : MonoBehaviour
     public GameObject ActiveGate { get; private set; } = null;
     public GameObject ActiveTroopProd { get; private set; } = null;
 
+    private float nextActionTime = 0.0f;
+    private float period = 1f;
+
     //This is just for the test
     private bool spawn = true;
     int count = 5;
@@ -57,8 +61,8 @@ public class GameManager : MonoBehaviour
     public List<GameObject> Coglings = new List<GameObject>();
     public List<GameObject> GraxianMiner = new List<GameObject>();
     public List<GameObject> Graxian = new List<GameObject>();
-
-
+    public List<GameObject> Sleemasi = new List<GameObject>();
+    public List<GameObject> SleemasiMiner = new List<GameObject>();
 
     // Start is called before the first frame update
     void Start()
@@ -78,12 +82,40 @@ public class GameManager : MonoBehaviour
             .Where(x => x.GetComponent<Unit_Name>().unit_Name != Unit_Names.Graxxian_Miner));
         StartCoroutine(UpdateTargetPosition());
         //StartCoroutine(Spawn());
+        //unitsList = new List<GameObject>();
+        //StartCoroutine(AddUnits());
     }
 
     // Update is called once per frame
     void Update()
     {
+        /*
+        if (Time.time > nextActionTime)
+        {
+            nextActionTime += period;
+            var coglings = GameObject.FindGameObjectsWithTag("Cogling");
+            var en = GameObject.FindGameObjectsWithTag("Enemy");
+            enemies = en.Union(coglings).ToArray();
+        }*/
+    }
 
+    IEnumerator AddUnits()
+    {
+        yield return new WaitForSeconds(1);
+
+        foreach (var unit in GameObject.FindGameObjectsWithTag("Selectable"))
+        {
+            switch (unit.GetComponent<Unit_Name>().unit_Name)
+            {
+                case Unit_Names.Robot_Melee:
+                case Unit_Names.Robot_Ranged:
+                case Unit_Names.Miner:
+                    //unitsList.Add(unit);
+                    break;
+            }
+        }
+
+        yield return null;
     }
 
     IEnumerator UpdateTargetPosition()
@@ -91,7 +123,7 @@ public class GameManager : MonoBehaviour
         while (true)
         {
             yield return new WaitForSeconds(3);
-            selectables = new List<GameObject>(GameObject.FindGameObjectsWithTag("Selectable"));
+            //selectables = new List<GameObject>(GameObject.FindGameObjectsWithTag("Selectable"));
             buildings = new List<GameObject>(GameObject.FindGameObjectsWithTag("Building"));
             CoglingMiner = new List<GameObject>(GameObject.FindGameObjectsWithTag("Cogling")
                 .Where(x => x.GetComponent<Unit_Name>().unit_Name == Unit_Names.Cogling_Miner));

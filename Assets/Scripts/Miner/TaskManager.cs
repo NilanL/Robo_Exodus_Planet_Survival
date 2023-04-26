@@ -180,4 +180,9 @@ public class TaskManager : MonoBehaviour
         target = tar;
         attacking = true;
     }
+
+    public bool isAttackingFlag()
+    {
+        return attacking;
+    }
 }

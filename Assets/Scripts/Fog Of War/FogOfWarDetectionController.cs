@@ -39,7 +39,7 @@ public class FogOfWarDetectionController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        FogOfWarCheck();
     }
 
     IEnumerator start()

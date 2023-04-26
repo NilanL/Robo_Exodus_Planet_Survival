@@ -20,7 +20,10 @@ public enum Unit_Names
     Graxxian_Melee,
     Graxxian_Ranged,
     Main_Base,
-    Turret,
+    Robot_Turret,
+    Cogling_Turret,
+    Sleemasi_Turret,
+    Graxxian_Turret,
     House,
     WallGate
 }

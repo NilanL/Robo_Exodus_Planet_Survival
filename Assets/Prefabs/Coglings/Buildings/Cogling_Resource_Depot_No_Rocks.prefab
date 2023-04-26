@@ -259,6 +259,7 @@ GameObject:
   - component: {fileID: 64029745306693072}
   - component: {fileID: 8606088365739218925}
   - component: {fileID: 1310541587075460057}
+  - component: {fileID: 3991928634308068493}
   m_Layer: 0
   m_Name: Healthbar Canvas
   m_TagString: Health_Bar
@@ -273,9 +274,9 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7273454481023914822}
-  m_LocalRotation: {x: 0.5, y: -0.5, z: -0.5, w: 0.5}
-  m_LocalPosition: {x: 0, y: 0, z: 0.0196}
-  m_LocalScale: {x: 0.00004, y: 0.00001, z: 0.005228883}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -4.24}
+  m_LocalScale: {x: 0.01, y: 0.002, z: 0.005228883}
   m_Children:
   - {fileID: 3846413927092047040}
   m_Father: {fileID: 4464217301183118673}
@@ -283,7 +284,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 393.66068, y: 16.052423}
+  m_AnchoredPosition: {x: 3.12, y: 11.34}
   m_SizeDelta: {x: 640, y: 480}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &1880158075029497001
@@ -360,6 +361,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthbarSprite: {fileID: 1974823205519568729}
+--- !u!114 &3991928634308068493
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7273454481023914822}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e444f1e0d3a9f54e8cd33eb21531d0c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &9092773300393221757
 GameObject:
   m_ObjectHideFlags: 0
@@ -377,7 +390,7 @@ GameObject:
   - component: {fileID: 4101087544190646370}
   m_Layer: 0
   m_Name: Cogling_Resource_Depot_No_Rocks
-  m_TagString: EnemyBuilding
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -440,7 +453,7 @@ NavMeshObstacle:
   m_Shape: 1
   m_Extents: {x: 11.7, y: 6.25, z: 4.495}
   m_MoveThreshold: 0.1
-  m_Carve: 1
+  m_Carve: 0
   m_CarveOnlyStationary: 1
   m_Center: {x: 2.8, y: 4.57, z: -3.92}
   m_TimeToStationary: 0.5
@@ -510,7 +523,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88ec9ecfb8a556d4684d045ebea34837, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  unit_Name: 10
+  unit_Name: 17
 --- !u!1001 &15836044422284792
 PrefabInstance:
   m_ObjectHideFlags: 0
