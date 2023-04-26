@@ -101,6 +101,22 @@ public class Unit_Health : MonoBehaviour
                 break;
         }
 
+        if (this.gameObject.tag == "Cogling")
+        {
+            GetComponent<Coglings_Movement_AI>().gettingAttacked(tar);
+
+        }
+        else if (this.gameObject.tag == "Graxian")
+        {
+            GetComponent<Orc_Movement_AI>().gettingAttacked(tar);
+
+        }
+        else if (this.gameObject.tag == "Sleemasi")
+        {
+            GetComponent<Elf_Movement_AI>().gettingAttacked(tar);
+
+        }
+
     }
 
     int GetUnitStats()

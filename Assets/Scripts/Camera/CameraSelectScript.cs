@@ -159,6 +159,7 @@ public class CameraSelectScript : MonoBehaviour
                             var hb = hit.collider.gameObject.transform.Find("Healthbar Canvas");
                             if (hb)
                                 hb.gameObject.SetActive(true);
+
                             switch (unit)
                             {
                                 case Unit_Names.Miner:

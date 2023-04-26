@@ -191,6 +191,16 @@ public class TaskManager : MonoBehaviour
                 canAttack = true;
             }
         }
+        else if (tar.tag == "Graxian")
+        {
+            attacking = true;
+
+        }
+        else if (tar.tag == "Sleemasi")
+        {
+            attacking = true;
+
+        }
     }
 
     public void targetDies(GameObject tar)
