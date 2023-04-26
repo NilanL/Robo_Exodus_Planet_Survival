@@ -112,6 +112,7 @@ GameObject:
   - component: {fileID: -5246239962714160001}
   - component: {fileID: 3794865016779030650}
   - component: {fileID: 7349986470293971829}
+  - component: {fileID: 8964769783139014550}
   m_Layer: 0
   m_Name: Sleemasi_Siege_Template
   m_TagString: Enemy
@@ -268,6 +269,18 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &8964769783139014550
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3032709253549561802}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69ac351c1b82a384f8e58839bbd75456, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5484804522911074048
 GameObject:
   m_ObjectHideFlags: 0

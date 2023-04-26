@@ -56,14 +56,15 @@ public class GameManager : MonoBehaviour
 
     public int reputation = 20;
 
-    public List<GameObject> selectables = new List<GameObject>();
-    public List<GameObject> buildings = new List<GameObject>();
-    public List<GameObject> CoglingMiner = new List<GameObject>();
-    public List<GameObject> Coglings = new List<GameObject>();
-    public List<GameObject> GraxianMiner = new List<GameObject>();
-    public List<GameObject> Graxian = new List<GameObject>();
-    public List<GameObject> Sleemasi = new List<GameObject>();
-    public List<GameObject> SleemasiMiner = new List<GameObject>();
+    public List<GameObject> selectables;
+    public List<GameObject> buildings;
+    public List<GameObject> CoglingMiner;
+    public List<GameObject> Coglings;
+    public List<GameObject> GraxianMiner;
+    public List<GameObject> Graxian;
+    public List<GameObject> Sleemasi;
+    public List<GameObject> SleemasiMiner;
+    public List<GameObject> otherEnemies;
 
     // Start is called before the first frame update
     void Start()
@@ -85,6 +86,7 @@ public class GameManager : MonoBehaviour
             .Where(x => x.GetComponent<Unit_Name>().unit_Name != Unit_Names.Sleemasi_Miner));
         Sleemasi = new List<GameObject>(GameObject.FindGameObjectsWithTag("Sleemasi")
             .Where(x => x.GetComponent<Unit_Name>().unit_Name != Unit_Names.Sleemasi_Miner));
+        otherEnemies = new List<GameObject>(GameObject.FindGameObjectsWithTag("Enemy"));
         StartCoroutine(UpdateTargetPosition());
         //StartCoroutine(Spawn());
         //unitsList = new List<GameObject>();

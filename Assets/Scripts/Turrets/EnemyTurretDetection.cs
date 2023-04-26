@@ -9,8 +9,9 @@ public class EnemyTurretDetection : MonoBehaviour
     Stats stats;
     Unit_Names unitName;
     Coglings_Attack_AI coglingAI;
-    //Sleemasis_Attack_AI sleemasiAI;
-    //Graxxians_Attack_AI graxxianAI;
+    Elf_Attack_AI sleemasiAI;
+    Orc_Attack_AI graxxianAI;
+    Orc_Attack_AI graxxianArcherAI;
     private float range;
 
     private float nextActionTime = 0.0f;
@@ -23,17 +24,9 @@ public class EnemyTurretDetection : MonoBehaviour
         gameManager = gm.GetComponent<GameManager>();
         stats = GetComponent<Stats>();
         unitName = GetComponent<Unit_Name>().unit_Name;
-
-        switch (unitName)
-        {
-            case Unit_Names.Cogling_Turret:
-                coglingAI = GetComponent<Coglings_Attack_AI>();
-                break;
-            case Unit_Names.Sleemasi_Turret:
-                break;
-            case Unit_Names.Graxxian_Turret:
-                break;
-        }
+        coglingAI = GetComponent<Coglings_Attack_AI>();
+        sleemasiAI = GetComponent<Elf_Attack_AI>();
+        graxxianArcherAI = this.transform.GetChild(0).gameObject.GetComponent<Orc_Attack_AI>();
     }
 
     // Update is called once per frame
@@ -50,8 +43,10 @@ public class EnemyTurretDetection : MonoBehaviour
                     runCoglingDetection();
                     break;
                 case Unit_Names.Sleemasi_Turret:
+                    runSleemasiDetection();
                     break;
                 case Unit_Names.Graxxian_Turret:
+                    runGraxxianDetection();
                     break;
             }
         }
@@ -75,27 +70,40 @@ public class EnemyTurretDetection : MonoBehaviour
         }
     }
     
-    /*
+    
     void runSleemasiDetection()
     {
-        if (taskManager.target == null || (taskManager.target != null && !taskManager.isAttackingFlag()))
+        if (sleemasiAI.target == null || (sleemasiAI.target != null && !sleemasiAI.isAttackingFlag()))
         {
-            if (gameManager.enemies != null)
+            if (gameManager.selectables != null)
             {
-                range = stats.getRange();
-                foreach (var enemy in gameManager.enemies)
+                foreach (var robot in gameManager.selectables)
                 {
-                    if (enemy != null && Vector3.Distance(transform.position, enemy.transform.position) < range)
+                    if (robot != null && Vector3.Distance(transform.position, robot.transform.position) < range)
                     {
-                        taskManager.setTarget(enemy);
+                        sleemasiAI.SetTarget(robot);
                         break;
                     }
                 }
             }
         }
     }
+
     void runGraxxianDetection()
     {
-
-    }*/
+        if (graxxianArcherAI.target == null || (graxxianArcherAI.target != null && !graxxianArcherAI.isAttackingFlag()))
+        {
+            if (gameManager.selectables != null)
+            {
+                foreach (var robot in gameManager.selectables)
+                {
+                    if (robot != null && Vector3.Distance(transform.position, robot.transform.position) < range)
+                    {
+                        graxxianArcherAI.SetTarget(robot);
+                        break;
+                    }
+                }
+            }
+        }
+    }
 }
