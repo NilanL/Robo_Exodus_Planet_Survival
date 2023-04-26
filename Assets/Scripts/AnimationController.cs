@@ -114,7 +114,7 @@ public class AnimationController : MonoBehaviour
                 //robotTurretFire.transform.localScale = new Vector3(robotTurretFire.transform.localScale.x * 2, robotTurretFire.transform.localScale.y * 2, robotTurretFire.transform.localScale.z * 2);
             }
         }
-        else if (this.gameObject.tag == "EnemyBuilding")
+        else if (this.gameObject.tag == "Enemy")
         {
             if (this.gameObject.GetComponent<Unit_Name>().unit_Name == Unit_Names.Cogling_Turret)
             {
