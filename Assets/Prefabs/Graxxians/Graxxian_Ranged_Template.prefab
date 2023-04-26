@@ -144,9 +144,8 @@ GameObject:
   - component: {fileID: 4609852238331772444}
   - component: {fileID: 1477148579097717056}
   - component: {fileID: 8612659756395859911}
-  - component: {fileID: 3980913088467369524}
-  - component: {fileID: 1929011085981608592}
-  - component: {fileID: -599748236904008578}
+  - component: {fileID: 9154560270142223501}
+  - component: {fileID: 8315649377942524582}
   m_Layer: 0
   m_Name: Graxxian_Ranged_Template
   m_TagString: Graxian
@@ -344,7 +343,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62c95772ca9cffc4fa6fab2fb8f63ec8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 0}
 --- !u!114 &1477148579097717056
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -373,19 +371,7 @@ MonoBehaviour:
   target: {x: 0, y: 0, z: 0}
   targ: {fileID: 0}
   booltarg: 0
---- !u!114 &3980913088467369524
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2421248733417948688}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 69ac351c1b82a384f8e58839bbd75456, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!95 &1929011085981608592
+--- !u!95 &9154560270142223501
 Animator:
   serializedVersion: 3
   m_ObjectHideFlags: 0
@@ -394,8 +380,8 @@ Animator:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2421248733417948688}
   m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: fc886a2a8c4899e4fba28111d6be3a63, type: 3}
-  m_Controller: {fileID: 9100000, guid: bd9f453ad56e98f4cba80b0dd0fdcff6, type: 2}
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -404,7 +390,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &-599748236904008578
+--- !u!114 &8315649377942524582
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -416,8 +402,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed55841de857a4d46a5cf4fe382333f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shootingEffectPrefab: {fileID: 7769708168629903492, guid: ff0168e444acc4841b94646c96c125bb,
-    type: 3}
+  shootingEffectPrefab: {fileID: 0}
   attackingEffectPrefab: {fileID: 0}
   miningEffectPrefab: {fileID: 0}
   attackSound: {fileID: 0}

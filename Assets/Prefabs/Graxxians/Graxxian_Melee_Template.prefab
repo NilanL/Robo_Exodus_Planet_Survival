@@ -390,7 +390,8 @@ GameObject:
   - component: {fileID: 1067132186862343855}
   - component: {fileID: 7790456039429734947}
   - component: {fileID: 7916559899140384135}
-  - component: {fileID: 5035165306210645398}
+  - component: {fileID: 6610735746596439418}
+  - component: {fileID: 2475604420068533960}
   m_Layer: 0
   m_Name: Graxxian_Melee_Template
   m_TagString: Graxian
@@ -616,7 +617,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   unit_Name: 13
---- !u!114 &5035165306210645398
+--- !u!95 &6610735746596439418
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9093983794327897042}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &2475604420068533960
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -625,9 +645,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 9093983794327897042}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 69ac351c1b82a384f8e58839bbd75456, type: 3}
+  m_Script: {fileID: 11500000, guid: ed55841de857a4d46a5cf4fe382333f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  shootingEffectPrefab: {fileID: 0}
+  attackingEffectPrefab: {fileID: 0}
+  miningEffectPrefab: {fileID: 0}
+  attackSound: {fileID: 0}
+  mineSound: {fileID: 0}
 --- !u!1 &9093983795105171233
 GameObject:
   m_ObjectHideFlags: 0

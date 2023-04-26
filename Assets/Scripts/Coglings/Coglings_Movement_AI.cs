@@ -13,12 +13,15 @@ public class Coglings_Movement_AI : MonoBehaviour
     bool inRange = false;
     AnimationController animController;
     public bool isMoving = false;
+    public bool inWar;
+    GameManager gm;
 
     // Start is called before the first frame update
     void Start()
     {
         navMeshAgent = GetComponent<NavMeshAgent>();
         animController = GetComponent<AnimationController>();
+        gm = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
 
     // Update is called once per frame
@@ -26,26 +29,27 @@ public class Coglings_Movement_AI : MonoBehaviour
     {
         if (!isGettingAttacked)
         {
-            var tars = GameObject.FindGameObjectsWithTag("Selectable");
-            foreach (var tar in tars)
+            foreach (var tar in gm.selectables)
             {
                 if (Vector3.Distance((tar.transform.position), this.gameObject.transform.position) < 50)
                 {
-                    targ = tar;
+                    if (inWar)
+                        target = tar.transform.position;
+                    else if (tar.GetComponent<TaskManager>().mining)
+                        target = tar.transform.position;
                 }
             }
-            tars = GameObject.FindGameObjectsWithTag("Building");
-            foreach (var tar in tars)
+            foreach (var tar in gm.buildings)
             {
                 if (Vector3.Distance((tar.transform.position), this.gameObject.transform.position) < 50)
                 {
-                    if(target == null)
-                        targ = tar;
+                    if (targ == null && inWar)
+                        target = tar.transform.position;
                 }
             }
         }
 
-        if(isMoving)
+        if (isMoving)
         {
             animController.IsMoving();
         }
