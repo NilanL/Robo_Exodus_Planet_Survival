@@ -38,8 +38,19 @@ public class Elf_Attack_AI : MonoBehaviour
 
     void Attacking()
     {
+        int currRange = static_elf.getRange();
 
-        if (Vector3.Distance(target.transform.position, transform.position) < static_elf.getRange())
+        switch (target.GetComponent<Unit_Name>().unit_Name)
+        {
+            case Unit_Names.Main_Base:
+            case Unit_Names.Robot_Turret:
+            case Unit_Names.House:
+            case Unit_Names.WallGate:
+                currRange += 35;
+                break;
+        }
+
+        if (Vector3.Distance(target.transform.position, transform.position) < currRange)
         {
             if (elf_attack)
                 elf_attack.InRange();
