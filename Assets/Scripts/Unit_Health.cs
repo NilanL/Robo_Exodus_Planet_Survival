@@ -61,7 +61,10 @@ public class Unit_Health : MonoBehaviour
                 yield return new WaitForSeconds(2);
                 break;
             case Unit_Names.Main_Base:
-                gm.GetComponent<GameManager>().LoseGame();
+                if (this.gameObject.tag == "Building")
+                    gm.GetComponent<GameManager>().LoseGame();
+                else if (this.gameObject.tag == "Enemy")
+                    gm.GetComponent<GameManager>().EnemyBaseDestroyed();
                 yield return new WaitForSeconds(2);
                 break;
         }

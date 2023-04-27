@@ -20,7 +20,7 @@ public class GameManager : MonoBehaviour
     private GameObject UI;
     private GameObject levelLoader;
     //public List<GameObject> unitsList { get; set; }
-
+    public int EnemyBasesDestroyedCount { get; private set; } = 0;
     public bool IsFoliageCleared { get; private set; } = false;
     public bool IsWallBuilt { get; private set; } = false;
     public bool IsDefensesBuildingCreated { get; private set; } = false;
@@ -212,6 +212,16 @@ public class GameManager : MonoBehaviour
     public void WinGame()
     {
         levelLoader.GetComponent<LevelLoader>().LoadWinGame(2);
+    }
+
+    public void EnemyBaseDestroyed()
+    {
+        EnemyBasesDestroyedCount += 1;
+
+        if (EnemyBasesDestroyedCount >= 3)
+        {
+            WinGame();
+        }
     }
 
     public void SetIsFoliageCleared()
