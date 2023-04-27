@@ -7,7 +7,7 @@ public class SleemasiTurretStats : MonoBehaviour
     [SerializeField]
     private int maxHealth { get; set; } = 10000;
     [SerializeField]
-    private int unitAtk { get; set; } = 30;
+    private int unitAtk { get; set; } = 26;
     [SerializeField]
     private int vehicleAtk { get; set; } = 0;
     [SerializeField]
