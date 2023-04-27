@@ -63,7 +63,7 @@ public class CameraSelectScript : MonoBehaviour
             selectionBox = new Rect();
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
-            if (Physics.Raycast(ray, out hit, 100, ~fogOfWarLayer))
+            if (Physics.Raycast(ray, out hit, 100000, ~fogOfWarLayer))
             {
                 var hitag = hit.collider.gameObject.tag;
 
@@ -130,7 +130,7 @@ public class CameraSelectScript : MonoBehaviour
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
-            if (Physics.Raycast(ray, out hit, 100, ~fogOfWarLayer))
+            if (Physics.Raycast(ray, out hit, 10000, ~fogOfWarLayer))
             {
                 if (!(selectedGameObject is null))
                 {

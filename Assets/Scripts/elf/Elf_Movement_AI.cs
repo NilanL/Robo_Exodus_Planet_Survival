@@ -56,7 +56,7 @@ public class Elf_Movement_AI : MonoBehaviour
             animController.IsMoving();
             if (!inRange)
                 navMeshAgent.destination = targ.transform.position;
-            GetComponent<Coglings_Attack_AI>().SetTarget(targ);
+            GetComponent<Elf_Attack_AI>().SetTarget(targ);
         }
 
         else if (target != null)

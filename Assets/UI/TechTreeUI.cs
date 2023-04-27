@@ -43,15 +43,6 @@ public class TechTreeUI : MonoBehaviour
         slee = GameObject.Find("Slee").GetComponent<Button>();
         graxx = GameObject.Find("Graxx").GetComponent<Button>();
         
-
-        hp2.interactable = false;
-        hp3.interactable = false;
-        speed2.interactable = false;
-        speed3.interactable = false;
-        dmg2.interactable = false;
-        dmg3.interactable = false;
-        mine2.interactable = false;
-        mine3.interactable = false;
     }
     
 
