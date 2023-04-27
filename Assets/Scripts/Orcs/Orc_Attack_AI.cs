@@ -7,7 +7,7 @@ public class Orc_Attack_AI : MonoBehaviour
     private GameObject target;
     Stats stats_wolf;
     Orc_Movement_AI coglings_attack;
-    bool attacking = false;
+    public bool attacking = false;
     bool canAttack = false;
     bool startAttack = false;
 

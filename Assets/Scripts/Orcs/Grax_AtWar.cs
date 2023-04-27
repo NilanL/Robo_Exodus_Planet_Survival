@@ -15,7 +15,7 @@ public class Grax_AtWar : MonoBehaviour
     int waypointIndex;
     Transform tran;
     int role = 2;
-    int time = 120;
+    int time = 20;
 
     // Start is called before the first frame update
     void Start()
@@ -57,17 +57,18 @@ public class Grax_AtWar : MonoBehaviour
             {
                 SpawnWar();
             }
-            if (gm.Graxian.Count > 10)
+            if (gm.Graxian.Count > 1)
             {
                 foreach (var cogs in gm.Graxian)
                 {
-                    StartCoroutine(startAttack(cogs));
+                    if(cogs.GetComponent<Orc_Movement_AI>().targ == null || cogs.GetComponent<Orc_Movement_AI>().target == Vector3.zero)
+                        StartCoroutine(startAttack(cogs));
                 }
             }
         }
         else
         {
-            if (gm.graxian_Minerals > 500)
+            if (gm.graxian_Minerals > 500 && gm.Graxian.Count <= 10)
             {
                 StartCoroutine(Spawn());
             }
@@ -93,12 +94,14 @@ public class Grax_AtWar : MonoBehaviour
             var objectToSpawn = cogM.GetRobotMinerObject();
             var spawnedMiner = Instantiate(objectToSpawn, spawn.transform.position, spawn.transform.rotation);
             spawnedMiner.GetComponent<Orc_Movement_AI>().target = waypoint[0].position;
+            gm.Graxian.Add(spawnedMiner);
         }
         if (check <= 20)
         {
             var objectToSpawn = cogR.GetRobotMinerObject();
             var spawnedMiner = Instantiate(objectToSpawn, spawn.transform.position, spawn.transform.rotation);
             spawnedMiner.GetComponent<Orc_Movement_AI>().target = waypoint[0].position;
+            gm.Graxian.Add(spawnedMiner);
         }
     }
 
@@ -115,6 +118,7 @@ public class Grax_AtWar : MonoBehaviour
             var objectToSpawn = cogM.GetRobotMinerObject();
             var spawnedMiner = Instantiate(objectToSpawn, spawn.transform.position, spawn.transform.rotation);
             spawnedMiner.GetComponent<Orc_Movement_AI>().target = waypoint[0].position;
+            gm.Graxian.Add(spawnedMiner);
             waypointIndex++;
         }
         if (check == 1)
@@ -122,6 +126,7 @@ public class Grax_AtWar : MonoBehaviour
             var objectToSpawn = cogR.GetRobotMinerObject();
             var spawnedMiner = Instantiate(objectToSpawn, spawn.transform.position, spawn.transform.rotation);
             spawnedMiner.GetComponent<Orc_Movement_AI>().target = waypoint[0].position;
+            gm.Graxian.Add(spawnedMiner);
             waypointIndex++;
         }
     }
@@ -139,17 +144,20 @@ public class Grax_AtWar : MonoBehaviour
                 {
                     var objectToSpawn = cogM.GetRobotMinerObject();
                     var spawnedMiner = Instantiate(objectToSpawn, spawn.transform.position, spawn.transform.rotation);
+                    spawnedMiner.GetComponent<Orc_Movement_AI>().target = waypoint[0].position;
                     StartCoroutine(startAttack(spawnedMiner));
                 }
                 if (check <= 50)
                 {
                     var objectToSpawn = cogR.GetRobotMinerObject();
                     var spawnedMiner = Instantiate(objectToSpawn, spawn.transform.position, spawn.transform.rotation);
+                    spawnedMiner.GetComponent<Orc_Movement_AI>().target = waypoint[0].position;
                     StartCoroutine(startAttack(spawnedMiner));
                 }
             }
             role += 2;
-            time -= 10;
+            if(time >= 20)
+                time -= 10;
             //if(gm.Graxian.Count >= role)
             //{
             //    int x = 0;
@@ -173,6 +181,7 @@ public class Grax_AtWar : MonoBehaviour
 
     IEnumerator startAttack(GameObject orc)
     {
+        orc.GetComponent<Orc_Movement_AI>().target = Vector3.zero;
         while (true)
         {
             if (orc.GetComponent<Orc_Movement_AI>().target == Vector3.zero)
