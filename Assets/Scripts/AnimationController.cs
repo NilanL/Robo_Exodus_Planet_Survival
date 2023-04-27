@@ -8,14 +8,20 @@ public class AnimationController : MonoBehaviour
 {
     private TaskManager taskManager;
     private Coglings_Attack_AI coglingAttackAI;
+    private Elf_Attack_AI sleemasiAttackAI;
+    private Orc_Attack_AI graxxianAttackAI;
+    
     private Animator animator;
+
     //private NavMeshAgent navMeshAgent;
     private ParticleSystem miningParticleSystem;
     private LineRenderer attackingLaserLeft;
     private LineRenderer attackingLaserRight;
     private ParticleSystem robotTurretFire;
     private ParticleSystem coglingTurretFire;
-    private ParticleSystem explosion;
+    //private ParticleSystem explosion;
+    private ParticleSystem sleemasiTurretFire;
+    private ParticleSystem graxxianArcherFire;
 
     private const string isAttacking = "IsAttacking";
     private const string isMining = "IsMining";
@@ -26,6 +32,7 @@ public class AnimationController : MonoBehaviour
     private Transform robotTurretShootBone;
     private Transform coglingTurretShootBone;
     private Transform coglingTurretRotateBone;
+    private Transform sleemasiTurretShootBone;
 
 
     [SerializeField]
@@ -42,6 +49,8 @@ public class AnimationController : MonoBehaviour
 
     private Unit_Names currName;
 
+    Vector3 targ;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -49,6 +58,8 @@ public class AnimationController : MonoBehaviour
         target = null;
         taskManager = GetComponent<TaskManager>();
         coglingAttackAI = GetComponent<Coglings_Attack_AI>();
+        sleemasiAttackAI = GetComponent<Elf_Attack_AI>();
+        graxxianAttackAI = GetComponent<Orc_Attack_AI>();
 
         // Get controller and animator
         animator = this.gameObject.GetComponent<Animator>();
@@ -114,9 +125,9 @@ public class AnimationController : MonoBehaviour
                 //robotTurretFire.transform.localScale = new Vector3(robotTurretFire.transform.localScale.x * 2, robotTurretFire.transform.localScale.y * 2, robotTurretFire.transform.localScale.z * 2);
             }
         }
-        else if (this.gameObject.tag == "EnemyBuilding")
+        else if (this.gameObject.tag == "EnemyBuilding" || this.gameObject.tag == "Enemy")
         {
-            if (this.gameObject.GetComponent<Unit_Name>().unit_Name == Unit_Names.Cogling_Turret)
+            if (currName == Unit_Names.Cogling_Turret)
             {
                 coglingTurretRotateBone = transform.Find("cogling_turret/Cogling_Turret_Armature/Base_Bone/Rotate_Bone");
                 coglingTurretShootBone = transform.Find("cogling_turret/Cogling_Turret_Armature/Base_Bone/Rotate_Bone/Tilt_Bone");
@@ -129,6 +140,23 @@ public class AnimationController : MonoBehaviour
                 coglingTurretFire.transform.localPosition = pos;
                 coglingTurretFire.transform.localRotation = Quaternion.Euler(rot);
                 coglingTurretFire.transform.localScale = scale;
+            }
+            else if (currName == Unit_Names.Sleemasi_Turret)
+            {
+                sleemasiTurretShootBone = transform.Find("Sleemasi_Turret/Sleemasi_Turret_Rock_Bone");
+
+                sleemasiTurretFire = Instantiate(shootingEffectPrefab.GetComponent<ParticleSystem>(), sleemasiTurretShootBone);
+            }
+        }
+        else if (this.gameObject.tag == "Graxian")
+        {
+            if (currName == Unit_Names.Graxxian_Ranged)
+            {
+                graxxianArcherFire = Instantiate(shootingEffectPrefab.GetComponent<ParticleSystem>(), this.transform);
+
+                var pos = new Vector3(0, 2.02f, 2.34f);
+
+                graxxianArcherFire.transform.localPosition = pos;
             }
         }
     }
@@ -315,6 +343,7 @@ public class AnimationController : MonoBehaviour
                 animator.SetBool(isAttacking, false);
                 break;
             case Unit_Names.Graxxian_Ranged:
+                graxxianArcherFire.Stop();
                 animator.SetBool(isAttacking, false);
                 break;
             case Unit_Names.Graxxian_Miner:
@@ -328,6 +357,33 @@ public class AnimationController : MonoBehaviour
             case Unit_Names.Cogling_Turret:
                 coglingTurretFire.Stop();
                 break;
+            case Unit_Names.Sleemasi_Turret:
+                sleemasiTurretFire.Stop();
+                StartCoroutine(stopSleemasiTurretAttack());
+                //sleemasiTurretFire.Clear();
+
+                //animator.Play("Sleemasi_Turret|Sleemasi_Turret_Spin_Idle");
+
+                break;
+            case Unit_Names.Graxxian_Turret:
+                break;
+        }
+    }
+
+    IEnumerator stopSleemasiTurretAttack()
+    {
+        while (sleemasiTurretFire.IsAlive())
+        {
+            yield return new WaitForEndOfFrame();
+        }
+        sleemasiTurretFire.Clear();
+
+        if (!animator.enabled)
+        {
+            animator.enabled = true;
+            //animator.StartPlayback();
+            //animator.SetBool("IsFiring", false);
+            animator.Play("Attacking", -1, 0f);
         }
     }
 
@@ -337,10 +393,18 @@ public class AnimationController : MonoBehaviour
         switch (unit)
         {
             case Unit_Names.Miner:
+                targ = taskManager.target.transform.position - this.transform.position;
+                targ.y = 0;
+                this.transform.rotation = Quaternion.LookRotation(targ);
+
                 var movement = this.gameObject.GetComponent<Robot_Miner_Controller_Mouse>();
                 movement.IsAttacking();
                 break;
             case Unit_Names.Robot_Melee:
+                targ = taskManager.target.transform.position - this.transform.position;
+                targ.y = 0;
+                this.transform.rotation = Quaternion.LookRotation(targ);
+
                 animator.SetBool(isAttacking, true);
 
                 attackingLaserLeft.enabled = true;
@@ -352,31 +416,77 @@ public class AnimationController : MonoBehaviour
                 }
                 break;
             case Unit_Names.Robot_Ranged:
+                targ = taskManager.target.transform.position - this.transform.position;
+                targ.y = 0;
+                this.transform.rotation = Quaternion.LookRotation(targ);
+
                 animator.SetBool(isAttacking, true);
                 StartCoroutine(ShootLaser(transform));
                 break;
+            case Unit_Names.Cogling_Miner:
+                targ = coglingAttackAI.target.transform.position - this.transform.position;
+                targ.y = 0;
+                this.transform.rotation = Quaternion.LookRotation(targ);
+
+                animator.SetBool(isAttacking, true);
+                break;
             case Unit_Names.Cogling_Melee:
+                targ = coglingAttackAI.target.transform.position - this.transform.position;
+                targ.y = 0;
+                this.transform.rotation = Quaternion.LookRotation(targ);
+
                 animator.SetBool(isAttacking, true);
                 break;
             case Unit_Names.Cogling_Range:
+                targ = coglingAttackAI.target.transform.position - this.transform.position;
+                targ.y = 0;
+                this.transform.rotation = Quaternion.LookRotation(targ);
+
                 animator.SetBool(isAttacking, true);
                 break;
             case Unit_Names.Sleemasi_Melee:
+                targ = sleemasiAttackAI.target.transform.position - this.transform.position;
+                targ.y = 0;
+                this.transform.rotation = Quaternion.LookRotation(targ);
+
                 animator.SetBool(isAttacking, true);
                 break;
             case Unit_Names.Sleemasi_Ranged:
+                targ = sleemasiAttackAI.target.transform.position - this.transform.position;
+                targ.y = 0;
+                this.transform.rotation = Quaternion.LookRotation(targ);
+
                 animator.SetBool(isAttacking, true);
                 break;
             case Unit_Names.Sleemasi_Miner:
+                targ = sleemasiAttackAI.target.transform.position - this.transform.position;
+                targ.y = 0;
+                this.transform.rotation = Quaternion.LookRotation(targ);
+
                 animator.SetBool(isAttacking, true);
                 break;
             case Unit_Names.Graxxian_Melee:
+                targ = graxxianAttackAI.target.transform.position - this.transform.position;
+                targ.y = 0;
+                this.transform.rotation = Quaternion.LookRotation(targ);
+
                 animator.SetBool(isAttacking, true);
                 break;
             case Unit_Names.Graxxian_Ranged:
+                targ = graxxianAttackAI.target.transform.position - this.transform.position;
+                targ.y = 0;
+                this.transform.rotation = Quaternion.LookRotation(targ);
+
+                graxxianArcherFire.transform.LookAt(graxxianAttackAI.target.transform);
+                graxxianArcherFire.Play();
+
                 animator.SetBool(isAttacking, true);
                 break;
             case Unit_Names.Graxxian_Miner:
+                targ = graxxianAttackAI.target.transform.position - this.transform.position;
+                targ.y = 0;
+                this.transform.rotation = Quaternion.LookRotation(targ);
+
                 animator.SetBool(isAttacking, true);
                 break;
             case Unit_Names.Wolf:
@@ -404,7 +514,70 @@ public class AnimationController : MonoBehaviour
                     coglingTurretFire.Play();
                 }
                 break;
+            case Unit_Names.Sleemasi_Turret:
+                if (animator.enabled)
+                {
+                    //animator.SetBool("IsFiring", true);
+                    //animator.StopPlayback();
+                    animator.enabled = false;
+                    sleemasiTurretShootBone.rotation = Quaternion.Euler(90, 0, 0);
+
+                    sleemasiTurretShootBone.LookAt(sleemasiAttackAI.target.transform);
+                    sleemasiTurretShootBone.Rotate(90, 0, 0, Space.Self);
+                }
+                else
+                {
+                    StartCoroutine(lookAtSmooth(0.5f));
+                }
+
+                if (!sleemasiTurretFire.isPlaying && !animator.enabled)
+                {
+                    sleemasiTurretFire.Play();
+                }
+
+                break;
+            case Unit_Names.Graxxian_Turret:
+                break;
         }
+    }
+    /*
+    IEnumerator lookAtSmooth(float aTime)
+    {
+        Vector3 lookDirection = sleemasiAttackAI.target.transform.position - sleemasiTurretShootBone.position;
+        //lookDirection.Normalize();
+        //Quaternion startRot = Quaternion.Euler(new Vector3(sleemasiTurretShootBone.rotation.eulerAngles.x + 90, sleemasiTurretShootBone.rotation.eulerAngles.y, sleemasiTurretShootBone.rotation.eulerAngles.z));
+        Quaternion startRot = sleemasiTurretShootBone.rotation;
+        Quaternion endRot = Quaternion.LookRotation(new Vector3(lookDirection.x + 90, lookDirection.y, lookDirection.z));
+        endRot = Quaternion.AngleAxis(90f, Vector3.);
+
+        for (float t = 0.0f; t < 1.0f; t += Time.deltaTime / aTime)
+        {
+            sleemasiTurretShootBone.rotation = Quaternion.Slerp(startRot, endRot, t / 1);
+
+            //sleemasiTurretShootBone.Rotate(90, 0, 0, Space.Self);
+
+            yield return new WaitForEndOfFrame();
+        }
+
+        sleemasiTurretShootBone.rotation = endRot;
+    }*/
+
+    IEnumerator lookAtSmooth(float aTime)
+    {
+        Vector3 lookDirection = sleemasiAttackAI.target.transform.position - sleemasiTurretShootBone.position;
+        Quaternion startRot = sleemasiTurretShootBone.rotation;
+        Quaternion targetRot = Quaternion.LookRotation(lookDirection);
+        Quaternion additionalRot = Quaternion.Euler(90, 0, 0); // 90-degree rotation around the X-axis
+        Quaternion endRot = targetRot * additionalRot;
+
+        for (float t = 0.0f; t < 1.0f; t += Time.deltaTime / aTime)
+        {
+            sleemasiTurretShootBone.rotation = Quaternion.Slerp(startRot, endRot, t / 1);
+
+            yield return new WaitForEndOfFrame();
+        }
+
+        sleemasiTurretShootBone.rotation = endRot;
     }
 
     public void IsMining()

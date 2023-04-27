@@ -61,7 +61,10 @@ public class Unit_Health : MonoBehaviour
                 yield return new WaitForSeconds(2);
                 break;
             case Unit_Names.Main_Base:
-                gm.GetComponent<GameManager>().LoseGame();
+                if (this.gameObject.tag == "Building")
+                    gm.GetComponent<GameManager>().LoseGame();
+                else if (this.gameObject.tag == "Enemy")
+                    gm.GetComponent<GameManager>().EnemyBaseDestroyed();
                 yield return new WaitForSeconds(2);
                 break;
         }
@@ -96,6 +99,25 @@ public class Unit_Health : MonoBehaviour
             case Unit_Names.Robot_Melee:
                 GetComponent<TaskManager>().gettingAttacked(tar);
                 break;
+            case Unit_Names.Graxxian_Ranged:
+                GetComponent<Orc_Movement_AI>().gettingAttacked(tar);
+                break;
+        }
+
+        if (this.gameObject.tag == "Cogling")
+        {
+            GetComponent<Coglings_Movement_AI>().gettingAttacked(tar);
+
+        }
+        else if (this.gameObject.tag == "Graxian")
+        {
+            GetComponent<Orc_Movement_AI>().gettingAttacked(tar);
+
+        }
+        else if (this.gameObject.tag == "Sleemasi")
+        {
+            GetComponent<Elf_Movement_AI>().gettingAttacked(tar);
+
         }
 
     }

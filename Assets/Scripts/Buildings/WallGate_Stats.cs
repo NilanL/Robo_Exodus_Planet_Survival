@@ -5,7 +5,7 @@ using UnityEngine;
 public class WallGate_Stats : MonoBehaviour
 {
     [SerializeField]
-    private int maxHealth { get; set; } = 15000;
+    private int maxHealth { get; set; } = 10000;
     [SerializeField]
     private int unitAtk { get; set; } = 8;
     [SerializeField]

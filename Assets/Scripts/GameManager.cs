@@ -20,7 +20,7 @@ public class GameManager : MonoBehaviour
     private GameObject UI;
     private GameObject levelLoader;
     //public List<GameObject> unitsList { get; set; }
-
+    public int EnemyBasesDestroyedCount { get; private set; } = 0;
     public bool IsFoliageCleared { get; private set; } = false;
     public bool IsWallBuilt { get; private set; } = false;
     public bool IsDefensesBuildingCreated { get; private set; } = false;
@@ -52,17 +52,19 @@ public class GameManager : MonoBehaviour
 
     public int cogling_Minerals;
     public int graxian_Minerals;
+    public int sleemasi_Minerals;
 
     public int reputation = 20;
 
-    public List<GameObject> selectables = new List<GameObject>();
-    public List<GameObject> buildings = new List<GameObject>();
-    public List<GameObject> CoglingMiner = new List<GameObject>();
-    public List<GameObject> Coglings = new List<GameObject>();
-    public List<GameObject> GraxianMiner = new List<GameObject>();
-    public List<GameObject> Graxian = new List<GameObject>();
-    public List<GameObject> Sleemasi = new List<GameObject>();
-    public List<GameObject> SleemasiMiner = new List<GameObject>();
+    public List<GameObject> selectables;
+    public List<GameObject> buildings;
+    public List<GameObject> CoglingMiner;
+    public List<GameObject> Coglings;
+    public List<GameObject> GraxianMiner;
+    public List<GameObject> Graxian;
+    public List<GameObject> Sleemasi;
+    public List<GameObject> SleemasiMiner;
+    public List<GameObject> otherEnemies;
 
     // Start is called before the first frame update
     void Start()
@@ -80,6 +82,11 @@ public class GameManager : MonoBehaviour
             .Where(x => x.GetComponent<Unit_Name>().unit_Name == Unit_Names.Graxxian_Miner));
         Graxian = new List<GameObject>(GameObject.FindGameObjectsWithTag("Graxian")
             .Where(x => x.GetComponent<Unit_Name>().unit_Name != Unit_Names.Graxxian_Miner));
+        SleemasiMiner = new List<GameObject>(GameObject.FindGameObjectsWithTag("Sleemasi")
+            .Where(x => x.GetComponent<Unit_Name>().unit_Name != Unit_Names.Sleemasi_Miner));
+        Sleemasi = new List<GameObject>(GameObject.FindGameObjectsWithTag("Sleemasi")
+            .Where(x => x.GetComponent<Unit_Name>().unit_Name != Unit_Names.Sleemasi_Miner));
+        otherEnemies = new List<GameObject>(GameObject.FindGameObjectsWithTag("Enemy"));
         StartCoroutine(UpdateTargetPosition());
         //StartCoroutine(Spawn());
         //unitsList = new List<GameObject>();
@@ -122,7 +129,7 @@ public class GameManager : MonoBehaviour
     {
         while (true)
         {
-            yield return new WaitForSeconds(3);
+            yield return new WaitForSeconds(2);
             //selectables = new List<GameObject>(GameObject.FindGameObjectsWithTag("Selectable"));
             buildings = new List<GameObject>(GameObject.FindGameObjectsWithTag("Building"));
             CoglingMiner = new List<GameObject>(GameObject.FindGameObjectsWithTag("Cogling")
@@ -133,6 +140,10 @@ public class GameManager : MonoBehaviour
                 .Where(x => x.GetComponent<Unit_Name>().unit_Name == Unit_Names.Graxxian_Miner));
             Graxian = new List<GameObject>(GameObject.FindGameObjectsWithTag("Graxian")
                 .Where(x => x.GetComponent<Unit_Name>().unit_Name != Unit_Names.Graxxian_Miner));
+            SleemasiMiner = new List<GameObject>(GameObject.FindGameObjectsWithTag("Sleemasi")
+                .Where(x => x.GetComponent<Unit_Name>().unit_Name != Unit_Names.Sleemasi_Miner));
+            Sleemasi = new List<GameObject>(GameObject.FindGameObjectsWithTag("Sleemasi")
+                .Where(x => x.GetComponent<Unit_Name>().unit_Name != Unit_Names.Sleemasi_Miner));
         }
     }
 
@@ -201,6 +212,16 @@ public class GameManager : MonoBehaviour
     public void WinGame()
     {
         levelLoader.GetComponent<LevelLoader>().LoadWinGame(2);
+    }
+
+    public void EnemyBaseDestroyed()
+    {
+        EnemyBasesDestroyedCount += 1;
+
+        if (EnemyBasesDestroyedCount >= 3)
+        {
+            WinGame();
+        }
     }
 
     public void SetIsFoliageCleared()
@@ -359,11 +380,31 @@ public class GameManager : MonoBehaviour
         TurretCount += 1;
 
         var turretCountText = UI.transform.Find("Building Windows/Defenses Window/Total Turret Count").gameObject;
-        turretCountText.GetComponent<Text>().text = "Active Turrets " + TurretCount + "/" + TurretCount;
+        turretCountText.GetComponent<Text>().text = "Active Turrets " + TurretCount + "/" + 6;
+
+        if (TurretCount >= 6)
+        {
+            var turretBuildingButton = UI.transform.Find("Building Windows/Defenses Window/Build Turret").gameObject;
+            turretBuildingButton.GetComponent<Button>().interactable = false;
+        }
 
         SetBuildingWarningMessage(false);
         SetBuildingMessage(false);
         // TODO: Change in-game things due to increased turret count
+    }
+
+    public void DecrementTurretCount()
+    {
+        TurretCount -= 1;
+
+        var turretCountText = UI.transform.Find("Building Windows/Defenses Window/Total Turret Count").gameObject;
+        turretCountText.GetComponent<Text>().text = "Active Turrets " + TurretCount + "/" + 6;
+
+        if (TurretCount < 6)
+        {
+            var turretBuildingButton = UI.transform.Find("Building Windows/Defenses Window/Build Turret").gameObject;
+            turretBuildingButton.GetComponent<Button>().interactable = true;
+        }
     }
 
     public void SetBuildingMessage(bool val)

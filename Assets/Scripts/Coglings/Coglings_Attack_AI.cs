@@ -38,8 +38,19 @@ public class Coglings_Attack_AI : MonoBehaviour
 
     void Attacking()
     {
+        var currRange = stats_wolf.getRange();
 
-        if (Vector3.Distance(target.transform.position, transform.position) < stats_wolf.getRange())
+        switch (target.GetComponent<Unit_Name>().unit_Name)
+        {
+            case Unit_Names.Main_Base:
+            case Unit_Names.Robot_Turret:
+            case Unit_Names.House:
+            case Unit_Names.WallGate:
+                currRange += 35;
+                break;
+        }
+
+        if (Vector3.Distance(target.transform.position, transform.position) < currRange)
         {
             if (coglings_attack)
                 coglings_attack.InRange();
