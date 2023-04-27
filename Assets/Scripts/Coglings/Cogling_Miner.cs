@@ -6,7 +6,7 @@ public class Cogling_Miner : MonoBehaviour
 {
     // Start is called before the first frame update
     private int maxHealth { get; set; } = 100;
-    private int unitAtk { get; set; } = 5;
+    private int unitAtk { get; set; } = 15;
     private int vehicleAtk { get; set; } = 0;
     private int baseAtk { get; set; } = 0;
     private int unitDef { get; set; } = 5;

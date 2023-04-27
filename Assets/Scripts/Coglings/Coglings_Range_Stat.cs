@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Coglings_Range_Stat : MonoBehaviour
 {
-    private int maxHealth { get; set; } = 300;
-    private int unitAtk { get; set; } = 12;
+    private int maxHealth { get; set; } = 200;
+    private int unitAtk { get; set; } = 24;
     private int vehicleAtk { get; set; } = 0;
     private int baseAtk { get; set; } = 0;
     private int unitDef { get; set; } = 5;

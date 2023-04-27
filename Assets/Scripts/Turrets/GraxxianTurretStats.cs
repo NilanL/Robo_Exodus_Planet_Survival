@@ -5,7 +5,7 @@ using UnityEngine;
 public class GraxxianTurretStats : MonoBehaviour
 {
     [SerializeField]
-    private int maxHealth { get; set; } = 12500;
+    private int maxHealth { get; set; } = 7500;
     [SerializeField]
     private int unitAtk { get; set; } = 12;
     [SerializeField]

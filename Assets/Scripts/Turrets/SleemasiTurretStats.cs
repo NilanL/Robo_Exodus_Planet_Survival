@@ -5,7 +5,7 @@ using UnityEngine;
 public class SleemasiTurretStats : MonoBehaviour
 {
     [SerializeField]
-    private int maxHealth { get; set; } = 12500;
+    private int maxHealth { get; set; } = 10000;
     [SerializeField]
     private int unitAtk { get; set; } = 30;
     [SerializeField]
