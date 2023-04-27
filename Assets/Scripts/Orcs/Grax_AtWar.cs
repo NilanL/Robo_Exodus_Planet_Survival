@@ -15,7 +15,7 @@ public class Grax_AtWar : MonoBehaviour
     int waypointIndex;
     Transform tran;
     int role = 2;
-    int time = 20;
+    int time = 120;
 
     // Start is called before the first frame update
     void Start()
@@ -57,14 +57,7 @@ public class Grax_AtWar : MonoBehaviour
             {
                 SpawnWar();
             }
-            if (gm.Graxian.Count > 1)
-            {
-                foreach (var cogs in gm.Graxian)
-                {
-                    if(cogs.GetComponent<Orc_Movement_AI>().targ == null || cogs.GetComponent<Orc_Movement_AI>().target == Vector3.zero)
-                        StartCoroutine(startAttack(cogs));
-                }
-            }
+            StartCoroutine(WarSpawn());
         }
         else
         {
@@ -129,6 +122,12 @@ public class Grax_AtWar : MonoBehaviour
             gm.Graxian.Add(spawnedMiner);
             waypointIndex++;
         }
+    }
+
+    IEnumerator WarSpawn()
+    {
+        yield return new WaitForSeconds(30);
+        StartCoroutine(spawnAttack());
     }
 
 
@@ -198,9 +197,6 @@ public class Grax_AtWar : MonoBehaviour
                 break;
             }
         }
-
-
-
     }
 
 }

@@ -29,9 +29,15 @@ public class Elf_Movement_AI : MonoBehaviour
             var tars = GameObject.FindGameObjectsWithTag("Selectable");
             foreach (var tar in tars)
             {
-                if (Vector3.Distance((tar.transform.position), this.gameObject.transform.position) < 50)
+                if (targ == null)
                 {
-                    targ = tar;
+                    if (target == Vector3.zero)
+                        targ = tar;
+                }
+                else if (targ.tag == "Building")
+                {
+                    if (target == Vector3.zero)
+                        targ = tar;
                 }
             }
             tars = GameObject.FindGameObjectsWithTag("Building");

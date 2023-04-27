@@ -50,8 +50,8 @@ public class Orc_Movement_AI : MonoBehaviour
 
         if (!isGettingAttacked)
         {
-            //var tars = GameObject.FindGameObjectsWithTag("Selectable");
-            foreach (var tar in gm.selectables)
+            var tars = GameObject.FindGameObjectsWithTag("Selectable");
+            foreach (var tar in tars)
             {
                 if (((Vector3.Distance((tar.transform.position), this.gameObject.transform.position) < 50)))
                 {
@@ -67,8 +67,8 @@ public class Orc_Movement_AI : MonoBehaviour
                     }
                 }
             }
-            //tars = GameObject.FindGameObjectsWithTag("Building");
-            foreach (var tar in gm.buildings)
+            tars = GameObject.FindGameObjectsWithTag("Building");
+            foreach (var tar in tars)
             {
                 if ((Vector3.Distance((tar.transform.position), this.gameObject.transform.position) < 50) && targ == null)
                 {
