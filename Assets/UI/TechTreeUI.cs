@@ -63,104 +63,212 @@ public class TechTreeUI : MonoBehaviour
             gm.GetComponent<GameManager>().Aurarium -= 250;
             gm.GetComponent<GameManager>().Ironite -= 250;
 
+            gm.GetComponent<GameManager>().UpdateStatsHP1();
+
             hp1.interactable = false;
             hp2.interactable = true;
 
         }
             
-        
-
     }
     
     public void HPUpgrade2()
     {
         //call script which updates health
-        hp2.interactable = false;
-        hp3.interactable = true;
+        if (gm.GetComponent<GameManager>().Zorium >= 500 && gm.GetComponent<GameManager>().Ironite >= 500)
+        {
+            gm.GetComponent<GameManager>().Zorium -= 500;
+            gm.GetComponent<GameManager>().Ironite -= 500;
+
+            gm.GetComponent<GameManager>().UpdateStatsHP2();
+
+            hp2.interactable = false;
+            hp3.interactable = true;
+
+        }
 
     }
     public void HPUpgrade3()
     {
         //call script which updates health
-        hp3.interactable = false;
+        if (gm.GetComponent<GameManager>().BloodStone >= 1000 && gm.GetComponent<GameManager>().Ironite >= 1000)
+        {
+            gm.GetComponent<GameManager>().BloodStone -= 1000;
+            gm.GetComponent<GameManager>().Ironite -= 1000;
+
+            gm.GetComponent<GameManager>().UpdateStatsHP3();
+
+            hp3.interactable = false;
+
+        }
 
     }
     public void SpeedUpgrade1()
     {
-        //call script which updates health
-        speed1.interactable = false;
-        speed2.interactable = true;
+        //call script which updates speed
+        if (gm.GetComponent<GameManager>().BloodStone >= 250 && gm.GetComponent<GameManager>().Ironite >= 250)
+        {
+            gm.GetComponent<GameManager>().BloodStone -= 250;
+            gm.GetComponent<GameManager>().Ironite -= 250;
+
+            speed1.interactable = false;
+            speed2.interactable = true;
+
+        }
 
     }
     public void SpeedUpgrade2()
     {
-        //call script which updates health
-        speed2.interactable = false;
-        speed3.interactable = true;
+        //call script which updates speed
+        if (gm.GetComponent<GameManager>().Zorium >= 500 && gm.GetComponent<GameManager>().Ironite >= 500)
+        {
+            gm.GetComponent<GameManager>().Zorium -= 500;
+            gm.GetComponent<GameManager>().Ironite -= 500;
+
+            speed2.interactable = false;
+            speed3.interactable = true;
+
+        }
 
     }
     public void SpeedUpgrade3()
     {
         //call script which updates speed
-        speed3.interactable = false;
+        if (gm.GetComponent<GameManager>().Aurarium >= 1000 && gm.GetComponent<GameManager>().Ironite >= 1000)
+        {
+            gm.GetComponent<GameManager>().Aurarium -= 1000;
+            gm.GetComponent<GameManager>().Ironite -= 1000;
+
+            speed3.interactable = false;
+
+        }
 
     }
     public void DamageUpgrade1()
     {
-        //call script which updates health
-        dmg1.interactable = false;
-        dmg2.interactable = true;
+        //call script which updates damage
+        if (gm.GetComponent<GameManager>().Aurarium >= 250 && gm.GetComponent<GameManager>().Ironite >= 250)
+        {
+            gm.GetComponent<GameManager>().Aurarium -= 250;
+            gm.GetComponent<GameManager>().Ironite -= 250;
+
+            gm.GetComponent<GameManager>().UpdateStatsDmg1();
+
+            dmg1.interactable = false;
+            dmg2.interactable = true;
+
+        }
 
     }
     public void DamageUpgrade2()
     {
-        //call script which updates health
-        dmg2.interactable = false;
-        dmg3.interactable = true;
+        //call script which updates damage
+        if (gm.GetComponent<GameManager>().Zorium >= 500 && gm.GetComponent<GameManager>().Ironite >= 500)
+        {
+            gm.GetComponent<GameManager>().Zorium -= 500;
+            gm.GetComponent<GameManager>().Ironite -= 500;
+
+            gm.GetComponent<GameManager>().UpdateStatsDmg2();
+
+            dmg2.interactable = false;
+            dmg3.interactable = true;
+
+        }
 
     }
     public void DamageUpgrade3()
     {
-        //call script which updates health
-        dmg3.interactable = false;
+        //call script which updates damage
+        if (gm.GetComponent<GameManager>().BloodStone >= 1000 && gm.GetComponent<GameManager>().Ironite >= 1000)
+        {
+            gm.GetComponent<GameManager>().BloodStone -= 1000;
+            gm.GetComponent<GameManager>().Ironite -= 1000;
+
+            gm.GetComponent<GameManager>().UpdateStatsDmg3();
+
+            dmg3.interactable = false;
+
+        }
 
     }
     public void MineUpgrade1()
     {
-        //call script which updates health
-        mine1.interactable = false;
-        mine2.interactable = true;
+        //call script which updates mine speed
+        if (gm.GetComponent<GameManager>().BloodStone >= 250 && gm.GetComponent<GameManager>().Ironite >= 250)
+        {
+            gm.GetComponent<GameManager>().BloodStone -= 250;
+            gm.GetComponent<GameManager>().Ironite -= 250;
+
+            mine1.interactable = false;
+            mine2.interactable = true;
+
+        }
 
     }
     public void MineUpgrade2()
     {
-        //call script which updates health
-        mine2.interactable = false;
-        mine3.interactable = true;
+        //call script which updates mine speed
+        if (gm.GetComponent<GameManager>().Zorium >= 500 && gm.GetComponent<GameManager>().Ironite >= 500)
+        {
+            gm.GetComponent<GameManager>().Zorium -= 500;
+            gm.GetComponent<GameManager>().Ironite -= 500;
+
+            mine2.interactable = false;
+            mine3.interactable = true;
+
+        }
 
     }
     public void MineUpgrade3()
     {
-        //call script which updates health
-        mine3.interactable = false;
+        //call script which updates mine speed
+        if (gm.GetComponent<GameManager>().Aurarium >= 1000 && gm.GetComponent<GameManager>().Ironite >= 1000)
+        {
+            gm.GetComponent<GameManager>().Aurarium -= 1000;
+            gm.GetComponent<GameManager>().Ironite -= 1000;
+
+            mine3.interactable = false;
+
+        }
 
     }
     public void CoglingUpgrade()
     {
-        //call script which updates health
-        cog.interactable = false;
+        //call script which updates cogling
+        if (gm.GetComponent<GameManager>().Aurarium >= 500 && gm.GetComponent<GameManager>().Ironite >= 500)
+        {
+            gm.GetComponent<GameManager>().Aurarium -= 500;
+            gm.GetComponent<GameManager>().Ironite -= 500;
+
+            cog.interactable = false;
+
+        }
 
     }
     public void SleemasiUpgrade()
     {
-        //call script which updates health
-        slee.interactable = false;
+        //call script which updates sleemasi
+        if (gm.GetComponent<GameManager>().Zorium >= 500 && gm.GetComponent<GameManager>().Ironite >= 500)
+        {
+            gm.GetComponent<GameManager>().Zorium -= 500;
+            gm.GetComponent<GameManager>().Ironite -= 500;
+
+            slee.interactable = false;
+
+        }
 
     }
     public void GraxxianUpgrade()
     {
-        //call script which updates health
-        graxx.interactable = false;
+        //call script which updates graxxian
+        if (gm.GetComponent<GameManager>().BloodStone >= 500 && gm.GetComponent<GameManager>().Ironite >= 500)
+        {
+            gm.GetComponent<GameManager>().BloodStone -= 500;
+            gm.GetComponent<GameManager>().Ironite -= 500;
+
+            graxx.interactable = false;
+
+        }
 
     }
 }

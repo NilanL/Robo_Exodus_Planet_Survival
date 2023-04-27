@@ -419,4 +419,41 @@ public class GameManager : MonoBehaviour
         var buildingPreviewWarning = buildingPreviewMessage.transform.Find("Preview Warning").gameObject;
         buildingPreviewWarning.SetActive(val);
     }
+
+    public void UpdateStatsHP1()
+    {
+        GetComponent<MinerStats>().maxHealth += 13;
+        GetComponent<Robot_Range_Stats>().maxHealth += 13;
+        GetComponent<Melle_UnitStats>().maxHealth += 13;
+    }
+    public void UpdateStatsHP2()
+    {
+        GetComponent<MinerStats>().maxHealth += 28;
+        GetComponent<Robot_Range_Stats>().maxHealth += 28;
+        GetComponent<Melle_UnitStats>().maxHealth += 28;
+    }
+    public void UpdateStatsHP3()
+    {
+        GetComponent<MinerStats>().maxHealth += 59;
+        GetComponent<Robot_Range_Stats>().maxHealth += 59;
+        GetComponent<Melle_UnitStats>().maxHealth += 59;
+    }
+    public void UpdateStatsDmg1()
+    {
+        GetComponent<MinerStats>().unitAtk += 4;
+        GetComponent<Robot_Range_Stats>().unitAtk += 4;
+        GetComponent<Melle_UnitStats>().unitAtk += 4;
+    }
+    public void UpdateStatsDmg2()
+    {
+        GetComponent<MinerStats>().unitAtk += 6;
+        GetComponent<Robot_Range_Stats>().unitAtk += 6;
+        GetComponent<Melle_UnitStats>().unitAtk += 6;
+    }
+    public void UpdateStatsDmg3()
+    {
+        GetComponent<MinerStats>().unitAtk += 10;
+        GetComponent<Robot_Range_Stats>().unitAtk += 10;
+        GetComponent<Melle_UnitStats>().unitAtk += 10;
+    }
 }

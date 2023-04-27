@@ -5,9 +5,9 @@ using UnityEngine;
 public class MinerStats : MonoBehaviour
 {
     [SerializeField]
-    private int maxHealth { get; set; } = 100;
+    public int maxHealth { get; set; } = 100;
     [SerializeField]
-    private int unitAtk { get; set; } = 8;
+    public int unitAtk { get; set; } = 8;
     [SerializeField]
     private int vehicleAtk { get; set; } = 0;
     [SerializeField]
