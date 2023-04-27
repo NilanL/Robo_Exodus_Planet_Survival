@@ -15,6 +15,7 @@
     <li>Settings does not work</li>
     <li>Movement animations are not fully functional</li>
     <li>Sleemasi Not Spawning</li>
+    <li>Tech Tree UI Stacks over itself</li>
   </ul>
   
   <dt>Third Party Assets</dt>
