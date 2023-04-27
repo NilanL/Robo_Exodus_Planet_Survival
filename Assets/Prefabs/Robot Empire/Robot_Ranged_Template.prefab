@@ -1090,7 +1090,7 @@ MonoBehaviour:
     type: 3}
   miningEffectPrefab: {fileID: 2153993378827602863, guid: ae0191de60e42e94da9f9eaccaed8202,
     type: 3}
-  attackSound: {fileID: 0}
+  attackSound: {fileID: 664663043051496758}
   mineSound: {fileID: 0}
 --- !u!114 &6913157720247968610
 MonoBehaviour:
@@ -1117,6 +1117,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f9bef5de6d43c94888d641112ddfffa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mining: 0
   target: {fileID: 0}
   timeToMine: 2
 --- !u!114 &8315212310581646031

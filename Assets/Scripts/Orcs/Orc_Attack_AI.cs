@@ -4,10 +4,12 @@ using UnityEngine;
 
 public class Orc_Attack_AI : MonoBehaviour
 {
+
+    public bool attacking = false;
     public GameObject target;
     Stats stats_orc;
     Orc_Movement_AI orcs_attack;
-    bool attacking = false;
+
     bool canAttack = false;
     bool startAttack = false;
     AnimationController animController;

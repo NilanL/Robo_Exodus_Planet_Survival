@@ -14,6 +14,7 @@ public class Orc_Movement_AI : MonoBehaviour
     GameManager gm;
     bool inWar = false;
     public bool booltarg = false;
+    public Transform test;
 
     // Start is called before the first frame update
     void Start()
@@ -49,19 +50,27 @@ public class Orc_Movement_AI : MonoBehaviour
 
         if (!isGettingAttacked)
         {
-            //var tars = GameObject.FindGameObjectsWithTag("Selectable");
-            foreach (var tar in gm.selectables)
+            var tars = GameObject.FindGameObjectsWithTag("Selectable");
+            foreach (var tar in tars)
             {
-                if (Vector3.Distance((tar.transform.position), this.gameObject.transform.position) < 50)
+                if (((Vector3.Distance((tar.transform.position), this.gameObject.transform.position) < 50)))
                 {
-                    if (target == Vector3.zero)
-                        targ = tar;
+                    if(targ == null)
+                    {
+                        if (target == Vector3.zero)
+                            targ = tar;
+                    }
+                    else if(targ.tag == "Building")
+                    {
+                        if (target == Vector3.zero)
+                            targ = tar;
+                    }
                 }
             }
-            //tars = GameObject.FindGameObjectsWithTag("Building");
-            foreach (var tar in gm.buildings)
+            tars = GameObject.FindGameObjectsWithTag("Building");
+            foreach (var tar in tars)
             {
-                if (Vector3.Distance((tar.transform.position), this.gameObject.transform.position) < 50)
+                if ((Vector3.Distance((tar.transform.position), this.gameObject.transform.position) < 50) && targ == null)
                 {
                     if (target == Vector3.zero)
                         targ = tar;
@@ -74,7 +83,9 @@ public class Orc_Movement_AI : MonoBehaviour
             if (!inRange)
             {
                 target = Vector3.zero;
+
                 navMeshAgent.SetDestination(targ.transform.position);
+                GetComponent<Flocking_Wait>().targetPosition = navMeshAgent.destination;
             }
             GetComponent<Orc_Attack_AI>().SetTarget(targ);
             booltarg = true;
@@ -82,8 +93,24 @@ public class Orc_Movement_AI : MonoBehaviour
         else if (target != Vector3.zero)
         {
             navMeshAgent.SetDestination(target);
+            GetComponent<Flocking_Wait>().targetPosition = navMeshAgent.destination;
             targ = null;
             booltarg = false;
+        }
+
+        if (target != Vector3.zero)
+        {
+            if (Vector3.Distance(transform.position, target) < 10)
+            {
+                navMeshAgent.ResetPath();
+            }
+        }
+        else if( targ != null)
+        {
+            if (Vector3.Distance(transform.position, targ.transform.position) < 10)
+            {
+                navMeshAgent.ResetPath();
+            }
         }
     }
 

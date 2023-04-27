@@ -245,7 +245,7 @@ public class GameManager : MonoBehaviour
 
         var debrisText = UI.transform.Find("Building Creation Window/Alert Screen/Debris Alert").gameObject;
         debrisText.GetComponent<Text>().text = "Debris Cleared. Zone ready for construction.";
-        debrisText.GetComponent<Text>().color = new Color(0f, 0f, 0f);
+        debrisText.GetComponent<Text>().color = new Color(255f, 255f, 255f);
     }
 
     public void SetIsWallBuilt()
@@ -257,7 +257,7 @@ public class GameManager : MonoBehaviour
 
         var wallText = UI.transform.Find("Building Creation Window/Alert Screen/Defenses Alert").gameObject;
         wallText.GetComponent<Text>().text = "Defenses Constructed. Zone now defensible.";
-        wallText.GetComponent<Text>().color = new Color(0f, 0f, 0f);
+        wallText.GetComponent<Text>().color = new Color(255f, 255f, 255f);
         /*
         var buildingButton = UI.transform.Find("HUD/Top Bar/Building Button").gameObject;
         buildingButton.GetComponent<Button>().interactable = true;*/
