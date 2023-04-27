@@ -302,6 +302,7 @@ GameObject:
   - component: {fileID: 8615259377559272700}
   - component: {fileID: -61579089987286585}
   - component: {fileID: 2317336917780317926}
+  - component: {fileID: 2126182395081076997}
   m_Layer: 0
   m_Name: Graxxian_Siege_Template
   m_TagString: Enemy
@@ -458,6 +459,18 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &2126182395081076997
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2766946194781633014}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69ac351c1b82a384f8e58839bbd75456, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2766946194795426054
 GameObject:
   m_ObjectHideFlags: 0

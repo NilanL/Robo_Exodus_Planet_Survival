@@ -5,7 +5,7 @@ using UnityEngine;
 public class Main_Base_Stats : MonoBehaviour
 {
     [SerializeField]
-    private int maxHealth { get; set; } = 20000;
+    private int maxHealth { get; set; } = 15000;
     [SerializeField]
     private int unitAtk { get; set; } = 8;
     [SerializeField]
