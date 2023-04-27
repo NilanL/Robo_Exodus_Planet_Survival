@@ -1,5 +1,133 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &378438457772038388
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6066323501646970280}
+  - component: {fileID: 8883062350693354208}
+  - component: {fileID: 7266281801226538320}
+  m_Layer: 0
+  m_Name: Cogling_Gate_Top
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6066323501646970280
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 378438457772038388}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 5752158033096214522}
+  - {fileID: 5752158033734025268}
+  - {fileID: 5752158033996252487}
+  - {fileID: 5751685871597808683}
+  m_Father: {fileID: 4815255598388263043}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &8883062350693354208
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 378438457772038388}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 29.600737, y: 4.58276, z: 4.200012}
+  m_Center: {x: 11.046296, y: 12.2337055, z: -0.33425903}
+--- !u!208 &7266281801226538320
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 378438457772038388}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 14.80037, y: 2.29138, z: 2.100006}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 11.0463, y: 12.23371, z: -0.334259}
+  m_TimeToStationary: 0.5
+--- !u!1 &1888356199384644312
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1637163826935487053}
+  - component: {fileID: 5806974274527232546}
+  - component: {fileID: 8272803395548337607}
+  m_Layer: 0
+  m_Name: Cogling_Gate_Pillar_2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1637163826935487053
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1888356199384644312}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 5752158033863963835}
+  - {fileID: 5752043717729147985}
+  m_Father: {fileID: 4815255598388263043}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &5806974274527232546
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1888356199384644312}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 4.7844753, y: 19.530693, z: 3.404358}
+  m_Center: {x: -0.94938564, y: 4.375519, z: -0.06878662}
+--- !u!208 &8272803395548337607
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1888356199384644312}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 2.3922374, y: 9.765345, z: 1.702179}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: -0.9493856, y: 4.375519, z: -0.06878662}
+  m_TimeToStationary: 0.5
 --- !u!1 &2668744761997871384
 GameObject:
   m_ObjectHideFlags: 0
@@ -34,14 +162,9 @@ Transform:
   m_Children:
   - {fileID: 5750265662233991883}
   - {fileID: 5750265661286048059}
-  - {fileID: 5752158034124558755}
-  - {fileID: 5752158033096214522}
-  - {fileID: 5752043718692164684}
-  - {fileID: 5752158033863963835}
-  - {fileID: 5752158033734025268}
-  - {fileID: 5752043717729147985}
-  - {fileID: 5752158033996252487}
-  - {fileID: 5751685871597808683}
+  - {fileID: 3257317801145099320}
+  - {fileID: 1637163826935487053}
+  - {fileID: 6066323501646970280}
   - {fileID: 5750067800902770954}
   - {fileID: 4122702994834381627}
   m_Father: {fileID: 0}
@@ -54,7 +177,7 @@ NavMeshObstacle:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2668744761997871384}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Shape: 1
   m_Extents: {x: 14.51, y: 7.475, z: 1.83}
@@ -72,7 +195,7 @@ BoxCollider:
   m_GameObject: {fileID: 2668744761997871384}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 29.02, y: 14.95, z: 3.66}
   m_Center: {x: 11.57, y: 7.18, z: 0}
@@ -226,7 +349,7 @@ RectTransform:
   m_Children:
   - {fileID: 5077009603926848777}
   m_Father: {fileID: 4815255598388263043}
-  m_RootOrder: 11
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -395,6 +518,69 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!1 &7622820099620627352
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3257317801145099320}
+  - component: {fileID: 793782424913803898}
+  - component: {fileID: 5967819556989948819}
+  m_Layer: 0
+  m_Name: Cogling_Gate_Pillar_1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3257317801145099320
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7622820099620627352}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 5752158034124558755}
+  - {fileID: 5752043718692164684}
+  m_Father: {fileID: 4815255598388263043}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &793782424913803898
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7622820099620627352}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 4.859722, y: 19.530693, z: 3.404358}
+  m_Center: {x: 23.351442, y: 4.375519, z: -0.06878662}
+--- !u!208 &5967819556989948819
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7622820099620627352}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 2.429861, y: 9.765345, z: 1.702179}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 23.35144, y: 4.375519, z: -0.06878662}
+  m_TimeToStationary: 0.5
 --- !u!1001 &5747420691728008172
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -408,7 +594,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4126021034255078, guid: d87442a29587f489d88e0a383be8c5ed, type: 3}
       propertyPath: m_RootOrder
-      value: 10
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4126021034255078, guid: d87442a29587f489d88e0a383be8c5ed, type: 3}
       propertyPath: m_LocalScale.x
@@ -480,6 +666,10 @@ PrefabInstance:
     - target: {fileID: 1007825027520974, guid: 4be1d20979fdf4813add8859c5dd4c88, type: 3}
       propertyPath: m_Name
       value: Cogling_Gate_Door_1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1007825027520974, guid: 4be1d20979fdf4813add8859c5dd4c88, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4499804091262220, guid: 4be1d20979fdf4813add8859c5dd4c88, type: 3}
       propertyPath: m_RootOrder
@@ -555,7 +745,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 4815255598388263043}
+    m_TransformParent: {fileID: 1637163826935487053}
     m_Modifications:
     - target: {fileID: 1144944376669824, guid: 36fd6c2b72c3d48f0803d98b24c355be, type: 3}
       propertyPath: m_Name
@@ -563,7 +753,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4976261467365288, guid: 36fd6c2b72c3d48f0803d98b24c355be, type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4976261467365288, guid: 36fd6c2b72c3d48f0803d98b24c355be, type: 3}
       propertyPath: m_LocalScale.x
@@ -579,7 +769,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4976261467365288, guid: 36fd6c2b72c3d48f0803d98b24c355be, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.22
+      value: 0.21999931
       objectReference: {fileID: 0}
     - target: {fileID: 4976261467365288, guid: 36fd6c2b72c3d48f0803d98b24c355be, type: 3}
       propertyPath: m_LocalPosition.y
@@ -630,7 +820,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 4815255598388263043}
+    m_TransformParent: {fileID: 6066323501646970280}
     m_Modifications:
     - target: {fileID: 1248029346990396, guid: 5fbfb6aca413f430698626fe1ecd2f74, type: 3}
       propertyPath: m_Name
@@ -638,7 +828,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4844353833217732, guid: 5fbfb6aca413f430698626fe1ecd2f74, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4844353833217732, guid: 5fbfb6aca413f430698626fe1ecd2f74, type: 3}
       propertyPath: m_LocalScale.x
@@ -646,7 +836,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4844353833217732, guid: 5fbfb6aca413f430698626fe1ecd2f74, type: 3}
       propertyPath: m_LocalScale.y
-      value: 1.7137002
+      value: 1.7137003
       objectReference: {fileID: 0}
     - target: {fileID: 4844353833217732, guid: 5fbfb6aca413f430698626fe1ecd2f74, type: 3}
       propertyPath: m_LocalScale.z
@@ -715,6 +905,10 @@ PrefabInstance:
     - target: {fileID: 1007825027520974, guid: 4be1d20979fdf4813add8859c5dd4c88, type: 3}
       propertyPath: m_Name
       value: Cogling_Gate_Door_2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1007825027520974, guid: 4be1d20979fdf4813add8859c5dd4c88, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4499804091262220, guid: 4be1d20979fdf4813add8859c5dd4c88, type: 3}
       propertyPath: m_RootOrder
@@ -790,7 +984,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 4815255598388263043}
+    m_TransformParent: {fileID: 6066323501646970280}
     m_Modifications:
     - target: {fileID: 1248029346990396, guid: 5fbfb6aca413f430698626fe1ecd2f74, type: 3}
       propertyPath: m_Name
@@ -798,7 +992,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4844353833217732, guid: 5fbfb6aca413f430698626fe1ecd2f74, type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4844353833217732, guid: 5fbfb6aca413f430698626fe1ecd2f74, type: 3}
       propertyPath: m_LocalScale.x
@@ -806,7 +1000,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4844353833217732, guid: 5fbfb6aca413f430698626fe1ecd2f74, type: 3}
       propertyPath: m_LocalScale.y
-      value: 1.7137002
+      value: 1.7137003
       objectReference: {fileID: 0}
     - target: {fileID: 4844353833217732, guid: 5fbfb6aca413f430698626fe1ecd2f74, type: 3}
       propertyPath: m_LocalScale.z
@@ -870,7 +1064,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 4815255598388263043}
+    m_TransformParent: {fileID: 1637163826935487053}
     m_Modifications:
     - target: {fileID: 1248029346990396, guid: 5fbfb6aca413f430698626fe1ecd2f74, type: 3}
       propertyPath: m_Name
@@ -878,7 +1072,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4844353833217732, guid: 5fbfb6aca413f430698626fe1ecd2f74, type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4844353833217732, guid: 5fbfb6aca413f430698626fe1ecd2f74, type: 3}
       propertyPath: m_LocalScale.x
@@ -886,7 +1080,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4844353833217732, guid: 5fbfb6aca413f430698626fe1ecd2f74, type: 3}
       propertyPath: m_LocalScale.y
-      value: 1.7137002
+      value: 1.7137003
       objectReference: {fileID: 0}
     - target: {fileID: 4844353833217732, guid: 5fbfb6aca413f430698626fe1ecd2f74, type: 3}
       propertyPath: m_LocalScale.z
@@ -945,7 +1139,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 4815255598388263043}
+    m_TransformParent: {fileID: 3257317801145099320}
     m_Modifications:
     - target: {fileID: 1144944376669824, guid: 36fd6c2b72c3d48f0803d98b24c355be, type: 3}
       propertyPath: m_Name
@@ -953,7 +1147,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4976261467365288, guid: 36fd6c2b72c3d48f0803d98b24c355be, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4976261467365288, guid: 36fd6c2b72c3d48f0803d98b24c355be, type: 3}
       propertyPath: m_LocalScale.x
@@ -1020,7 +1214,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 4815255598388263043}
+    m_TransformParent: {fileID: 6066323501646970280}
     m_Modifications:
     - target: {fileID: 1248029346990396, guid: 5fbfb6aca413f430698626fe1ecd2f74, type: 3}
       propertyPath: m_Name
@@ -1028,7 +1222,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4844353833217732, guid: 5fbfb6aca413f430698626fe1ecd2f74, type: 3}
       propertyPath: m_RootOrder
-      value: 8
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4844353833217732, guid: 5fbfb6aca413f430698626fe1ecd2f74, type: 3}
       propertyPath: m_LocalScale.x
@@ -1095,7 +1289,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 4815255598388263043}
+    m_TransformParent: {fileID: 6066323501646970280}
     m_Modifications:
     - target: {fileID: 1389096030983992, guid: e58b0f2891a0f4f6ab29149bcfcebea1, type: 3}
       propertyPath: m_Name
@@ -1103,7 +1297,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4758106171996128, guid: e58b0f2891a0f4f6ab29149bcfcebea1, type: 3}
       propertyPath: m_RootOrder
-      value: 9
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4758106171996128, guid: e58b0f2891a0f4f6ab29149bcfcebea1, type: 3}
       propertyPath: m_LocalScale.x
@@ -1175,7 +1369,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 4815255598388263043}
+    m_TransformParent: {fileID: 3257317801145099320}
     m_Modifications:
     - target: {fileID: 1248029346990396, guid: 5fbfb6aca413f430698626fe1ecd2f74, type: 3}
       propertyPath: m_Name
@@ -1183,7 +1377,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4844353833217732, guid: 5fbfb6aca413f430698626fe1ecd2f74, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4844353833217732, guid: 5fbfb6aca413f430698626fe1ecd2f74, type: 3}
       propertyPath: m_LocalScale.x
@@ -1191,7 +1385,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4844353833217732, guid: 5fbfb6aca413f430698626fe1ecd2f74, type: 3}
       propertyPath: m_LocalScale.y
-      value: 1.7137002
+      value: 1.7137003
       objectReference: {fileID: 0}
     - target: {fileID: 4844353833217732, guid: 5fbfb6aca413f430698626fe1ecd2f74, type: 3}
       propertyPath: m_LocalScale.z
