@@ -13,6 +13,7 @@
     <li>The click/drag box to multi-select units will occasionally cause a soft-lock. To break this press the "shift" key multiple times</li>
     <li>AI Flocking will malfunction at times, and cause units to stay in one place (Due to this, we turned it off and switched to NavMesh)</li>
     <li>Settings does not work</li>
+    <li>Movement animations are not fully functional</li>
   </ul>
   
   <dt>Third Party Assets</dt>
