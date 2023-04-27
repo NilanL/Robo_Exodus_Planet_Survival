@@ -25,7 +25,10 @@ public class EditBuilding : MonoBehaviour
         textField = GameObject.Find("Troops").GetComponent<Text>();
     }
 
-    // TODO: Call UpdateTroopCount() on Update()
+    void Update()
+    {
+        UpdateTroopCount();
+    }
 
     public void UpdateTroopCount()
     {
@@ -55,6 +58,7 @@ public class EditBuilding : MonoBehaviour
 
     public void DestroyTurret()
     {
+        gm.GetComponent<GameManager>().DecrementTurretCount();
         var turret = gm.GetComponent<GameManager>().ActiveTurret;
         Destroy(turret);
     }

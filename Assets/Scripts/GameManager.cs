@@ -370,11 +370,31 @@ public class GameManager : MonoBehaviour
         TurretCount += 1;
 
         var turretCountText = UI.transform.Find("Building Windows/Defenses Window/Total Turret Count").gameObject;
-        turretCountText.GetComponent<Text>().text = "Active Turrets " + TurretCount + "/" + TurretCount;
+        turretCountText.GetComponent<Text>().text = "Active Turrets " + TurretCount + "/" + 6;
+
+        if (TurretCount >= 6)
+        {
+            var turretBuildingButton = UI.transform.Find("Building Windows/Defenses Window/Build Turret").gameObject;
+            turretBuildingButton.GetComponent<Button>().interactable = false;
+        }
 
         SetBuildingWarningMessage(false);
         SetBuildingMessage(false);
         // TODO: Change in-game things due to increased turret count
+    }
+
+    public void DecrementTurretCount()
+    {
+        TurretCount -= 1;
+
+        var turretCountText = UI.transform.Find("Building Windows/Defenses Window/Total Turret Count").gameObject;
+        turretCountText.GetComponent<Text>().text = "Active Turrets " + TurretCount + "/" + 6;
+
+        if (TurretCount < 6)
+        {
+            var turretBuildingButton = UI.transform.Find("Building Windows/Defenses Window/Build Turret").gameObject;
+            turretBuildingButton.GetComponent<Button>().interactable = true;
+        }
     }
 
     public void SetBuildingMessage(bool val)
