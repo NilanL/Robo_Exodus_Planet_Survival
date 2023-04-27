@@ -592,7 +592,7 @@ MonoBehaviour:
   shootingEffectPrefab: {fileID: 0}
   attackingEffectPrefab: {fileID: 0}
   miningEffectPrefab: {fileID: 0}
-  attackSound: {fileID: 0}
+  attackSound: {fileID: 5082110194283628967}
   mineSound: {fileID: 0}
 --- !u!114 &-7143477320768438188
 MonoBehaviour:

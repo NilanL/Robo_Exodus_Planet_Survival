@@ -894,6 +894,7 @@ MonoBehaviour:
   target: {x: 0, y: 0, z: 0}
   targ: {fileID: 0}
   booltarg: 0
+  test: {fileID: 0}
 --- !u!114 &2238497284208655412
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -906,6 +907,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62c95772ca9cffc4fa6fab2fb8f63ec8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  attacking: 0
   target: {fileID: 0}
 --- !u!95 &8590585695034593353
 Animator:
@@ -941,8 +943,8 @@ MonoBehaviour:
   shootingEffectPrefab: {fileID: 0}
   attackingEffectPrefab: {fileID: 0}
   miningEffectPrefab: {fileID: 0}
-  attackSound: {fileID: 0}
-  mineSound: {fileID: 0}
+  attackSound: {fileID: -8739667249176993973}
+  mineSound: {fileID: -8362280310916706897}
 --- !u!1 &8220378917513556681
 GameObject:
   m_ObjectHideFlags: 0
