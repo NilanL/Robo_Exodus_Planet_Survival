@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class Elf_Attack_AI : MonoBehaviour
 {
-    private GameObject target;
-    Stats stats_wolf;
-    Elf_Movement_AI coglings_attack;
+    public GameObject target;
+    Stats static_elf;
+    Elf_Movement_AI elf_attack;
     bool attacking = false;
     bool canAttack = false;
     bool startAttack = false;
@@ -15,9 +15,9 @@ public class Elf_Attack_AI : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        stats_wolf = GetComponent<Stats>();
-        coglings_attack = GetComponent<Elf_Movement_AI>();
-        //animController = GetComponent<AnimationController>();
+        static_elf = GetComponent<Stats>();
+        elf_attack = GetComponent<Elf_Movement_AI>();
+        animController = GetComponent<AnimationController>();
     }
 
     // Update is called once per frame
@@ -27,8 +27,8 @@ public class Elf_Attack_AI : MonoBehaviour
         {
             if (!target)
             {
-                //animController.IsNotAttacking();
-                //animController.IsNotMoving();
+                animController.IsNotAttacking();
+                animController.IsNotMoving();
                 targetDies(null);
             }
             else
@@ -38,21 +38,35 @@ public class Elf_Attack_AI : MonoBehaviour
 
     void Attacking()
     {
+        int currRange = static_elf.getRange();
 
-        if (Vector3.Distance(target.transform.position, transform.position) < stats_wolf.getRange())
+        switch (target.GetComponent<Unit_Name>().unit_Name)
         {
-            coglings_attack.InRange();
+            case Unit_Names.Main_Base:
+            case Unit_Names.Robot_Turret:
+            case Unit_Names.House:
+            case Unit_Names.WallGate:
+                currRange += 35;
+                break;
+        }
+
+        if (Vector3.Distance(target.transform.position, transform.position) < currRange)
+        {
+            if (elf_attack)
+                elf_attack.InRange();
+
             if (canAttack || startAttack)
             {
-                //animController.IsAttacking();
+                animController.IsAttacking();
                 StartCoroutine(Attack());
             }
 
         }
         else
         {
-            //animController.IsNotAttacking();
-            coglings_attack.OutofRange();
+            animController.IsNotAttacking();
+            if (elf_attack)
+                elf_attack.OutofRange();
         }
 
     }
@@ -60,15 +74,15 @@ public class Elf_Attack_AI : MonoBehaviour
     IEnumerator Attack()
     {
         canAttack = false;
-        yield return new WaitForSeconds(stats_wolf.GetAtkSpeed());
-        Debug.Log(stats_wolf.GetAtkSpeed(), this.gameObject);
+        yield return new WaitForSeconds(static_elf.GetAtkSpeed());
+        Debug.Log(static_elf.GetAtkSpeed(), this.gameObject);
         if (!target)
         {
             targetDies(null);
         }
         if (!(target == null))
         {
-            var damage = stats_wolf.GetAtk() - getDefence();
+            var damage = static_elf.GetAtk() - getDefence();
             target.GetComponent<Unit_Health>().dmgResource(damage, this.gameObject);
             canAttack = true;
         }
@@ -102,5 +116,10 @@ public class Elf_Attack_AI : MonoBehaviour
         }
         else
             return 0;
+    }
+
+    public bool isAttackingFlag()
+    {
+        return attacking;
     }
 }

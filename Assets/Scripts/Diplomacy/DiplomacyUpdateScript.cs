@@ -22,15 +22,17 @@ public class DiplomacyUpdateScript : MonoBehaviour
     private GameObject graxxianMarker;
 
     private GameObject UI;
+    private GameObject DiplomacyUI;
 
     // Start is called before the first frame update
     void Start()
     {
         gm = GameObject.Find("GameManager");
         UI = GameObject.Find("UI");
-        coglingMarker = UI.transform.Find("Diplomacy Window/Cogling/Marker").gameObject;
-        sleemasiMarker = UI.transform.Find("Diplomacy Window/Sleemasi/Marker").gameObject;
-        graxxianMarker = UI.transform.Find("Diplomacy Window/Graxxian/Marker").gameObject;
+        DiplomacyUI = GameObject.Find("Diplomacy UI");
+        coglingMarker = UI.transform.Find("Diplomacy UI/Diplomacy Window/Cogling/Marker").gameObject;
+        sleemasiMarker = UI.transform.Find("Diplomacy UI/Diplomacy Window/Sleemasi/Marker").gameObject;
+        graxxianMarker = UI.transform.Find("Diplomacy UI/Diplomacy Window/Graxxian/Marker").gameObject;
     }
 
     private void adjustMarker(GameObject marker, int increment)

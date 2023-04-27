@@ -312,9 +312,9 @@ GameObject:
   - component: {fileID: 2100233531779711600}
   - component: {fileID: 5387479874741416717}
   - component: {fileID: 5594488755314400356}
-  - component: {fileID: -8737267436614876626}
   - component: {fileID: 1502559317542599065}
   - component: {fileID: -5782533460685980682}
+  - component: {fileID: -5098515420901230653}
   m_Layer: 0
   m_Name: Cogling_Melee_Template
   m_TagString: Cogling
@@ -529,6 +529,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4dfad81c066b19a43a2ffe39322ccfdb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  target: {fileID: 0}
 --- !u!114 &5387479874741416717
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -544,6 +545,7 @@ MonoBehaviour:
   target: {x: 0, y: 0, z: 0}
   targ: {fileID: 0}
   isMoving: 0
+  inWar: 0
 --- !u!114 &5594488755314400356
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -557,18 +559,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   unit_Name: 7
---- !u!114 &-8737267436614876626
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5179970132330131913}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 69ac351c1b82a384f8e58839bbd75456, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!95 &1502559317542599065
 Animator:
   serializedVersion: 3
@@ -605,6 +595,18 @@ MonoBehaviour:
   miningEffectPrefab: {fileID: 0}
   attackSound: {fileID: 0}
   mineSound: {fileID: 0}
+--- !u!114 &-5098515420901230653
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5179970132330131913}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69ac351c1b82a384f8e58839bbd75456, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6285206479733227023
 GameObject:
   m_ObjectHideFlags: 0

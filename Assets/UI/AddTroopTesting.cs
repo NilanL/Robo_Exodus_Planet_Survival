@@ -22,11 +22,6 @@ public class AddTroopTesting : MonoBehaviour
         UI = GameObject.Find("UI");
     }
 
-    void Update()
-    {
-        UpdateTroopCount();
-    }
-
     public void UpdateTroopCount()
     {
         textField.text = "Troops " + gameManger.Unit_count + "/" + gameManger.Max_Unit_Count;
