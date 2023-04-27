@@ -343,6 +343,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62c95772ca9cffc4fa6fab2fb8f63ec8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  attacking: 0
   target: {fileID: 0}
 --- !u!114 &1477148579097717056
 MonoBehaviour:
@@ -372,6 +373,7 @@ MonoBehaviour:
   target: {x: 0, y: 0, z: 0}
   targ: {fileID: 0}
   booltarg: 0
+  test: {fileID: 0}
 --- !u!95 &9154560270142223501
 Animator:
   serializedVersion: 3
@@ -407,7 +409,7 @@ MonoBehaviour:
     type: 3}
   attackingEffectPrefab: {fileID: 0}
   miningEffectPrefab: {fileID: 0}
-  attackSound: {fileID: 0}
+  attackSound: {fileID: 2306169749989645427}
   mineSound: {fileID: 0}
 --- !u!1 &2421248733589375600
 GameObject:
