@@ -43,8 +43,19 @@ public class Orc_Attack_AI : MonoBehaviour
 
     void Attacking()
     {
+        int currRange = stats_orc.getRange();
 
-        if (Vector3.Distance(target.transform.position, transform.position) < stats_orc.getRange())
+        switch (target.GetComponent<Unit_Name>().unit_Name)
+        {
+            case Unit_Names.Main_Base:
+            case Unit_Names.Robot_Turret:
+            case Unit_Names.House:
+            case Unit_Names.WallGate:
+                currRange += 35;
+                break;
+        }
+
+        if (Vector3.Distance(target.transform.position, transform.position) < currRange)
         {
             if (orcs_attack && orcs_attack.enabled)
                 orcs_attack.InRange();

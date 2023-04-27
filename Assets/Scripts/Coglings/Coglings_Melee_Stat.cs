@@ -5,7 +5,7 @@ using UnityEngine;
 public class Coglings_Melee_Stat : MonoBehaviour
 {
     private int maxHealth { get; set; } = 400;
-    private int unitAtk { get; set; } = 15;
+    private int unitAtk { get; set; } = 20;
     private int vehicleAtk { get; set; } = 0;
     private int baseAtk { get; set; } = 0;
     private int unitDef { get; set; } = 5;
