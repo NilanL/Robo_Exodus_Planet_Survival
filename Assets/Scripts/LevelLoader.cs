@@ -6,6 +6,9 @@ using UnityEngine.UI;
 public class LevelLoader : MonoBehaviour
 {
     public GameObject loadingScreen;
+    public GameObject menu;
+    public GameObject start;
+    public GameObject quit;
     //public GameObject loseScreen;
     //public GameObject winScreen;
     public Slider slider;
@@ -49,6 +52,10 @@ public class LevelLoader : MonoBehaviour
         AsyncOperation operation = SceneManager.LoadSceneAsync(sceneIndex);
 
         loadingScreen.SetActive(true);
+        start.SetActive(false);
+        menu.SetActive(false);
+        quit.SetActive(false);
+        //setActive(false) start menu quit
 
         while (!operation.isDone)
         {

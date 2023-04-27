@@ -49,6 +49,8 @@ public class AnimationController : MonoBehaviour
 
     private Unit_Names currName;
 
+    Vector3 targ;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -391,10 +393,18 @@ public class AnimationController : MonoBehaviour
         switch (unit)
         {
             case Unit_Names.Miner:
+                targ = taskManager.target.transform.position - this.transform.position;
+                targ.y = 0;
+                this.transform.rotation = Quaternion.LookRotation(targ);
+
                 var movement = this.gameObject.GetComponent<Robot_Miner_Controller_Mouse>();
                 movement.IsAttacking();
                 break;
             case Unit_Names.Robot_Melee:
+                targ = taskManager.target.transform.position - this.transform.position;
+                targ.y = 0;
+                this.transform.rotation = Quaternion.LookRotation(targ);
+
                 animator.SetBool(isAttacking, true);
 
                 attackingLaserLeft.enabled = true;
@@ -406,29 +416,64 @@ public class AnimationController : MonoBehaviour
                 }
                 break;
             case Unit_Names.Robot_Ranged:
+                targ = taskManager.target.transform.position - this.transform.position;
+                targ.y = 0;
+                this.transform.rotation = Quaternion.LookRotation(targ);
+
                 animator.SetBool(isAttacking, true);
                 StartCoroutine(ShootLaser(transform));
                 break;
+            case Unit_Names.Cogling_Miner:
+                targ = coglingAttackAI.target.transform.position - this.transform.position;
+                targ.y = 0;
+                this.transform.rotation = Quaternion.LookRotation(targ);
+
+                animator.SetBool(isAttacking, true);
+                break;
             case Unit_Names.Cogling_Melee:
+                targ = coglingAttackAI.target.transform.position - this.transform.position;
+                targ.y = 0;
+                this.transform.rotation = Quaternion.LookRotation(targ);
+
                 animator.SetBool(isAttacking, true);
                 break;
             case Unit_Names.Cogling_Range:
+                targ = coglingAttackAI.target.transform.position - this.transform.position;
+                targ.y = 0;
+                this.transform.rotation = Quaternion.LookRotation(targ);
+
                 animator.SetBool(isAttacking, true);
                 break;
             case Unit_Names.Sleemasi_Melee:
+                targ = sleemasiAttackAI.target.transform.position - this.transform.position;
+                targ.y = 0;
+                this.transform.rotation = Quaternion.LookRotation(targ);
+
                 animator.SetBool(isAttacking, true);
                 break;
             case Unit_Names.Sleemasi_Ranged:
+                targ = sleemasiAttackAI.target.transform.position - this.transform.position;
+                targ.y = 0;
+                this.transform.rotation = Quaternion.LookRotation(targ);
+
                 animator.SetBool(isAttacking, true);
                 break;
             case Unit_Names.Sleemasi_Miner:
+                targ = sleemasiAttackAI.target.transform.position - this.transform.position;
+                targ.y = 0;
+                this.transform.rotation = Quaternion.LookRotation(targ);
+
                 animator.SetBool(isAttacking, true);
                 break;
             case Unit_Names.Graxxian_Melee:
+                targ = graxxianAttackAI.target.transform.position - this.transform.position;
+                targ.y = 0;
+                this.transform.rotation = Quaternion.LookRotation(targ);
+
                 animator.SetBool(isAttacking, true);
                 break;
             case Unit_Names.Graxxian_Ranged:
-                Vector3 targ = graxxianAttackAI.target.transform.position - this.transform.position;
+                targ = graxxianAttackAI.target.transform.position - this.transform.position;
                 targ.y = 0;
                 this.transform.rotation = Quaternion.LookRotation(targ);
 
@@ -438,6 +483,10 @@ public class AnimationController : MonoBehaviour
                 animator.SetBool(isAttacking, true);
                 break;
             case Unit_Names.Graxxian_Miner:
+                targ = graxxianAttackAI.target.transform.position - this.transform.position;
+                targ.y = 0;
+                this.transform.rotation = Quaternion.LookRotation(targ);
+
                 animator.SetBool(isAttacking, true);
                 break;
             case Unit_Names.Wolf:
