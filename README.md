@@ -14,6 +14,7 @@
     <li>AI Flocking will malfunction at times, and cause units to stay in one place (Due to this, we turned it off and switched to NavMesh)</li>
     <li>Settings does not work</li>
     <li>Movement animations are not fully functional</li>
+    <li>Sleemasi Not Spawning</li>
   </ul>
   
   <dt>Third Party Assets</dt>
