@@ -30,12 +30,9 @@
     <li>Lowpoly Environment - Nature Pack Free (Standard Unity Asset Store EULA): https://assetstore.unity.com/packages/3d/environments/lowpoly-environment-nature-pack-free-187052</li>
   </ul>
   
+  <dt>3rd Party Libraries</dt>
   <ul>
-    <li>MongoDB</li>
-    <li>Express</li>
-    <li>React</li>
-    <li>Node.js</li>
-    <li>Heroku Hosting Service</li>
+    <li>Terrain Tools</li>
   </ul>
   
   <dt>Developers</dt>
