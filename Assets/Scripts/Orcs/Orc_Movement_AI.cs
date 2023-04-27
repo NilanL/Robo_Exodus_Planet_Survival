@@ -85,7 +85,7 @@ public class Orc_Movement_AI : MonoBehaviour
                 target = Vector3.zero;
 
                 navMeshAgent.SetDestination(targ.transform.position);
-                GetComponent<Flocking_Wait>().targetPosition = navMeshAgent.destination;
+                //GetComponent<Flocking_Wait>().targetPosition = navMeshAgent.destination;
             }
             GetComponent<Orc_Attack_AI>().SetTarget(targ);
             booltarg = true;
@@ -93,7 +93,7 @@ public class Orc_Movement_AI : MonoBehaviour
         else if (target != Vector3.zero)
         {
             navMeshAgent.SetDestination(target);
-            GetComponent<Flocking_Wait>().targetPosition = navMeshAgent.destination;
+            //GetComponent<Flocking_Wait>().targetPosition = navMeshAgent.destination;
             targ = null;
             booltarg = false;
         }
