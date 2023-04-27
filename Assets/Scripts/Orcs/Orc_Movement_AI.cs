@@ -14,12 +14,14 @@ public class Orc_Movement_AI : MonoBehaviour
     GameManager gm;
     bool inWar = false;
     public bool booltarg = false;
+    private AnimationController animController;
 
     // Start is called before the first frame update
     void Start()
     {
         navMeshAgent = GetComponent<NavMeshAgent>();
         gm = GameObject.Find("GameManager").GetComponent<GameManager>();
+        animController = GetComponent<AnimationController>();
     }
 
     // Update is called once per frame
@@ -81,6 +83,7 @@ public class Orc_Movement_AI : MonoBehaviour
         }
         else if (target != Vector3.zero)
         {
+            
             navMeshAgent.SetDestination(target);
             targ = null;
             booltarg = false;
@@ -95,6 +98,7 @@ public class Orc_Movement_AI : MonoBehaviour
 
     public void InRange()
     {
+        animController.IsNotMoving();
         navMeshAgent.Stop();
         navMeshAgent.ResetPath();
         inRange = true;
@@ -102,6 +106,7 @@ public class Orc_Movement_AI : MonoBehaviour
 
     public void OutofRange()
     {
+        animController.IsMoving();
         inRange = false;
     }
 }
