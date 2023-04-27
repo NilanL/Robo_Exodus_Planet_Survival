@@ -32,7 +32,7 @@
   
   <dt>3rd Party Libraries</dt>
   <ul>
-    <li>Terrain Tools</li>
+    <li>Terrain Tools Editor for Unity</li>
   </ul>
   
   <dt>Developers</dt>
