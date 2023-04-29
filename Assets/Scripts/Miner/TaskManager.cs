@@ -92,8 +92,10 @@ public class TaskManager : MonoBehaviour
 
         if (Vector3.Distance(target.transform.position, transform.position) < currRange)
         {
+
             if (canAttack)
             {
+
                 StartCoroutine(Attack());
                 movement.IsAttacking();
             }
@@ -110,6 +112,7 @@ public class TaskManager : MonoBehaviour
         canAttack = false;
         float atkspd = stats.GetAtkSpeed();
         yield return new WaitForSeconds(atkspd);
+        canAttack = true;
         if (!(target == null))
         {
             var damage = stats.GetAtk() - getDefence();
@@ -172,47 +175,35 @@ public class TaskManager : MonoBehaviour
         else if(tar.tag == "Enemy")
         {
             attacking = true;
-
-            if (target != tar)
-            {
-                canAttack = true;
-            }
+            canAttack = true;
         }
         else if(tar.tag == "Cogling")
         {
             attacking = true;
-
-            if (target != tar)
-            {
-                canAttack = true;
-            }
+            canAttack = true;
         }
         else if (tar.tag == "Graxian")
         {
             attacking = true;
-
-            if (target != tar)
-            {
-                canAttack = true;
-            }
-        }
-        else if (tar.tag == "Sleemasi")
-        {
-            attacking = true;
-
-            if (target != tar)
-            {
-                canAttack = true;
-            }
-        }
-        else if (tar.tag == "Graxian")
-        {
-            attacking = true;
+            canAttack = true;
 
         }
         else if (tar.tag == "Sleemasi")
         {
             attacking = true;
+            canAttack = true;
+
+        }
+        else if (tar.tag == "Graxian")
+        {
+            attacking = true;
+            canAttack = true;
+
+        }
+        else if (tar.tag == "Sleemasi")
+        {
+            attacking = true;
+            canAttack = true;
 
         }
     }
@@ -229,6 +220,7 @@ public class TaskManager : MonoBehaviour
     {
         target = tar;
         attacking = true;
+        canAttack = true;
     }
 
     public bool isAttackingFlag()

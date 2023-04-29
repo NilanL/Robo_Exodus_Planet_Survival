@@ -60,11 +60,6 @@ public class Orc_Movement_AI : MonoBehaviour
                         if (target == Vector3.zero)
                             targ = tar;
                     }
-                    else if(targ.tag == "Building")
-                    {
-                        if (target == Vector3.zero)
-                            targ = tar;
-                    }
                 }
             }
             tars = GameObject.FindGameObjectsWithTag("Building");
