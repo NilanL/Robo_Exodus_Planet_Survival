@@ -21,7 +21,7 @@ public class Melle_UnitStats : MonoBehaviour
     [SerializeField]
     private float atkSpd { get; set; } = 2.2f;
     [SerializeField]
-    private float miningSpd { get; set; } = 1.3f;
+    public float miningSpd { get; set; } = 1.3f;
     [SerializeField]
     private int range { get; set; } = 10;
 

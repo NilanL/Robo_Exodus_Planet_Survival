@@ -253,4 +253,11 @@ public class Robot_Miner_Controller_Mouse : MonoBehaviour
 
         attackSound.Stop();
     }
+
+    public void SetUnitSpeed(float speed, float accel, float angular)
+    {
+        navMeshAgent.speed = speed;
+        navMeshAgent.acceleration = accel;
+        navMeshAgent.angularSpeed = angular;
+    }
 }

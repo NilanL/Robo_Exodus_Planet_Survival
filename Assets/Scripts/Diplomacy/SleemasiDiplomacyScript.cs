@@ -12,6 +12,7 @@ public class SleemasiDiplomacyScript : MonoBehaviour
     private int donateCount = 0;
     private GameManager gameManager;
     private const int WIN_REPUTATION = 600;
+    public float diplomacyUpgradeFactor = 1;
 
     // Start is called before the first frame update
     void Start()
@@ -22,6 +23,8 @@ public class SleemasiDiplomacyScript : MonoBehaviour
     public int AddReputation(DiplomacyType type, int rep)
     {
         int increment = 0;
+
+        rep = (int)((float)rep * diplomacyUpgradeFactor);
 
         if (!isMaxRep)
         {

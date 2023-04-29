@@ -5,7 +5,10 @@ using UnityEngine.UI;
 
 public class TechTreeUI : MonoBehaviour
 {
-    public GameObject gm;
+    private GameObject gm;
+    private GameObject UI;
+    private GameObject techTree;
+    private GameObject upgradeButtons;
     public Button hp1;
     public Button hp2;
     public Button hp3;
@@ -22,27 +25,30 @@ public class TechTreeUI : MonoBehaviour
     public Button slee;
     public Button graxx;
 
+
     // You can't find buttons that are inactive so instead of on start
     // I call this when tech tree is opened
     public void GetTechTreeReady()
     {
         gm = GameObject.Find("GameManager");
-        hp1 = GameObject.Find("HP1").GetComponent<Button>();
-        hp2 = GameObject.Find("HP2").GetComponent<Button>();
-        hp3 = GameObject.Find("HP3").GetComponent<Button>();
-        speed1 = GameObject.Find("Speed1").GetComponent<Button>();
-        speed2 = GameObject.Find("Speed2").GetComponent<Button>();
-        speed3 = GameObject.Find("Speed3").GetComponent<Button>();
-        dmg1 = GameObject.Find("Dmg1").GetComponent<Button>();
-        dmg2 = GameObject.Find("Dmg2").GetComponent<Button>();
-        dmg3 = GameObject.Find("Dmg3").GetComponent<Button>();
-        mine1 = GameObject.Find("Mine1").GetComponent<Button>();
-        mine2 = GameObject.Find("Mine2").GetComponent<Button>();
-        mine3 = GameObject.Find("Mine3").GetComponent<Button>();
-        cog = GameObject.Find("Cog").GetComponent<Button>();
-        slee = GameObject.Find("Slee").GetComponent<Button>();
-        graxx = GameObject.Find("Graxx").GetComponent<Button>();
-        
+        UI = GameObject.Find("UI");
+        techTree = UI.transform.Find("Tech Tree Window").gameObject;
+        upgradeButtons = techTree.transform.Find("Upgrade Buttons").gameObject;
+        hp1 = upgradeButtons.transform.Find("HP1").GetComponent<Button>();
+        hp2 = upgradeButtons.transform.Find("HP2").GetComponent<Button>();
+        hp3 = upgradeButtons.transform.Find("HP3").GetComponent<Button>();
+        speed1 = upgradeButtons.transform.Find("Speed1").GetComponent<Button>();
+        speed2 = upgradeButtons.transform.Find("Speed2").GetComponent<Button>();
+        speed3 = upgradeButtons.transform.Find("Speed3").GetComponent<Button>();
+        dmg1 = upgradeButtons.transform.Find("Dmg1").GetComponent<Button>();
+        dmg2 = upgradeButtons.transform.Find("Dmg2").GetComponent<Button>();
+        dmg3 = upgradeButtons.transform.Find("Dmg3").GetComponent<Button>();
+        mine1 = upgradeButtons.transform.Find("Mine1").GetComponent<Button>();
+        mine2 = upgradeButtons.transform.Find("Mine2").GetComponent<Button>();
+        mine3 = upgradeButtons.transform.Find("Mine3").GetComponent<Button>();
+        cog = upgradeButtons.transform.Find("Cog").GetComponent<Button>();
+        slee = upgradeButtons.transform.Find("Slee").GetComponent<Button>();
+        graxx = upgradeButtons.transform.Find("Graxx").GetComponent<Button>();
     }
     
 
@@ -58,7 +64,6 @@ public class TechTreeUI : MonoBehaviour
 
             hp1.interactable = false;
             hp2.interactable = true;
-
         }
             
     }
@@ -102,6 +107,8 @@ public class TechTreeUI : MonoBehaviour
             gm.GetComponent<GameManager>().BloodStone -= 250;
             gm.GetComponent<GameManager>().Ironite -= 250;
 
+            gm.GetComponent<GameManager>().UpdateStatsSpd1();
+
             speed1.interactable = false;
             speed2.interactable = true;
 
@@ -116,6 +123,8 @@ public class TechTreeUI : MonoBehaviour
             gm.GetComponent<GameManager>().Zorium -= 500;
             gm.GetComponent<GameManager>().Ironite -= 500;
 
+            gm.GetComponent<GameManager>().UpdateStatsSpd2();
+
             speed2.interactable = false;
             speed3.interactable = true;
 
@@ -129,6 +138,8 @@ public class TechTreeUI : MonoBehaviour
         {
             gm.GetComponent<GameManager>().Aurarium -= 1000;
             gm.GetComponent<GameManager>().Ironite -= 1000;
+
+            gm.GetComponent<GameManager>().UpdateStatsSpd3();
 
             speed3.interactable = false;
 
@@ -190,6 +201,8 @@ public class TechTreeUI : MonoBehaviour
             gm.GetComponent<GameManager>().BloodStone -= 250;
             gm.GetComponent<GameManager>().Ironite -= 250;
 
+            gm.GetComponent<GameManager>().UpdateStatsMine1();
+
             mine1.interactable = false;
             mine2.interactable = true;
 
@@ -203,6 +216,8 @@ public class TechTreeUI : MonoBehaviour
         {
             gm.GetComponent<GameManager>().Zorium -= 500;
             gm.GetComponent<GameManager>().Ironite -= 500;
+
+            gm.GetComponent<GameManager>().UpdateStatsMine2();
 
             mine2.interactable = false;
             mine3.interactable = true;
@@ -218,6 +233,8 @@ public class TechTreeUI : MonoBehaviour
             gm.GetComponent<GameManager>().Aurarium -= 1000;
             gm.GetComponent<GameManager>().Ironite -= 1000;
 
+            gm.GetComponent<GameManager>().UpdateStatsMine3();
+
             mine3.interactable = false;
 
         }
@@ -230,6 +247,8 @@ public class TechTreeUI : MonoBehaviour
         {
             gm.GetComponent<GameManager>().Aurarium -= 500;
             gm.GetComponent<GameManager>().Ironite -= 500;
+
+            gm.GetComponent<CoglingsDiplomacyScript>().diplomacyUpgradeFactor = 1.5f;
 
             cog.interactable = false;
 
@@ -244,6 +263,8 @@ public class TechTreeUI : MonoBehaviour
             gm.GetComponent<GameManager>().Zorium -= 500;
             gm.GetComponent<GameManager>().Ironite -= 500;
 
+            gm.GetComponent<SleemasiDiplomacyScript>().diplomacyUpgradeFactor = 1.5f;
+
             slee.interactable = false;
 
         }
@@ -256,6 +277,8 @@ public class TechTreeUI : MonoBehaviour
         {
             gm.GetComponent<GameManager>().BloodStone -= 500;
             gm.GetComponent<GameManager>().Ironite -= 500;
+
+            gm.GetComponent<GraxxianDiplomacyScript>().diplomacyUpgradeFactor = 1.5f;
 
             graxx.interactable = false;
 

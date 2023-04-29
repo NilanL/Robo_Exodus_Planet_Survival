@@ -425,35 +425,156 @@ public class GameManager : MonoBehaviour
         GetComponent<MinerStats>().maxHealth += 13;
         GetComponent<Robot_Range_Stats>().maxHealth += 13;
         GetComponent<Melle_UnitStats>().maxHealth += 13;
+
+        ReinitializeUnitStats();
     }
     public void UpdateStatsHP2()
     {
         GetComponent<MinerStats>().maxHealth += 28;
         GetComponent<Robot_Range_Stats>().maxHealth += 28;
         GetComponent<Melle_UnitStats>().maxHealth += 28;
+
+        ReinitializeUnitStats();
     }
     public void UpdateStatsHP3()
     {
         GetComponent<MinerStats>().maxHealth += 59;
         GetComponent<Robot_Range_Stats>().maxHealth += 59;
         GetComponent<Melle_UnitStats>().maxHealth += 59;
+
+        ReinitializeUnitStats();
     }
     public void UpdateStatsDmg1()
     {
         GetComponent<MinerStats>().unitAtk += 4;
         GetComponent<Robot_Range_Stats>().unitAtk += 4;
         GetComponent<Melle_UnitStats>().unitAtk += 4;
+
+        ReinitializeUnitStats();
     }
     public void UpdateStatsDmg2()
     {
         GetComponent<MinerStats>().unitAtk += 6;
         GetComponent<Robot_Range_Stats>().unitAtk += 6;
         GetComponent<Melle_UnitStats>().unitAtk += 6;
+
+        ReinitializeUnitStats();
     }
     public void UpdateStatsDmg3()
     {
         GetComponent<MinerStats>().unitAtk += 10;
         GetComponent<Robot_Range_Stats>().unitAtk += 10;
         GetComponent<Melle_UnitStats>().unitAtk += 10;
+
+        ReinitializeUnitStats();
+    }
+
+    public void UpdateStatsSpd1()
+    {
+        float speed = 15f;
+        float acceleration = 27.5f;
+        float angularSpeed = 350f;
+
+        foreach (var unit in selectables)
+        {
+            switch (unit.GetComponent<Unit_Name>().unit_Name)
+            {
+                case Unit_Names.Miner:
+                    unit.GetComponent<Robot_Miner_Controller_Mouse>().SetUnitSpeed(speed, acceleration, angularSpeed);
+                    break;
+                case Unit_Names.Robot_Ranged:
+                case Unit_Names.Robot_Melee:
+                    unit.GetComponent<MovementScript>().SetUnitSpeed(speed, acceleration, angularSpeed);
+                    break;
+            }
+        }
+
+        ReinitializeUnitStats();
+    }
+
+    public void UpdateStatsSpd2()
+    {
+        float speed = 17.5f;
+        float acceleration = 30f;
+        float angularSpeed = 400f;
+
+        foreach (var unit in selectables)
+        {
+            switch (unit.GetComponent<Unit_Name>().unit_Name)
+            {
+                case Unit_Names.Miner:
+                    unit.GetComponent<Robot_Miner_Controller_Mouse>().SetUnitSpeed(speed, acceleration, angularSpeed);
+                    break;
+                case Unit_Names.Robot_Ranged:
+                case Unit_Names.Robot_Melee:
+                    unit.GetComponent<MovementScript>().SetUnitSpeed(speed, acceleration, angularSpeed);
+                    break;
+            }
+        }
+
+        ReinitializeUnitStats();
+    }
+
+    public void UpdateStatsSpd3()
+    {
+        float speed = 20f;
+        float acceleration = 32.5f;
+        float angularSpeed = 450f;
+
+        foreach (var unit in selectables)
+        {
+            switch (unit.GetComponent<Unit_Name>().unit_Name)
+            {
+                case Unit_Names.Miner:
+                    unit.GetComponent<Robot_Miner_Controller_Mouse>().SetUnitSpeed(speed, acceleration, angularSpeed);
+                    break;
+                case Unit_Names.Robot_Ranged:
+                case Unit_Names.Robot_Melee:
+                    unit.GetComponent<MovementScript>().SetUnitSpeed(speed, acceleration, angularSpeed);
+                    break;
+            }
+        }
+
+        ReinitializeUnitStats();
+    }
+
+    public void UpdateStatsMine1()
+    {
+        GetComponent<MinerStats>().miningSpd += 0.3f;
+        GetComponent<Robot_Range_Stats>().miningSpd += 0.3f;
+        GetComponent<Melle_UnitStats>().miningSpd += 0.3f;
+
+        ReinitializeUnitStats();
+    }
+    public void UpdateStatsMine2()
+    {
+        GetComponent<MinerStats>().miningSpd += 0.3f;
+        GetComponent<Robot_Range_Stats>().miningSpd += 0.3f;
+        GetComponent<Melle_UnitStats>().miningSpd += 0.3f;
+
+        ReinitializeUnitStats();
+    }
+    public void UpdateStatsMine3()
+    {
+        GetComponent<MinerStats>().miningSpd += 0.3f;
+        GetComponent<Robot_Range_Stats>().miningSpd += 0.3f;
+        GetComponent<Melle_UnitStats>().miningSpd += 0.3f;
+
+        ReinitializeUnitStats();
+    }
+
+    public void ReinitializeUnitStats()
+    {
+        foreach (var unit in selectables)
+        {
+            switch (unit.GetComponent<Unit_Name>().unit_Name)
+            {
+                case Unit_Names.Miner:
+                case Unit_Names.Robot_Ranged:
+                case Unit_Names.Robot_Melee:
+                    unit.GetComponent<Stats>().InitializeUpdate();
+                    break;
+            }
+        }
     }
 }
